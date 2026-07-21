@@ -1,0 +1,84 @@
+                                  Dr.-Ing. Hassan Tolba Aboelnga  
+ 
+Financing Resilience and WEFE Nexus Professional 
+Series – Tools Pack  
+밄 Lecture 1: Identification & Classification  
+Objective:  Establishing the "Nexus Logic" to attract premium climate financing.  
+ Theory of Change (ToC):  Used to map systemic feedback loops (e.g., how water 
+efficiency leads to energy savings).  
+o 꼏꼐 Guide: UNDP Theory of Change Guidelines  
+ WEFE Nexus Screening Matrix:  A tool to check if a project is truly "integrated" or 
+just "coordinated."  
+o 꼏꼐 Guide: FAO WEF Nexus Rapid Appraisal Manual  
+ Real-World Case:  The Noor Ouarzazate Solar Complex (Morocco).  This CSP plant 
+used dry-cooling to protect scarce water resources for local agriculture.  
+o 꼏꼐 Reference:  World Bank Project Portal: Noor Ouarzazate  
+ 
+밃 Lecture 2: Integrating WEFE into Existing Projects  
+Objective:  Identifying "entry points" for optimization to reduce OPEX.  
+ Problem & Objectives Tree:  Finding the root causes of resource waste (e.g., high 
+energy bills due to water leaks).  
+o 꼏꼐 Guide: EuropeAid Project Cycle Management Guidelines  
+ Multi-Criteria Decision Analysis (MCDA):  Prioritizing which retrofit (e.g., biogas vs. 
+solar pumps) has the best ROI.  
+o 꼏꼐 Guide: OECD Multi-Criteria Analysis in Infrastructure Governance  
+ Real-World Case:  Johannesburg Wastewater-to-Energy.  Retrofitting plants with 
+anaerobic digesters to produce biogas (Energy) from sludge (Waste).  
+o 꼏꼐 Reference:  WRC South Africa: Energy from Wastewater Report  
+ 
+꾃 Lecture 3: Financing Instruments & Capital Stack  
+Objective:  Layering different types of capital to make the project "Bankable."  
+ Logical Framework (LogFrame):  The technical "contract" between the project and 
+the funder.  
+o 꼏꼐 Guide: World Bank LogFrame Handbook  
+ Incremental Cost Analysis:  Proving why the "Nexus" solution is better than the 
+"Baseline" (Mandatory for GCF).  
+---PAGE---
+                                  Dr.-Ing. Hassan Tolba Aboelnga 
+o 꼏꼐 Guide: GEF Policy on Incremental Costs  
+ Real-World Case:  Kenya Tea Development Agency (KTDA) Small Hydros.  A "Capital 
+Stack" of equity from farmers, concessional loans from AFD, and grants for 
+feasibility. 
+o 꼏꼐 Reference:  Proparco: KTDA Small Hydro Project Summary  
+ 
+꾂 Lecture 4: Financing Risks During Operations 
+Objective:  Ensuring the project remains solvent during droughts or market shifts. 
+ Climate Risk & Vulnerability Assessment (CRVA):  Stress-testing the project against 
+2050 climate scenarios. 
+o 꼏꼐 Guide: World Bank Climate & Disaster Risk Screening Tools  
+ Financial Stress Test (DSCR/NPV):  Calculating if the project can pay its debt if 
+electricity costs rise or crop yields drop. 
+o 꼏꼐 Guide: World Bank Infrastructure Finance & PPP Toolkit  
+ Real-World Case:  Floating Solar on Hydropower Reservoirs.  Solar protects water 
+from evaporating while producing power when water is low. 
+o 꼏꼐 Reference:  World Bank: Floating Solar Panels - New Renewable Frontier  
+ 
+밅 Lecture 5: Navigating WEFE Nexus Funding Calls 
+Objective:  Identifying and winning international donor opportunities. 
+ SDG Alignment Matrix:  Mapping contribution to SDGs 2 (Food), 6 (Water), 7 
+(Energy), and 13 (Climate). 
+o 꼏꼐 Guide: UNDP SDG Impact Standards  
+ National Policy Alignment (NDC/NAP):  Proving the project fits the country's climate 
+commitment. 
+o 꼏꼐 Guide: NDC Partnership Knowledge Portal  
+ Real-World Case:  WE4F (Water and Energy for Food) Grand Challenge.  A global 
+call for innovations that increase food production with less water and energy. 
+o 꼏꼐 Reference:  WE4F Innovation Hubs - Official Site  
+ 
+袨袩袪被袬袭 Final Training Reference Table 
+Lecture Core Tool  Verified Authority 
+Link 
+1. 
+Identification  Theory of Change UNDP  
+---PAGE---
+                                  Dr.-Ing. Hassan Tolba Aboelnga 
+Lecture Core Tool  Verified Authority 
+Link 
+2. Optimization  Problem Tree / MCDA  OECD  
+3. Bankability  LogFrame / Incremental 
+Cost World Bank  
+4. Risk CRVA / Stress Testing  World Bank Tools  
+5. Funding  SDG & NDC Matrix  NDC Partnership  
+ 
+ 
+---PAGE---

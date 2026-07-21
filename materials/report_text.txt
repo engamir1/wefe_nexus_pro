@@ -1,0 +1,617 @@
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 1 of 21 FINANCING RESILIENCE AND WEFE NEXUS PROFESSIONAL SERIES  
+EGYPT COUNTRY REPORT  
+Integrated Desalination and Reuse of Agricultural 
+Drainage Water  
+for Food Security, Renewable Energy, and Ecosystem Resilience  
+Grounded in Egypt's operating mega -plants — Bahr El -Baqar, Al -Mahsama and New Delta (El -Hammam)  
+Prepared by  
+Dr. Hassan Tolba Aboelnga  
+Water Security & WEFE Nexus Specialist | TH Köln, Institute for Technology and Resources Management in the Tropics and 
+Subtropics (ITT) | Chair, IWRA Water Security Task Force  
+Prepared for institutional, donor and investor audiences  
+Sector: Water –Energy –Food –Ecosystems (WEFE) Nexus | Geography: Arab Republic of Egypt  
+Training Series Reference Document | July 2026  
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 2 of 21 Preface — Purpose and Use of This Document  
+This report is issued as the reference case study of the Financing Resilience and WEFE Nexus Professional 
+Series. It is written to serve two audiences simultaneously: first, as a standalone investment -grade project 
+report on drainage -water reuse in Egypt; and second, as a worked template that trainees and project teams 
+can follow, section by section, when preparing WEFE Nexus project reports for other countries, sectors, or 
+sites.  
+Every section below follows a fixed structure — narrative framing, quantified evidence, a standard table or 
+matrix, and a scored conclusion — so that the same 24 -section skeleton can be reused for a different project 
+simply by replacing the underlying data . Where this report draws on a real, operating Egyptian programme (the 
+Bahr El -Baqar, Al -Mahsama and New Delta / El -Hammam plants) rather than a hypothetical, that choice is 
+deliberate: it demonstrates how to ground each section of the template in verifiab le, cited evidence instead of 
+generic placeholder text, which is the standard trainees should apply to their own case studies.  
+A short methodological note on replication is provided in the final section of this report, 'Using This Template 
+for Other Projects,' which distills the drafting logic behind each of the 24 sections into a reusable checklist.  
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 3 of 21 Table of Contents  
+ 
+ 
+1. Executive Summary  
+2. Strategic Assessment  
+3. Project Background and Rationale  
+3.1 Egypt’s Water Security Context  
+3.2 Existing Drainage Water Reuse Programmes  
+3.3 Reference Projects: Bahr El -Baqar, Al -Mahsama and New Delta  
+4. Problem Statement  
+5. Project Objectives  
+6. Alignment with National Strategies  
+6.1 Egypt Vision 2030  
+6.2 National Climate Change Strategy 2050  
+6.3 Irrigation System 2.0  
+7. WEFE Nexus Analysis  
+8. Project Description  
+8.1 Drainage Water Collection System  
+8.2 Desalination Facility  
+8.3 Solar Energy System  
+8.4 Distribution Network  
+8.5 Nature -Based Solutions  
+8.6 Digital Water Management Platform  
+9. Stakeholder Analysis  
+10. Climate Resilience Assessment  
+11. Logical Framework (Logframe)  
+12. WEFE Project Screening and Prioritization  
+13. WEFE Project Classification and Bankability Assessment  
+14. Integrating WEFE into Existing Projects  
+15. Financial and Economic Analysis  
+16. Capital Stack Design  
+17. Operational Finance Risk Assessment  
+18. Funding Call Fit Score Assessment  
+19. Monitoring, Reporting and Verification (MRV)  
+20. Environmental and Social Safeguards  
+21. Expected Impacts  
+22. Investment Readiness Assessment  
+23. Investor Pitch Summary  
+24. Conclusions and Recommendation  
+ 
+ 
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 4 of 21 1. Executive Summary  
+Egypt's freshwater endowment has fallen to roughly 560 m³ per capita per year — well below the 1,000 m³ 
+water -poverty threshold and closer still to the 500 m³ absolute -scarcity line — as the Nile's fixed annual 
+allocation of about 55.5 billion cubic metres  (BCM) is stretched across a population that has passed 106 million. 
+Agricultural drainage water, historically treated as a disposal problem, has become one of the country's few 
+expandable water resources: the drainage network carries in excess of 14 BCM p er year, most of it discharged 
+untreated into lakes, drains and the Mediterranean.  
+Rather than a hypothetical pipeline concept, this report is built around a programme Egypt is already 
+constructing at national scale. Between roughly 2018 and 2025 the Ministry of Water Resources and Irrigation 
+(MWRI), together with the Armed Forces Engine ering Authority, commissioned three mega -plants that 
+together define the country's drainage -water -reuse model:  
+• Bahr El -Baqar WWTP (Sinai / east of the Suez Canal) — treatment capacity of about 5.6 million m³/day, 
+supporting reclamation of roughly 456,000 feddans.  
+• Al-Mahsama WWTP (Ismailia, east bank of the Suez Canal) — capacity of about 0.365 BCM/year, 
+supporting reclamation of roughly 70,000 feddans.  
+• New Delta / El -Hammam WWTP (Western Desert) — the largest of the three and among the largest 
+water -treatment plants in the world, with a design capacity in the range of 2.2 BCM/year (roughly 6 
+million m³/day), supporting reclamation targeted at up to 1.5 m illion feddans.  
+Egyptian officials have indicated that, taken together, these three plants are expected to deliver on the order 
+of 5 BCM of treated drainage water per year by 2026 — a volume comparable to a major new river allocation, 
+generated entirely from water Egypt w as previously discharging as waste. This report uses that operating 
+programme as the evidence base for a fourth, replicable project archetype: decentralised, solar -powered 
+drainage -water desalination and reuse units that can be deployed across the Nile Del ta's secondary drainage 
+network to extend the same logic to medium -scale, farmer -facing infrastructure.  
+The proposed project — sized here at USD 670 million in an illustrative configuration — combines drainage 
+water collection, reverse -osmosis desalination, 150 MW of solar generation, an irrigation distribution network, 
+constructed wetlands and a digital wat er-management platform. It is structured for blended finance, aligns 
+directly with Egypt Vision 2030 and the National Climate Change Strategy 2050, and is assessed here as 
+investment -ready pending a full feasibility study, with a WEFE Nexus composite score  of 95/100.  
+Three findings distinguish this report from a conventional pre -feasibility note. First, the technology and delivery 
+risk are already substantially retired: Egypt has proven, at national scale and within a single decade, that mega -
+scale drainage treatment a nd inter -basin conveyance (including the New Delta project's underground pipeline 
+system carrying water tens of kilometres into the Western Desert) can be engineered, financed and operated. 
+Second, the resource itself is abundant and currently undervalued:  at over 14 BCM/year of total drainage flow, 
+the volume already treated by the three flagship plants — on the order of 5 BCM/year by 2026 — still 
+represents well under half of the theoretically recoverable stream, leaving substantial headroom for a 
+decentr alised second wave of investment such as the project proposed here. Third, the social and 
+environmental risk profile is well documented rather than speculative: independent field research on Al -
+Mahsama has already identified the specific mechanism by which  drainage reallocation can affect old -land 
+smallholders, which allows this report to design safeguards against a known risk rather than a hypothetical 
+one.  
+The remainder of this report is organised as a full, investable project document — background, WEFE Nexus 
+analysis, technical description, stakeholder mapping, climate resilience, logframe, screening and bankability, 
+financials, capital structure, risk, fu nding -call fit, MRV, safeguards, expected impacts, readiness, investor pitch 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 5 of 21 and conclusions — followed by a closing methodological section explaining how the same structure should be 
+applied to other WEFE Nexus projects in the training series.  
+2.  Strategic Assessment  
+2.1 Project Classification  
+Attribute  Detail  
+Project Type  Climate -Resilient WEFE Nexus Infrastructure — decentralised drainage 
+water desalination and reuse  
+Country  Arab Republic of Egypt  
+Reference Geography  Nile Delta secondary drainage network, benchmarked against Bahr El -
+Baqar (Sinai), Al -Mahsama (Ismailia/Suez Canal) and New Delta / El -
+Hammam (Western Desert)  
+Programme Status  Reference plants operational or in advanced commissioning (2018 –2025); 
+this project extends the model to new sites  
+2.2 Composite Assessment Scores  
+Criterion  Score (/10)  
+Water Impact  10 
+Energy Integration  9 
+Food Security Impact  10 
+Ecosystem Benefits  8 
+Climate Resilience  10 
+Financial Attractiveness  8 
+Innovation  9 
+Replicability  10 
+2.3 Recommendation  
+High -priority investment candidate. Egypt's demonstrated ability to deliver Bahr El -Baqar, Al -Mahsama and 
+New Delta at gigawatt -and-billion -cubic -metre scale substantially de -risks execution for follow -on, 
+decentralised projects of this kind. Strong candid ate for:  
+• Green Climate Fund (GCF)  
+• Adaptation Fund  
+• European Investment Bank (EIB)  
+• European Bank for Reconstruction and Development (EBRD)  
+• Islamic Development Bank (IsDB)  
+• World Bank  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 6 of 21 • EU Global Gateway  
+3. Project Background and Rationale  
+Egypt receives under 600 m³ per capita per year of water, against a Nile allocation fixed by the 1959 agreement 
+at 55.5 BCM/year for Egypt — a volume unchanged for over six decades while population has more than 
+doubled. The Grand Ethiopian Renaissance Dam  (GERD) filling has added further hydrological uncertainty 
+upstream. Key structural challenges include water scarcity, seawater and drain -water salinity intrusion into the 
+Delta aquifer, climate -driven variability, stagnating agricultural productivity per unit of water, and rising energy 
+costs for conventional treatment.  
+Egypt's response, branded domestically as Irrigation System 2.0, has centred on treating agricultural drainage 
+water as a resource rather than a waste stream. The three flagship plants already reallocate treated drainage 
+water from the Delta's 'old lands' to newly reclaimed desert -fringe 'new lands' in Sinai, around the Suez Canal, 
+and in the Western Desert — a model this report proposes to replicate at decentralised, solar -integrated scale 
+closer to the point of drainage generation.  
+The engineering logic of the New Delta / El -Hammam scheme illustrates the scale of ambition involved: 
+agricultural wastewater that would historically have discharged through the Rosetta branch of the Nile into the 
+Mediterranean is instead redirected roughl y 50 kilometres along the coast, carried underground through large -
+diameter pipelines for a further 22 kilometres into the Western Desert, and then conveyed by canal another 42 
+kilometres to the treatment plant itself, from where treated water irrigates re claimed land at a reported rate 
+on the order of 6 million m³/day at full build -out. Between 2015 and 2020 alone, Egypt reported irrigating 
+more than 5,000 km² of previously desert land using this reallocated -drainage model — a scale of land 
+reclamation tha t positions drainage reuse as a central pillar of national food -security policy rather than a 
+peripheral pilot activity.  
+This scale of investment is not incidental. It reflects a structural reality: Egypt's Nile allocation has been fixed 
+since the 1959 Nile Waters Agreement while population, urbanisation and irrigated area have all expanded 
+several -fold, and hydrological unc ertainty from upstream GERD operations adds a further layer of supply risk 
+that drainage reuse is explicitly designed to buffer against. Understanding this policy driver is essential 
+background for any project team preparing a comparable report for another  country: the opening section of 
+the template should always identify the specific structural constraint — a fixed allocation, a transboundary 
+dependency, an aquifer in decline — that makes the proposed WEFE Nexus intervention a policy priority rather 
+than merely a technically interesting option.  
+3.1 The Existing Egyptian Reference Programme  
+Plant  Location  Capacity  Reclamation Target  
+Bahr El -Baqar WWTP  East of Suez Canal, Sinai (~10 
+km south of Port Said)  ≈5.6 million m³/day  ≈456,000 feddans  
+Al-Mahsama WWTP  East bank of Suez Canal, 
+Ismailia  ≈0.365 BCM/year  ≈70,000 feddans  
+New Delta / El -Hammam 
+WWTP  Western Desert, north -west 
+coast  ≈2.2 BCM/year (world's 
+largest)  up to ≈1,500,000 
+feddans  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 7 of 21 Figures compiled from Egyptian government, Armed Forces Engineering Authority and independent academic sources (2023 –
+2025); treat as order -of-magnitude reference values for planning purposes, to be confirmed against the feasibility study for any 
+specific n ew site.  
+4. Problem Statement  
+Challenge  Impact  
+Freshwater scarcity  Reduced irrigation supply per feddan; competition between Delta 'old 
+lands' and reclaimed 'new lands'  
+Salinity increase  Lower crop productivity, especially in the northern Delta governorates  
+Energy -intensive treatment  High operating expenditure for conventional desalination  
+Ecosystem degradation  Biodiversity loss in Lake Manzala and other drainage -fed wetlands  
+Climate variability  Reduced resilience of both Nile -fed and drainage -fed irrigation systems  
+5. Project Objectives  
+5.1 Overall Goal  
+Improve climate -resilient water security and food production in Egypt through the integrated, decentralised 
+reuse of agricultural drainage water, complementing the national Bahr El -Baqar / Al -Mahsama / New Delta 
+programme.  
+5.2 Specific Objectives  
+1. Recover 200 million m³/year of drainage water at the pilot cluster of sites.  
+2. Produce renewable energy through a co -located 150 MW solar PV array.  
+3. Irrigate 50,000 hectares of Delta -fringe and reclaimed land.  
+4. Increase agricultural productivity per unit of water by 20%.  
+5. Reduce groundwater abstraction in stressed aquifer zones.  
+6. Improve ecosystem health in receiving drains and wetlands.  
+6. Alignment with Egypt Vision 2030 and National Strategies  
+6.1 Egypt Vision 2030  
+• Water Security  
+• Climate Adaptation  
+• Food Security  
+• Renewable Energy  
+• Sustainable Development  
+6.2 National Climate Change Strategy 2050  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 8 of 21 • Adaptation  
+• Water Resilience  
+• Green Growth  
+6.3 Irrigation System 2.0  
+The Ministry of Water Resources and Irrigation's Irrigation System 2.0 programme — reviewed by President 
+Abdel Fattah El -Sisi in August 2025 — explicitly foregrounds the Bahr El -Baqar, Al -Mahsama and New Delta 
+plants as its water -treatment backbone, alongs ide satellite monitoring, digital twins and smart water 
+management. This project is designed as a decentralised, next -tier extension of that same national strategy.  
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 9 of 21 7. WEFE Nexus Analysis  
+Nexus Sector  Contribution  
+Water  Drainage water desalination and reuse, modelled on the Bahr El -Baqar / Al -
+Mahsama / New Delta programme  
+Energy  Co-located solar PV generation offsetting desalination OPEX  
+Food  Irrigation water for reclaimed and Delta -fringe agricultural land  
+Ecosystems  Wetland restoration and salinity management around receiving drains and lakes  
+Enablers  AI forecasting, digital twin, satellite monitoring — consistent with Irrigation System 
+2.0 
+Degree of Integration  
+FULL WEFE INTEGRATION  
+8. Project Description  
+Component 1 — Drainage Water Collection System  
+Networked intake structures on secondary drains, modelled on the Al -Mahsama I/II pumping -station 
+configuration that lifts drainage water from the Delta 'old lands' to treatment sites on higher desert -fringe 
+ground.  
+Component 2 — Desalination Facility  
+Capacity:  200 million m³/year  
+Technology:  Reverse Osmosis (RO), with pre -treatment stages (screening, sedimentation, filtration) as used at 
+Bahr El -Baqar  
+Component 3 — Solar Energy System  
+Capacity:  150 MW  
+Component 4 — Distribution Network  
+Irrigation conveyance infrastructure connecting treated water to reclaimed land, comparable in principle to the 
+Sheikh Jaber Canal that receives Bahr El -Baqar's treated effluent.  
+Component 5 — Nature -Based Solutions  
+• Constructed wetlands  
+• Biodiversity restoration around drainage -fed lakes (e.g., Lake Manzala catchment analogues)  
+• Carbon sequestration zones  
+Component 6 — Digital Water Management Platform  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 10 of 21 • AI-based demand and flow forecasting  
+• SCADA control systems  
+• Digital twin of the drainage -to-irrigation network  
+• Satellite and drone -based remote sensing, consistent with MWRI's Irrigation System 2.0  
+9. Stakeholder Analysis  
+Stakeholder  Role 
+Ministry of Water Resources and Irrigation (MWRI)  Lead agency; owner of the national drainage -reuse 
+strategy  
+Ministry of Agriculture and Land Reclamation  Beneficiary; land reclamation coordination  
+New and Renewable Energy Authority (NREA)  Renewable energy integration  
+Armed Forces Engineering Authority  Delivery partner on comparable mega -projects (Bahr El -
+Baqar, New Delta)  
+Private operators / EPC contractors  PPP implementation and O&M  
+Farmers' associations (Delta and reclaimed land)  End users of irrigation water  
+Multilateral development banks  Financing  
+Universities and research institutes (e.g., TH Köln –Ain 
+Shams –Mansoura iWater consortium)  Research, monitoring and capacity building  
+10. Climate Resilience Assessment  
+Climate Risks  
+• Drought and reduced Nile flow variability, compounded by upstream GERD operations  
+• Heat waves affecting crop water demand  
+• Salinity intrusion in the northern Delta and coastal aquifers  
+• Flooding events affecting drainage infrastructure  
+Adaptation Benefits  
+• Alternative water source independent of the fixed Nile allocation  
+• Reduced dependency on Nile water for reclaimed land  
+• Increased agricultural resilience through diversified supply  
+• Improved food security in a country importing a large share of its staple grain needs  
+Resilience Rating  
+HIGH  
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 11 of 21 11. Logical Framework (Logframe)  
+Intervention Logic  Indicators  Means of Verification  Assumptions / Risks  
+Goal: Improve water and 
+food security resilience  Water Security Index 
++20%  National reports  Stable governance  
+Outcome 1: Additional 
+irrigation supply  200 million m³/year 
+supplied  Utility data  Farmer adoption  
+Outcome 2: Renewable 
+energy generation  150 MW installed  Energy reports  Solar resource 
+performance  
+Outcome 3: Ecosystem 
+restoration  5,000 ha restored  Environmental 
+monitoring  Community support  
+Output 1: Desalination plant  Plant operational  Completion certificate  Construction completed on 
+schedule  
+Output 2: Solar PV system  Energy delivered to 
+grid/plant  SCADA records  Grid/plant integration 
+achieved  
+Output 3: Digital monitoring 
+system  Real -time monitoring 
+active  Dashboard reports  Data availability and 
+connectivity  
+Activities  Procurement, 
+construction, 
+operation, training  Progress reports  Funding secured  
+12. Initial WEFE Screening and Prioritization  
+Project  Sectors 
+Covered  Co-Benefits  Finance 
+Potential  Resilience 
+Impact  Priority  
+Drainage Water Desalination + Solar 
+(this project)  W,E,F,Eco  Very High  High High 5 
+Solar Irrigation  W,E,F  Medium  High Medium  4 
+Wastewater Reuse (Bahr El -Baqar / 
+Al-Mahsama / New Delta model)  W,E,F  High High High 5 
+Wetland Restoration  W,Eco  Medium  Medium  High 3 
+Agro -industrial Efficiency  W,E,F  High High Medium  4 
+Ranking  
+7. Drainage Water Desalination + Solar  
+8. Wastewater Reuse  
+9. Agro -industrial Efficiency  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 12 of 21 13. WEFE Project Classification and Bankability Assessment  
+Component  Integration Level  Risk Impact  Bankability Measures  
+Water  Full High positive  Long -term water purchase 
+agreements  
+Energy  Full Medium  Solar PPA  
+Food  Full High Farmer contracts  
+Ecosystem  Moderate  Medium  Carbon credits  
+Digital  Full Low Smart metering  
+Bankability Rating  
+High  
+14. Integrating WEFE into Existing Projects  
+Egypt's existing drainage -reuse plants were largely commissioned as conventional treatment facilities and can 
+be retrofitted with WEFE -Nexus features to raise their resilience and revenue profile:  
+Action  Timeframe  
+Solar PV installation at existing/new plants  Short -term  
+AI optimisation of pumping and treatment  Short -term  
+Wetland creation at receiving drains/lakes  Medium -term  
+Carbon credit mechanism  Medium -term  
+Water trading / allocation platform  Long -term  
+Expected Benefits  
+OPEX Reduction:  25% 
+Energy Cost Reduction:  40% 
+Revenue Increase:  15% 
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 13 of 21 15. Financial and Economic Analysis  
+CAPEX  
+Component  Cost (USD million)  
+Desalination Plant  350 
+Solar PV  120 
+Distribution Network  150 
+Digital Platform  20 
+Wetlands  30 
+Total  670 
+OPEX  
+Approximately USD 25 million per year.  
+Revenue Sources  
+10. Water tariffs / bulk water purchase agreements  
+11. Agricultural productivity gains  
+12. Energy savings from co -located solar generation  
+13. Carbon credits  
+14. Green certificates  
+CAPEX figures are illustrative and scaled from the order of magnitude of Egypt's existing mega -plants (Bahr El -Baqar and New 
+Delta each represent multi -hundred -million to billion -dollar investment classes); a bankable feasibility study should refine these 
+against site -specific engineering estimates.  
+15.1 Benchmarking Logic  
+The USD 670 million envelope used in this report is deliberately positioned as a mid -scale, replicable unit rather 
+than a mega -project on the scale of Bahr El -Baqar or New Delta, both of which required national -level financing 
+structures led by the Armed F orces Engineering Authority. A decentralised project of this size is intended to be 
+financeable by a single multilateral lender or a small blended -finance consortium, and to be repeatable across 
+multiple secondary -drain sites in the Delta without requiring  a new national programme each time. When 
+adapting this template to another country or site, the CAPEX table should be built bottom -up from unit costs 
+(USD per m³/day of treatment capacity, USD per MW of solar, USD per hectare of distribution network) 
+benc hmarked against at least one operating reference project, exactly as this report benchmarks against the 
+three Egyptian plants.  
+15.2 Economic Value Drivers  
+Beyond the direct revenue lines listed above, the economic case rests on avoided cost: every cubic metre of 
+drainage water reused is a cubic metre that does not need to be drawn from the fixed Nile allocation, and 
+every hectare irrigated from treated drain age water is a hectare of reclaimed desert land added to the 
+cultivated base without competing for Delta 'old land' water rights. A full feasibility study should quantify this 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 14 of 21 avoided -cost value explicitly, alongside the reduced downstream pollution load into receiving water bodies 
+such as Lake Manzala, since donor climate -finance facilities increasingly score projects on such avoided -
+externality metrics in addition to direct fi nancial return.  
+16. Capital Stack Design  
+Instrument  Project Stage  Risk Coverage  Expected Benefit  
+Grant / TA  Preparation  High Feasibility studies  
+Concessional Debt  Construction  Medium  Lower financing cost  
+Commercial Debt  Operation  Medium  Scale -up 
+Equity  Development  Medium  Risk sharing  
+Blended Finance  All stages  High Increased bankability  
+Green Bonds  Expansion  Medium  Institutional investors  
+Proposed Capital Structure  
+• 15% Grants  
+• 25% Equity  
+• 40% Concessional Debt  
+• 20% Commercial Debt  
+17. Operational Finance Risk Assessment  
+Risk Type  Impact  Mitigation Tool  Expected Effect  
+Revenue Risk  High Water purchase agreements  Stable cashflow  
+O&M Costs  Medium  Co-located solar energy  Reduced costs  
+Climate Risk  High Insurance  Risk transfer  
+Regulatory Risk  Medium  PPP framework  Stability  
+ESG Risk  Low Monitoring systems  Compliance  
+Top 5 Risks  
+15. Water demand fluctuations  
+16. Energy price volatility  
+17. Regulatory changes  
+18. Climate extremes  
+19. O&M performance  
+17.1 Lessons from the National Reference Programme  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 15 of 21 Operating experience at Al -Mahsama and Bahr El -Baqar offers two specific, transferable risk lessons. The first 
+concerns hydraulic risk at intake: drainage flow volumes vary seasonally with the agricultural calendar, and 
+pumping -station capacity must be siz ed with sufficient margin to avoid either starving the plant or requiring 
+costly emergency discharge — a design parameter that should be explicitly tested during feasibility rather than 
+assumed from average annual flow. The second concerns social risk down stream of the intake: shifting 
+drainage water away from informal downstream abstraction points, as documented at Al -Mahsama, can 
+measurably affect smallholders who rely on that water for supplementary irrigation of high -value crops. This is 
+treated in this  report as an operational risk with a financial dimension (compensation, grievance -redress costs, 
+reputational risk to lenders) as well as a safeguards issue, and is cross -referenced in Section 20.  
+18. Funding Call Fit Score Assessment  
+Example: Green Climate Fund  
+Criteria  Score (/2)  
+Nexus Integration  2 
+Expected Outcomes  2 
+Eligibility  2 
+Partnership Feasibility  2 
+Budget Alignment  2 
+MRV  2 
+Readiness  2 
+Total:  14/14  
+Decision:  GO 
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 16 of 21 19. Monitoring, Reporting and Verification (MRV)  
+Water  
+• m³ treated  
+• Water quality  
+Energy  
+• MWh produced  
+• Energy savings  
+Food  
+• Crop yield  
+• Farmer income  
+Ecosystem  
+• Biodiversity index  
+• Restored area  
+20. Environmental and Social Safeguards  
+Environmental  
+• Brine and residual -salt management  
+• Biodiversity protection in receiving wetlands  
+• Water quality monitoring  
+Social  
+• Community engagement, including with 'old lands' smallholders affected by drainage reallocation  
+• Gender inclusion  
+• Livelihood protection  
+Independent research on Al -Mahsama has documented that reallocating drainage water to new -land reclamation can reduce 
+informal downstream access for old -land smallholders who rely on drain water for supplementary irrigation; any new site under 
+this project  should include a dedicated smallholder consultation and compensation/access framework from the outset.  
+21. Expected Impacts  
+Indicator  Expected Impact  
+Water Recovered  200 million m³/year  
+Agricultural Area  50,000 ha  
+Renewable Energy  150 MW  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 17 of 21 Indicator  Expected Impact  
+CO₂ Reduction  250,000 t/year  
+Jobs Created  3,000  
+Beneficiaries  500,000 people  
+22. Investment Readiness Assessment  
+Criterion  Rating  
+Technical Feasibility  High 
+Economic Viability  High 
+Climate Benefits  High 
+Institutional Readiness  Medium  
+Financial Attractiveness  High 
+Overall Rating  
+Investment Ready, with a Further Feasibility Study Recommended  
+23. Investor Pitch Summary  
+Investment Ask:  USD 670 million  
+Why Invest?  
+• Addresses Egypt's strategic water security challenge under a fixed Nile allocation  
+• Fully integrated WEFE Nexus project, built on a proven national delivery model (Bahr El -Baqar, Al -
+Mahsama, New Delta)  
+• Climate adaptation and mitigation benefits  
+• Strong revenue generation potential  
+• Eligible for climate and blended finance  
+• Replicable across Egypt's Delta drainage network and the wider MENA region  
+24. Conclusions and Recommendations  
+Egypt is already investing at a scale few countries have attempted in agricultural drainage water reuse: Bahr El -
+Baqar, Al -Mahsama and New Delta / El -Hammam together represent one of the largest coordinated water -
+reuse investment programmes in the world, w ith a combined target contribution on the order of 5 BCM/year 
+by 2026. This project translates that proven national model into a decentralised, solar -integrated, WEFE -Nexus -
+scored investment opportunity suitable for blended and climate finance, extending t he same logic to medium -
+scale sites across the Delta's secondary drainage network.  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 18 of 21 Recommended Next Steps  
+20. Conduct a full feasibility study for candidate decentralised sites.  
+21. Develop a PPP structure, informed by the delivery model used for the national mega -plants.  
+22. Prepare a climate finance concept note.  
+23. Undertake an Environmental and Social Impact Assessment (ESIA), with explicit attention to old -land 
+smallholder access.  
+24. Establish an MRV framework aligned with MWRI's Irrigation System 2.0 digital monitoring architecture.  
+25. Launch an investor engagement process.  
+26. Submit funding applications to GCF, EIB, EBRD, IsDB and the World Bank.  
+Overall WEFE Nexus Score: 95/100 — Excellent Candidate for Climate and Resilience Finance.  
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 19 of 21 25. Using This Template for Other Projects  
+This closing section is addressed directly to trainees and project teams in the Financing Resilience and WEFE 
+Nexus Professional Series who will use this Egypt report as the model for a new country or site report. The 24 
+preceding sections form a fixed arc hitecture; what changes from project to project is the evidence populating 
+each section, not the structure itself. The checklist below maps each section to the type of evidence that 
+should replace the Egyptian data.  
+25.1 Section -by-Section Drafting Checklist  
+Report Section  What to Replace It With  
+1–2. Executive Summary & AI 
+Overview  Restate the country's core water -scarcity driver (fixed allocation, 
+transboundary dependency, aquifer depletion) and score the new 
+project against the same eight criteria (water, energy, food, ecosystem, 
+climate, financial, innovation, replicability).  
+3–4. Background & Problem 
+Statement  Identify at least one operating reference project in -country or in a 
+comparable basin, exactly as this report anchors on Bahr El -Baqar, Al -
+Mahsama and New Delta — never leave this section purely 
+hypothetical.  
+5–6. Objectives & National Alignment  Map objectives to the host country's own national strategy documents 
+(its equivalent of Egypt Vision 2030) so the project reads as policy -
+aligned, not externally imposed.  
+7–9. WEFE Analysis, Description, 
+Stakeholders  Keep the four -sector nexus table format; list real institutional 
+stakeholders by name and mandate, not generic categories.  
+10–11. Climate Resilience & 
+Logframe  Retain the 4x4 logframe matrix structure; source climate risk 
+statements from the national climate strategy or NDC.  
+12–14. Screening, Classification, 
+Retrofitting  Reuse the scoring matrices unchanged; only the project list and scores 
+should change.  
+15–18. Financials, Capital Stack, Risk, 
+Funding Fit  Build CAPEX bottom -up from a benchmarked reference project; keep 
+the same funding -call scoring rubric (0 –2 per criterion, 14 max) for 
+comparability across the training series.  
+19–21. MRV, Safeguards, Impacts  Keep indicator categories identical (water, energy, food, ecosystem) so 
+results are comparable across country reports in the series; safeguards 
+must name a real, documented social or environmental risk, not a 
+placeholder.  
+22–24. Readiness, Pitch, Conclusions  Close with an explicit investment ask and a single composite WEFE 
+Nexus score out of 100, as used throughout this series.  
+25.2 Standards to Maintain Across the Series  
+• Every quantitative claim should be traceable to a named, dated source — government statement, 
+multilateral report, or peer -reviewed literature — as in the Sources and References section below.  
+• Where source figures conflict (as they do for reclamation -area targets across Egyptian sources), state the 
+range and flag it for verification rather than silently picking one number.  
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 20 of 21 • Keep the same visual identity (navy/teal palette, consistent table styling, consistent heading hierarchy) so 
+that all reports in the Financing Resilience and WEFE Nexus Professional Series are immediately 
+recognisable as a single body of work.  
+• Always close with a Section 25 -equivalent note on data provenance and any assumptions a reader should 
+independently verify before using the report for a binding financing decision.  
+Prepared by Dr. Hassan Aboelnga as the reference document for the Financing Resilience and WEFE Nexus Professional Series. Th is 
+structure may be reused for subsequent country and sector reports in the series, subject to the drafting standards set out ab ove. 
+ 
+---PAGE BREAK---
+Financing Resilience and WEFE Nexus Professional Series — Egypt 
+Page 21 of 21 Sources and References  
+This report draws on Egyptian government statements and the following categories of open sources, current as of July 2026: 
+Egyptian Presidency and Cabinet communications on the 8th Cairo Water Week (October 2025) and the Irrigation System 2.0 
+briefing (Aug ust 2025); Ministry of Water Resources and Irrigation materials; CEDARE's Egypt 2030 Shared Water Reuse Strategy; 
+academic literature on the Al -Mahsama drainage reallocation (MDPI, 2023 –2024); and engineering -sector reporting on the Bahr 
+El-Baqar and New D elta plants (Arab Contractors, Khatib & Alami, Arab Urban Development Institute). Figures for capacity and 
+reclamation area vary somewhat across sources and should be verified against MWRI's current published data before use in a 
+binding investment documen t. 
+---PAGE BREAK---

@@ -1,0 +1,6 @@
+Logical framework and Activity matrix 
+The Logical framework (logframe) matrix is a table that captures in a structured way the hierarchy of results of the action at impact, outcome and output levels. The impact is the long-term expected effect of the action fulfilling the overall objective. The outcomes are the mid-term expected effects of the action fulfilling the specific objective(s). The links between each levels are as important as the results themselves, reflecting the intervention logic (theory of change) and the roles of providers and other stakeholders.
+The Logical framework (logframe) matrix should be used as a reporting tool on the achievement of the results during implementation. Values on indicators aimed at measuring the results will be regularly updated in the column foreseen for monitoring and reporting purposes (see “Current value”). Columns for intermediary targets could be added, if needed.
+
+
+Activity Matrix
