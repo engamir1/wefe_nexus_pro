@@ -554,13 +554,19 @@ Approximately **USD 18 million per year**, comprising:
 
 The USD 420 million envelope is deliberately positioned as a **mid-scale, modular intervention** that can be replicated across the Delta's 4.3 million feddans. The per-feddan cost of approximately **USD 4,200** (all-in, including all WEFE components) is comparable to the historical cost of the original NDP installations (USD 1,500–2,500/feddan in 1990s dollars, equivalent to approximately USD 3,000–5,000 in current terms) but delivers substantially more value through the IoT, solar, and ecosystem components.
 
-### 16.2 Economic Value Drivers
+### 16.2 Economic Value Drivers and Unit Cost Justification
 
-Beyond direct revenue, the economic case rests on **avoided cost:**
-- Every feddan of restored drainage avoids USD 200–500/year in yield losses from waterlogging and salinity
-- Every hour of early tamper detection avoids potential drainage system failure costing USD 5,000–15,000 to repair
-- Every m³ of water saved through smart irrigation is a m³ not drawn from the fixed Nile allocation
-- Every tonne of CO₂ sequestered in wetlands has a social cost of carbon value of approximately USD 50–200/tCO₂ (US EPA estimates)
+The total investment of USD 420 million translates to an all-in cost of **USD 4,200 per feddan** across all six WEFE components. Specifically, Component 1 (Subsurface Retrofitting) costs USD 180 million, representing **USD 1,800 per feddan (approximately EGP 86,400 per feddan)**.
+
+**Comparison with Traditional Subsurface Drainage Cost:**
+- **Traditional Cost:** Standard traditional subsurface drainage in Egypt is currently estimated at approximately **EGP 18,000 per feddan**.
+- **Justification of Eco-Drain Premium:** Traditional systems (EGP 18k) use low-spec pipes without protective filters and have open concrete manholes, failing in 5-10 years due to clogging (siltation) and unauthorized agricultural modifications (tampering). Eco-Drain uses corrugated HDPE with non-woven geotextile filter envelopes and buried invisible manholes (30–50 cm deep), extending design life to **40+ years** (double the lifespan) and minimizing O&M.
+- **Socio-Economic Feasibility:** The resulting 15-25% crop yield increase directly enhances national food security, **reducing Egypt's agricultural import dependency** (e.g., wheat, oilseeds) and **raising the standard of living and household income of smallholder beneficiaries** across the 200,000+ direct beneficiary pool.
+- **Direct Economic Value Drivers (Avoided Costs):**
+  - Every feddan of restored drainage avoids USD 200–500/year in yield losses from waterlogging and salinity
+  - Every hour of early tamper detection avoids potential drainage system failure costing USD 5,000–15,000 to repair
+  - Every m³ of water saved through smart irrigation is a m³ not drawn from the fixed Nile allocation
+  - Every tonne of CO₂ sequestered in wetlands has a social cost of carbon value of approximately USD 50–200/tCO₂ (US EPA estimates)
 
 A full feasibility study should quantify these avoided-cost values explicitly for the selected pilot sites.
 
