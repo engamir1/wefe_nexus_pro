@@ -18,7 +18,7 @@ WEFE Nexus Professional Series
 
 **Simulated Training Exercise Document (Not an Official Project Proposal)**
 
-**Sector:** Water–Energy–Food–Ecosystems (WEFE) Nexus | **Geography:** Arab Republic of Egypt — Nile Delta
+**Sector:** Water–Energy–Food–Ecosystems (WEFE) Nexus | **Geography:** Arab Republic of Egypt — Nile Delta | **Strategic Alignment:** MWRI Water & Irrigation System 2.0 Initiative
 
 **Training Series Reference Document | July 2026**
 
@@ -30,12 +30,13 @@ This report is issued as the Group 10 case study of the Financing Resilience and
 
 ### Key Features and Content of the Report
 
-1. **WEFE Nexus Integration:** Explores the physical and economic feedback loops between water table management, solar-powered field pumping, food security, and wetland biological treatment.
-2. **Theory of Change (ToC):** Outlines a structured pathway from project inputs and IoT activities to long-term climate adaptation impacts in the Nile Delta.
-3. **IoT Tamper-Proof Architecture:** Introduces a digital twin framework combining soil telemetry and accelerometer-based alerts to prevent unauthorized system modifications.
-4. **Blended Capital Stack & Financial Analysis:** Proposes a structured capital stack combining grant, equity, concessional debt, and commercial debt, evaluated under DSCR stress-test scenarios.
-5. **Automated MRV Framework:** Integrates continuous water-balance telemetry and satellite-derived NDVI/NDWI verification for automated results reporting.
-6. **Social & Environmental Safeguards:** Assesses in-situ retrofitting benefits to prevent downstream water reallocation conflicts and ensure community-led land management.
+1. **Water & Irrigation System 2.0 Integration:** Integrates directly with MWRI's System 2.0 digital framework, using IoT telemetry, smart valves, and AI digital water twins for precision water conservation.
+2. **WEFE Nexus Integration:** Explores the physical and economic feedback loops between water table management, solar-powered field pumping, food security, and wetland biological treatment.
+3. **Theory of Change (ToC):** Outlines a structured pathway from project inputs and IoT activities to long-term climate adaptation impacts in the Nile Delta.
+4. **IoT Tamper-Proof Architecture:** Introduces a digital twin framework combining soil telemetry and accelerometer-based alerts to prevent unauthorized system modifications.
+5. **Blended Capital Stack & Financial Analysis:** Proposes a structured capital stack combining grant, equity, concessional debt, and commercial debt, evaluated under DSCR stress-test scenarios.
+6. **Automated MRV Framework:** Integrates continuous water-balance telemetry and satellite-derived NDVI/NDWI verification for automated results reporting.
+7. **Social & Environmental Safeguards:** Assesses in-situ retrofitting benefits to prevent downstream water reallocation conflicts and ensure community-led land management.
 
 Every section follows a fixed structure — **narrative framing, quantified evidence, a standard table or matrix, a visual illustration, and a scored conclusion** — so that the same architecture can be reused for a different project simply by replacing the underlying data.
 
