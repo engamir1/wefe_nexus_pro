@@ -177,7 +177,7 @@ This infrastructure was largely installed between the 1970s and 2000s under succ
 
 ![Figure 2: Cross-Section of Subsurface Drainage System — Eco-Drain Retrofitting Concept](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\subsurface_drainage_cross_section_1784605424164.png)
 
-### 3.2 The Invisible Infrastructure Challenge
+### 3.2 The Invisible Infrastructure Challenge and Anti-Tampering Solution
 
 The term **"invisible infrastructure"** captures a structural problem that distinguishes subsurface drainage from all other agricultural infrastructure: once installed, it is buried beneath the soil surface and cannot be inspected visually. This creates three compounding challenges:
 
@@ -192,6 +192,12 @@ The term **"invisible infrastructure"** captures a structural problem that disti
 - Theft of manhole covers and pump components
 
 These are not marginal problems — they represent a significant fraction of all drainage system failures in the Delta and are currently impossible to detect without physical site visits, which EPADP cannot conduct at the scale of 4.3 million feddans.
+
+**The Eco-Drain Core Solution (Invisible Anti-Tampering & Precision Water Control):**
+To resolve these vulnerabilities, the project implements a physical anti-tampering design and links drainage control directly with agricultural water needs as shown in **Figure 2**:
+- **Buried Invisible Inspection Chambers:** Traditional open surface manholes are replaced with hermetically-sealed chambers buried 30–50 cm below the agricultural soil layer. This physically conceals the infrastructure from sight and prevents illegal physical access or blockage. Maintenance teams locate these chambers using passive RFID markers and mobile GPS coordinates.
+- **Dynamic Capillary-Rise Control per Basin:** Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system dynamically closes the drainage gates when crops require moisture. This raises the water table into the root zone, allowing plants to absorb water via capillary rise, reducing external irrigation needs by 25–30% and eliminating the incentive for illegal water blockage.
+- **IoT Anomalous Detection:** Accelerometers on the buried valves and pressure sensors in the pipe detect physical vibrations (digging) or pressure drops, alerting the control center immediately.
 
 ### 3.3 Reference Programme: EPADP National Drainage Network
 
