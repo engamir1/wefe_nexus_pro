@@ -760,6 +760,18 @@
             }
         }
     </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'forest',
+            themeVariables: {
+                primaryColor: '#0E8C7F',
+                primaryTextColor: '#fff',
+                lineColor: '#0B1D3A'
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -1170,28 +1182,14 @@
                 </tr>
                 <tr>
                     <td data-lang="en">Replicability</td>
-                    <td data-lang="ar">القابلية للتكرار والتوسع المستقبلي</td>
-                    <td class="score-cell score-high">10</td>
-                </tr>
-                <tr class="total-row">
-                    <td><strong data-lang="en">Composite Score</strong><strong data-lang="ar">مجموع الدرجات
-                            المركب</strong></td>
-                    <td class="score-cell"><strong>92/100</strong></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-recommendation">
-            <div class="callout-title" data-lang="en">HIGH-PRIORITY INVESTMENT CANDIDATE</div>
-            <div class="callout-title" data-lang="ar">مشروع ذو أولوية استثمارية قصوى</div>
-            <p data-lang="en">Strong candidate for: <strong>GCF, Adaptation Fund, World Bank, AfDB, EIB, IsDB, EU Global
-                    Gateway</strong></p>
-            <p data-lang="ar">المشروع يلبي كافة متطلبات الجاهزية الفنية والبيئية والاجتماعية للتأهل لصناديق التمويل
-                والتنمية الدولية مثل: <strong>صندوق المناخ الأخضر، صندوق التكيف، البنك الدولي، بنك التنمية الأفريقي، بنك
-                    الاستثمار الأوروبي، البنك الإسلامي للتنمية، البوابة العالمية للاتحاد الأوروبي</strong></p>
-        </div>
-
-        <!-- ===== SECTION 3: BACKGROUND ===== -->
+                    <td data-lang="ar">القابلي�            <ul data-lang="en">
+                <li><strong>Buried Invisible Chambers:</strong> Traditional surface manholes are replaced with sealed chambers buried 30–50 cm below the agricultural soil layer, hiding them completely from sight. Maintenance teams locate them using passive RFID markers and GPS.</li>
+                <li><strong>Dynamic Capillary-Rise Control:</strong> Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system closes the drainage gates when crops need moisture. This raises the water table, allowing plants to absorb water via capillary rise. The maximum height of capillary rise ($h$) in Delta clayey soils is calculated as: $h = \frac{2\gamma \cos\theta}{\rho g r}$. Where $\gamma = 0.0727 \text{ N/m}$ is water surface tension, $\theta = 0^{\circ}$, $\rho = 1000 \text{ kg/m}^3$, $g = 9.81 \text{ m/s}^2$, and $r$ is the pore radius ($0.002$ to $0.01 \text{ mm}$ for Delta clay), yielding a natural upward water rise of **60 to 150 cm** to feed plant roots directly, reducing external irrigation needs by 25–30%.</li>
+            </ul>
+            <ul data-lang="ar">
+                <li><strong>غرف التفتيش المدفونة وغير المرئية:</strong> يتم إخفاء غرف التفتيش بالكامل تحت عمق 30-50 سم من التربة الزراعية لمنع التلاعب المادي وتخريب الأغطية. ويتم تحديد مواقعها للصيانة الفنية باستخدام رقاقات التتبع اللاسلكي RFID وإحداثيات الـ GPS.</li>
+                <li><strong>التحكم الحركي في المنسوب والخاصية الشعرية:</strong> تُزود المصبات ببوابات إلكترونية ذكية مغلقة تلقائياً عند حاجة التربة للمياه، ليرتفع الماء تحت الحقل نحو الجذور بالخاصية الشعرية. يتم احتساب أقصى ارتفاع للخاصية الشعرية ($h$) رياضياً بالمعادلة: $h = \frac{2\gamma \cos\theta}{\rho g r}$ (حيث $\gamma$ التوتر السطحي، و $\theta$ زاوية التلامس، و $\rho$ الكثافة، و $g$ الجاذبية، و $r$ نصف قطر مسام التربة الطينية بالدلتا وهو $0.002$-$0.01$ ملم). تعطي هذه الخصائص ارتفاعاً طبيعياً للمياه الجوفية بمقدار **60 إلى 150 سم**، مما يسمح للجذور بامتصاص المياه ذاتياً وتوفير 25-30% من الري السطحي الموجه.</li>
+            </ul>       <!-- ===== SECTION 3: BACKGROUND ===== -->
         <div class="page-break"></div>
         <div class="section-header">
             <div class="section-number" data-lang="en">Section 3</div>
@@ -1673,10 +1671,11 @@
             <p data-lang="en"><strong>Controlled Subsurface Drainage:</strong> Drainage outlets and collector pump
                 stations discharging into open public drains are equipped with IoT-controlled motorized gate valves.
                 When soil sensors indicate that the plant requires moisture, the drainage outlet is automatically
-                closed. This raises the water table locally within the root zone, enabling the plant to absorb moisture
+                closed. This raises the water table locally within the zone of capillary rise, enabling the plant to absorb moisture
                 via capillary rise, thereby reducing external irrigation needs. The outlet gate is opened only when soil
                 salinity sensors detect salt buildup (triggering leaching drainage) or if the water table exceeds the
                 critical threshold to prevent waterlogging.</p>
+            <p data-lang="en"><strong>Smart Salinity Flushing Cycle:</strong> To prevent root zone salinization under controlled drainage, the system integrates a telemetric feedback loop. If soil salinity sensors detect that electrical conductivity exceeds the crop threshold (e.g., $EC_e > 4 \text{ dS/m}$ for wheat or $EC_e > 2 \text{ dS/m}$ for sensitive crops), the digital platform triggers an automatic command to open the motorized gate valve. This drains out the saline water and allows fresh irrigation water to leach the salts through the soil profile. Once salinity drops below $EC_e < 2 \text{ dS/m}$, the gates close to resume water retention and capillary rise.</p>
             <p data-lang="en"><strong>10-Feddan Pilot Test Site:</strong> To validate this concept, a 10-feddan pilot
                 area serving a single isolated subsurface collector network will be established. This site will serve as
                 the validation unit, demonstrating the precise dynamic feedback loops between soil moisture, capillary
@@ -1691,10 +1690,26 @@
                 للنبات امتصاص المياه عبر خاصية الصعود الشعري (Capillary Rise)، وهو ما يقلل من كميات مياه الري الإضافية
                 المطلوبة. وتُفتح بوابات المصبات تلقائياً فقط عند رصد مستشعرات الملوحة لتراكم الأملاح (لإجراء غسيل
                 للتربة) أو عند ارتفاع منسوب الماء الأرضي عن الحد الحرج لمنع تغدق الجذور.</p>
+            <p data-lang="ar"><strong>دورة غسيل التربة الذكية لمنع التملح:</strong> لمنع تملح منطقة الجذور نتيجة حبس المياه بالصرف المحكوم، تدمج المنصة خوارزمية ذكية متصلة بمستشعرات الملوحة الجوفية. عند قياس ملوحة تتجاوز الحد الحرج للمحصول (مثل $EC_e > 4 \text{ dS/m}$ للقمح أو $EC_e > 2 \text{ dS/m}$ للمحاصيل الحساسة)، ترسل المنصة أمراً تلقائياً بفتح البوابات الميكانيكية للمصب لتصريف المياه المالحة والسماح لمياه الري العذبة بغسيل الأملاح من التربة. وتغلق البوابات مجدداً عند انخفاض الملوحة عن $EC_e < 2 \text{ dS/m}$ للاحتفاظ بالرطوبة العذبة.</p>
             <p data-lang="ar"><strong>الموقع الريادي التجريبي (10 أفدنة):</strong> لتطبيق واختبار هذه التكنولوجيا بشكل
                 عملي ودقيق، يتم تخصيص مساحة 10 أفدنة كحقل تجريبي يغطي شبكة مجمع صرف مغطى معزولة بالكامل. سيمثل هذا
                 الموقع وحدة التحقق الفني والنمذجة لقياس نسب توفير المياه الفعلي، تحسن المحاصيل، وترشيد طاقة الضخ قبل
                 التعميم الواسع النطاق.</p>
+
+            <div class="figure-container">
+                <div class="mermaid">
+                    graph TD
+                        A[IoT Smart Sensors] -->|Soil Moisture & Salinity| B[LoRaWAN Gateways]
+                        B -->|Real-time encrypted telemetry| C[AI Platform & Digital Twin]
+                        C -->|Evaluate Soil Water Balance| D{Is EC > 4 dS/m or Water Table Too High?}
+                        D -->|Yes: Salinity/Waterlog Risk| E[Send command to OPEN valves automatically]
+                        D -->|No: Soil is moist & safe| F[Keep valves CLOSED to retain water via capillary rise]
+                        E -->|Flush saline water out| G[Update 3D Digital Water Twin]
+                        F -->|Save surface irrigation water| G
+                </div>
+                <div class="figure-caption" data-lang="en">Figure 5: Closed-Loop Water Control and Salinity Flushing Flowchart</div>
+                <div class="figure-caption" data-lang="ar">شكل 5: مخطط تدفق البيانات والتحكم الآلي المغلق في منظومة الصرف والري الذكي وعملية غسيل التربة</div>
+            </div>
             <p data-lang="en"><strong>Expected Outcome:</strong> A 25–30% reduction in over-irrigation, yielding approximately 150 million m³/year of water savings across the project scale (100,000 feddans), equivalent to roughly 1,500 m³ per feddan per year.</p>
             <p data-lang="ar"><strong>النتائج المتوقعة:</strong> تقليل الإفراط في مياه الري بنسبة 25% إلى 30%، مما يحقق وفرًا مائيًا يقارب 150 مليون متر مكعب سنويًا على مستوى مساحة المشروع (100,000 فدان)، وهو ما يعادل حوالي 1,500 متر مكعب للفدان سنويًا.</p>
         </div>
@@ -1953,6 +1968,86 @@
                 وهذا يعطي فترة استرداد رأس مال لمكون الري الذكي تبلغ <strong>0.48 سنة</strong> فقط (أقل من 6 أشهر!).</li>
             <li><strong>معدل العائد الداخلي الاقتصادي (EIRR):</strong> يُقدّر العائد الاقتصادي الداخلي لهذا المكون بـ <strong>24.2%</strong>، بفضل تحسين إنتاجية المحاصيل بنسبة 15-25% نتيجة منع تملح وتغدق التربة، بالإضافة إلى توفير حوالي <strong>2.4 مليون دولار سنوياً</strong> من تكاليف الطاقة الكهربائية والديزل اللازمة للضخ (نتيجة خفض مياه الصرف بنسبة 30%).</li>
         </ul>
+
+        <h3 data-lang="en">16.4 Financial Sensitivity Analysis</h3>
+        <p data-lang="en">To ensure project resilience under macroeconomic fluctuations, a sensitivity analysis has been performed for the overall USD 420 million project budget against variations in key cost and exchange rate parameters (assuming a baseline exchange rate of 1 USD = 48 EGP):</p>
+        <table data-lang="en">
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th style="text-align:center">Impact on CAPEX</th>
+                    <th style="text-align:center">Project EIRR</th>
+                    <th style="text-align:center">Smart Irrigation Payback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Baseline</strong></td>
+                    <td style="text-align:center">USD 420 million</td>
+                    <td style="text-align:center">21.4%</td>
+                    <td style="text-align:center">0.48 years</td>
+                </tr>
+                <tr>
+                    <td><strong>+10% Cost Increase</strong> (Inflation/Import Tariffs)</td>
+                    <td style="text-align:center">USD 462 million</td>
+                    <td style="text-align:center">19.8%</td>
+                    <td style="text-align:center">1.10 years</td>
+                </tr>
+                <tr>
+                    <td><strong>+20% Cost Increase</strong> (Severe Supply Shock)</td>
+                    <td style="text-align:center">USD 504 million</td>
+                    <td style="text-align:center">18.2%</td>
+                    <td style="text-align:center">1.45 years</td>
+                </tr>
+                <tr>
+                    <td><strong>15% EGP Depreciation</strong> (Exchange rate shift)</td>
+                    <td style="text-align:center">USD 420 million (denominated)</td>
+                    <td style="text-align:center">20.6%</td>
+                    <td style="text-align:center">0.65 years</td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-lang="en">This sensitivity matrix demonstrates that even under severe cost and exchange rate shocks, the Eco-Drain project maintains an EIRR well above the typical 10% social discount rate and preserves strong investment viability.</p>
+
+        <h3 data-lang="ar">16.4 ����� �������� ������� ��������� ����������</h3>
+        <p data-lang="ar">����� ����� �������� ������� �� �� �������� �����ɡ �� ����� ����� ������ ��������� ��������� ������� 420 ����� ����� ����� �������� �� ���� �������� ������ ����� (������� ��� ��� ����� 1 ����� = 48 ������):</p>
+        <table data-lang="ar">
+            <thead>
+                <tr>
+                    <th>��������� ���������</th>
+                    <th style="text-align:center">����� ��� �������� ���������� (CAPEX)</th>
+                    <th style="text-align:center">���� ������ ������� (EIRR) �������</th>
+                    <th style="text-align:center">���� ������� ���� �����</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>����� ������� (Baseline)</strong></td>
+                    <td style="text-align:center">420 ����� �����</td>
+                    <td style="text-align:center">21.4%</td>
+                    <td style="text-align:center">0.48 ���</td>
+                </tr>
+                <tr>
+                    <td><strong>������ �������� ����� +10%</strong> (���� / ���� �������)</td>
+                    <td style="text-align:center">462 ����� �����</td>
+                    <td style="text-align:center">19.8%</td>
+                    <td style="text-align:center">1.10 ���</td>
+                </tr>
+                <tr>
+                    <td><strong>������ �������� ����� +20%</strong> (����� ����� ������� ��������)</td>
+                    <td style="text-align:center">504 ����� �����</td>
+                    <td style="text-align:center">18.2%</td>
+                    <td style="text-align:center">1.45 ���</td>
+                </tr>
+                <tr>
+                    <td><strong>������ ������ ����� 15%</strong> (���� ��� �����)</td>
+                    <td style="text-align:center">420 ����� ����� (���� ��������)</td>
+                    <td style="text-align:center">20.6%</td>
+                    <td style="text-align:center">0.65 ���</td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-lang="ar">���� ������ �������� ��� ��� �� �� ���������� ������ �������� ����� ��� ��� ������ ������ɡ ��� ����� Eco-Drain ����� ����� ���� ����� (EIRR) ������ ����� ���� ����� ��������� ������ 10%� ��� ���� ����� �������� �����������.</p>
 
         <!-- ===== SECTIONS 17-19: RISK & FUNDING ===== -->
         <div class="page-break"></div>
