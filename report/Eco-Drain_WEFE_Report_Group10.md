@@ -890,6 +890,22 @@ This report draws on the following categories of sources, current as of July 202
 
 ---
 
+## 28. Glossary of Simplified Technical Terms
+
+This section provides a simplified explanation of the key technical and scientific terms used in the report:
+
+- **WEFE Nexus Integration:** Managing Water, Energy, Food, and Ecosystems together as a single connected loop to prevent waste (e.g., using solar energy to pump water for crops, then treating drainage via wetlands).
+- **Subsurface Drainage:** A network of perforated pipes buried 1.2 to 1.5 meters underground to pull excess water and salts away from plant roots, preventing soil waterlogging.
+- **Controlled Subsurface Drainage:** Placing remote-controlled valves at drainage outlets to block flow and store water when crops need moisture, opening them only to flush salts or drain excess floods.
+- **Capillary Rise:** The natural physical phenomenon where water travels upward against gravity through tiny soil pores. Raising the water table allows plant roots to drink from below naturally, saving irrigation water.
+- **Soil Water Balance:** A simple water budget calculating that irrigation inputs must exactly equal crop consumption, evaporation, and drainage outputs to avoid water logging.
+- **Digital Twin & IoT:** Buried smart sensors (IoT) measuring soil stats combined with a 3D virtual copy (Digital Twin) on computer screens to show exact flow and blockages without digging.
+- **Constructed Wetlands:** Shallow gravel-lined ponds planted with native reeds that act as natural filters, cleaning contaminants, nitrates, and salts from drainage water biologically.
+- **Blended Climate Finance:** Mixing international green grants, low-interest climate loans, and commercial investments to fund high-cost sustainability projects affordably.
+- **MRV Framework (Measure, Report, Verify):** A systematic way to prove to international donors that the project is actually saving water and reducing carbon emissions, using sensor data and satellite images (NDVI/NDWI) to verify green growth.
+
+---
+
 **Prepared by Group 10 as a case study for the Financing Resilience and WEFE Nexus Professional Series. This structure may be reused for subsequent country and sector reports in the series, subject to the drafting and quality standards set out above.**
 
 ---
