@@ -1,2559 +1,5323 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Eco-Drain — WEFE Nexus Report | Group 10</title>
+
     <meta name="description"
+
         content="Financing Resilience and WEFE Nexus Professional Series — Egypt Country Report.   Invisible Tamper-Proof Subsurface Drainage Retrofitting for Climate-Resilient Agriculture.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
+
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Noto+Serif+Arabic:wght@400;700&display=swap"
+
         rel="stylesheet">
+
     <style>
+
         :root {
+
             --navy: #0B1D3A;
+
             --navy-light: #142B4F;
+
             --teal: #0E8C7F;
+
             --teal-light: #15B5A4;
+
             --gold: #D4A843;
+
             --gold-light: #F0C860;
+
             --bg: #FAFBFD;
+
             --text: #1A2332;
+
             --text-secondary: #4A5568;
+
             --border: #E2E8F0;
+
             --accent-green: #10B981;
+
             --accent-red: #EF4444;
+
             --accent-blue: #3B82F6;
+
         }
+
+
 
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
+
 
         body {
+
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
             color: var(--text);
+
             background: var(--bg);
+
             line-height: 1.7;
+
             font-size: 11pt;
+
         }
+
+
 
         /* === RTL SUPPORT === */
+
         html[dir="rtl"] body {
+
             font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+
         }
+
+
 
         html[dir="rtl"] .cover-main-title,
+
         html[dir="rtl"] .section-header h2,
+
         html[dir="rtl"] h2,
+
         html[dir="rtl"] h3 {
+
             font-family: 'Noto Serif Arabic', 'Merriweather', serif;
+
         }
+
+
 
         html[dir="rtl"] .callout {
+
             border-left: none;
+
             border-right: 5px solid;
+
         }
+
+
 
         html[dir="rtl"] .callout-integration {
+
             border-right-color: var(--teal);
+
         }
+
+
 
         html[dir="rtl"] .callout-recommendation {
+
             border-right-color: var(--gold);
+
         }
+
+
 
         html[dir="rtl"] .callout-important {
+
             border-right-color: var(--accent-red);
+
         }
+
+
 
         html[dir="rtl"] .callout-info {
+
             border-right-color: var(--accent-blue);
+
         }
+
+
 
         html[dir="rtl"] .finding-box {
+
             border-left: none;
+
         }
+
+
 
         html[dir="rtl"] .improvement-item {
+
             border-left: none;
+
             border-right: 4px solid var(--teal);
+
         }
+
+
 
         html[dir="rtl"] .component-header {
+
             text-align: right;
+
         }
+
+
 
         html[dir="rtl"] .next-steps li {
+
             padding: 12px 55px 12px 15px;
+
         }
+
+
 
         html[dir="rtl"] .next-steps li::before {
+
             left: auto;
+
             right: 15px;
+
         }
+
+
 
         html[dir="rtl"] thead th {
+
             text-align: right;
+
         }
+
+
 
         /* === LANGUAGE TOGGLE === */
+
         .lang-toggle {
+
             position: fixed;
+
             top: 20px;
+
             right: 20px;
+
             z-index: 9999;
+
             display: flex;
+
             background: rgba(11, 29, 58, 0.95);
+
             border-radius: 30px;
+
             padding: 4px;
+
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
             backdrop-filter: blur(10px);
+
         }
+
+
 
         html[dir="rtl"] .lang-toggle {
+
             right: auto;
+
             left: 20px;
+
         }
+
+
 
         .lang-btn {
+
             border: none;
+
             padding: 8px 20px;
+
             border-radius: 26px;
+
             font-size: 10pt;
+
             font-weight: 600;
+
             cursor: pointer;
+
             transition: all 0.3s ease;
+
             background: transparent;
+
             color: rgba(255, 255, 255, 0.5);
+
             letter-spacing: 1px;
+
         }
+
+
 
         .lang-btn.active {
+
             background: var(--teal);
+
             color: white;
+
             box-shadow: 0 2px 10px rgba(14, 140, 127, 0.4);
+
         }
+
+
 
         .lang-btn:hover:not(.active) {
+
             color: rgba(255, 255, 255, 0.8);
+
         }
+
+
 
         /* Language visibility */
+
         [data-lang="ar"] {
+
             display: none;
+
         }
+
+
 
         html[dir="rtl"] [data-lang="en"] {
+
             display: none;
+
         }
+
+
 
         html[dir="rtl"] [data-lang="ar"] {
+
             display: revert;
+
         }
+
+
 
         @media print {
+
             body {
+
                 font-size: 10pt;
+
                 background: white;
+
             }
+
+
 
             .page-break {
+
                 page-break-before: always;
+
             }
+
+
 
             .no-print,
+
             .lang-toggle {
+
                 display: none !important;
+
             }
+
+
 
             .cover-page {
+
                 page-break-after: always;
+
             }
+
+
 
             table {
+
                 page-break-inside: avoid;
+
             }
 
+
+
             .section-header {
+
                 page-break-before: always;
+
             }
+
+
 
             img {
+
                 max-width: 100% !important;
+
             }
+
         }
+
+
 
         /* === COVER PAGE === */
+
         .cover-page {
+
             min-height: 100vh;
+
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 40%, var(--teal) 100%);
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
             align-items: center;
+
             text-align: center;
+
             padding: 60px 40px;
+
             position: relative;
+
             overflow: hidden;
+
         }
+
+
 
         .cover-page::before {
+
             content: '';
+
             position: absolute;
+
             top: -50%;
+
             right: -50%;
+
             width: 100%;
+
             height: 100%;
+
             background: radial-gradient(circle, rgba(14, 140, 127, 0.15) 0%, transparent 70%);
+
             border-radius: 50%;
+
         }
+
+
 
         .cover-page::after {
+
             content: '';
+
             position: absolute;
+
             bottom: -30%;
+
             left: -30%;
+
             width: 80%;
+
             height: 80%;
+
             background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+
             border-radius: 50%;
+
         }
+
+
 
         .cover-series-title {
+
             font-size: 12pt;
+
             color: var(--gold-light);
+
             letter-spacing: 4px;
+
             text-transform: uppercase;
+
             font-weight: 500;
+
             margin-bottom: 40px;
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         .cover-main-title {
+
             font-family: 'Merriweather', serif;
+
             font-size: 30pt;
+
             color: white;
+
             font-weight: 700;
+
             line-height: 1.25;
+
             margin-bottom: 20px;
+
             max-width: 850px;
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         html[dir="rtl"] .cover-main-title {
+
             font-family: 'Noto Serif Arabic', serif;
+
             font-size: 26pt;
+
         }
+
+
 
         .cover-subtitle {
+
             font-size: 13pt;
+
             color: rgba(255, 255, 255, 0.85);
+
             font-weight: 300;
+
             max-width: 750px;
+
             margin-bottom: 50px;
+
             line-height: 1.7;
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         .cover-divider {
+
             width: 80px;
+
             height: 3px;
+
             background: var(--gold);
+
             margin: 0 auto 40px;
+
             z-index: 1;
+
             position: relative;
+
         }
+
+
 
         .cover-meta {
+
             color: rgba(255, 255, 255, 0.7);
+
             font-size: 10pt;
+
             line-height: 2;
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         .cover-meta strong {
+
             color: rgba(255, 255, 255, 0.9);
+
         }
+
+
 
         .cover-badge {
+
             display: inline-block;
+
             background: var(--gold);
+
             color: var(--navy);
+
             padding: 8px 24px;
+
             border-radius: 30px;
+
             font-weight: 700;
+
             font-size: 11pt;
+
             margin-top: 30px;
+
             position: relative;
+
             z-index: 1;
+
         }
+
+
 
         /* === LAYOUT === */
+
         .content-wrapper {
+
             max-width: 900px;
+
             margin: 0 auto;
+
             padding: 40px 50px;
+
         }
+
+
 
         /* === HEADER STYLES === */
+
         .section-header {
+
             background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+
             color: white;
+
             padding: 30px 40px;
+
             margin: 50px -50px 30px;
+
             position: relative;
+
         }
+
+
 
         .section-header h2 {
+
             font-family: 'Merriweather', serif;
+
             font-size: 20pt;
+
             font-weight: 700;
+
             margin: 0;
+
             color: white;
+
             border: none;
+
             padding: 0;
+
         }
+
+
 
         .section-number {
+
             font-size: 11pt;
+
             color: var(--gold-light);
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
+
             font-weight: 500;
+
             margin-bottom: 8px;
+
         }
+
+
 
         h2 {
+
             font-family: 'Merriweather', serif;
+
             font-size: 18pt;
+
             color: var(--navy);
+
             margin: 40px 0 20px;
+
             padding-bottom: 10px;
+
             border-bottom: 3px solid var(--teal);
+
         }
+
+
 
         h3 {
+
             font-size: 13pt;
+
             color: var(--navy);
+
             margin: 30px 0 15px;
+
             font-weight: 600;
+
         }
+
+
 
         h4 {
+
             font-size: 11pt;
+
             color: var(--teal);
+
             margin: 20px 0 10px;
+
             font-weight: 600;
+
         }
+
+
 
         /* === TABLES === */
+
         table {
+
             width: 100%;
+
             border-collapse: collapse;
+
             margin: 20px 0;
+
             font-size: 10pt;
+
         }
+
+
 
         thead th {
+
             background: var(--navy);
+
             color: white;
+
             padding: 12px 15px;
+
             text-align: left;
+
             font-weight: 600;
+
             font-size: 9.5pt;
+
             letter-spacing: 0.5px;
+
         }
+
+
 
         tbody td {
+
             padding: 10px 15px;
+
             border-bottom: 1px solid var(--border);
+
             vertical-align: top;
+
         }
+
+
 
         tbody tr:nth-child(even) {
+
             background: #F7FAFC;
+
         }
+
+
 
         tbody tr:hover {
+
             background: #EDF2F7;
+
         }
+
+
 
         .score-cell {
+
             text-align: center;
+
             font-weight: 700;
+
         }
+
+
 
         .score-high {
+
             color: var(--accent-green);
+
         }
+
+
 
         .total-row {
+
             background: var(--navy) !important;
+
             color: white;
+
             font-weight: 700;
+
         }
+
+
 
         .total-row td {
+
             border: none;
+
             color: white;
+
         }
+
+
 
         .highlight-row {
+
             background: #E6FFFA !important;
+
             font-weight: 600;
+
         }
+
+
 
         /* === CALLOUTS === */
+
         .callout {
+
             padding: 20px 25px;
+
             border-radius: 8px;
+
             margin: 25px 0;
+
         }
+
+
 
         .callout-integration {
+
             background: linear-gradient(135deg, #E6FFFA, #F0FFF4);
+
             border-left: 5px solid var(--teal);
+
         }
+
+
 
         .callout-recommendation {
+
             background: linear-gradient(135deg, #FFFFF0, #FEFCBF);
+
             border-left: 5px solid var(--gold);
+
         }
+
+
 
         .callout-important {
+
             background: linear-gradient(135deg, #FFF5F5, #FED7D7);
+
             border-left: 5px solid var(--accent-red);
+
         }
+
+
 
         .callout-info {
+
             background: linear-gradient(135deg, #EBF8FF, #BEE3F8);
+
             border-left: 5px solid var(--accent-blue);
+
         }
+
+
 
         .callout-title {
+
             font-weight: 700;
+
             font-size: 11pt;
+
             margin-bottom: 8px;
+
         }
+
+
 
         /* === FIGURES (FIXED) === */
+
         .figure-container {
+
             margin: 30px auto;
+
             text-align: center;
+
             max-width: 750px;
+
             background: white;
+
             border-radius: 12px;
+
             padding: 15px;
+
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
             border: 1px solid var(--border);
+
         }
+
+
 
         .figure-container img {
+
             width: 100%;
+
             max-width: 700px;
+
             height: auto;
+
             max-height: 450px;
+
             object-fit: contain;
+
             border-radius: 8px;
+
             display: block;
+
             margin: 0 auto;
+
         }
+
+
 
         .figure-caption {
+
             font-size: 9.5pt;
+
             color: var(--text-secondary);
+
             font-style: italic;
+
             margin-top: 12px;
+
             text-align: center;
+
             padding: 0 10px;
+
         }
+
+
 
         /* === LISTS === */
+
         ul,
+
         ol {
+
             margin: 10px 0 10px 25px;
+
         }
+
+
 
         html[dir="rtl"] ul,
+
         html[dir="rtl"] ol {
+
             margin: 10px 25px 10px 0;
+
         }
+
+
 
         li {
+
             margin-bottom: 6px;
+
         }
+
+
 
         /* === BADGES === */
+
         .score-badge {
+
             display: inline-block;
+
             background: linear-gradient(135deg, var(--teal), var(--teal-light));
+
             color: white;
+
             padding: 6px 18px;
+
             border-radius: 20px;
+
             font-weight: 700;
+
             font-size: 10pt;
+
         }
+
+
 
         .rating-box {
+
             display: inline-block;
+
             padding: 15px 30px;
+
             border-radius: 10px;
+
             font-weight: 700;
+
             font-size: 14pt;
+
             text-align: center;
+
             margin: 20px 0;
+
         }
+
+
 
         .rating-high {
+
             background: linear-gradient(135deg, #E6FFFA, #C6F6D5);
+
             color: #047857;
+
             border: 2px solid #10B981;
+
         }
+
+
 
         /* === PREFACE === */
+
         .preface-box {
+
             background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+
             border: 1px solid var(--border);
+
             border-radius: 10px;
+
             padding: 30px 35px;
+
             margin: 30px 0;
+
         }
+
+
 
         .preface-box h3 {
+
             color: var(--navy);
+
             margin-top: 0;
+
         }
+
+
 
         .improvement-list {
+
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 12px;
+
             margin: 15px 0;
+
         }
+
+
 
         .improvement-item {
+
             background: white;
+
             border-radius: 8px;
+
             padding: 12px 16px;
+
             border-left: 4px solid var(--teal);
+
             font-size: 9.5pt;
+
         }
+
+
 
         .improvement-item strong {
+
             display: block;
+
             color: var(--navy);
+
             margin-bottom: 3px;
+
         }
+
+
 
         /* === FINDINGS === */
+
         .finding-box {
+
             background: white;
+
             border: 1px solid var(--border);
+
             border-radius: 10px;
+
             padding: 20px 25px;
+
             margin: 15px 0;
+
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
         }
+
+
 
         .finding-box strong {
+
             color: var(--teal);
+
         }
+
+
 
         /* === COMPONENTS === */
+
         .component-header {
+
             background: var(--navy-light);
+
             color: white;
+
             padding: 12px 20px;
+
             border-radius: 8px 8px 0 0;
+
             font-weight: 700;
+
             font-size: 11pt;
+
         }
+
+
 
         .component-body {
+
             background: #F7FAFC;
+
             border: 1px solid var(--border);
+
             border-top: none;
+
             border-radius: 0 0 8px 8px;
+
             padding: 20px;
+
             margin-bottom: 25px;
+
         }
+
+
 
         /* === PITCH === */
+
         .pitch-box {
+
             background: linear-gradient(135deg, var(--navy), var(--teal));
+
             color: white;
+
             padding: 40px;
+
             border-radius: 12px;
+
             margin: 30px 0;
+
             text-align: center;
+
         }
+
+
 
         .pitch-box h3 {
+
             color: var(--gold-light);
+
             font-size: 16pt;
+
             margin-top: 0;
+
         }
+
+
 
         .pitch-amount {
+
             font-size: 36pt;
+
             font-weight: 800;
+
             color: white;
+
             margin: 15px 0;
+
         }
+
+
 
         .pitch-box ul {
+
             text-align: left;
+
             max-width: 600px;
+
             margin: 20px auto;
+
             list-style: none;
+
             padding: 0;
+
         }
+
+
 
         html[dir="rtl"] .pitch-box ul {
+
             text-align: right;
+
         }
+
+
 
         .pitch-box li {
+
             padding: 8px 0;
+
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
         }
+
+
 
         .pitch-box li::before {
+
             content: '✓ ';
+
             color: var(--gold-light);
+
             font-weight: 700;
+
         }
+
+
 
         /* === NEXT STEPS === */
+
         .next-steps ol {
+
             counter-reset: step-counter;
+
             list-style: none;
+
             padding: 0;
+
             margin: 0;
+
         }
+
+
 
         .next-steps li {
+
             counter-increment: step-counter;
+
             padding: 12px 15px 12px 55px;
+
             margin-bottom: 10px;
+
             background: white;
+
             border-radius: 8px;
+
             border: 1px solid var(--border);
+
             position: relative;
+
         }
+
+
 
         .next-steps li::before {
+
             content: counter(step-counter);
+
             position: absolute;
+
             left: 15px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
             background: var(--teal);
+
             color: white;
+
             width: 28px;
+
             height: 28px;
+
             border-radius: 50%;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             font-weight: 700;
+
             font-size: 10pt;
+
         }
+
+
 
         /* === TOC === */
+
         .toc {
+
             column-count: 2;
+
             column-gap: 40px;
+
             font-size: 10pt;
+
         }
+
+
 
         html[dir="rtl"] .toc {
+
             column-count: 1;
+
         }
+
+
 
         .toc ol {
+
             margin: 0;
+
             padding: 0;
+
             list-style: none;
+
             counter-reset: toc-counter;
+
         }
+
+
 
         .toc>ol>li {
+
             counter-increment: toc-counter;
+
             margin-bottom: 8px;
+
             break-inside: avoid;
+
         }
+
+
 
         .toc>ol>li::before {
+
             content: counter(toc-counter) ". ";
+
             font-weight: 600;
+
             color: var(--teal);
+
         }
+
+
 
         .toc ol ol {
+
             margin-left: 20px;
+
             margin-top: 4px;
+
         }
+
+
 
         html[dir="rtl"] .toc ol ol {
+
             margin-left: 0;
+
             margin-right: 20px;
+
         }
+
+
 
         .toc ol ol li {
+
             margin-bottom: 4px;
+
             color: var(--text-secondary);
+
         }
+
+
 
         /* === FOOTER === */
+
         .page-footer {
+
             text-align: center;
+
             padding: 40px 0 20px;
+
             color: var(--text-secondary);
+
             font-size: 9pt;
+
             border-top: 2px solid var(--border);
+
             margin-top: 50px;
+
         }
+
+
 
         .page-footer .tagline {
+
             font-family: 'Merriweather', serif;
+
             font-style: italic;
+
             color: var(--teal);
+
             font-size: 11pt;
+
             margin-bottom: 15px;
+
         }
+
+
 
         @media (max-width: 768px) {
+
             .content-wrapper {
+
                 padding: 20px 15px;
+
             }
+
+
 
             .section-header {
+
                 margin: 30px -15px 20px;
+
                 padding: 20px;
+
             }
+
+
 
             .cover-main-title {
+
                 font-size: 20pt;
+
             }
+
+
 
             .improvement-list {
+
                 grid-template-columns: 1fr;
+
             }
+
+
 
             .toc {
+
                 column-count: 1;
+
             }
 
+
+
             .figure-container img {
+
                 max-height: 300px;
+
             }
+
         }
+
     </style>
+
     <script type="module">
+
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
         mermaid.initialize({
+
             startOnLoad: true,
+
             theme: 'forest',
+
             themeVariables: {
+
                 primaryColor: '#0E8C7F',
+
                 primaryTextColor: '#fff',
+
                 lineColor: '#0B1D3A'
+
             }
+
         });
+
     </script>
+
 </head>
+
+
 
 <body>
 
+
+
     <!-- LANGUAGE TOGGLE -->
+
     <div class="lang-toggle no-print" id="langToggle">
+
         <button class="lang-btn active" id="btnEn" onclick="setLang('en')">EN</button>
+
         <button class="lang-btn" id="btnAr" onclick="setLang('ar')">عربي</button>
+
     </div>
 
+
+
     <!-- ========== COVER PAGE ========== -->
+
     <div class="cover-page">
+
         <div class="cover-series-title" data-lang="en">Financing Resilience and WEFE Nexus Professional Series</div>
+
         <div class="cover-series-title" data-lang="ar">سلسلة تمويل المرونة ومحور المياه والطاقة والغذاء والنظم البيئية
+
             (WEFE) المهنية</div>
 
+
+
         <div class="cover-main-title" data-lang="en"> Invisible Tamper-Proof Subsurface Drainage Retrofitting
+
             for Climate-Resilient Agriculture</div>
+
         <div class="cover-main-title" data-lang="ar"> إحلال وتجديد شبكات الصرف المغطى غير المرئية والمقاومة للعبث لتعزيز
+
             المرونة المناخية للقطاع الزراعي</div>
+
+
 
         <div class="cover-divider"></div>
 
+
+
         <div class="cover-subtitle" data-lang="en">Integrated Subsurface Drainage Modernisation, IoT-Enabled Monitoring,
+
             and Solar-Powered Water Management for Food Security, Renewable Energy, and Ecosystem Resilience</div>
+
         <div class="cover-subtitle" data-lang="ar">منظومة متكاملة لتحديث الصرف المغطى، والمراقبة الذكية المعتمدة على
+
             إنترنت الأشياء، وإدارة المياه بالطاقة الشمسية لتحقيق الأمن الغذائي واستدامة الطاقة المتجددة ومرونة النظم
+
             البيئية</div>
 
+
+
         <div class="cover-meta" data-lang="en">
+
             <strong>Egypt Country Report — Group 10</strong><br>
+
             <strong>Prepared by:</strong> Group 10 Trainee — Case Study for Training Purposes Only (Non-Official)<br><br>
+
             <strong>Sector:</strong> Water–Energy–Food–Ecosystems (WEFE) Nexus<br>
+
             <strong>Geography:</strong> Arab Republic of Egypt — Nile Delta<br>
+
             <strong>Strategic Alignment:</strong> MWRI Water and Irrigation System 2.0 Initiative<br>
+
             <strong>Training Exercise Document (Not an Official Proposal)</strong> | July 2026
+
         </div>
+
         <div class="cover-meta" data-lang="ar">
+
             <strong>تقرير جمهورية مصر العربية — المجموعة 10</strong><br>
+
             <strong>إعداد:</strong> متدرب المجموعة 10 — دراسة حالة لأغراض التدريب والتأهيل فقط (وثيقة غير رسمية)<br><br>
+
             <strong>القطاع:</strong> ترابط المياه والطاقة والغذاء والنظم البيئية (محور WEFE)<br>
+
             <strong>النطاق الجغرافي:</strong> جمهورية مصر العربية — أراضي دلتا النيل<br>
+
             <strong>التوافق الاستراتيجي:</strong> المبادرة الرئاسية لمنظومة المياه والري 2.0 بوزارة الري<br>
+
             <strong>وثيقة تمارين تدريبية (ليست مقترحاً رسمياً)</strong> | يوليو 2026
+
         </div>
+
+
 
         <div class="cover-badge">WEFE Score: 92/100</div>
+
     </div>
 
+
+
     <!-- ========== CONTENT ========== -->
+
     <div class="content-wrapper">
 
+
+
         <!-- PREFACE -->
+
         <div class="page-break"></div>
+
+
 
         <h2 data-lang="en">Preface — Purpose and Use of This Document</h2>
+
         <h2 data-lang="ar">تمهيد — الغرض من الوثيقة ومجالات استخدامها</h2>
 
+
+
         <p data-lang="en">This report is issued as the <strong>Group 10 case study</strong> of the Financing Resilience
+
             and WEFE Nexus Professional Series. It is written to serve as a comprehensive simulated project model for
+
             invisible, tamper-proof subsurface drainage retrofitting in Egypt's Nile Delta, providing a worked template
+
             for trainees preparing WEFE Nexus project assessments.</p>
+
         <p data-lang="ar">تُصدر هذه الوثيقة كـ<strong>دراسة حالة للمجموعة 10</strong> ضمن سلسلة التدريب المهني حول
+
             "تمويل المرونة ومحور WEFE". وهو مصمم ليكون **نموذج مشروع محاكاة متكامل** حول إحلال وتجديد شبكات الصرف
+
             المغطى غير المرئية والمقاومة للعبث في دلتا النيل بمصر، لتوفير نموذج تطبيقي وعملي يُحتذى به لإعداد دراسات
+
             مشاريع محور WEFE.</p>
 
+
+
         <div class="preface-box">
+
             <h3 data-lang="en">Key Features and Content of the Report</h3>
+
             <h3 data-lang="ar">مميزات التقرير ومحتواه الفني</h3>
+
             <div class="improvement-list">
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">💧 Water System 2.0 Alignment</strong>
+
                     <strong data-lang="ar">💧 التوافق مع منظومة المياه 2.0</strong>
+
                     <span data-lang="en">Integrated directly with MWRI's System 2.0 digital framework, using IoT telemetry, smart valves, and AI digital water twins for precision water conservation.</span>
+
                     <span data-lang="ar">دمج كامل مع الإطار الرقمي لمنظومة المياه والري 2.0، باستخدام اتصالات IoT، والصمامات الذكية والتوائم الرقمية المجهزة بالذكاء الاصطناعي لترشيد المياه.</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">🔗 WEFE Nexus Integration</strong>
+
                     <strong data-lang="ar">🔗 تكامل محور WEFE</strong>
+
                     <span data-lang="en">Explores feedback loops between water management, solar energy, food security, and wetlands.</span>
+
                     <span data-lang="ar">يربط بين الصرف المغطى، ومحطات الرفع الشمسية، وتأمين إنتاجية المحاصيل، ومعالجة المياه بالأراضي الرطبة.</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">📈 Theory of Change (ToC)</strong>
+
                     <strong data-lang="ar">📈 إطار نظرية التغيير (ToC)</strong>
+
                     <span data-lang="en">A structured causal pathway from inputs and IoT activities to long-term climate adaptation impacts.</span>
+
                     <span data-lang="ar">يوضح المسار السببي المنهجي من المدخلات التمويلية وتقنيات الاستشعار إلى الأثر التنموي المناخي طويل المدى.</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">🔒 IoT Tamper-Proofing</strong>
+
                     <strong data-lang="ar">🔒 رصد منع التلاعب والعبث</strong>
+
                     <span data-lang="en">A digital twin framework utilizing flow anomalies and accelerometer alerts to ensure system integrity.</span>
+
                     <span data-lang="ar">يوضح آلية المراقبة الآنية للتدفق والاهتزازات للكشف الفوري عن الوصلات غير القانونية والأعطال.</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">📊 Blended Finance Analysis</strong>
+
                     <strong data-lang="ar">📊 هيكلة التمويل المختلط</strong>
+
                     <span data-lang="en">A detailed capital stack (grants, concessional/commercial debt) evaluated under DSCR stress test scenarios.</span>
+
                     <span data-lang="ar">تصميم هيكل رأس المال لدمج المنح مع القروض التنموية والتجارية واختبار الإجهاد المالي للقدرة على السداد.</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">🛰️ Automated MRV Framework</strong>
+
                     <strong data-lang="ar">🛰️ إطار الرصد والتحقق الآلي (MRV)</strong>
+
                     <span data-lang="en">Integrates continuous field water-balance telemetry and satellite-derived NDVI/NDWI verification.</span>
+
                     <span data-lang="ar">يدمج حسابات ميزان المياه الحقلية مع التحقق الفضائي عبر صور الأقمار الصناعية (Sentinel/Landsat).</span>
+
                 </div>
+
                 <div class="improvement-item">
+
                     <strong data-lang="en">🌿 Environmental & Social Safeguards</strong>
+
                     <strong data-lang="ar">🌿 الضمانات البيئية والاجتماعية</strong>
+
                     <span data-lang="en">Assesses in-situ retrofitting benefits to prevent downstream water reallocation conflicts.</span>
+
                     <span data-lang="ar">يقيم استقرار حيازات المزارعين ويتجنب مخاطر الحرمان المائي التي تنشأ عند تحويل مسارات مياه الصرف.</span>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <!-- TABLE OF CONTENTS -->
+
         <div class="page-break"></div>
+
         <h2 data-lang="en">Table of Contents</h2>
+
         <h2 data-lang="ar">جدول المحتويات</h2>
+
         <div class="toc" data-lang="en">
+
             <ol>
+
                 <li>Executive Summary</li>
+
                 <li>Strategic Assessment</li>
+
                 <li>Project Background and Rationale<ol>
+
                         <li>Egypt's Subsurface Drainage Context</li>
+
                         <li>The Invisible Infrastructure Challenge</li>
+
                         <li>Reference Programme: EPADP</li>
+
                     </ol>
+
                 </li>
+
                 <li>Problem Statement</li>
+
                 <li>Project Objectives</li>
+
                 <li>Theory of Change</li>
+
                 <li>Alignment with National Strategies</li>
+
                 <li>WEFE Nexus Analysis</li>
+
                 <li>Project Description<ol>
+
                         <li>Subsurface Drainage Retrofitting</li>
+
                         <li>IoT Tamper-Proof Monitoring</li>
+
                         <li>Solar Energy Micro-Grid</li>
+
                         <li>Smart Irrigation</li>
+
                         <li>Nature-Based Solutions</li>
+
                         <li>Digital Platform</li>
+
                     </ol>
+
                 </li>
+
                 <li>Stakeholder Analysis</li>
+
                 <li>Climate Resilience Assessment</li>
+
                 <li>Logical Framework</li>
+
                 <li>WEFE Project Screening</li>
+
                 <li>Bankability Assessment</li>
+
                 <li>Integrating WEFE into Existing Projects</li>
+
                 <li>Financial and Economic Analysis</li>
+
                 <li>Capital Stack Design</li>
+
                 <li>Operational Finance Risk</li>
+
                 <li>Funding Call Fit Score</li>
+
                 <li>MRV Framework</li>
+
                 <li>Environmental and Social Safeguards</li>
+
                 <li>Expected Impacts</li>
+
                 <li>Investment Readiness</li>
+
                 <li>Investor Pitch Summary</li>
+
                 <li>Conclusions and Recommendations</li>
+
                 <li>Using This Template</li>
+
                 <li>Sources and References</li>
+
             </ol>
+
         </div>
+
         <div class="toc" data-lang="ar">
+
             <ol>
+
                 <li>الملخص التنفيذي للمشروع</li>
+
                 <li>التقييم الاستراتيجي ومؤشرات الأداء</li>
+
                 <li>خلفية المشروع والمبررات الهيدرولوجية والاقتصادية<ol>
+
                         <li>سياق قطاع الصرف المغطى في مصر</li>
+
                         <li>تحديات البنية التحتية غير المرئية</li>
+
                         <li>البرنامج الوطني المرجعي للصرف (الهيئة المصرية العامة لمشروعات الصرف)</li>
+
                     </ol>
+
                 </li>
+
                 <li>بيان المشكلة وحجم الفجوة الهيدروليكية</li>
+
                 <li>الأهداف العامة والتفصيلية للمشروع</li>
+
                 <li>إطار نظرية التغيير (Theory of Change)</li>
+
                 <li>التوافق مع الاستراتيجيات الوطنية (رؤية مصر 2030)</li>
+
                 <li>تحليل الترابط بين المياه والطاقة والغذاء والنظم البيئية (محور WEFE)</li>
+
                 <li>الوصف الفني التفصيلي لمكونات المشروع<ol>
+
                         <li>إحلال وتجديد منظومة الأنابيب الحقلية والمجمعة</li>
+
                         <li>شبكة المراقبة الذكية وكشف العبث المعتمدة على إنترنت الأشياء (IoT)</li>
+
                         <li>الشبكة الشمسية الصغيرة الموزعة (Distributed Solar Micro-Grid)</li>
+
                         <li>منظومة الري الذكي المتكاملة</li>
+
                         <li>الحلول القائمة على الطبيعة (Nature-Based Solutions)</li>
+
                         <li>المنصة الرقمية لإدارة الموارد المائية</li>
+
                     </ol>
+
                 </li>
+
                 <li>تحليل أصحاب المصلحة (مصفوفة التأثير والاهتمام)</li>
+
                 <li>تقييم المخاطر وتدابير المرونة المناخية</li>
+
                 <li>الإطار المنطقي للمشروع (Logframe)</li>
+
                 <li>فرز وتحديد أولويات مشاريع محور WEFE</li>
+
                 <li>تصنيف المشروع وتقييم القابلية للتمويل (Bankability)</li>
+
                 <li>نهج دمج عناصر محور WEFE في مشاريع الصرف القائمة</li>
+
                 <li>التحليل المالي والجدوى الاقتصادية</li>
+
                 <li>تصميم هيكل رأس المال والتمويل المختلط (Blended Finance)</li>
+
                 <li>تقييم مخاطر التمويل والتشغيل (اختبارات الإجهاد DSCR)</li>
+
                 <li>تقييم ملاءمة شروط الجهات المانحة الدولية</li>
+
                 <li>إطار المراقبة والإبلاغ والتحقق (MRV)</li>
+
                 <li>الضمانات والمعايير البيئية والاجتماعية</li>
+
                 <li>مؤشرات الأثر التنموي والمناخي المتوقعة</li>
+
                 <li>تقييم الجاهزية الاستثمارية للمشروع</li>
+
                 <li>ملخص العرض الترويجي للمستثمرين (Investor Pitch)</li>
+
                 <li>الاستنتاجات والتوصيات الفنية والمالية</li>
+
                 <li>دليل استخدام وتطوير هذا القالب للمشاريع المشابهة</li>
+
                 <li>المصادر والوثائق المرجعية</li>
+
             </ol>
+
         </div>
+
+
 
         <!-- ===== SECTION 1: EXECUTIVE SUMMARY ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 1</div>
+
             <div class="section-number" data-lang="ar">القسم 1</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Executive Summary</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">الملخص التنفيذي</h2>
+
         </div>
+
+
 
         <p data-lang="en">Egypt's freshwater endowment has fallen to roughly <strong>560 m³ per capita per year</strong>
+
             — well below the 1,000 m³ water-poverty threshold — as the Nile's fixed allocation of <strong>55.5
+
                 BCM</strong> is stretched across a population exceeding <strong>106 million</strong>. While mega-scale
+
             treatment plants have captured attention, a parallel crisis operates invisibly: <strong>over 2.3 million
+
                 feddans of subsurface drainage have exceeded their design life</strong>.</p>
+
         <p data-lang="ar">تراجع نصيب الفرد من الموارد المائية المتجددة في مصر ليصل إلى نحو **560 متراً مكعباً سنوياً**،
+
             وهو ما يقل كثيراً عن حد الفقر المائي العالمي (1,000 متر مكعب) ويقترب من حد الشح المائي المطلق (500 متر
+
             مكعب)، حيث تتوزع حصة مصر التاريخية الثابتة من مياه النيل البالغة **55.5 مليار متر مكعب** على عدد سكان متزايد
+
             يتجاوز **106 ملايين نسمة**. وبينما تركزت الاستثمارات الضخمة في محطات معالجة الصرف الزراعي العملاقة عند المصب
+
             (مثل محطات بحر البقر، المحسمة، والدلتا الجديدة/الحمام)، تبرز أزمة هيدرولوجية صامتة تحت سطح التربة: **إذ
+
             تجاوزت شبكات الصرف المغطى القائمة في مساحة تزيد عن 2.3 مليون فدان في دلتا النيل عمرها الافتراضي وتتطلب
+
             إحلالاً وتجديداً عاجلاً**، في حين تفتقر مساحة إضافية تُقدّر بنحو **1.5 مليون فدان** إلى شبكات صرف مغطى
+
             ملائمة تماماً.</p>
 
+
+
         <p data-lang="en">Subsurface drainage — the network of buried perforated pipes controlling the water table — is
+
             the <strong>invisible backbone</strong> of Egyptian agriculture. Without it, Delta soils become waterlogged
+
             and salinised, reducing yields by <strong>10–30%</strong>.</p>
+
         <p data-lang="ar">وتُمثّل شبكات الصرف المغطى — المكونة من أنابيب حقلية ومجمعة مدفونة تتحكم في منسوب المياه
+
             الأرضية وتسمح بغسل الأملاح من منطقة الجذور — **العمود الفقري غير المرئي** لاستدامة القطاع الزراعي في مصر.
+
             وبدون التشغيل الكفء لهذه المنظومة، تتعرض الأراضي الطينية المروية بالري الغمر لمشكلتي التغدق وتملح التربة،
+
             مما يخفض إنتاجية المحاصيل الرئيسية بنسبة تتراوح بين **10% إلى 30%** ويقوض الأمن الغذائي.</p>
 
+
+
         <p data-lang="en"><strong>Eco-Drain</strong> proposes a transformative approach combining five integrated
+
             interventions:</p>
+
         <p data-lang="ar">يطرح مشروع **إيكو-درين (Eco-Drain)** رؤية متكاملة تتجاوز النهج التقليدي لصيانة الصرف، من خلال
+
             **برنامج إحلال وتجديد لا مركزي لمنظومات الصرف المغطى، مدمج بوحدات طاقة شمسية ومراقب رقمياً بإنترنت الأشياء
+
             (IoT)**، لتحويل البنية التحتية للصرف إلى أصل زراعي مرن مناخياً وقابل للتمويل التنموي. يرتكز المشروع على خمسة
+
             محاور مترابطة:</p>
 
+
+
         <ul data-lang="en">
+
             <li><strong>Subsurface drainage retrofitting</strong> across 100,000 feddans using modern materials (40+ year design life), and **replacing surface manholes with invisible inspection chambers buried 30–50 cm underground** to eliminate agricultural tampering.</li>
+
             <li><strong>IoT-based tamper-proof monitoring</strong> with 5,000+ sensor nodes, utilizing passive RFID tags to locate buried chambers, and real-time vibration/flow anomaly alerts.</li>
+
             <li><strong>50 MW distributed solar micro-grid</strong> reducing energy OPEX by 40%</li>
+
             <li><strong>Smart irrigation integration</strong> reducing over-irrigation by 25–30%</li>
+
             <li><strong>Constructed wetlands</strong> at 20 discharge points, restoring 4,760 feddans</li>
-        </ul>
-        <ul data-lang="ar">
-            <li><strong>إحلال وتجديد شبكات الصرف المغطى</strong> في مساحة 100,000 فدان من الأراضي المتضررة بالدلتا بأنابيب حديثة (عمر تصميمي 40+ عاماً)، مع **استبدال غرف التفتيش السطحية بغرف غاطسة غير مرئية مدفونة على عمق 30-50 سم تحت الأرض** لمنع أي تلاعب أو تخريب مادي.</li>
-            <li><strong>منظومة مراقبة ذكية مقاومة للعبث</strong> بإنترنت الأشياء (IoT) ونشر 5,000 عقدة استشعار، مع دمج رقاقات تتبع لاسلكية RFID لتحديد مواقع الغرف المدفونة، وكشف محاولات التلاعب والانسداد آنياً.</li>
-            <li><strong>شبكة طاقة شمسية موزعة بقدرة 50 ميجاوات</strong> لتشغيل محطات الرفع الخاصة بالصرف المغطى، مما
-                يقلل تكاليف الطاقة التشغيلية بنسبة 40%.</li>
-            <li><strong>تكامل منظومة الري الذكي</strong> عبر ربط بيانات رطوبة التربة ومستويات المياه الأرضية لتقليل
-                الإفراط في الري بنسبة 25% إلى 30% وتوفير المياه عند المصدر.</li>
-            <li><strong>حلول قائمة على الطبيعة (Nature-Based Solutions)</strong> تشمل إنشاء 20 منطقة أراضٍ رطبة اصطناعية
-                لمعالجة مياه الصرف بيولوجياً واستعادة النظم البيئية في مساحة 4,760 فدان.</li>
+
         </ul>
 
+        <ul data-lang="ar">
+
+            <li><strong>إحلال وتجديد شبكات الصرف المغطى</strong> في مساحة 100,000 فدان من الأراضي المتضررة بالدلتا بأنابيب حديثة (عمر تصميمي 40+ عاماً)، مع **استبدال غرف التفتيش السطحية بغرف غاطسة غير مرئية مدفونة على عمق 30-50 سم تحت الأرض** لمنع أي تلاعب أو تخريب مادي.</li>
+
+            <li><strong>منظومة مراقبة ذكية مقاومة للعبث</strong> بإنترنت الأشياء (IoT) ونشر 5,000 عقدة استشعار، مع دمج رقاقات تتبع لاسلكية RFID لتحديد مواقع الغرف المدفونة، وكشف محاولات التلاعب والانسداد آنياً.</li>
+
+            <li><strong>شبكة طاقة شمسية موزعة بقدرة 50 ميجاوات</strong> لتشغيل محطات الرفع الخاصة بالصرف المغطى، مما
+
+                يقلل تكاليف الطاقة التشغيلية بنسبة 40%.</li>
+
+            <li><strong>تكامل منظومة الري الذكي</strong> عبر ربط بيانات رطوبة التربة ومستويات المياه الأرضية لتقليل
+
+                الإفراط في الري بنسبة 25% إلى 30% وتوفير المياه عند المصدر.</li>
+
+            <li><strong>حلول قائمة على الطبيعة (Nature-Based Solutions)</strong> تشمل إنشاء 20 منطقة أراضٍ رطبة اصطناعية
+
+                لمعالجة مياه الصرف بيولوجياً واستعادة النظم البيئية في مساحة 4,760 فدان.</li>
+
+        </ul>
+
+
+
         <div class="figure-container">
+
             <img src="images/fig3_nile_delta_map.png" alt="Figure 1: Nile Delta Project Area">
+
             <div class="figure-caption" data-lang="en">Figure 1: Nile Delta Project Area — Proposed Eco-Drain
+
                 Intervention Sites</div>
+
             <div class="figure-caption" data-lang="ar">شكل 1: خريطة نطاق المشروع في دلتا النيل ومواقع تدخل منظومة
+
                 إيكو-درين المقترحة</div>
+
         </div>
+
+
 
         <p data-lang="en">The proposed project — <strong>USD 420 million</strong> — achieves a <strong>WEFE Nexus
+
                 composite score of 92/100</strong>.</p>
+
         <p data-lang="ar">تبلغ التكلفة الاستثمارية التقديرية للمشروع المقترح **420 مليون دولار أمريكي**، ويحقق المشروع
+
             **درجة تقييم مركبة تبلغ 92/100 على مؤشر تكامل محور WEFE**، مما يجعله مرشحاً مثالياً للتمويل المناخي المختلط.
+
         </p>
+
+
 
         <h3 data-lang="en">Four Key Findings</h3>
+
         <h3 data-lang="ar">أربعة استنتاجات رئيسية تميز هذا التقرير</h3>
 
+
+
         <div class="finding-box">
+
             <span data-lang="en"><strong>Finding 1 — Upstream Cause:</strong> Eco-Drain intervenes at the field level to
+
                 improve drainage quality at source, rather than processing contaminated water downstream.</span>
+
             <span data-lang="ar"><strong>النتيجة 1 — المعالجة من المنبع:</strong> يتدخل مشروع "إيكو-درين" على مستوى
+
                 الحقل لتحسين جودة مياه الصرف الزراعي ومنع تدهور التربة من البداية، بدلاً من الانتظار لمعالجة المياه
+
                 الملوثة عند مصبات المصارف الكبرى.</span>
+
         </div>
+
         <div class="finding-box">
+
             <span data-lang="en"><strong>Finding 2 — Tamper-Proof IoT:</strong> EPADP documented that a significant
+
                 share of drainage failures result from unauthorised modifications. The embedded sensor network addresses
+
                 this directly.</span>
+
             <span data-lang="ar"><strong>النتيجة 2 — مواجهة التدخلات العشوائية:</strong> تشير سجلات الهيئة العامة
+
                 لمشروعات الصرف إلى أن نسبة هامة من أعطال الصرف المغطى تنجم عن تعديلات غير قانونية يقوم بها المزارعون.
+
                 وتعالج شبكة المستشعرات المدمجة هذه المشكلة عبر المراقبة الآنية للتدفق والاهتزازات.</span>
+
         </div>
+
         <div class="finding-box">
+
             <span data-lang="en"><strong>Finding 3 — Modular Architecture:</strong> A replicable kit deployable across
+
                 4.3 million feddans of Delta drainage, suitable for programmatic climate finance.</span>
+
             <span data-lang="ar"><strong>النتيجة 3 — نموذج نمطي مرن:</strong> تم تصميم المشروع في صورة وحدات مستقلة
+
                 (Modular Kits) قابلة للتكرار عبر كامل مساحة الصرف المغطى بالدلتا البالغة 4.3 مليون فدان، مما يسهل هيكلته
+
                 كبرنامج تمويلي مناخي مرحلي.</span>
+
         </div>
+
         <div class="finding-box">
+
             <span data-lang="en"><strong>Finding 4 — Tight WEFE Loop:</strong> Solar → powers pumping; improved drainage
+
                 → better yields; smart monitoring → precision irrigation → less drainage. This closed loop scores
+
                 strongly.</span>
+
             <span data-lang="ar"><strong>النتيجة 4 — حلقة ترابط محكمة:</strong> طاقة شمسية شمسية توفر الطاقة للضخ
+
                 الموزع؛ تحسين الصرف يحسن إنتاج المحاصيل ويمنع التملح؛ بيانات المستشعرات توجه منظومة الري الذكي لتقليل
+
                 الهدر المائي وتخفيف أحجام الصرف. تعزز هذه الحلقة المغلقة جاذبية المشروع لدى جهات التمويل الدولية.</span>
+
         </div>
+
+
 
         <!-- ===== SECTION 2: STRATEGIC ASSESSMENT ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 2</div>
+
             <div class="section-number" data-lang="ar">القسم 2</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Strategic Assessment</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">التقييم الاستراتيجي</h2>
+
         </div>
+
+
 
         <h3 data-lang="en">2.1 Project Classification</h3>
+
         <h3 data-lang="ar">2.1 تصنيف المشروع الهيكلي</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Attribute</th>
+
                     <th data-lang="ar">الخاصية الفنية</th>
+
                     <th data-lang="en">Detail</th>
+
                     <th data-lang="ar">تفاصيل المشروع</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td><strong data-lang="en">Project Type</strong><strong data-lang="ar">نوع المشروع</strong></td>
+
                     <td data-lang="en">Climate-Resilient WEFE Nexus Infrastructure — subsurface drainage retrofitting
+
                         with IoT monitoring</td>
+
                     <td data-lang="ar">بنية تحتية مرنة مناخياً متكاملة مع محور WEFE — إحلال وتجديد شبكات الصرف المغطى
+
                         المدمج بأنظمة المراقبة الذكية</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Country</strong><strong data-lang="ar">جمهورية مصر العربية</strong></td>
+
                     <td data-lang="en">Arab Republic of Egypt</td>
+
                     <td data-lang="ar">جمهورية مصر العربية</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Geography</strong><strong data-lang="ar">النطاق الجغرافي</strong></td>
+
                     <td data-lang="en">Nile Delta — Kafr El-Sheikh, Dakahlia, Beheira, Gharbia</td>
+
                     <td data-lang="ar">أراضي دلتا النيل — محافظات كفر الشيخ، الدقهلية، البحيرة، والغربية</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Innovation</strong><strong data-lang="ar">الابتكار التكنولوجي</strong>
+
                     </td>
+
                     <td data-lang="en">First tamper-proof IoT monitoring of subsurface drainage at scale</td>
+
                     <td data-lang="ar">دمج تقنيات إنترنت الأشياء (IoT) لرصد التدفقات والاهتزازات الجوفية لكشف التلاعب
+
                         والانسداد</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">2.2 Composite Assessment Scores</h3>
+
         <h3 data-lang="ar">2.2 درجات التقييم المركب للمشروع</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Criterion</th>
+
                     <th data-lang="ar">معايير التقييم</th>
+
                     <th style="text-align:center" data-lang="en">Score (/10)</th>
+
                     <th style="text-align:center" data-lang="ar">الدرجة (/10)</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en">Water Impact</td>
+
                     <td data-lang="ar">الأثر المائي (خفض التملح وتوفير المياه)</td>
+
                     <td class="score-cell score-high">10</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Energy Integration</td>
+
                     <td data-lang="ar">تكامل الطاقة (الطاقة الشمسية الموزعة)</td>
+
                     <td class="score-cell score-high">8</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Food Security Impact</td>
+
                     <td data-lang="ar">تأثير الأمن الغذائي (زيادة إنتاجية المحاصيل)</td>
+
                     <td class="score-cell score-high">10</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Ecosystem Benefits</td>
+
                     <td data-lang="ar">فوائد النظم البيئية (معالجة الصرف بالبحيرات)</td>
+
                     <td class="score-cell score-high">8</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Climate Resilience</td>
+
                     <td data-lang="ar">المرونة المناخية (التكيف مع تغيرات دلتا النيل)</td>
+
                     <td class="score-cell score-high">10</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Financial Attractiveness</td>
+
                     <td data-lang="ar">الجاذبية المالية (العوائد وتجنب التكاليف)</td>
+
                     <td class="score-cell">7</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Innovation</td>
+
                     <td data-lang="ar">الابتكار (منظومة كشف العبث والتوأم الرقمي)</td>
+
                     <td class="score-cell score-high">9</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Replicability</td>
-                    <td data-lang="ar">القابلي�            <ul data-lang="en">
+
+                    <td data-lang="ar">القابليط            <ul data-lang="en">
+
                 <li><strong>Buried Invisible Chambers:</strong> Traditional surface manholes are replaced with sealed chambers buried 30–50 cm below the agricultural soil layer, hiding them completely from sight. Maintenance teams locate them using passive RFID markers and GPS.</li>
-                <li><strong>Dynamic Capillary-Rise Control:</strong> Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system closes the drainage gates when crops need moisture. This raises the water table, allowing plants to absorb water via capillary rise. The maximum height of capillary rise ($h$) in Delta clayey soils is calculated as: $h = \frac{2\gamma \cos\theta}{\rho g r}$. Where $\gamma = 0.0727 \text{ N/m}$ is water surface tension, $\theta = 0^{\circ}$, $\rho = 1000 \text{ kg/m}^3$, $g = 9.81 \text{ m/s}^2$, and $r$ is the pore radius ($0.002$ to $0.01 \text{ mm}$ for Delta clay), yielding a natural upward water rise of **60 to 150 cm** to feed plant roots directly, reducing external irrigation needs by 25–30%.</li>
+
+                <li><strong>Dynamic Capillary-Rise Control:</strong> Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system closes the drainage gates when crops need moisture. This raises the water table, allowing plants to absorb water via capillary rise. The maximum height of capillary rise ($h$) in Delta clayey soils is calculated as: $h = \frac{2\gamma \cos\theta}{\rho g r}$. Where $\gamma = 0.0727 \text{ N/m}$ is water surface tension, $\theta = 0^{\circ}$, $\rho = 1000 \text{ kg/m}^3$, $g = 9.81 \text{ m/s}^2$, and $r$ is the pore radius ($0.002$ to $0.01 \text{ mm}$ for Delta clay), yielding a natural upward water rise of **60 to 150 cm** to feed plant roots directly, reducing external irrigation needs by 25–30%. Additionally, the spacing of the subsurface laterals ($S$) must be calculated scientifically based on the soil's saturated hydraulic conductivity ($K$) to balance drainage speed and capillary retention. Under steady-state recharge conditions, this is governed by **Hooghoudt's Equation**: $S^2 = \frac{4 K_1 h^2 + 8 K_2 d h}{q}$ (where $K_1, K_2$ represent hydraulic conductivities above/below drain level, $h$ is water table height above drain, $d$ is equivalent flow thickness, and $q$ is drainage design rate). In Kafr El-Sheikh's heavy clay soils ($K < 0.05 \text{ m/day}$), spacing is restricted to 20–30 meters, whereas in silty-clay or sandy-loam areas ($K > 0.5 \text{ m/day}$), it is expanded to 50–60 meters to prevent excessive drainage.</li>
+
             </ul>
+
             <ul data-lang="ar">
+
                 <li><strong>غرف التفتيش المدفونة وغير المرئية:</strong> يتم إخفاء غرف التفتيش بالكامل تحت عمق 30-50 سم من التربة الزراعية لمنع التلاعب المادي وتخريب الأغطية. ويتم تحديد مواقعها للصيانة الفنية باستخدام رقاقات التتبع اللاسلكي RFID وإحداثيات الـ GPS.</li>
-                <li><strong>التحكم الحركي في المنسوب والخاصية الشعرية:</strong> تُزود المصبات ببوابات إلكترونية ذكية مغلقة تلقائياً عند حاجة التربة للمياه، ليرتفع الماء تحت الحقل نحو الجذور بالخاصية الشعرية. يتم احتساب أقصى ارتفاع للخاصية الشعرية ($h$) رياضياً بالمعادلة: $h = \frac{2\gamma \cos\theta}{\rho g r}$ (حيث $\gamma$ التوتر السطحي، و $\theta$ زاوية التلامس، و $\rho$ الكثافة، و $g$ الجاذبية، و $r$ نصف قطر مسام التربة الطينية بالدلتا وهو $0.002$-$0.01$ ملم). تعطي هذه الخصائص ارتفاعاً طبيعياً للمياه الجوفية بمقدار **60 إلى 150 سم**، مما يسمح للجذور بامتصاص المياه ذاتياً وتوفير 25-30% من الري السطحي الموجه.</li>
+
+                <li><strong>التحكم الحركي في المنسوب والخاصية الشعرية:</strong> تُزود المصبات ببوابات إلكترونية ذكية مغلقة تلقائياً عند حاجة التربة للمياه، ليرتفع الماء تحت الحقل نحو الجذور بالخاصية الشعرية. يتم احتساب أقصى ارتفاع للخاصية الشعرية ($h$) رياضياً بالمعادلة: $h = \frac{2\gamma \cos\theta}{\rho g r}$ (حيث $\gamma$ التوتر السطحي، و $\theta$ زاوية التلامس، و $\rho$ الكثافة، و $g$ الجاذبية، و $r$ نصف قطر مسام التربة الطينية بالدلتا وهو $0.002$-$0.01$ ملم). تعطي هذه الخصائص ارتفاعاً طبيعياً للمياه الجوفية بمقدار **60 إلى 150 سم**، مما يسمح للجذور بامتصاص المياه ذاتياً وتوفير 25-30% من الري السطحي الموجه. علاوة على ذلك، يتم تحديد المسافات بين خطوط الصرف الحقلية ($S$) علمياً بناءً على معامل النفاذية الهيدروليكية للتربة ($K$) لتحقيق التوازن بين سرعة الصرف والاحتفاظ بالرطوبة. يحكم هذا تحت ظروف التدفق المستقر **معادلة هوغهودت (Hooghoudt's Equation)**: $S^2 = \frac{4 K_1 h^2 + 8 K_2 d h}{q}$ (حيث $K_1, K_2$ معامل النفاذية للطبقات فوق وتحت الصرف، و $h$ ارتفاع الماء فوق الصرف، و $d$ سمك التدفق المكافئ، و $q$ معدل التصميم). في أراضي كفر الشيخ الطينية الثقيلة ($K < 0.05$ م/يوم)، يتم تضييق المسافة إلى 20-30 متراً، بينما في الأراضي الطميية الرملية ($K > 0.5$ م/يوم)، يتم توسيعها إلى 50-60 متراً لمنع جفاف التربة.</li>
+
             </ul>       <!-- ===== SECTION 3: BACKGROUND ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 3</div>
+
             <div class="section-number" data-lang="ar">القسم 3</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Project Background and Rationale</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">خلفية المشروع والمبررات الفنية
+
                 والبيئية</h2>
+
         </div>
+
+
 
         <h3 data-lang="en">3.1 Egypt's Subsurface Drainage Context</h3>
+
         <h3 data-lang="ar">3.1 سياق قطاع الصرف المغطى في جمهورية مصر العربية</h3>
 
+
+
         <p data-lang="en">Egypt's agricultural miracle — feeding over 106 million people from roughly 9 million feddans
+
             — rests on an invisible foundation: the nation's subsurface drainage network.</p>
+
         <p data-lang="ar">ترتكز استدامة الزراعة المروية المكثفة في مصر — والتي تؤمن الغذاء لأكثر من 106 ملايين نسمة في
+
             رقعة زراعية تبلغ نحو 9 ملايين فدان — على بنية تحتية حيوية غير مرئية هي شبكات الصرف المغطى. تعمل هذه المنظومة
+
             تحت سطح التربة على خفض منسوب المياه الأرضية وتجنب تملح قطاع التربة الحقلية.</p>
 
+
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Metric</th>
+
                     <th data-lang="ar">المؤشر الهيدروليكي</th>
+
                     <th data-lang="en">Value</th>
+
                     <th data-lang="ar">القيمة التقديرية</th>
+
                     <th data-lang="en">Source</th>
+
                     <th data-lang="ar">المصدر الفني</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en"><strong>Total subsurface drainage</strong></td>
+
                     <td data-lang="ar"><strong>إجمالي مساحة أراضي الصرف المغطى المنفذة</strong></td>
+
                     <td>≈6.0 M feddans (≈2.52M ha)</td>
+
                     <td>MWRI / EPADP</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Nile Delta coverage</strong></td>
+
                     <td data-lang="ar"><strong>مساحة الصرف المغطى في نطاق الدلتا</strong></td>
+
                     <td>≈4.3 M feddans (≈1.81M ha)</td>
+
                     <td>MWRI / EPADP</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Renewal completed</strong></td>
+
                     <td data-lang="ar"><strong>شبكات الصرف التي تم إحلالها وتجديدها سابقاً</strong></td>
+
                     <td>≈2.3 M feddans</td>
+
                     <td>EPADP</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Open drain network</strong></td>
+
                     <td data-lang="ar"><strong>إجمالي أطوال المصارف العامة المكشوفة</strong></td>
+
                     <td>≈22,000 km / 4,444 drains</td>
+
                     <td>EPADP</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Systems past design life</strong></td>
+
                     <td data-lang="ar"><strong>شبكات الصرف المغطى التي تجاوزت عمرها الافتراضي</strong></td>
+
                     <td>≈2.3 M feddans (by 2026)</td>
+
                     <td>EPADP</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">3.2 The Invisible Infrastructure Challenge & Anti-Tampering Solution</h3>
+
         <h3 data-lang="ar">3.2 تحدي البنية التحتية غير المرئية ومنظومة منع التلاعب والعبث</h3>
+
         
+
         <p data-lang="en">Subsurface drainage is buried beneath the soil, making visual inspection impossible. This leads to undetected maintenance failures, waterlogging, and topsoil salinization. Crucially, visible surface inspection chambers (manholes) and open drainage outlets are highly vulnerable to unauthorized farmer interventions, such as installing physical plugs to raise the water table for water-intensive crops (e.g., rice) or stealing manhole covers.</p>
+
         <p data-lang="ar">تُدفن شبكات الصرف المغطى بالكامل تحت الأرض، مما يجعل الفحص البصري المستمر مستحيلاً ويعوق الاكتشاف المبكر للأعطال. والأخطر من ذلك هو تعرض غرف التفتيش (البالوعات) والمصبات الظاهرة على السطح لتعديات وتلاعب من بعض المزارعين (مثل وضع سدادات طينية لرفع منسوب المياه الأرضية لزراعة محاصيل شرهة للمياه كالأرز، أو سرقة أغطية الغرف وتخريب المكونات).</p>
 
+
+
         <div class="callout callout-integration">
+
             <div class="callout-title" data-lang="en">ECO-DRAIN CORE INNOVATION (INVISIBLE SHIELD & CAPILLARY RISE)</div>
+
             <div class="callout-title" data-lang="ar">الابتكار الجوهري لمشروع إيكو-درين (الإخفاء والتحكم بالخاصية الشعرية)</div>
+
             <p data-lang="en">To eliminate these risks, Eco-Drain implements a physical anti-tampering design and links drainage control directly with agricultural water needs:</p>
+
             <p data-lang="ar">للقضاء على هذه التعديات، يطبق مشروع Eco-Drain تصميماً هندسياً فيزيائياً لمنع التلاعب مع ربط التحكم الهيدروليكي بالاحتياجات المائية الحقيقية للمحاصيل:</p>
+
             <ul data-lang="en">
+
                 <li><strong>Buried Invisible Chambers:</strong> Traditional surface manholes are replaced with sealed chambers buried 30–50 cm below the agricultural soil layer, hiding them completely from sight. Maintenance teams locate them using passive RFID markers and GPS.</li>
+
                 <li><strong>Dynamic Capillary-Rise Control:</strong> Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system closes the drainage gates when crops need moisture. This raises the water table into the root zone, allowing plants to absorb water via capillary rise, reducing external irrigation needs by 25–30% and eliminating the incentive for illegal water blockage.</li>
+
             </ul>
+
             <ul data-lang="ar">
+
                 <li><strong>غرف التفتيش المدفونة وغير المرئية:</strong> يتم إخفاء غرف التفتيش بالكامل تحت عمق 30-50 سم من التربة الزراعية لمنع التلاعب المادي وتخريب الأغطية. ويتم تحديد مواقعها للصيانة الفنية باستخدام رقاقات التتبع اللاسلكي RFID وإحداثيات الـ GPS.</li>
+
                 <li><strong>التحكم الحركي في المنسوب والخاصية الشعرية:</strong> تُزود المصبات ببوابات إلكترونية ذكية. بناءً على قياس رطوبة التربة على مستوى الحوض الزراعي، تُغلق البوابات ذاتياً عند حاجة النبات للرطوبة، مما يرفع المياه الجوفية لمنطقة الجذور ليمتصها النبات بالخاصية الشعرية. هذا يوفر 25-30% من المياه المستهلكة في الري السطحي، ويقضي على دافع المزارعين لتعطيل الصرف يدوياً.</li>
+
             </ul>
+
         </div>
 
+
+
         <div class="figure-container">
+
             <img src="images/fig1_subsurface_drainage.png" alt="Subsurface Drainage Cross-Section">
+
             <div class="figure-caption" data-lang="en">Figure 2: Cross-Section of Subsurface Drainage — Eco-Drain
+
                 Retrofitting with IoT Sensors</div>
+
             <div class="figure-caption" data-lang="ar">شكل 2: مقطع هندسي يوضح منظومة الصرف المغطى — إعادة تأهيل الأنابيب
+
                 الحقلية وإدراج مستشعرات إنترنت الأشياء وغرف التفتيش الذكية</div>
+
         </div>
+
+
 
         <h3 data-lang="en">3.3 Reference Programme: EPADP</h3>
+
         <h3 data-lang="ar">3.3 مراحل البرنامج الوطني المرجعي للصرف (الهيئة المصرية العامة لمشروعات الصرف)</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Phase</th>
+
                     <th data-lang="ar">المرحلة</th>
+
                     <th data-lang="en">Period</th>
+
                     <th data-lang="ar">الفترة الزمنية</th>
+
                     <th data-lang="en">Coverage</th>
+
                     <th data-lang="ar">المساحة المستهدفة بال فدان</th>
+
                     <th data-lang="en">Co-Financier</th>
+
                     <th data-lang="ar">الجهات التمويلية الشريكة</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td>
+
                         <span data-lang="en">Pre-NDP Projects</span>
+
                         <span data-lang="ar">مشاريع ما قبل البرامج الوطنية</span>
+
                     </td>
+
                     <td>1970–1992</td>
+
                     <td>
+
                         <span data-lang="en">≈2.3M feddans</span>
+
                         <span data-lang="ar">≈2.3 مليون فدان</span>
+
                     </td>
+
                     <td>
+
                         <span data-lang="en">World Bank / Bilaterals</span>
+
                         <span data-lang="ar">البنك الدولي وجهات ثنائية</span>
+
                     </td>
+
                 </tr>
+
                 <tr>
+
                     <td>NDP I</td>
+
                     <td>1992–2000</td>
+
                     <td>
+
                         <span data-lang="en">≈790,000 feddans</span>
+
                         <span data-lang="ar">≈790 ألف فدان</span>
+
                     </td>
+
                     <td>World Bank</td>
+
                 </tr>
+
                 <tr>
+
                     <td>NDP II</td>
+
                     <td>2001–2015</td>
+
                     <td>
+
                         <span data-lang="en">≈940,000 feddans</span>
+
                         <span data-lang="ar">≈940 ألف فدان</span>
+
                     </td>
+
                     <td>
+
                         <span data-lang="en">World Bank / AfDB</span>
+
                         <span data-lang="ar">البنك الدولي / بنك التنمية الأفريقي</span>
+
                     </td>
+
                 </tr>
+
                 <tr>
+
                     <td>NDP III</td>
+
                     <td>2013–2026</td>
+
                     <td>
+
                         <span data-lang="en">≈500,000 feddans</span>
+
                         <span data-lang="ar">≈500 ألف فدان</span>
+
                     </td>
+
                     <td>
+
                         <span data-lang="en">World Bank / KfW</span>
+
                         <span data-lang="ar">البنك الدولي / بنك الإعمار الألماني</span>
+
                     </td>
+
                 </tr>
+
                 <tr>
+
                     <td>
+
                         <span data-lang="en">NDP IV (Proposed)</span>
+
                         <span data-lang="ar">NDP IV (المقترح)</span>
+
                     </td>
+
                     <td>2026+</td>
+
                     <td>
+
                         <span data-lang="en">Under preparation</span>
+
                         <span data-lang="ar">تحت الإعداد والتمويل</span>
+
                     </td>
+
                     <td>
+
                         <span data-lang="en">Climate Blended Finance</span>
+
                         <span data-lang="ar">تمويل مناخي مختلط</span>
+
                     </td>
+
                 </tr>
+
                 <tr class="highlight-row">
+
                     <td>
+
                         <strong>Eco-Drain</strong>
+
                     </td>
+
                     <td><strong>2027–2035</strong></td>
+
                     <td>
+
                         <strong>
+
                             <span data-lang="en">100,000 feddans (pilot)</span>
+
                             <span data-lang="ar">100,000 فدان (تجريبي)</span>
+
                         </strong>
+
                     </td>
+
                     <td>
+
                         <strong>
+
                             <span data-lang="en">Blended Climate Finance</span>
+
                             <span data-lang="ar">التمويل التنموي والمناخي المختلط</span>
+
                         </strong>
+
                     </td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <!-- ===== SECTION 4-5: PROBLEM & OBJECTIVES ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Sections 4–5</div>
+
             <div class="section-number" data-lang="ar">القسمان 4–5</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Problem Statement and Objectives</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">بيان المشكلات الهيدروليكية والأهداف
+
                 المرجوة</h2>
+
         </div>
 
+
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Challenge</th>
+
                     <th data-lang="ar">التحدي القائم</th>
+
                     <th data-lang="en">Impact</th>
+
                     <th data-lang="ar">الأثر المترتب عليه</th>
+
                     <th data-lang="en">Eco-Drain Response</th>
+
                     <th data-lang="ar">منهجية حل إيكو-درين</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en"><strong>Ageing drainage</strong></td>
+
                     <td data-lang="ar"><strong>تقادم شبكات الصرف المغطى</strong></td>
+
                     <td data-lang="en">2.3M feddans past design life; 10–30% yield loss</td>
+
                     <td data-lang="ar">2.3 مليون فدان تجاوزت عمرها الافتراضي؛ خسائر 10-30% in إنتاجية الأراضي</td>
+
                     <td data-lang="en">Modern retrofitting, 40+ year life</td>
+
                     <td data-lang="ar">إحلال وتجديد كامل بأنابيب HDPE مجهزة بفلاتر جيوتكستيلية (عمر 40+ سنة)</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Monitoring gap</strong></td>
+
                     <td data-lang="ar"><strong>غياب الرصد والبيانات الفورية</strong></td>
+
                     <td data-lang="en">No real-time data; failures after damage</td>
+
                     <td data-lang="ar">عدم توفر بيانات آنية عن الأعطال والانسدادات إلا بعد تملح وغرق الحقول</td>
+
                     <td data-lang="en">5,000+ IoT sensor nodes</td>
+
                     <td data-lang="ar">نشر 5,000 عقدة استشعار ذكية لمراقبة المناسيب والتدفق لحظياً</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Tamper vulnerability</strong></td>
+
                     <td data-lang="ar"><strong>تعرض الشبكات للعبث العشوائي</strong></td>
+
                     <td data-lang="en">~25–40% failures from tampering</td>
+
                     <td data-lang="ar">نحو 25-40% من انسدادات وأعطال الشبكة ناتجة عن التلاعب والوصلات غير القانونية</td>
+
                     <td data-lang="en">Tamper-proof sensors + alerts</td>
+
                     <td data-lang="ar">أغطية غرف تفتيش محكمة مع مستشعرات اهتزاز لكشف التعديلات وموقعها بالـ GPS</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Energy costs</strong></td>
+
                     <td data-lang="ar"><strong>ارتفاع تكلفة تشغيل محطات الرفع</strong></td>
+
                     <td data-lang="en">Rising pumping OPEX</td>
+
                     <td data-lang="ar">ارتفاع مستمر في تكاليف الطاقة والكهرباء لتشغيل طلمبات الصرف</td>
+
                     <td data-lang="en">50 MW solar, 40% reduction</td>
+
                     <td data-lang="ar">تركيب منظومة طاقة شمسية موزعة بقدرة 50 ميجاوات لخفض استهلاك الشبكة بنسبة 40%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Over-irrigation</strong></td>
+
                     <td data-lang="ar"><strong>الهدر الناتج عن الإفراط في ري الغمر</strong></td>
+
                     <td data-lang="en">Excessive drainage volumes</td>
+
                     <td data-lang="ar">زيادة كميات مياه الصرف المتولدة وتملح التربة وارتفاع مناسيب المياه الأرضية</td>
+
                     <td data-lang="en">Smart irrigation, 25–30% savings</td>
+
                     <td data-lang="ar">ربط بيانات استشعار الصرف بمنظومة ري ذكي لتقليل الهدر بنسبة 25-30%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Ecosystem damage</strong></td>
+
                     <td data-lang="ar"><strong>تدهور النظم البيئية المائية</strong></td>
+
                     <td data-lang="en">Pollutants into Delta lakes</td>
+
                     <td data-lang="ar">تصريف مياه صرف محملة بالأملاح والأسمدة والمبيدات في بحيرات الدلتا (مثل المنزلة)
+
                     </td>
+
                     <td data-lang="en">Constructed wetlands</td>
+
                     <td data-lang="ar">إنشاء أراضٍ رطبة اصطناعية للمعالجة الحيوية للمياه قبل تصريفها النهائي</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">Specific Objectives</h3>
+
         <h3 data-lang="ar">الأهداف التفصيلية والكمية للمشروع</h3>
+
         <ol data-lang="en">
+
             <li><strong>Retrofit 100,000 feddans</strong> with modern, long-life drainage materials</li>
+
             <li><strong>Deploy 5,000+ IoT sensors</strong> with real-time tamper detection</li>
+
             <li><strong>Install 50 MW solar PV</strong>, reducing energy OPEX by 40%</li>
+
             <li><strong>Save ~150 million m³/year</strong> through smart irrigation</li>
+
             <li><strong>Increase yields 15–25%</strong> through restored soil health</li>
+
             <li><strong>Construct 20 wetlands</strong> (4,760 feddans), treating 200M m³/year</li>
+
             <li><strong>Create replicable model</strong> for 4.2+ million remaining feddans</li>
+
         </ol>
+
         <ol data-lang="ar">
+
             <li><strong>إحلال وتجديد شبكات الصرف المغطى في مساحة 100,000 فدان</strong> في المناطق الأكثر تضرراً بالدلتا
+
                 بمواد أنابيب HDPE حديثة وطويلة العمر.</li>
+
             <li><strong>نشر 5,000+ عقدة استشعار ذكية بإنترنت الأشياء (IoT)</strong> لمراقبة أداء الشبكة وكشف العبث
+
                 والانسدادات في الحين.</li>
+
             <li><strong>تركيب محطات طاقة شمسية موزعة بقدرة 50 ميجاوات</strong> لتوفير طاقة نظيفة وخفض تكاليف الطاقة
+
                 لمحطات طلمبات الصرف بنسبة 40%.</li>
+
             <li><strong>توفير نحو 150 مليون متر مكعب سنوياً من مياه الري</strong> عبر تطبيق حلقة ربط الري الذكي المبني
+
                 على رطوبة التربة ومستويات المياه الأرضية.</li>
+
             <li><strong>زيادة إنتاجية المحاصيل الحقلية بنسبة 15% إلى 25%</strong> نتيجة تحسين تهوية الجذور وخفض ملوحة
+
                 التربة.</li>
+
             <li><strong>تأسيس 20 محطة معالجة بالأراضي الرطبة الاصطناعية (Constructed Wetlands)</strong> بمساحة إجمالية
+
                 4,760 فدان لمعالجة 200 مليون م³/سنوياً من مياه الصرف بيولوجياً.</li>
+
             <li><strong>تطور نموذج رقمي وهيكلي متكامل</strong> قابل للتكرار السريع في المساحة المتبقية من أراضي الصرف
+
                 بالدلتا والبالغة 4.2 مليون فدان.</li>
+
         </ol>
+
+
 
         <!-- ===== SECTION 6: THEORY OF CHANGE ===== -->
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 6</div>
+
             <div class="section-number" data-lang="ar">القسم 6</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Theory of Change</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">إطار نظرية التغيير (Theory of Change)
+
             </h2>
+
         </div>
+
+
 
         <div class="figure-container">
+
             <img src="images/fig7_theory_of_change.png" alt="Theory of Change">
+
             <div class="figure-caption" data-lang="en">Figure 3: Eco-Drain Theory of Change — Inputs to Systemic Impact
+
             </div>
+
             <div class="figure-caption" data-lang="ar">شكل 3: هيكل نظرية التغيير لمشروع إيكو-درين — توضيح المسار المنهجي
+
                 من المدخلات حتى الأثر التنموي النهائي</div>
+
         </div>
 
+
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Stage</th>
+
                     <th data-lang="ar">مراحل التدخل</th>
+
                     <th data-lang="en">Elements</th>
+
                     <th data-lang="ar">عناصر المسار المنهجي للمشروع</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td><strong data-lang="en">Inputs</strong><strong data-lang="ar">المدخلات (Inputs)</strong></td>
+
                     <td data-lang="en">USD 420M; EPADP capacity; DRI expertise; IoT; solar PV; geotextile</td>
+
                     <td data-lang="ar">استثمارات بقيمة 420 مليون دولار؛ قدرات الهيئة (EPADP) ومعهد البحوث (DRI)؛ معدات
+
                         إنترنت الأشياء والألواح الشمسية والجيوتكستيل.</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Activities</strong><strong data-lang="ar">الأنشطة (Activities)</strong>
+
                     </td>
+
                     <td data-lang="en">Pipe replacement; sensor deployment; solar construction; wetlands; training</td>
+
                     <td data-lang="ar">تنفيذ حفر وتركيب شبكات الصرف؛ دمج المستشعرات الذكية؛ بناء المحطات الشمسية؛ حفر
+
                         وتجهيز بحيرات الأراضي الرطبة؛ تدريب المزارعين.</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Outputs</strong><strong data-lang="ar">المخرجات (Outputs)</strong></td>
+
                     <td data-lang="en">100,000 feddans; 5,000 sensors; 50 MW; 20 wetlands; 10,000 farmers trained</td>
+
                     <td data-lang="ar">تحديث شبكات الصرف في 100,000 فدان؛ تشغيل 5,000 مستشعر؛ توليد طاقة بـ 50 ميجاوات؛
+
                         تشغيل 20 أرض رطبة؛ تدريب 10,000 مزارع.</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Outcomes</strong><strong data-lang="ar">النتائج المحققة
+
                             (Outcomes)</strong></td>
+
                     <td data-lang="en">Salinity -30–40%; yields +15–25%; energy -40%; tamper -80%</td>
+
                     <td data-lang="ar">خفض ملوحة التربة 30-40%؛ زيادة إنتاج الغذاء 15-25%؛ توفير طاقة 40%؛ الحد من حوادث
+
                         العبث والتخريب بنسبة 80%.</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong data-lang="en">Impacts</strong><strong data-lang="ar">الأثر التنموي (Impacts)</strong>
+
                     </td>
+
                     <td data-lang="en">Food security 200,000+; ecosystem restoration; climate resilience; replicable
+
                         model</td>
+
                     <td data-lang="ar">تعزيز الأمن الغذائي لأكثر من 200,000 نسمة بالدلتا؛ استعادة النظم البيئية المائية
+
                         بالبحيرات الشمالية؛ زيادة قدرة التكيف مع التغير المناخي.</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <!-- ===== SECTION 7: POLICY CONTEXT & WATER 2.0 ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 7</div>
+
             <div class="section-number" data-lang="ar">القسم 7</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Policy Context and Strategic Alignment</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">التوافق مع السياسات الوطنية ومنظومة المياه 2.0</h2>
+
         </div>
+
+
 
         <div class="grid-3">
+
             <div class="finding-box">
+
                 <h4 data-lang="en">7.1 Egypt Vision 2030</h4>
+
                 <h4 data-lang="ar">7.1 رؤية مصر 2030</h4>
+
                 <p data-lang="en">Eco-Drain aligns with national goals by promoting agricultural resource efficiency, securing smallholder incomes, protecting soil from salinity, and supporting sustainable rural livelihoods.</p>
+
                 <p data-lang="ar">يتوافق المشروع مع رؤية مصر 2030 لتحقيق التنمية الزراعية المستدامة، من خلال حماية التربة من التملح، وتحسين الكفاءة المائية، وتأمين وزيادة دخل صغار المزارعين بالدلتا.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">7.2 Climate Strategy 2050</h4>
+
                 <h4 data-lang="ar">7.2 استراتيجية تغير المناخ 2050</h4>
+
                 <p data-lang="en">Directly supports national adaptation priorities through water conservation, integrating distributed solar PV to lower emissions, and constructed wetlands to restore local ecosystems.</p>
+
                 <p data-lang="ar">يدعم مستهدفات التكيف للدولة من خلال توفير المياه العذبة، واستبدال الطاقة التقليدية في محطات الرفع بالطاقة الشمسية النظيفة، وفلترة مياه الصرف الزراعي بالبحيرات طبيعياً.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">7.3 Water & Irrigation System 2.0</h4>
+
                 <h4 data-lang="ar">7.3 منظومة المياه والري 2.0</h4>
+
                 <p data-lang="en">Eco-Drain acts as a pioneering digital transformation pilot for MWRI's <strong>Water System 2.0</strong>. By integrating IoT soil/flow sensors, telemetric monitoring, satellite remote sensing, motorized drainage valves, and AI digital water twins, the system ensures precision water management and prevents unauthorized water extraction.</p>
+
                 <p data-lang="ar">يمثل المشروع نموذجاً تطبيقياً رائداً للتحول الرقمي المعتمد في <strong>منظومة المياه والري 2.0</strong> الرئاسية. حيث يدمج مستشعرات التربة والتدفق (IoT) والتحكم الرقمي بالبوابات والصمامات، والتنبؤ بالأعطال بالتوأم الرقمي المحدث باستمرار لضمان توفير وإدارة المياه بكفاءة مطلقة.</p>
+
             </div>
+
         </div>
+
+
 
         <!-- ===== SECTION 8: WEFE NEXUS ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 8</div>
+
             <div class="section-number" data-lang="ar">القسم 8</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">WEFE Nexus Analysis</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">تحليل ترابط المياه والطاقة والغذاء
+
                 والنظم البيئية (محور WEFE)</h2>
+
         </div>
 
+
+
         <div class="figure-container">
+
             <img src="images/fig2_wefe_nexus.png" alt="WEFE Nexus Diagram">
+
             <div class="figure-caption" data-lang="en">Figure 4: WEFE Nexus Integration — Eco-Drain Interconnections
+
             </div>
+
             <div class="figure-caption" data-lang="ar">شكل 4: الترابط الهيكلي الفعلي والتأثيرات المتبادلة بين قطاعات
+
                 المياه والطاقة والغذاء والنظم البيئية في مشروع إيكو-درين</div>
+
         </div>
+
+
 
         <div class="callout callout-integration">
+
             <div class="callout-title" data-lang="en">FULL WEFE INTEGRATION</div>
+
             <div class="callout-title" data-lang="ar">تكامل حقيقي وكامل لمحور WEFE</div>
+
             <p data-lang="en">All four nexus sectors addressed through physically interconnected infrastructure and
+
                 shared digital monitoring. Tight bidirectional feedback loops between water, energy, food, and
+
                 ecosystems.</p>
+
             <p data-lang="ar">تتم معالجة القطاعات الأربعة للترابط من خلال بنية تحتية متكاملة فيزيائياً ونظام رصد رقمي
+
                 موحد. يؤدي تحسين الصرف (المياه) إلى مكافحة التملح وزيادة إنتاج الغذاء (الغذاء)؛ وتوفر الخلايا الشمسية
+
                 (الطاقة) طاقة نظيفة للضخ ورصد الشبكات؛ فيما تحمي الأراضي الرطبة (النظم البيئية) نوعية المياه وتدعم
+
                 التنوع البيولوجي.</p>
+
         </div>
+
+
 
         <!-- ===== SECTION 9: PROJECT DESCRIPTION ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 9</div>
+
             <div class="section-number" data-lang="ar">القسم 9</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Project Description</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">الوصف الفني والهندسي للمشروع</h2>
+
         </div>
+
+
 
         <div class="component-header" data-lang="en">Component 1 — Subsurface Drainage Retrofitting</div>
+
         <div class="component-header" data-lang="ar">المكون 1 — إحلال وتجديد شبكات الصرف المغطى المتقادمة</div>
+
         <div class="component-body">
+
             <p data-lang="en"><strong>Scope:</strong> 100,000 feddans. HDPE pipes (80–110mm) at 1.0–1.5m depth.
+
                 Pre-wrapped geotextile envelopes. Tamper-resistant manholes. <strong>Design life: 40+ years.</strong>
+                <strong>Spacing Design:</strong> Laterals spaced using Hooghoudt's Equation, adjusting from 20m in Kafr El-Sheikh's heavy clay to 55m in Gharbia's silty loam to balance water table control and conservation.
             </p>
+
             <p data-lang="ar"><strong>النطاق الفني:</strong> 100,000 فدان. استبدال الأنابيب الحقلية التالفة بأخرى مصنوعة
+
                 من البولي إيثيلين عالي الكثافة (HDPE) بأقطار 80-110 مم على عمق يتراوح بين 1.0 إلى 1.5 متر، وتوصيلها
+
                 بالمجمعات الرئيسية. استخدام مرشحات/أغلفة جيوتكستيلية ملفوفة مسبقاً لمنع دخول حبيبات الطمي والانسدادات.
+
                 تركيب غرف تفتيش خرسانية مسلحة بأغطية مؤمنة ومحكمة الإغلاق. <strong>العمر التصميمي المستهدف: 40 عاماً
-                    فأكثر.</strong></p>
+
+                    فأكثر.</strong>
+                <strong>تصميم المسافات:</strong> يتم حساب المسافات بين المصارف الحقلية بمعادلة هوغهودت، وتتراوح من 20 متراً في طين كفر الشيخ الثقيل إلى 55 متراً في طمي الغربية لتحقيق التوازن بين الصرف والترشيد.
+            </p>
+
         </div>
+
+
 
         <div class="component-header" data-lang="en">Component 2 — IoT Tamper-Proof Monitoring</div>
+
         <div class="component-header" data-lang="ar">المكون 2 — شبكة المراقبة الذكية وكشف التلاعب والعبث بإنترنت الأشياء
+
             (IoT)</div>
+
         <div class="component-body">
+
             <div class="figure-container">
+
                 <img src="images/fig4_iot_monitoring.png" alt="IoT Monitoring System">
+
                 <div class="figure-caption" data-lang="en">Figure 5: IoT Monitoring Architecture — Real-Time Drainage
+
                     Intelligence</div>
+
                 <div class="figure-caption" data-lang="ar">شكل 5: البنية التقنية لمنظومة الاستشعار والمراقبة عن بُعد
+
                     لكشف العبث وتتبع التدفقات الجوفية لحظياً</div>
+
             </div>
+
             <p data-lang="en">5,000+ sensor nodes with: water level, flow, soil moisture, salinity (EC), vibration
+
                 (tamper), temperature. LoRaWAN mesh + cellular backhaul. ESP32 edge computing. GPS-stamped tamper
-                alerts.</p>
+
+                alerts.
+                <strong>NTRA Regulatory Compliance:</strong> Integration of an alternative cellular **NB-IoT** network backup option to ensure secure, encrypted transmission using national telecom infrastructure, avoiding NTRA private frequency licensing bottlenecks.
+            </p>
+
             <p data-lang="ar">نشر 5,000 عقدة استشعار ذكية تشمل: مستشعرات قياس منسوب المياه بالموجات فوق الصوتية، أجهزة
+
                 قياس تدفق كهرومغناطيسية، مجسات رطوبة وملوحة التربة (EC)، ومستشعرات اهتزاز (مقياس تسارع) مثبتة على
+
                 الجدران الداخلية لغرف التفتيش لرصد أي محاولات فتح غير مصرح بها أو عمليات حفر وتخريب وتحديد موقعها عبر
-                الـ GPS وإرسال تنبيه فوري عبر شبكة LoRaWAN والاتصال الخلوي.</p>
+
+                الـ GPS وإرسال تنبيه فوري عبر شبكة LoRaWAN والاتصال الخلوي.
+                <strong>التوافق التنظيمي مع جهاز الاتصالات (NTRA):</strong> تم دمج نظام اتصالات بديل يدعم الجيل الضيق لإنترنت الأشياء (**NB-IoT**) لضمان النقل الآمن للمعلومات عبر شبكات المحمول الوطنية المرخصة، وتجنب عقبات تراخيص الترددات الخاصة.
+            </p>
+
         </div>
+
+
 
         <div class="component-header" data-lang="en">Component 3 — Solar Micro-Grid (50 MW)</div>
+
         <div class="component-header" data-lang="ar">المكون 3 — منظومة الطاقة الشمسية الموزعة (50 ميجاوات)</div>
+
         <div class="component-body">
+
             <p data-lang="en">Distributed across ~25 pumping stations. Battery storage (4-hour). Production: ~90
-                GWh/year. Primary: pumping (~35 MW) + IoT (~1 MW); surplus to grid (~14 MW).</p>
+
+                GWh/year. Primary: pumping (~35 MW) + IoT (~1 MW); surplus to grid (~14 MW).
+                <strong>Net Metering (EgyptERA):</strong> Fully aligned with Net Metering rules. Bidirectional smart meters record electricity exports to the national grid during peak hours, offsetting pumping energy OPEX by 40%.
+            </p>
+
             <p data-lang="ar">إنشاء محطات خلايا شمسية موزعة بجوار 25 محطة رفع وتصريف بالدلتا بطاقة إجمالية 50 ميجاوات
+
                 مجهزة بأنظمة تخزين بالبطاريات بسعة 4 ساعات لتأمين استمرارية العمل. الإنتاج المتوقع: 90 جيجاوات ساعة/سنة.
+
                 استخدام 35 ميجاوات لتشغيل الطلمبات، 1 ميجاوات لمنظومات إنترنت الأشياء والتحكم، وربط وتصدير الفائض المقدر
-                بـ 14 ميجاوات إلى الشبكة القومية للكهرباء.</p>
+
+                بـ 14 ميجاوات إلى الشبكة القومية للكهرباء.
+                <strong>صافي القياس (EgyptERA):</strong> متوافق بالكامل مع لوائح صافي القياس للربط بالشبكة القومية عبر عدادات ذكية ثنائية الاتجاه، وخصم فائض التصدير للشبكة من فواتير تشغيل محطات الصرف.
+            </p>
+
         </div>
+
+
 
         <div class="component-header" data-lang="en">Component 4 — Smart Irrigation & 10-Feddan Pilot Test Area</div>
+
         <div class="component-header" data-lang="ar">المكون 4 — منظومة الري الذكي المتكامل وحقل ريادي تجريبي بمساحة 10
+
             أفدنة</div>
+
         <div class="component-body">
+
             <p data-lang="en"><strong>Bespoke Irrigation Scheduling:</strong> Soil moisture sensors in the root zone are
+
                 connected to solar-powered automatic field valves. Irrigation is executed strictly on demand based on
+
                 plant transpiration needs, preventing over-watering.</p>
+
             <p data-lang="en"><strong>Controlled Subsurface Drainage:</strong> Drainage outlets and collector pump
+
                 stations discharging into open public drains are equipped with IoT-controlled motorized gate valves.
+
                 When soil sensors indicate that the plant requires moisture, the drainage outlet is automatically
+
                 closed. This raises the water table locally within the zone of capillary rise, enabling the plant to absorb moisture
+
                 via capillary rise, thereby reducing external irrigation needs. The outlet gate is opened only when soil
+
                 salinity sensors detect salt buildup (triggering leaching drainage) or if the water table exceeds the
+
                 critical threshold to prevent waterlogging.</p>
+
             <p data-lang="en"><strong>Smart Salinity Flushing Cycle:</strong> To prevent root zone salinization under controlled drainage, the system integrates a telemetric feedback loop. If soil salinity sensors detect that electrical conductivity exceeds the crop threshold (e.g., $EC_e > 4 \text{ dS/m}$ for wheat or $EC_e > 2 \text{ dS/m}$ for sensitive crops), the digital platform triggers an automatic command to open the motorized gate valve. This drains out the saline water and allows fresh irrigation water to leach the salts through the soil profile. Once salinity drops below $EC_e < 2 \text{ dS/m}$, the gates close to resume water retention and capillary rise.</p>
+
             <p data-lang="en"><strong>10-Feddan Pilot Test Site:</strong> To validate this concept, a 10-feddan pilot
+
                 area serving a single isolated subsurface collector network will be established. This site will serve as
+
                 the validation unit, demonstrating the precise dynamic feedback loops between soil moisture, capillary
+
                 rise, and drainage valve control before scaling up to the full 100,000 feddans.</p>
+
             <p data-lang="ar"><strong>جدولة الري الذكي المخصصة:</strong> ربط مستشعرات رطوبة التربة في منطقة الجذور
+
                 بصمامات ميكانيكية آلية تعمل بالطاقة الشمسية، لتوفير مياه الري حسب الاحتياج الفعلي للنبات فقط، مما يمنع
+
                 الفقد والهدر المائي.</p>
+
             <p data-lang="ar"><strong>الصرف المغطى المحكوم (Controlled Subsurface Drainage):</strong> تزويد مصبات الصرف
+
                 المغطى ومحطات الرفع الفرعية التي تصب في المصارف المكشوفة ببوابات كهربائية ميكانيكية (Motorized Valves)
+
                 يتم التحكم فيها عن بُعد عبر إنترنت الأشياء. عند استشعار حاجة التربة والنبات للمياه، تُغلق بوابة مصب
+
                 الصرف تلقائياً للاحتفاظ بالرطوبة الأرضية ورفع منسوب المياه الأرضية محلياً في منطقة الجذور، مما يتيح
+
                 للنبات امتصاص المياه عبر خاصية الصعود الشعري (Capillary Rise)، وهو ما يقلل من كميات مياه الري الإضافية
+
                 المطلوبة. وتُفتح بوابات المصبات تلقائياً فقط عند رصد مستشعرات الملوحة لتراكم الأملاح (لإجراء غسيل
+
                 للتربة) أو عند ارتفاع منسوب الماء الأرضي عن الحد الحرج لمنع تغدق الجذور.</p>
+
             <p data-lang="ar"><strong>دورة غسيل التربة الذكية لمنع التملح:</strong> لمنع تملح منطقة الجذور نتيجة حبس المياه بالصرف المحكوم، تدمج المنصة خوارزمية ذكية متصلة بمستشعرات الملوحة الجوفية. عند قياس ملوحة تتجاوز الحد الحرج للمحصول (مثل $EC_e > 4 \text{ dS/m}$ للقمح أو $EC_e > 2 \text{ dS/m}$ للمحاصيل الحساسة)، ترسل المنصة أمراً تلقائياً بفتح البوابات الميكانيكية للمصب لتصريف المياه المالحة والسماح لمياه الري العذبة بغسيل الأملاح من التربة. وتغلق البوابات مجدداً عند انخفاض الملوحة عن $EC_e < 2 \text{ dS/m}$ للاحتفاظ بالرطوبة العذبة.</p>
+
             <p data-lang="ar"><strong>الموقع الريادي التجريبي (10 أفدنة):</strong> لتطبيق واختبار هذه التكنولوجيا بشكل
+
                 عملي ودقيق، يتم تخصيص مساحة 10 أفدنة كحقل تجريبي يغطي شبكة مجمع صرف مغطى معزولة بالكامل. سيمثل هذا
+
                 الموقع وحدة التحقق الفني والنمذجة لقياس نسب توفير المياه الفعلي، تحسن المحاصيل، وترشيد طاقة الضخ قبل
+
                 التعميم الواسع النطاق.</p>
 
+
+
             <div class="figure-container">
+
                 <div class="mermaid">
+
                     graph TD
+
                         A[IoT Smart Sensors] -->|Soil Moisture & Salinity| B[LoRaWAN Gateways]
+
                         B -->|Real-time encrypted telemetry| C[AI Platform & Digital Twin]
+
                         C -->|Evaluate Soil Water Balance| D{Is EC > 4 dS/m or Water Table Too High?}
+
                         D -->|Yes: Salinity/Waterlog Risk| E[Send command to OPEN valves automatically]
+
                         D -->|No: Soil is moist & safe| F[Keep valves CLOSED to retain water via capillary rise]
+
                         E -->|Flush saline water out| G[Update 3D Digital Water Twin]
+
                         F -->|Save surface irrigation water| G
+
                 </div>
+
                 <div class="figure-caption" data-lang="en">Figure 5: Closed-Loop Water Control and Salinity Flushing Flowchart</div>
+
                 <div class="figure-caption" data-lang="ar">شكل 5: مخطط تدفق البيانات والتحكم الآلي المغلق في منظومة الصرف والري الذكي وعملية غسيل التربة</div>
+
             </div>
+
             <p data-lang="en"><strong>Expected Outcome:</strong> A 25–30% reduction in over-irrigation, yielding approximately 150 million m³/year of water savings across the project scale (100,000 feddans), equivalent to roughly 1,500 m³ per feddan per year.</p>
+
             <p data-lang="ar"><strong>النتائج المتوقعة:</strong> تقليل الإفراط في مياه الري بنسبة 25% إلى 30%، مما يحقق وفرًا مائيًا يقارب 150 مليون متر مكعب سنويًا على مستوى مساحة المشروع (100,000 فدان)، وهو ما يعادل حوالي 1,500 متر مكعب للفدان سنويًا.</p>
+
         </div>
+
+
 
         <div class="component-header" data-lang="en">Components 5–6 — Nature-Based Solutions & Digital Water Twin</div>
+
         <div class="component-header" data-lang="ar">المكونات 5–6 — الحلول القائمة على الطبيعة والمنصة الرقمية للتوأم
+
             المائي</div>
+
         <div class="component-body">
+
             <p data-lang="en">20 constructed wetlands (4,760 feddans) for biological water treatment. Cloud dashboard, mobile
+
                 app, and AI predictive maintenance based on real-time feedback loops. 3D Digital Twin updated via IoT
-                data, compatible with MWRI's Irrigation System 2.0.</p>
+
+                data, compatible with MWRI's Irrigation System 2.0.
+                <strong>Carbon Accounting:</strong> Wet carbon sequestration is calculated under the IPCC Wetlands Supplement and Verra's VM0033 methodology, generating carbon offsets to cover O&M.
+                <strong>Weather Data Fusion (Penman-Monteith):</strong> Merges weather forecasts with soil telemetry to compute reference evapotranspiration ($ET_0$) for proactive gate adjustments.
+                <strong>Farmer WUA Mobile App:</strong> Arabic app 'Smart Farmer Drainage' provides WUAs with soil moisture levels to guide irrigation scheduling and foster social ownership.
+            </p>
+
             <p data-lang="ar">تصميم 20 منطقة أراضٍ رطبة اصطناعية (بمساحة 4,760 فدان) للمعالجة البيولوجية لمياه الصرف
+
                 الزراعي من المغذيات الزائدة والسموم قبل التصريف في البحيرات الشمالية. تطوير منصة تحكم رقمية سحابية مجهزة
+
                 بالذكاء الاصطناعي للصيانة التنبؤية، وإنشاء توأم رقمي (Digital Twin) ثلاثي الأبعاد للشبكة متوافق مع
-                معايير وزارة الموارد المائية والري.</p>
+
+                معايير وزارة الموارد المائية والري.
+                <strong>حسابات الكربون للأراضي الرطبة:</strong> يتم قياس احتجاز الكربون بالأراضي الرطبة وفق ملحق الأراضي الرطبة التابع للهيئة الحكومية الدولية للمناخ (IPCC) ومنهجية Verra (VM0033) لتوليد شهادات كربون تدعم تكاليف الصيانة.
+                <strong>دمج بيانات الأرصاد الجوية (بينمان-مونتيث):</strong> تدمج المنصة التنبؤات الجوية مع استشعار التربة لحساب البخر-نتح ($ET_0$) لاتخاذ قرارات استباقية للصمامات.
+                <strong>تطبيق المحمول للروابط:</strong> يوفر تطبيق "الفلاح للصرف الذكي" باللغة العربية لروابط مستخدمي المياه لمتابعة رطوبة التربة وتنظيم مواعيد الري جماعياً.
+            </p>
+
         </div>
+
+
 
         <!-- ===== SECTION 10-11: STAKEHOLDERS & CLIMATE ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Sections 10–11</div>
+
             <div class="section-number" data-lang="ar">القسمان 10–11</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Stakeholders and Climate Resilience
+
             </h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">أصحاب المصلحة وتدابير المرونة والتكيف
+
                 المناخي</h2>
+
         </div>
 
+
+
         <div class="figure-container">
+
             <img src="images/fig8_stakeholder_mapping.png" alt="Stakeholder Matrix">
+
             <div class="figure-caption" data-lang="en">Figure 6: Stakeholder Power-Interest Matrix</div>
+
             <div class="figure-caption" data-lang="ar">شكل 6: مصفوفة أصحاب المصلحة وفق معياري "القوة/التأثير"
+
                 و"الاهتمام/الأهمية" لإدارة وتوجيه الشراكات بالمشروع</div>
+
         </div>
 
+
+
         <div class="figure-container">
+
             <img src="images/fig6_climate_resilience.png" alt="Climate Resilience">
+
             <div class="figure-caption" data-lang="en">Figure 7: Climate Threats and Eco-Drain Adaptation Benefits</div>
+
             <div class="figure-caption" data-lang="ar">شكل 7: خريطة التهديدات والمخاطر المناخية التي تواجه الدلتا وآليات
+
                 التكيف والفوائد المقابلة في مشروع إيكو-درين</div>
+
         </div>
+
+
 
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Adaptation Benefit</th>
+
                     <th data-lang="ar">آلية التكيف المناخي</th>
+
                     <th data-lang="en">Mechanism</th>
+
                     <th data-lang="ar">طريقة العمل الهيدروليكية</th>
+
                     <th data-lang="en">Quantified Impact</th>
+
                     <th data-lang="ar">الأثر المقاس كمياً</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td>Controlled drainage</td>
+
                     <td data-lang="ar">الصرف المغطى المحكوم</td>
+
                     <td data-lang="en">Adjustable outlet levels manage water table</td>
+
                     <td data-lang="ar">التحكم في مناسيب مخارج الصرف لتنظيم منسوب المياه الأرضية موسمياً</td>
+
                     <td data-lang="en">Salt accumulation reduced 30–40%</td>
+
                     <td data-lang="ar">خفض تراكم الأملاح في منطقة الجذور بنسبة 30% إلى 40%</td>
+
                 </tr>
+
                 <tr>
+
                     <td>Real-time monitoring</td>
+
                     <td data-lang="ar">الرصد الفوري والإنذار المبكر</td>
+
                     <td data-lang="en">IoT detects anomalies instantly</td>
+
                     <td data-lang="ar">استشعار فوري للانسدادات والارتفاعات المفاجئة لمستويات المياه تحت السطحية</td>
+
                     <td data-lang="en">Response time: weeks → hours</td>
+
                     <td data-lang="ar">تقليل زمن الاستجابة لإصلاح الشبكات من أسابيع إلى بضع ساعات فقط</td>
+
                 </tr>
+
                 <tr>
+
                     <td>Solar resilience</td>
+
                     <td data-lang="ar">مرونة الطاقة الذاتية</td>
+
                     <td data-lang="en">Off-grid pumping during disruptions</td>
+
                     <td data-lang="ar">استمرار عمل طلمبات سحب مياه الصرف بشكل مستقل أثناء انقطاع الشبكة الكهربائية</td>
+
                     <td data-lang="en">Drainage continues in extreme weather</td>
+
                     <td data-lang="ar">حماية الأراضي من الغرق والتغدق في حالات الطقس المتطرف والسيول</td>
+
                 </tr>
+
                 <tr>
+
                     <td>Smart irrigation</td>
+
                     <td data-lang="ar">تكامل الري الذكي والترشيد</td>
+
                     <td data-lang="en">Data-driven water reduction</td>
+
                     <td data-lang="ar">تقنين استخدام المياه بالاعتماد على رطوبة التربة الفعلية وليس الجداول الزمنية
+
                         الجامدة</td>
+
                     <td data-lang="en">150M m³/year saved</td>
+
                     <td data-lang="ar">توفير حوالي 150 مليون متر مكعب سنوياً من مياه النيل</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <div class="rating-box rating-high">
+
             <span data-lang="en">Resilience Rating: HIGH</span>
+
             <span data-lang="ar">تصنيف القدرة على التكيف والمرونة المناخية: عالي جداً</span>
+
         </div>
+
+
 
         <!-- ===== SECTIONS 15-16: FINANCIALS ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Sections 15–16</div>
+
             <div class="section-number" data-lang="ar">القسمان 15–16</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Financial Analysis and Capital Stack
+
             </h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">الجدوى المالية وتصميم هيكل رأس المال
+
             </h2>
+
         </div>
+
+
 
         <h3 data-lang="en">CAPEX Breakdown</h3>
+
         <h3 data-lang="ar">تفصيل التكاليف الاستثمارية الرأسمالية (CAPEX)</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Component</th>
+
                     <th data-lang="ar">البند المالي ومكونات المشروع</th>
+
                     <th style="text-align:right">USD M</th>
+
                     <th style="text-align:right">%</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en">Subsurface Drainage Retrofitting</td>
+
                     <td data-lang="ar">إحلال وتجديد شبكات الصرف المغطى (أنابيب، فلاتر، تركيبات)</td>
+
                     <td style="text-align:right">180</td>
+
                     <td style="text-align:right">42.9%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">IoT Monitoring Network</td>
+
                     <td data-lang="ar">منظومة إنترنت الأشياء والمراقبة عن بعد (مستشعرات وبوابات LoRa)</td>
+
                     <td style="text-align:right">35</td>
+
                     <td style="text-align:right">8.3%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Solar PV (50 MW)</td>
+
                     <td data-lang="ar">شبكة الخلايا الشمسية الموزعة وبطاريات التخزين لمعدات الرفع</td>
+
                     <td style="text-align:right">85</td>
+
                     <td style="text-align:right">20.2%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Constructed Wetlands</td>
+
                     <td data-lang="ar">إنشاء الأراضي الرطبة الاصطناعية وهندسة المصبات</td>
+
                     <td style="text-align:right">40</td>
+
                     <td style="text-align:right">9.5%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Smart Irrigation</td>
+
                     <td data-lang="ar">مكونات تكامل الري الذكي (متحكمات حقلية وصمامات إلكترونية)</td>
+
                     <td style="text-align:right">25</td>
+
                     <td style="text-align:right">6.0%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Digital Platform</td>
+
                     <td data-lang="ar">برمجيات التحكم والتوأم الرقمي ونماذج الذكاء الاصطناعي</td>
+
                     <td style="text-align:right">15</td>
+
                     <td style="text-align:right">3.6%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Management, ESIA, Contingency</td>
+
                     <td data-lang="ar">إدارة المشروع، التقييم البيئي والاجتماعي، والاحتياطيات الفنية</td>
+
                     <td style="text-align:right">40</td>
+
                     <td style="text-align:right">9.5%</td>
+
                 </tr>
+
                 <tr class="total-row">
+
                     <td><strong data-lang="en">Total</strong><strong data-lang="ar">التكلفة الإجمالية التكلفة التقديرية
+
                             للمشروع</strong></td>
+
                     <td style="text-align:right"><strong>420</strong></td>
+
                     <td style="text-align:right"><strong>100%</strong></td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <div class="figure-container">
+
             <img src="images/fig5_capital_stack.png" alt="Capital Stack">
+
             <div class="figure-caption" data-lang="en">Figure 8: Proposed Blended Finance Capital Stack — USD 420
+
                 Million</div>
+
             <div class="figure-caption" data-lang="ar">شكل 8: نموذج هيكل رأس المال والتمويل المختلط المقترح لتمويل
+
                 البنية التحتية لمشروع إيكو-درين بقيمة 420 مليون دولار</div>
+
         </div>
 
+
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Instrument</th>
+
                     <th data-lang="ar">أدوات التمويل المقترحة</th>
+
                     <th style="text-align:right">USD M</th>
+
                     <th style="text-align:right">%</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en"><strong>Grant / TA</strong></td>
+
                     <td data-lang="ar"><strong>المنح والمساعدات الفنية (لدراسات الجدوى والتدريب والرقابة)</strong></td>
+
                     <td style="text-align:right">63</td>
+
                     <td style="text-align:right">15%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Equity</strong></td>
+
                     <td data-lang="ar"><strong>المساهمة الرأسمالية الوطنية (أصول حكومية وشراكات محلية)</strong></td>
+
                     <td style="text-align:right">84</td>
+
                     <td style="text-align:right">20%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Concessional Debt</strong></td>
+
                     <td data-lang="ar"><strong>القروض التنموية الميسرة (بنوك التنمية وصناديق المناخ)</strong></td>
+
                     <td style="text-align:right">168</td>
+
                     <td style="text-align:right">40%</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Commercial Debt</strong></td>
+
                     <td data-lang="ar"><strong>القروض التجارية (مؤسسات التمويل الخاصة والبنوك التجارية)</strong></td>
+
                     <td style="text-align:right">105</td>
+
                     <td style="text-align:right">25%</td>
+
                 </tr>
+
                 <tr class="total-row">
+
                     <td><strong data-lang="en">Total</strong><strong data-lang="ar">إجمالي هيكل رأس المال</strong></td>
+
                     <td style="text-align:right"><strong>420</strong></td>
+
                     <td style="text-align:right"><strong>100%</strong></td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">16.2 Unit Costs and Cost-Benefit Justification</h3>
+
         <h3 data-lang="ar">16.2 مبررات تكلفة الفدان ومقارنتها بالصرف التقليدي</h3>
+
         
+
         <p data-lang="en">The total investment of USD 420 million translates to an all-in cost of **USD 4,200 per feddan** across all six WEFE components. Specifically, Component 1 (Subsurface Retrofitting) costs USD 180 million, representing **USD 1,800 per feddan (approximately EGP 86,400 per feddan)**.</p>
+
         <p data-lang="ar">يبلغ إجمالي الاستثمار المستهدف للمشروع 420 مليون دولار لمساحة 100,000 فدان، أي ما يعادل **4,200 دولار للفدان الواحد** (شاملاً المكونات الستة لمحور WEFE). ويبلغ نصيب الفدان من مكون الإحلال والتجديد المطور (Component 1) نحو **1,800 دولار للفدان (ما يعادل تقريباً 86,400 جنيه مصري للفدان)**.</p>
 
+
+
         <div class="callout callout-info">
+
             <div class="callout-title" data-lang="en">COMPARISON WITH TRADITIONAL DRAINAGE COST</div>
+
             <div class="callout-title" data-lang="ar">مقارنة التكلفة الاقتصادية بالصرف التقليدي</div>
+
             <p data-lang="en">Traditional subsurface drainage in Egypt is estimated at approximately **EGP 18,000 per feddan**. Eco-Drain's premium is fully justified by the following lifecycle and operational advantages:</p>
+
             <p data-lang="ar">تُقدّر التكلفة الإجمالية للصرف التقليدي في مصر بـ **18,000 جنيه للفدان**. الميزانية المخصصة لمشروع إيكو-درين لها ما يبررها تماماً من واقع العوائد المالية والتشغيلية الممتدة:</p>
+
             <ul data-lang="en">
+
                 <li><strong>Extended Lifespan:</strong> Traditional systems (costing EGP 18k) use low-spec pipes without geotextile filters and have open concrete manholes, often failing in 5-10 years due to clogging and tampering. Eco-Drain uses corrugated HDPE with non-woven geotextile envelopes and buried invisible manholes, extending design life to **40+ years** (double the lifespan) and minimizing O&M.</li>
+
                 <li><strong>Avoided Water Value:</strong> By saving 150 million m³/year of water via capillary-rise, the system saves **USD 52.5 million annually** in avoided alternative supply costs, paying back the smart components in just 0.48 years.</li>
+
                 <li><strong>Crop Yield Uplift:</strong> A 15-25% yield increase from reduced soil salinity directly boosts national food security, **reducing Egypt's agricultural import dependency** (e.g., wheat, oilseeds) and **raising the standard of living and household income** of the 200,000+ smallholder beneficiaries.</li>
+
             </ul>
+
             <ul data-lang="ar">
+
                 <li><strong>مضاعفة العمر الافتراضي وخفض الصيانة:</strong> شبكات الصرف التقليدي (بسعر 18 ألف جنيه) تُنفذ بأنابيب عادية وبدون فلاتر وتتعرض للانسداد بالطمي والتلاعب المادي خلال 5-10 سنوات. بينما نظام إيكو-درين يعتمد على أنابيب HDPE مغلفة بجيوتكستايل مرشح وغرف غاطسة مدفونة تمنع التلاعب، مما يرفع عمر الشبكة إلى **40+ سنة** ويخفض تكاليف الصيانة تماماً.</li>
+
                 <li><strong>قيمة وفورات المياه المكتسبة:</strong> توفير 150 ملايين م³/سنة يوفر قيمة مياه بديلة معالجة أو محلاة تبلغ **52.5 مليون دولار سنوياً**، مما يسترد رأس مال الري الذكي بالكامل في 0.48 سنة فقط.</li>
+
                 <li><strong>زيادة الإنتاجية الزراعية والأثر القومي:</strong> زيادة إنتاج المحاصيل بنسبة 15-25% تعود بأرباح مالية مباشرة وتساهم في **رفع مستوى معيشة ودخل صغار المزارعين المنتفعين**، كما تدعم الميزان التجاري للدولة عن طريق **تقليل استيراد السلع الزراعية الاستراتيجية** (مثل القمح والزيوت).</li>
+
             </ul>
+
+        <table data-lang="en" style="margin-top: 20px; margin-bottom: 20px;">
+            <caption>Eco-Drain CAPEX Rationalisation and Added Value Matrix</caption>
+            <thead>
+                <tr>
+                    <th>WEFE Component</th>
+                    <th>Eco-Drain CAPEX</th>
+                    <th>Traditional Equivalent</th>
+                    <th>Added Value / Economic Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Subsurface Retrofitting</strong></td>
+                    <td style="text-align:right">USD 180 M</td>
+                    <td style="text-align:right">USD 35 M</td>
+                    <td>40+ year design life (vs 20); buried anti-tamper chambers; 15-25% crop yield increase.</td>
+                </tr>
+                <tr>
+                    <td><strong>IoT Tamper-Proofing</strong></td>
+                    <td style="text-align:right">USD 45 M</td>
+                    <td style="text-align:right">USD 0 M</td>
+                    <td>Real-time flow/salinity telemetry; 80% reduction in tampering; early warnings.</td>
+                </tr>
+                <tr>
+                    <td><strong>Solar PV Grid (50 MW)</strong></td>
+                    <td style="text-align:right">USD 85 M</td>
+                    <td style="text-align:right">USD 0 M</td>
+                    <td>40% reduction in pumping electricity bill; grid-export revenues via Net Metering.</td>
+                </tr>
+                <tr>
+                    <td><strong>Smart Irrigation</strong></td>
+                    <td style="text-align:right">USD 25 M</td>
+                    <td style="text-align:right">USD 0 M</td>
+                    <td>Saves 150 million m³/year of water (worth USD 52.5 M/year in avoided water costs).</td>
+                </tr>
+                <tr>
+                    <td><strong>Nature-Based Wetlands</strong></td>
+                    <td style="text-align:right">USD 40 M</td>
+                    <td style="text-align:right">USD 0 M</td>
+                    <td>Treats 200M m³/year drainage; blue carbon offsets; Northern lakes fisheries protection.</td>
+                </tr>
+                <tr>
+                    <td><strong>Digital Twin Platform</strong></td>
+                    <td style="text-align:right">USD 45 M</td>
+                    <td style="text-align:right">USD 0 M</td>
+                    <td>AI predictive maintenance; data integration with MWRI Irrigation System 2.0.</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Project</strong></td>
+                    <td style="text-align:right"><strong>USD 420 M</strong></td>
+                    <td style="text-align:right"><strong>USD 35 M</strong></td>
+                    <td><strong>Project EIRR of 21.4%; comprehensive climate adaptation and water-saving returns.</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table data-lang="ar" style="margin-top: 20px; margin-bottom: 20px;">
+            <caption>جدول مقارنة الجدوى الاستثمارية وتبرير التكلفة الإضافية لمشروع Eco-Drain</caption>
+            <thead>
+                <tr>
+                    <th>مكون الترابط (WEFE)</th>
+                    <th>تكلفة Eco-Drain التقديرية</th>
+                    <th>تكلفة الصرف التقليدي البديل</th>
+                    <th>القيمة المضافة والعائد الاقتصادي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>إحلال شبكات الصرف</strong></td>
+                    <td style="text-align:right">180 مليون دولار</td>
+                    <td style="text-align:right">35 مليون دولار</td>
+                    <td>عمر تصميمي 40+ سنة (بدل 20)؛ غرف تفتيش مدفونة لمنع العبث؛ زيادة المحاصيل 15-25%.</td>
+                </tr>
+                <tr>
+                    <td><strong>إنترنت الأشياء ومنع العبث</strong></td>
+                    <td style="text-align:right">45 مليون دولار</td>
+                    <td style="text-align:right">0 دولار</td>
+                    <td>رصد تدفقات وملوحة التربة آنياً؛ خفض التعديات 80%؛ كشف فوري للأعطال والانسدادات.</td>
+                </tr>
+                <tr>
+                    <td><strong>محطات شمسية (50 ميجاوات)</strong></td>
+                    <td style="text-align:right">85 مليون دولار</td>
+                    <td style="text-align:right">0 دولار</td>
+                    <td>تخفيض 40% من تكاليف كهرباء الضخ؛ تصدير الفائض للشبكة عبر عدادات صافي القياس.</td>
+                </tr>
+                <tr>
+                    <td><strong>منظومة الري الذكي</strong></td>
+                    <td style="text-align:right">25 مليون دولار</td>
+                    <td style="text-align:right">0 دولار</td>
+                    <td>ترشيد 150 مليون م³ مياه سنوياً (بقيمة اقتصادية 52.5 مليون دولار/سنة تكلفة بديلة).</td>
+                </tr>
+                <tr>
+                    <td><strong>الأراضي الرطبة الاصطناعية</strong></td>
+                    <td style="text-align:right">40 مليون دولار</td>
+                    <td style="text-align:right">0 دولار</td>
+                    <td>معالجة 200 مليون م³/سنة؛ عوائد الكربون الأزرق؛ حماية مصايد الثروة السمكية بالبحيرات.</td>
+                </tr>
+                <tr>
+                    <td><strong>التوأم الرقمي والمنصة</strong></td>
+                    <td style="text-align:right">45 مليون دولار</td>
+                    <td style="text-align:right">0 دولار</td>
+                    <td>تحليلات تنبؤية بالذكاء الاصطناعي؛ ربط وتكامل فوري مع منظومة الري 2.0 التابعة للوزارة.</td>
+                </tr>
+                <tr>
+                    <td><strong>إجمالي المشروع</strong></td>
+                    <td style="text-align:right"><strong>420 مليون دولار</strong></td>
+                    <td style="text-align:right"><strong>35 مليون دولار</strong></td>
+                    <td><strong>معدل عائد داخلي 21.4%؛ مكاسب مناخية ومائية شاملة تبرر التكلفة الإضافية.</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
         </div>
+
+
 
         <h3 data-lang="en">16.3 Smart Irrigation Feasibility and Avoided-Cost Analysis</h3>
+
         <h3 data-lang="ar">16.3 الجدوى الاقتصادية للري الذكي وتحليل التكلفة المتجنبة</h3>
+
         <p data-lang="en">The smart irrigation component has a dedicated CAPEX of <strong>USD 25 million</strong>. The economic feasibility is demonstrated via two main methods:</p>
+
         <p data-lang="ar">يمتلك مكون الري الذكي ميزانية استثمارية مخصصة تبلغ <strong>25 مليون دولار</strong>. وتتضح الجدوى الاقتصادية له عبر طريقتين رئيسيتين:</p>
+
         <ul data-lang="en">
+
             <li><strong>Avoided-Cost of Alternative Water Supply:</strong> Saving 150 million m³/year of water avoids the need to produce or secure this water through expensive alternative methods, such as desalination or advanced wastewater reuse. Pricing the alternative supply conservatively at <strong>USD 0.35/m³</strong> yields an annual value of:
+
                 $$\text{Annual Water Value Saved} = 150,000,000 \text{ m}^3 \times 0.35 \text{ USD/m}^3 = 52.5 \text{ million USD/year}$$
+
                 This yields a payback period of only <strong>0.48 years</strong> (under 6 months) for the smart irrigation component.</li>
+
             <li><strong>EIRR and Indirect Gains:</strong> The economic internal rate of return (EIRR) for this component is estimated at <strong>24.2%</strong>, driven by the 15-25% crop yield increase from reduced soil waterlogging/salinity and an estimated <strong>USD 2.4 million/year</strong> reduction in energy pumping costs (due to a 30% reduction in drainage discharge volume).</li>
+
         </ul>
+
         <ul data-lang="ar">
+
             <li><strong>طريقة تكلفة المياه البديلة المتجنبة (Avoided Cost):</strong> توفير 150 مليون متر مكعب سنوياً من المياه يغني عن تكلفة إنتاج نفس الكمية من مصادر بديلة مكلفة (كالمعالجة الثلاثية المتطورة أو تحلية المياه). عند تسعير قيمة المياه البديلة بـ <strong>0.35 دولار/م³</strong> كحد أدنى، نحصل على قيمة وفورات سنوية تبلغ:
+
                 $$\text{القيمة السنوية للمياه الموفرة} = 150,000,000 \text{ م}^3 \times 0.35 \text{ دولار/م}^3 = 52.5 \text{ مليون دولار سنويًا}$$
+
                 وهذا يعطي فترة استرداد رأس مال لمكون الري الذكي تبلغ <strong>0.48 سنة</strong> فقط (أقل من 6 أشهر!).</li>
+
             <li><strong>معدل العائد الداخلي الاقتصادي (EIRR):</strong> يُقدّر العائد الاقتصادي الداخلي لهذا المكون بـ <strong>24.2%</strong>، بفضل تحسين إنتاجية المحاصيل بنسبة 15-25% نتيجة منع تملح وتغدق التربة، بالإضافة إلى توفير حوالي <strong>2.4 مليون دولار سنوياً</strong> من تكاليف الطاقة الكهربائية والديزل اللازمة للضخ (نتيجة خفض مياه الصرف بنسبة 30%).</li>
+
         </ul>
+
+
 
         <h3 data-lang="en">16.4 Financial Sensitivity Analysis</h3>
+
         <p data-lang="en">To ensure project resilience under macroeconomic fluctuations, a sensitivity analysis has been performed for the overall USD 420 million project budget against variations in key cost and exchange rate parameters (assuming a baseline exchange rate of 1 USD = 48 EGP):</p>
+
         <table data-lang="en">
+
             <thead>
+
                 <tr>
+
                     <th>Scenario</th>
+
                     <th style="text-align:center">Impact on CAPEX</th>
+
                     <th style="text-align:center">Project EIRR</th>
+
                     <th style="text-align:center">Smart Irrigation Payback</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td><strong>Baseline</strong></td>
+
                     <td style="text-align:center">USD 420 million</td>
+
                     <td style="text-align:center">21.4%</td>
+
                     <td style="text-align:center">0.48 years</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong>+10% Cost Increase</strong> (Inflation/Import Tariffs)</td>
+
                     <td style="text-align:center">USD 462 million</td>
+
                     <td style="text-align:center">19.8%</td>
+
                     <td style="text-align:center">1.10 years</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong>+20% Cost Increase</strong> (Severe Supply Shock)</td>
+
                     <td style="text-align:center">USD 504 million</td>
+
                     <td style="text-align:center">18.2%</td>
+
                     <td style="text-align:center">1.45 years</td>
+
                 </tr>
+
                 <tr>
+
                     <td><strong>15% EGP Depreciation</strong> (Exchange rate shift)</td>
+
                     <td style="text-align:center">USD 420 million (denominated)</td>
+
                     <td style="text-align:center">20.6%</td>
+
                     <td style="text-align:center">0.65 years</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
         <p data-lang="en">This sensitivity matrix demonstrates that even under severe cost and exchange rate shocks, the Eco-Drain project maintains an EIRR well above the typical 10% social discount rate and preserves strong investment viability.</p>
 
-        <h3 data-lang="ar">16.4 ����� �������� ������� ��������� ����������</h3>
-        <p data-lang="ar">����� ����� �������� ������� �� �� �������� �����ɡ �� ����� ����� ������ ��������� ��������� ������� 420 ����� ����� ����� �������� �� ���� �������� ������ ����� (������� ��� ��� ����� 1 ����� = 48 ������):</p>
+
+
+        <h3 data-lang="ar">16.4 تحليل الحساسية المالية والتقلبات الاقتصادية</h3>
+
+        <p data-lang="ar">لضمان مرونة واستدامة المشروع في ظل التقلبات الكليɡ تم إجراء تحليل حساسية للميزانية الإجمالية البالغة 420 مليون دولار مقابل التغيرات في بنود التكاليف وأسعار الصرف (بافتراض سعر صرف أساسي 1 دولار = 48 جنيهاً):</p>
+
         <table data-lang="ar">
+
             <thead>
+
                 <tr>
-                    <th>��������� ���������</th>
-                    <th style="text-align:center">����� ��� �������� ���������� (CAPEX)</th>
-                    <th style="text-align:center">���� ������ ������� (EIRR) �������</th>
-                    <th style="text-align:center">���� ������� ���� �����</th>
+
+                    <th>السيناريو الاقتصادي</th>
+
+                    <th style="text-align:center">الأثر على التكاليف الرأسمالية (CAPEX)</th>
+
+                    <th style="text-align:center">معدل العائد الداخلي (EIRR) للمشروع</th>
+
+                    <th style="text-align:center">فترة استرداد الري الذكي</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
-                    <td><strong>����� ������� (Baseline)</strong></td>
-                    <td style="text-align:center">420 ����� �����</td>
+
+                    <td><strong>الوضع الأساسي (Baseline)</strong></td>
+
+                    <td style="text-align:center">420 مليون دولار</td>
+
                     <td style="text-align:center">21.4%</td>
-                    <td style="text-align:center">0.48 ���</td>
+
+                    <td style="text-align:center">0.48 سنة</td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>������ �������� ����� +10%</strong> (���� / ���� �������)</td>
-                    <td style="text-align:center">462 ����� �����</td>
+
+                    <td><strong>ارتفاع التكاليف بنسبة +10%</strong> (تضخم / رسوم استيراد)</td>
+
+                    <td style="text-align:center">462 مليون دولار</td>
+
                     <td style="text-align:center">19.8%</td>
-                    <td style="text-align:center">1.10 ���</td>
+
+                    <td style="text-align:center">1.10 سنة</td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>������ �������� ����� +20%</strong> (����� ����� ������� ��������)</td>
-                    <td style="text-align:center">504 ����� �����</td>
+
+                    <td><strong>ارتفاع التكاليف بنسبة +20%</strong> (أزمات سلاسل الإمداد العالمية)</td>
+
+                    <td style="text-align:center">504 مليون دولار</td>
+
                     <td style="text-align:center">18.2%</td>
-                    <td style="text-align:center">1.45 ���</td>
+
+                    <td style="text-align:center">1.45 سنة</td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>������ ������ ����� 15%</strong> (���� ��� �����)</td>
-                    <td style="text-align:center">420 ����� ����� (���� ��������)</td>
+
+                    <td><strong>انخفاض الجنيه بنسبة 15%</strong> (تغير سعر الصرف)</td>
+
+                    <td style="text-align:center">420 مليون دولار (مقوم بالدولار)</td>
+
                     <td style="text-align:center">20.6%</td>
-                    <td style="text-align:center">0.65 ���</td>
+
+                    <td style="text-align:center">0.65 سنة</td>
+
                 </tr>
+
             </tbody>
+
         </table>
-        <p data-lang="ar">���� ������ �������� ��� ��� �� �� ���������� ������ �������� ����� ��� ��� ������ ������ɡ ��� ����� Eco-Drain ����� ����� ���� ����� (EIRR) ������ ����� ���� ����� ��������� ������ 10%� ��� ���� ����� �������� �����������.</p>
+
+        <p data-lang="ar">تظهر مصفوفة الحساسية أنه حتى في ظل الارتفاعات الحادة للتكاليف وتغير سعر صرف العملة المحليɡ فإن مشروع Eco-Drain يحتفظ بمعدل عائد داخلي (EIRR) يتجاوز بكثير معدل الخصم الاجتماعي البالغ 10%، مما يؤكد جدواه وجاهزيته الاستثمارية.</p>
+
+
 
         <!-- ===== SECTIONS 17-19: RISK & FUNDING ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Sections 17–19</div>
+
             <div class="section-number" data-lang="ar">الأقسام 17–19</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Risk Assessment, Funding Fit, and MRV
+
             </h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">تقييم المخاطر المالية وملاءمة التمويل
+
                 وإطار الرصد</h2>
+
         </div>
+
+
 
         <h3 data-lang="en">Operational Finance Risk Assessment</h3>
+
         <h3 data-lang="ar">تقييم مخاطر التشغيل والتمويل والحلول الفنية</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Risk Type</th>
+
                     <th data-lang="ar">نوع الخطر التشغيلي والمالي</th>
+
                     <th data-lang="en">Mitigation Tool</th>
+
                     <th data-lang="ar">آلية التخفيف والحل المقترح</th>
+
                     <th data-lang="en">Expected Effect</th>
+
                     <th data-lang="ar">الأثر والنتيجة المتوقعة</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en"><strong>Revenue Risk</strong></td>
+
                     <td data-lang="ar"><strong>مخاطر الإيرادات</strong></td>
+
                     <td data-lang="en">Solar PPA; government drainage service agreements</td>
+
                     <td data-lang="ar">اتفاقيات شراء الطاقة الشمسية (PPA) طويلة الأجل وعقود الصيانة الحكومية</td>
+
                     <td data-lang="en">Stable cashflow base</td>
+
                     <td data-lang="ar">تأمين قاعدة تدفقات نقدية مستقرة</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>O&M Costs</strong></td>
+
                     <td data-lang="ar"><strong>مخاطر تكاليف التشغيل والصيانة</strong></td>
+
                     <td data-lang="en">Solar PV replaces grid; IoT predictive maintenance</td>
+
                     <td data-lang="ar">إحلال الطاقة الشمسية محل الكهرباء وتفعيل الصيانة التنبؤية بالاستشعار</td>
+
                     <td data-lang="en">OPEX reduced 30-40%</td>
+
                     <td data-lang="ar">مستويات تشغيل خفضت بنسبة 30% إلى 40% مقارنة بالوضع الحالي</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Tamper / Vandalism Risk</strong></td>
+
                     <td data-lang="ar"><strong>مخاطر التلاعب والتخريب</strong></td>
+
                     <td data-lang="en">IoT tamper detection; community education; manhole security</td>
+
                     <td data-lang="ar">مستشعرات الاهتزاز والتدفق، قفل غرف التفتيش، وإشراك المزارعين</td>
+
                     <td data-lang="en">80% reduction in tamper</td>
+
                     <td data-lang="ar">تخفيض بنسبة 80% في معدلات التلاعب وإتلاف الخطوط</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Farmer Resistance</strong></td>
+
                     <td data-lang="ar"><strong>مقاومة المزارعين للتحول</strong></td>
+
                     <td data-lang="en">Participatory design with WUAs; 10-feddan pilot demonstration</td>
+
                     <td data-lang="ar">التصميم التشاركي مع روابط مستخدمي المياه، ونموذج إرشادي بمساحة 10 أفدنة</td>
+
                     <td data-lang="en">Enhanced community adoption</td>
+
                     <td data-lang="ar">تعزيز تقبل وتبني المزارعين للنظم الحديثة</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Clogging/Sedimentation</strong></td>
+
                     <td data-lang="ar"><strong>انسداد الصمامات بالرواسب</strong></td>
+
                     <td data-lang="en">Diaphragm valves; self-cleaning mesh filters; backwash cycles</td>
+
                     <td data-lang="ar">استخدام صمامات غشائية للمياه العكرة وفلاتر ذاتية الغسيل العكسي</td>
+
                     <td data-lang="en">Minimized blockage incidents</td>
+
                     <td data-lang="ar">منع الانسدادات الطينية وتوقف عمل النظام</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Connectivity Outages</strong></td>
+
                     <td data-lang="ar"><strong>انقطاع شبكة الاتصالات</strong></td>
+
                     <td data-lang="en">Autonomous local edge intelligence (ESP32); cellular backup</td>
+
                     <td data-lang="ar">برمجة المتحكمات للعمل والتحكم المحلي التلقائي بشكل مستقل عن الإنترنت</td>
+
                     <td data-lang="en">Uninterrupted field operations</td>
+
                     <td data-lang="ar">استمرارية عمل صمامات الري وبوابات الصرف دون توقف</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en"><strong>Physical Vandalism</strong></td>
+
                     <td data-lang="ar"><strong>تخريب أو سرقة المعدات الميدانية</strong></td>
+
                     <td data-lang="en">Buried housings; accelerometer vibration alerts (GSM)</td>
+
                     <td data-lang="ar">دفن صناديق التحكم، وتفعيل إنذارات الاهتزاز الفورية عبر مقياس التسارع</td>
+
                     <td data-lang="en">90% reduction in theft</td>
+
                     <td data-lang="ar">تخفيض حالات السرقة والإتلاف بنسبة 90%</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">DSCR Stress Test</h3>
+
         <h3 data-lang="ar">نتائج اختبار الإجهاد المالي لقياس نسبة تغطية خدمة الدين (DSCR)</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Scenario</th>
+
                     <th data-lang="ar">سيناريو التحليل المالي</th>
+
                     <th data-lang="en">Assumption</th>
+
                     <th data-lang="ar">الفرضية المالية والتشغيلية المطبقة</th>
+
                     <th style="text-align:center">DSCR</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en">Base case</td>
+
                     <td data-lang="ar">السيناريو المرجعي الأساسي</td>
+
                     <td data-lang="en">As projected</td>
+
                     <td data-lang="ar">تحقق الإيرادات وتكاليف التشغيل وفق التقديرات الفنية بدقة</td>
+
                     <td class="score-cell score-high">1.35x</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Low revenue</td>
+
                     <td data-lang="ar">سيناريو انخفاض الإيرادات</td>
+
                     <td data-lang="en">-20% revenue</td>
+
                     <td data-lang="ar">تراجع بنسبة 20% في عوائد الطاقة المنتجة وفرز شهادات الكربون وتوفير المياه</td>
+
                     <td class="score-cell">1.15x</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">High OPEX</td>
+
                     <td data-lang="ar">سيناريو ارتفاع التكاليف التشغيلية</td>
+
                     <td data-lang="en">+30% O&M</td>
+
                     <td data-lang="ar">زيادة تكاليف الصيانة وقطع الغيار والعمالة بنسبة 30% ناتجة عن التضخم</td>
+
                     <td class="score-cell">1.10x</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Combined stress</td>
+
                     <td data-lang="ar">سيناريو الإجهاد المركب المشترك</td>
+
                     <td data-lang="en">Low rev + high OPEX</td>
+
                     <td data-lang="ar">حدوث انخفاض الإيرادات بنسبة 20% بالتوازي مع زيادة تكاليف التشغيل بنسبة 30%</td>
+
                     <td class="score-cell" style="color:var(--accent-red)">0.95x</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">GCF Funding Fit Score — 14/14 → GO</h3>
+
         <h3 data-lang="ar">تقييم درجة مطابقة متطلبات صندوق المناخ الأخضر (GCF Fit Score)</h3>
+
         <table>
+
             <thead>
+
                 <tr>
+
                     <th data-lang="en">Criteria</th>
+
                     <th data-lang="ar">المعايير المعتمدة لتقييم مقترحات التمويل</th>
+
                     <th style="text-align:center" data-lang="en">Score (/2)</th>
+
                     <th style="text-align:center" data-lang="ar">الدرجة الممنوحة (/2)</th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
+
                     <td data-lang="en">Nexus Integration</td>
+
                     <td data-lang="ar">تكامل قطاعات المحور (مياه، طاقة، أمن غذائي، بيئة)</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Expected Outcomes</td>
+
                     <td data-lang="ar">وضوح النتائج والمخرجات ومؤشر الأثر المناخي</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Eligibility</td>
+
                     <td data-lang="ar">أهلية الدولة المستفيدة والشركاء الوطنيين</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Partnership Feasibility</td>
+
                     <td data-lang="ar">جدوى التنسيق بين الوزارات والهيئة ومعهد البحوث</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Budget Alignment</td>
+
                     <td data-lang="ar">تناسب حجم الميزانية مع سقف المشاريع الكبرى المعتمدة لدى الصندوق</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">MRV</td>
+
                     <td data-lang="ar">توفر نظام آلي وموثوق للمراقبة والإبلاغ والتحقق (MRV)</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr>
+
                     <td data-lang="en">Readiness</td>
+
                     <td data-lang="ar">الجاهزية الفنية والمؤسسية للجهة المنفذة (EPADP)</td>
+
                     <td class="score-cell score-high">2</td>
+
                 </tr>
+
                 <tr class="total-row">
+
                     <td><strong data-lang="en">Total — Decision: GO</strong><strong data-lang="ar">الدرجة الإجمالية
+
                             المحققة والقرار: (مستوفٍ بالكامل - انطلق)</strong></td>
+
                     <td class="score-cell"><strong>14/14</strong></td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
+
 
         <h3 data-lang="en">20. Monitoring, Reporting and Verification (MRV)</h3>
+
         <h3 data-lang="ar">20. إطار المراقبة والإبلاغ والتحقق (MRV)</h3>
+
         <p data-lang="en">The IoT monitoring platform provides automated, continuous MRV data rather than relying on periodic manual surveys:</p>
+
         <p data-lang="ar">توفر منصة إنترنت الأشياء بيانات آلية ومستمرة لإطار المراقبة والإبلاغ والتحقق (MRV) بدلاً من الاعتماد على المسوحات الميدانية الدورية:</p>
+
         <ul data-lang="en">
+
             <li><strong>Water MRV:</strong> Tracking inflow and outflow volumes, and water table depth at 5,000 nodes using ultrasonic sensors. Soil salinity (EC) at depths of 20cm, 40cm, and 60cm. Crop water savings computed via the 1D soil water balance equation: $$I + P = ET_a + D + \Delta S$$. Verification of regional moisture and crop health via satellite-derived NDVI/NDWI indices (BACI framework).</li>
+
             <li><strong>Energy MRV:</strong> SCADA metering of solar GWh produced, consumed by pumping stations, and exported to the national grid.</li>
+
             <li><strong>Food MRV:</strong> Annual crop yield surveys on retrofitted vs. control land and cropping pattern satellite monitoring.</li>
+
             <li><strong>Ecosystem MRV:</strong> Water quality (BOD, TSS, nutrients) at wetland outlets, biodiversity index monitoring, and soil carbon sequestration measurements.</li>
+
             <li><strong>Tamper & Integrity MRV:</strong> Incident alert database logging vibration and flow anomalies, and response times of field teams.</li>
+
         </ul>
+
         <ul data-lang="ar">
+
             <li><strong>مراقبة قطاع المياه (Water MRV):</strong> قياس كميات المياه الداخلة والخارجة، ورصد منسوب المياه الأرضية عند 5,000 نقطة بالمستشعرات فوق الصوتية. قياس ملوحة التربة (EC) عند أعماق 20سم و 40سم و 60سم. حساب الوفر الفعلي عبر معادلة ميزان مياه التربة: $$I + P = ET_a + D + \Delta S$$. والتحقق من الرطوبة والصحة النباتية عبر مؤشرات NDVI و NDWI بالأقمار الصناعية (إطار المقارنة الثنائية BACI).</li>
+
             <li><strong>مراقبة قطاع الطاقة (Energy MRV):</strong> قياسات نظام SCADA للطاقة الشمسية المنتجة بالجيجاوات ساعة، والطاقة المستهلكة بمحطات الرفع، والفائض المصدر للشبكة.</li>
+
             <li><strong>مراقبة قطاع الأمن الغذائي (Food MRV):</strong> مسوحات إنتاجية المحاصيل السنوية للأراضي المحدثة مقارنة بالشواهد، ومراقبة أنماط الزراعة بالأقمار الصناعية.</li>
+
             <li><strong>مراقبة النظم البيئية (Ecosystem MRV):</strong> قياس جودة المياه (BOD, TSS, المغذيات) عند مخارج الأراضي الرطبة، ومؤشرات التنوع البيولوجي، وقياسات احتجاز الكربون بالتربة.</li>
+
             <li><strong>مراقبة التعديات وسلامة النظام (Tamper & Integrity MRV):</strong> تسجيل عدد ونوع بلاغات التعدي والانسداد آلياً، وحساب زمن استجابة فرق الصيانة الميدانية.</li>
+
         </ul>
+
+
 
         <!-- ===== SECTIONS 20-22: SAFEGUARDS & IMPACTS ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Sections 20–22</div>
+
             <div class="section-number" data-lang="ar">الأقسام 20–22</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Safeguards and Expected Impacts</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">الضمانات البيئية والاجتماعية ومؤشرات
+
                 الأثر التنموي</h2>
+
         </div>
+
+
 
         <div class="callout callout-info">
-            <div class="callout-title" data-lang="en">KEY SAFEGUARD ADVANTAGE OVER REFERENCE CASE</div>
-            <div class="callout-title" data-lang="ar">ميزة حاسمة للضمانات الاجتماعية مقارنة بالمشروع المرجعي</div>
-            <p data-lang="en">Unlike drainage reallocation projects (e.g., Al-Mahsama), <strong>Eco-Drain retrofits in
-                    place</strong> — eliminating social risks to downstream smallholders who rely on drainage canals.
-                Inherently more socially sustainable.</p>
-            <p data-lang="ar">أظهرت دراسات مشروع "المحسمة" المرجعي نشوء نزاعات وحرمان لصغار مزارعين في المصب نتيجة إعادة
-                توجيه مسار مياه الصرف خارج أراضيهم. ويتفوق مشروع **إيكو-درين** بكونه منظومة إحلال وتجديد في مكانها
-                الأصلي (In-situ Retrofitting) مما يحافظ على استقرار حيازات المزارعين التاريخية ويمنع أي آثار سلبية على
-                سبل عيشهم.</p>
-        </div>
 
-        <h3 data-lang="en">Expected Impacts</h3>
-        <h3 data-lang="ar">المستهدفات والآثار التنموية والمناخية المتوقعة للمشروع</h3>
-        <table>
+            <div class="callout-title" data-lang="en">KEY SAFEGUARD ADVANTAGE OVER REFERENCE CASE</div>
+
+            <div class="callout-title" data-lang="ar">ميزة حاسمة للضمانات الاجتماعية مقارنة بالمشروع المرجعي</div>
+
+            <p data-lang="en">Unlike drainage reallocation projects (e.g., Al-Mahsama), <strong>Eco-Drain retrofits in
+
+                    place</strong> — eliminating social risks to downstream smallholders who rely on drainage canals.
+
+                Inherently more socially sustainable.</p>
+
+            <p data-lang="ar">أظهرت دراسات مشروع "المحسمة" المرجعي نشوء نزاعات وحرمان لصغار مزارعين في المصب نتيجة إعادة
+
+                توجيه مسار مياه الصرف خارج أراضيهم. ويتفوق مشروع **إيكو-درين** بكونه منظومة إحلال وتجديد في مكانها
+
+                الأصلي (In-situ Retrofitting) مما يحافظ على استقرار حيازات المزارعين التاريخية ويمنع أي آثار سلبية على
+
+                سبل عيشهم.</p>
+
+        <table data-lang="en" style="margin-top: 20px; margin-bottom: 20px;">
+            <caption>Environmental & Social Safeguards Comparison Matrix</caption>
             <thead>
                 <tr>
-                    <th data-lang="en">Indicator</th>
-                    <th data-lang="ar">المؤشر البيئي والتنموي</th>
-                    <th data-lang="en">Impact</th>
-                    <th data-lang="ar">المستهدف الكمي المتوقع</th>
+                    <th>Safeguard Aspect</th>
+                    <th>Centralised Treatment & Reuse Projects (e.g., Al-Mahsama)</th>
+                    <th>Eco-Drain Project (Decentralised Controlled Drainage)</th>
+                    <th>Eco-Drain Advantage / Impact</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-lang="en"><strong>Drainage restored</strong></td>
-                    <td data-lang="ar"><strong>مساحة الأراضي التي تم إحلال وتجديد شبكات صرفها المغطى</strong></td>
-                    <td>100,000 feddans (42,000 ha)</td>
+                    <td><strong>Downstream Livelihoods</strong></td>
+                    <td>Risk of water deprivation for informal tail-end farmers relying on drain flows.</td>
+                    <td>Retains water in-situ; increases local availability via capillary rise by 25–30%.</td>
+                    <td>Eliminates water conflicts; protects smallholders.</td>
                 </tr>
                 <tr>
-                    <td data-lang="en"><strong>Yield increase</strong></td>
-                    <td data-lang="ar"><strong>معدل زيادة إنتاجية المحاصيل الحقلية الاستراتيجية</strong></td>
-                    <td>15–25%</td>
+                    <td><strong>Energy Consumption</strong></td>
+                    <td>Energy-intensive lift pumping to transport water across long distances.</td>
+                    <td>Gravity-driven local flow supported by 50 MW distributed solar micro-grid.</td>
+                    <td>Zero net grid emission; 40% energy OPEX savings.</td>
                 </tr>
                 <tr>
-                    <td data-lang="en"><strong>Solar installed</strong></td>
-                    <td data-lang="ar"><strong>القدرة الإنتاجية الإجمالية لمحطات الطاقة الشمسية الموزعة</strong></td>
-                    <td>50 MW / ~90 GWh/yr</td>
+                    <td><strong>Soil Protection</strong></td>
+                    <td>Treats water after salinity has salinized the soil and drained out.</td>
+                    <td>Dynamic controlled water table stops salinization in root zone at source.</td>
+                    <td>Prevents land degradation before it becomes irreversible.</td>
                 </tr>
                 <tr>
-                    <td data-lang="en"><strong>CO₂ reduction</strong></td>
-                    <td data-lang="ar"><strong>معدل خفض انبعاثات غاز ثاني أكسيد الكربون المكافئ</strong></td>
-                    <td>~100,000 tCO₂/yr</td>
-                </tr>
-                <tr>
-                    <td data-lang="en"><strong>Water savings</strong></td>
-                    <td data-lang="ar"><strong>إجمالي كميات مياه الري الموفرة عند الحقل سنوياً</strong></td>
-                    <td>150 M m³/yr</td>
-                </tr>
-                <tr>
-                    <td data-lang="en"><strong>Tamper reduction</strong></td>
-                    <td data-lang="ar"><strong>معدل انخفاض التعديات والعبث العشوائي بالشبكات الجوفية</strong></td>
-                    <td>80%</td>
-                </tr>
-                <tr>
-                    <td data-lang="en"><strong>Jobs created</strong></td>
-                    <td data-lang="ar"><strong>فرص العمل المباشرة وغير المباشرة المتولدة خلال التنفيذ والتشغيل</strong>
-                    </td>
-                    <td>5,000 + 500 O&M</td>
-                </tr>
-                <tr>
-                    <td data-lang="en"><strong>Beneficiaries</strong></td>
-                    <td data-lang="ar"><strong>عدد المزارعين المستفيدين بشكل مباشر من استعادة جودة الأراضي</strong></td>
-                    <td>200,000+</td>
-                </tr>
-                <tr>
-                    <td data-lang="en"><strong>Wetlands</strong></td>
-                    <td data-lang="ar"><strong>مساحة الأراضي الرطبة المخصصة للمعالجة الحيوية</strong></td>
-                    <td>2,000 ha</td>
+                    <td><strong>Ecosystem Flow</strong></td>
+                    <td>Deprives northern lakes of critical flows, increasing lake salinity.</td>
+                    <td>Reeds treat water biologically and discharge clean water to lakes.</td>
+                    <td>Restores northern fisheries and biodiversity.</td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- ===== SECTIONS 23-24: PITCH & CONCLUSIONS ===== -->
-        <div class="page-break"></div>
-        <div class="section-header">
-            <div class="section-number" data-lang="en">Sections 23–25</div>
-            <div class="section-number" data-lang="ar">الأقسام 23–25</div>
-            <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Investor Pitch and Conclusions</h2>
-            <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">ملخص عرض الترويج المالي للمستثمرين
-                والاستنتاجات</h2>
+        <table data-lang="ar" style="margin-top: 20px; margin-bottom: 20px;">
+            <caption>مصفوفة مقارنة الضمانات والآثار البيئية والاجتماعية</caption>
+            <thead>
+                <tr>
+                    <th>معيار الضمانة</th>
+                    <th>المشاريع المركزية لإعادة الاستخدام (نقل ومعالجة المياه)</th>
+                    <th>مشروع Eco-Drain (التحكم المحلي اللامركزي في الحقل)</th>
+                    <th>الأثر المضاف وميزة مشروع Eco-Drain</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>سبل عيش مزارعي المصب</strong></td>
+                    <td>مخاطر حرمان صغار المزارعين في المصبات من المياه التي يروون بها بشكل غير رسمي.</td>
+                    <td>يحافظ على المياه في الحقل؛ ويوفر 25-30% من الاحتياج عبر الصعود الشعري المباشر.</td>
+                    <td>يمنع النزاعات المائية؛ ويحمي استقرار صغار الحائزين.</td>
+                </tr>
+                <tr>
+                    <td><strong>استهلاك الطاقة</strong></td>
+                    <td>استهلاك كهربائي ضخم لضخ ونقل مياه الصرف لمسافات تصل لمئات الكيلومترات.</td>
+                    <td>تدفق هيدروليكي محلي تدعمه محطات طاقة شمسية موزعة بقدرة 50 ميجاوات.</td>
+                    <td>تشغيل صديق للبيئة؛ وتوفير 40% من تكاليف طاقة الضخ.</td>
+                </tr>
+                <tr>
+                    <td><strong>حماية التربة زراعياً</strong></td>
+                    <td>معالجة مياه الصرف بعد حدوث التملح وتدفق الأملاح خارج التربة وتدهور الأرض.</td>
+                    <td>التحكم الذكي بالمنسوب يمنع ترسب الأملاح في جذر النبات زراعياً ومن المنبع.</td>
+                    <td>حماية استباقية لخصوبة أراضي الدلتا تمنع تدهورها التام.</td>
+                </tr>
+                <tr>
+                    <td><strong>التتدفقات البيئية للمصبات</strong></td>
+                    <td>حرمان البحيرات الشمالية من المياه، مما يرفع ملوحتها ويدمر مصايد الأسماك.</td>
+                    <td>تصفية المياه بيولوجياً عبر الأراضي الرطبة وتفريغها نظيفة بمصارفها الطبيعية.</td>
+                    <td>استعادة التنوع البيولوجي للبحيرات ودعم مهنة الصيد المحلي.</td>
+                </tr>
+            </tbody>
+        </table>
+
         </div>
+
+
+
+        <h3 data-lang="en">Expected Impacts</h3>
+
+        <h3 data-lang="ar">المستهدفات والآثار التنموية والمناخية المتوقعة للمشروع</h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th data-lang="en">Indicator</th>
+
+                    <th data-lang="ar">المؤشر البيئي والتنموي</th>
+
+                    <th data-lang="en">Impact</th>
+
+                    <th data-lang="ar">المستهدف الكمي المتوقع</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Drainage restored</strong></td>
+
+                    <td data-lang="ar"><strong>مساحة الأراضي التي تم إحلال وتجديد شبكات صرفها المغطى</strong></td>
+
+                    <td>100,000 feddans (42,000 ha)</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Yield increase</strong></td>
+
+                    <td data-lang="ar"><strong>معدل زيادة إنتاجية المحاصيل الحقلية الاستراتيجية</strong></td>
+
+                    <td>15–25%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Solar installed</strong></td>
+
+                    <td data-lang="ar"><strong>القدرة الإنتاجية الإجمالية لمحطات الطاقة الشمسية الموزعة</strong></td>
+
+                    <td>50 MW / ~90 GWh/yr</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>CO₂ reduction</strong></td>
+
+                    <td data-lang="ar"><strong>معدل خفض انبعاثات غاز ثاني أكسيد الكربون المكافئ</strong></td>
+
+                    <td>~100,000 tCO₂/yr</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Water savings</strong></td>
+
+                    <td data-lang="ar"><strong>إجمالي كميات مياه الري الموفرة عند الحقل سنوياً</strong></td>
+
+                    <td>150 M m³/yr</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Tamper reduction</strong></td>
+
+                    <td data-lang="ar"><strong>معدل انخفاض التعديات والعبث العشوائي بالشبكات الجوفية</strong></td>
+
+                    <td>80%</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Jobs created</strong></td>
+
+                    <td data-lang="ar"><strong>فرص العمل المباشرة وغير المباشرة المتولدة خلال التنفيذ والتشغيل</strong>
+
+                    </td>
+
+                    <td>5,000 + 500 O&M</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Beneficiaries</strong></td>
+
+                    <td data-lang="ar"><strong>عدد المزارعين المستفيدين بشكل مباشر من استعادة جودة الأراضي</strong></td>
+
+                    <td>200,000+</td>
+
+                </tr>
+
+                <tr>
+
+                    <td data-lang="en"><strong>Wetlands</strong></td>
+
+                    <td data-lang="ar"><strong>مساحة الأراضي الرطبة المخصصة للمعالجة الحيوية</strong></td>
+
+                    <td>2,000 ha</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+        <!-- ===== SECTIONS 23-24: PITCH & CONCLUSIONS ===== -->
+
+        <div class="page-break"></div>
+
+        <div class="section-header">
+
+            <div class="section-number" data-lang="en">Sections 23–25</div>
+
+            <div class="section-number" data-lang="ar">الأقسام 23–25</div>
+
+            <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Investor Pitch and Conclusions</h2>
+
+            <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">ملخص عرض الترويج المالي للمستثمرين
+
+                والاستنتاجات</h2>
+
+        </div>
+
+
 
         <div class="pitch-box">
+
             <h3 data-lang="en">Investment Ask</h3>
+
             <h3 data-lang="ar">طلب التمويل والاستثمار الإجمالي للمشروع</h3>
+
             <div class="pitch-amount">USD 420 Million</div>
+
             <ul data-lang="en">
+
                 <li>Addresses a USD 2+ billion infrastructure renewal gap</li>
+
                 <li>Built on EPADP's 40-year, 6-million-feddan delivery platform</li>
+
                 <li>Globally novel tamper-proof IoT drainage monitoring</li>
+
                 <li>Full WEFE integration: Water + Energy + Food + Ecosystems</li>
+
                 <li>Tight climate adaptation logic for Nile Delta's top risks</li>
+
                 <li>Massive replication: 4.3M feddans Delta; 100M+ ha globally</li>
+
                 <li>Eligible for every major climate finance window</li>
+
             </ul>
+
             <ul data-lang="ar">
+
                 <li>يعالج فجوة استثمارية لتحديث الصرف المغطى بالدلتا تفوق قيمتها 2 مليار دولار.</li>
+
                 <li>يستفيد من البنية التحتية والخبرة التشغيلية الممتدة لـ 40 عاماً لدى الهيئة (EPADP).</li>
+
                 <li>يدمج ابتكاراً تقنياً فريداً لمراقبة الشبكات المدفونة عن بعد ومنع العبث عبر الـ IoT.</li>
+
                 <li>يتوافق تماماً مع محاور WEFE الأساسية: مياه، طاقة متجددة، أمن غذائي، حماية بيئية.</li>
+
                 <li>منطق تكيف وتخفيف مناخي متكامل لمجابهة تملح التربة وتأثيرات ارتفاع البحر بالدلتا.</li>
+
                 <li>قابلية عالية للتوسع الفوري لتغطية 4.3 مليون فدان بالدلتا ونقله للمنطقة العربية.</li>
+
                 <li>مطابق لشروط التأهل التمويلي لدى الجهات الدولية المانحة والصناديق التنموية.</li>
+
             </ul>
+
             <div class="cover-badge" style="margin-top:20px">WEFE Score: 92/100</div>
+
         </div>
+
+
 
         <h3 data-lang="en">Recommended Next Steps</h3>
+
         <h3 data-lang="ar">التوصيات والخطوات التنفيذية التالية</h3>
 
+
+
         <div class="next-steps">
+
             <ol data-lang="en">
+
                 <li><strong>Commission feasibility study</strong> for 2–3 pilot sites in Kafr El-Sheikh and Dakahlia
+
                 </li>
+
                 <li><strong>Conduct IoT pilot</strong> — 100–200 sensor nodes on existing EPADP drainage</li>
+
                 <li><strong>Develop PPP structure</strong> for the solar micro-grid component</li>
+
                 <li><strong>Prepare GCF concept note</strong> with EPADP as executing entity</li>
+
                 <li><strong>Undertake ESIA</strong> for construction-phase smallholder impacts</li>
+
                 <li><strong>Establish MRV framework</strong> leveraging IoT for automated reporting</li>
+
                 <li><strong>Launch investor engagement</strong> — GCF, AfDB, EIB, IsDB, World Bank</li>
+
                 <li><strong>Initiate research partnerships</strong> — DRI, Ain Shams, TH Köln</li>
+
             </ol>
+
             <ol data-lang="ar">
+
                 <li><strong>بدء إعداد دراسة الجدوى التفصيلية (Bankable Feasibility Study)</strong> لعدد 2-3 مواقع ريادية
+
                     مختارة بمحافظتي كفر الشيخ والدقهلية.</li>
+
                 <li><strong>تنفيذ مشروع ريادي محدود (IoT Pilot)</strong> بنشر 100-200 عقدة استشعار على شبكات قائمة
+
                     للتحقق الميداني من كفاءة خوارزميات كشف الاهتزازات والتدفق.</li>
+
                 <li><strong>صياغة نموذج شراكة بين القطاعين العام والخاص (PPP)</strong> لمكون محطات الخلايا الشمسية
+
                     الموزعة.</li>
+
                 <li><strong>صياغة مذكرة مفاهيم (Concept Note)</strong> وتقديمها لصندوق المناخ الأخضر (GCF) بالتعاون مع
+
                     جهة معتمدة دولياً.</li>
+
                 <li><strong>إجراء دراسة تقييم الأثر البيئي والاجتماعي الشاملة (ESIA)</strong> لضمان توافق أعمال الحفر مع
+
                     سبل عيش صغار الحائزين للأراضي.</li>
+
                 <li><strong>هيكلة منصة إطار الرصد والتحقق (MRV Framework)</strong> وربطها بنظام التحكم SCADA والتحول
+
                     الرقمي بوزارة الموارد المائية والري.</li>
+
                 <li><strong>التواصل الترويجي مع مؤسسات التمويل الدولية</strong> وتنسيق زيارات فنية لشرح ميزات ترابط محور
+
                     WEFE والتوأم الرقمي للمشروع.</li>
+
                 <li><strong>توقيع اتفاقيات تعاون أكاديمي وفني</strong> مع معهد بحوث الصرف (DRI) وجامعة عين شمس والمعهد
+
                     التقني بـ كولونيا (TH Köln).</li>
+
             </ol>
+
         </div>
+
+
 
         <!-- ===== GLOSSARY ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 28</div>
+
             <div class="section-number" data-lang="ar">القسم 28</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Glossary of Simplified Terms</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">معجم المصطلحات التقنية المبسطة</h2>
+
         </div>
+
+
 
         <div class="grid-2">
+
             <div class="finding-box">
+
                 <h4 data-lang="en">WEFE Nexus Integration</h4>
+
                 <h4 data-lang="ar">ترابط وترشيد محور (WEFE)</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> Managing Water, Energy, Food, and Ecosystems together as a single connected loop to prevent waste. Solar power (energy) pumps water (water) for crops (food) while wetlands filter the drainage (ecosystem).</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> إدارة ملفات المياه، والطاقة، والغذاء، والبيئة بشكل متكامل كحلقة واحدة مترابطة؛ حيث نستخدم الطاقة الشمسية (طاقة) لتشغيل محطات صرف وري الحقول (مياه) لإنتاج المحاصيل (غذاء) وننقي الصرف بالأراضي الرطبة (بيئة).</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Subsurface Drainage</h4>
+
                 <h4 data-lang="ar">الصرف الزراعي المغطى</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> A network of perforated pipes buried 1.2 to 1.5 meters underground to pull excess water and salts away from plant roots, preventing soil waterlogging.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> شبكة من الأنابيب البلاستيكية المثقبة المدفونة تحت الحقل بعمق يتراوح بين 1.2 إلى 1.5 متر، وظيفتها سحب المياه الأرضية الزائدة والأملاح من حول الجذور لتصريفها ومنع تغدق التربة.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Controlled Drainage</h4>
+
                 <h4 data-lang="ar">الصرف الزراعي المحكوم</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> Placing remote-controlled valves at pipe outlets to block drainage and store water when the soil is dry, and opening them only to flush salts or drain excess floods.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> وضع بوابات وصمامات إلكترونية نتحكم بها عن بعد عند مخارج أنابيب الصرف؛ تُغلق البوابات للاحتفاظ برطوبة التربة عند حاجة النبات، وتُفتح لغسيل الأملاح أو تصريف الغمر.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Capillary Rise</h4>
+
                 <h4 data-lang="ar">الخاصية الشعرية</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> The physical phenomenon where water travels upward against gravity through tiny soil pores. Raising the water table allows plant roots to drink from below naturally.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> ظاهرة فيزيائية يرتفع بها الماء لأعلى ضد الجاذبية عبر مسامات التربة الضيقة. رفع منسوب المياه تحت الحقل يدفع الرطوبة للجذور ذاتياً دون ري سطحي إضافي.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Soil Water Balance</h4>
+
                 <h4 data-lang="ar">ميزان مياه التربة</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> A simple water budget calculating that irrigation inputs must exactly equal crop consumption, evaporation, and drainage outputs to avoid water logging.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> حساب مائي دقيق يعادل بين كميات المياه الداخلة للحقل (ري وأمطار) والخارجة منه (بخر نباتي وصرف ورطوبة مخزنة) لضمان عدم إهدار المياه.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Digital Twin & IoT</h4>
+
                 <h4 data-lang="ar">التوأم الرقمي وإنترنت الأشياء</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> Buried smart sensors (IoT) measuring soil stats combined with a 3D virtual copy (Digital Twin) on computer screens to show exact flow and blockages without digging.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> مستشعرات حقلية ذكية مدفونة (إنترنت الأشياء) ترسل البيانات لاسلكياً لإنشاء نموذج تفاعلي ثلاثي أبعاد (توأم رقمي) يحاكي الشبكة على الشاشات لكشف التلاعب والانسداد فوراً.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Constructed Wetlands</h4>
+
                 <h4 data-lang="ar">الأراضي الرطبة الاصطناعية</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> Shallow gravel-lined ponds planted with native reeds that act as natural filters, cleaning contaminants, nitrates, and salts from drainage water biologically.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> بحيرات صناعية ضحلة مبطنة بالحصى والرمل ومزروعة بنباتات كالبوص والبردي، تمتص الملوثات والمغذيات الزراعية الكيماوية لتنقية مياه الصرف طبيعياً.</p>
+
             </div>
+
             <div class="finding-box">
+
                 <h4 data-lang="en">Blended Climate Finance</h4>
+
                 <h4 data-lang="ar">التمويل التنموي والمناخي المختلط</h4>
+
                 <p data-lang="en"><strong>Concept:</strong> Mixing international green grants, low-interest climate loans, and commercial investments to fund high-cost sustainability projects affordably.</p>
+
                 <p data-lang="ar"><strong>المفهوم:</strong> خلط مصادر مالية متنوعة تشمل منحاً بيئية مجانية مع قروض تنموية طويلة الأجل ذات فائدة شبه منعدمة واستثمارات تجارية لتوفير رأس مال للمشاريع البيئية الكبرى.</p>
+
             </div>
+
         </div>
+
+
 
         <!-- ===== SOURCES ===== -->
+
         <div class="page-break"></div>
+
         <div class="section-header">
+
             <div class="section-number" data-lang="en">Section 27</div>
+
             <div class="section-number" data-lang="ar">القسم 27</div>
+
             <h2 data-lang="en" style="border:none;margin:0;padding:0;color:white">Sources and References</h2>
+
             <h2 data-lang="ar" style="border:none;margin:0;padding:0;color:white">المصادر والوثائق المرجعية للتقرير</h2>
+
         </div>
+
+
 
         <p data-lang="en"><strong>Government:</strong> MWRI — *National Water Resources Plan for Egypt (NWRP 2017-2037)* and *Irrigation System 2.0 Strategic Briefing* | EPADP — *Annual Statistical Report on Covered Drainage Networks and Rehabilitation Requirements (2025)* | DRI / NWRC — *Technical Design Standards, Soil Salinity Telemetry, and Hydraulic Flow Criteria (2024)* | EEAA — *ESIA Guidelines for Infrastructure Projects (2021)*</p>
+
         <p data-lang="ar"><strong>حكومية ورسمية:</strong> وزارة الموارد المائية والري (*الخطة القومية للموارد المائية لمصر 2017-2037* وملخص *نظام الري 2.0 الاستراتيجي*) | الهيئة المصرية العامة لمشروعات الصرف (*التقرير الإحصائي السنوي لشبكات الصرف المغطى واحتياجات الإحلال 2025*) | معهد بحوث الصرف والمركز القومي لبحوث المياه (*المعايير الفنية وتصميم الهيدروليكي للصرف بالدلتا 2024*) | جهاز شئون البيئة (*الدليل الإرشادي لتقييم الأثر البيئي والاجتماعي 2021*).</p>
 
+
+
         <p data-lang="en"><strong>Multilateral:</strong> World Bank Group — *National Drainage Project I* (Project ID: P005118), *Second National Drainage Project* (Project ID: P045486), *Third National Drainage Project* (Project ID: P125722) | AfDB — *National Drainage Programme Phase IV (NDP IV)* Project Appraisal | KfW — *Co-financing and Modernisation of Egypt's Subsurface Drainage Assets (2018)* | GCF — *Proposal Preparation Guidelines (2024)* | FAO — *WEF Nexus Rapid Appraisal Manual* | OECD — *Infrastructure Governance and MCA Guidelines (2022)*</p>
+
         <p data-lang="ar"><strong>منظمات دولية:</strong> مجموعة البنك الدولي (*مشروع الصرف الوطني الأول* ID: P005118، *مشروع الصرف الوطني الثاني* ID: P045486، *مشروع الصرف الوطني الثالث* ID: P125722) | بنك التنمية الأفريقي (*البرنامج الوطني الرابع للصرف NDP IV*) | بنك الإعمار الألماني (*التمويل المشترك لتطوير أصول الصرف بمصر 2018*) | صندوق المناخ الأخضر (*أدلة إعداد المقترحات التمويلية 2024*) | منظمة الأغذية والزراعة (*دليل التقييم السريع لمحور WEFE*) | منظمة التعاون والتنمية الاقتصادية (*حوكمة البنية التحتية والتحليل متعدد المعايير*).</p>
 
+
+
         <p data-lang="en"><strong>Academic:</strong> MDPI — Drainage studies | WUR — Drainage modernisation | TH Köln —
+
             WEFE methodology | Ain Shams, Mansoura Universities</p>
+
         <p data-lang="ar"><strong>أبحاث ودراسات أكاديمية:</strong> دوريات MDPI العلمية (دراسات رصد ملوحة التربة والتغدق
+
             بالدلتا) | جامعة فاجينينجن الهولندية (WUR) (دراسات تحديث منظومات الصرف الزراعي) | معهد إدارة التكنولوجيا في
+
             المناطق المدارية بجامعة كولونيا التطبيقية (TH Köln) (منهجيات تقييم مشاريع WEFE) | دراسات كليتي الزراعة
+
             بجامعتي عين شمس والمنصورة.</p>
 
+
+
         <p data-lang="en"><strong>Technology:</strong> LoRa Alliance — LoRaWAN specs | ESP32 — Edge computing | IRENA —
+
             Solar PV benchmarks</p>
+
         <p data-lang="ar"><strong>تقنية وتكنولوجية:</strong> تحالف LoRa (مواصفات شبكات LoRaWAN في التطبيقات الزراعية) |
+
             وثائق متحكمات ESP32 (حوسبة الحافة والتنبؤ بالأعطال) | الوكالة الدولية للطاقة المتجددة (IRENA) (مؤشرات تكلفة
+
             توليد الكهرباء من الخلايا الشمسية بـ MENA).</p>
 
+
+
         <p data-lang="en"><strong>Policy:</strong> Egypt Vision 2030 | National Climate Change Strategy 2050 | Egypt NDC
+
             (UNFCCC) | CEDARE — Water Reuse Strategy</p>
+
         <p data-lang="ar"><strong>سياسات وطنية:</strong> رؤية جمهورية مصر العربية للتنمية المستدامة (مصر 2030) |
+
             الاستراتيجية الوطنية لتغير المناخ في مصر 2050 | المساهمات المحددة وطنياً لمصر المقدمة لسكرتارية اتفاقية
+
             الأمم المتحدة الإطارية (UNFCCC) | مركز البيئة والتنمية للإقليم العربي وأوروبا (سيداري) (الخطة الاستراتيجية
+
             لإعادة استخدام المياه).</p>
 
+
+
         <p style="font-size:9pt; color:var(--text-secondary); margin-top:20px">
+
             <em data-lang="en">Figures compiled from EPADP and MWRI materials; verify against current published data
+
                 before use in binding investment documents. IoT costs based on 2025–2026 market pricing.</em>
+
             <em data-lang="ar">ملاحظة منهجية: جُمعت كافة الإحصاءات والأرقام الواردة في هذا التقرير من سجلات وزارة الري
+
                 وهيئة الصرف الرسمية، ويُنصح بالتحقق منها ومراجعتها وتحديثها قبل استخدامها كوثيقة قانونية أو استثمارية
+
                 ملزمة. تكاليف الاستشعار وإنترنت الأشياء مقدرة وفق مؤشرات أسعار السوق لعامي 2025-2026.</em>
+
         </p>
 
+
+
         <!-- FOOTER -->
+
         <div class="page-footer">
+
             <div class="tagline">
+
                 <span data-lang="en">"Making the invisible visible. Making the vulnerable resilient. Making the
+
                     neglected investable."</span>
+
                 <span data-lang="ar">"جعل البنية التحتية غير المرئية مرئية، والأراضي المعرضة للمخاطر مرنة، والمشاريع
+
                     التنموية قابلة للاستثمار."</span>
+
             </div>
+
             <p data-lang="en">Prepared by Group 10 — Financing Resilience and WEFE Nexus Professional Series | July 2026
+
             </p>
+
             <p data-lang="ar">أُعد بواسطة المجموعة 10 — سلسلة التدريب المهني حول تمويل المرونة ومحور WEFE | يوليو 2026
+
             </p>
+
         </div>
+
+
 
     </div><!-- end content-wrapper -->
 
+
+
     <script>
+
         function setLang(lang) {
+
             const html = document.documentElement;
+
             const btnEn = document.getElementById('btnEn');
+
             const btnAr = document.getElementById('btnAr');
 
+
+
             if (lang === 'ar') {
+
                 html.setAttribute('dir', 'rtl');
+
                 html.setAttribute('lang', 'ar');
+
                 btnAr.classList.add('active');
+
                 btnEn.classList.remove('active');
+
             } else {
+
                 html.setAttribute('dir', 'ltr');
+
                 html.setAttribute('lang', 'en');
+
                 btnEn.classList.add('active');
+
                 btnAr.classList.remove('active');
+
             }
 
+
+
             // Save preference
+
             try { localStorage.setItem('eco-drain-lang', lang); } catch (e) { }
+
         }
 
+
+
         // Restore saved preference
+
         document.addEventListener('DOMContentLoaded', function () {
+
             try {
+
                 const saved = localStorage.getItem('eco-drain-lang');
+
                 if (saved) setLang(saved);
+
             } catch (e) { }
+
         });
+
     </script>
 
+
+
 </body>
+
+
 
 </html>

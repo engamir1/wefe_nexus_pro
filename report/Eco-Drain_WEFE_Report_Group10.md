@@ -102,7 +102,7 @@ Subsurface drainage — the network of buried perforated pipes that controls the
 
 The proposed project — sized at **USD 420 million** in an illustrative configuration — is structured for blended finance, aligns directly with Egypt Vision 2030, the National Climate Change Strategy 2050, and the Irrigation System 2.0 programme, and is assessed here as **investment-ready** pending a full feasibility study, with a **WEFE Nexus composite score of 92/100**.
 
-![Figure 1: Nile Delta Project Area — Proposed Eco-Drain Intervention Sites](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\nile_delta_project_map_1784605444683.png)
+![Figure 1: Nile Delta Project Area — Proposed Eco-Drain Intervention Sites](images/fig3_nile_delta_map.png)
 
 **Four findings distinguish this report from the reference Egypt drainage water reuse report:**
 
@@ -176,7 +176,7 @@ The scale of Egypt's drainage investment is remarkable but often overlooked:
 
 This infrastructure was largely installed between the 1970s and 2000s under successive National Drainage Programme phases, co-financed by the World Bank and implemented by the Egyptian Public Authority for Drainage Projects (EPADP). The corrugated PVC pipes, typically installed at 1.0–1.5 metre depth with lateral spacing of 20–60 metres depending on soil type, were designed for a 20–25 year operational life. **A substantial portion of the network has now exceeded this design life**, and field inspections by the Drainage Research Institute (DRI) have documented widespread performance degradation: clogged pipes, collapsed joints, missing envelope materials, and unauthorised modifications.
 
-![Figure 2: Cross-Section of Subsurface Drainage System — Eco-Drain Retrofitting Concept](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\subsurface_drainage_cross_section_1784605424164.png)
+![Figure 2: Cross-Section of Subsurface Drainage System — Eco-Drain Retrofitting Concept](images/fig1_subsurface_drainage.png)
 
 ### 3.2 The Invisible Infrastructure Challenge and Anti-Tampering Solution
 
@@ -199,7 +199,9 @@ To resolve these vulnerabilities, the project implements a physical anti-tamperi
 - **Buried Invisible Inspection Chambers:** Traditional open surface manholes are replaced with hermetically-sealed chambers buried 30–50 cm below the agricultural soil layer. This physically conceals the infrastructure from sight and prevents illegal physical access or blockage. Maintenance teams locate these chambers using passive RFID markers and mobile GPS coordinates.
 - **Dynamic Capillary-Rise Control per Basin:** Motorized gate valves are installed at the outlets. By monitoring soil moisture telemetry at the agricultural basin (حوض زراعي) level, the system dynamically closes the drainage gates when crops require moisture. This raises the water table, allowing plants to absorb water via capillary rise. The maximum height of capillary rise ($h$) in Delta soils is governed by the physical equation:
   $$h = \frac{2\gamma \cos\theta}{\rho g r}$$
-  Where $\gamma$ is the surface tension of water ($0.0727 \text{ N/m}$), $\theta$ is the contact angle ($0^{\circ}$ for wet soil), $\rho$ is the water density ($1000 \text{ kg/m}^3$), $g$ is gravity ($9.81 \text{ m/s}^2$), and $r$ is the mean pore radius. In the fine clayey soils of the Nile Delta (pore radii $r$ range from $0.002$ to $0.01 \text{ mm}$), this yields a natural upward water rise of **60 to 150 cm** above the water table, allowing crop roots to drink from below and reducing external irrigation needs by 25–30%, thus eliminating the incentive for illegal water blockage.
+  Where $\gamma$ is the surface tension of water ($0.0727 \text{ N/m}$), $\theta$ is the contact angle ($0^{\circ}$ for wet soil), $\rho$ is the water density ($1000 \text{ kg/m}^3$), $g$ is gravity ($9.81 \text{ m/s}^2$), and $r$ is the mean pore radius. In the fine clayey soils of the Nile Delta (pore radii $r$ range from $0.002$ to $0.01 \text{ mm}$), this yields a natural upward water rise of **60 to 150 cm** above the water table, allowing crop roots to drink from below and reducing external irrigation needs by 25–30%, thus eliminating the incentive for illegal water blockage. Additionally, the spacing of the subsurface laterals ($S$) must be calculated scientifically based on the soil's saturated hydraulic conductivity ($K$) to balance drainage speed and capillary retention. Under steady-state recharge conditions, this is governed by **Hooghoudt's Equation**:
+  $$S^2 = \frac{4 K_1 h^2 + 8 K_2 d h}{q}$$
+  Where $K_1$ and $K_2$ represent the hydraulic conductivities of the soil layers above and below the drain level, respectively, $h$ is the water table height above the drain, $d$ is the equivalent thickness of the flow zone beneath the drain, and $q$ is the drainage design rate. In the northern governorates (such as Kafr El-Sheikh) where heavy clay soils dominate ($K < 0.05 \text{ m/day}$), lateral spacing is tightened to 20–30 meters. Conversely, in lighter silty-clay or sandy-loam areas ($K > 0.5 \text{ m/day}$), spacing is expanded to 50–60 meters to prevent excessive drainage and preserve soil moisture.
 - **IoT Anomalous Detection:** Accelerometers on the buried valves and pressure sensors in the pipe detect physical vibrations (digging) or pressure drops, alerting the control center immediately.
 
 ### 3.3 Reference Programme: EPADP National Drainage Network
@@ -253,7 +255,7 @@ Restore and modernise Egypt's invisible subsurface drainage infrastructure into 
 
 The Theory of Change for Eco-Drain establishes the causal pathway from project inputs to systemic impacts, satisfying the GCF's requirement for a clear intervention logic.
 
-![Figure 3: Eco-Drain Theory of Change — From Inputs to Systemic Impact](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\theory_of_change_1784605511288.png)
+![Figure 3: Eco-Drain Theory of Change — From Inputs to Systemic Impact](images/fig7_theory_of_change.png)
 
 ### Causal Pathway
 
@@ -310,7 +312,7 @@ The Ministry of Water Resources and Irrigation's **Water and Irrigation System 2
 
 ## 8. WEFE Nexus Analysis
 
-![Figure 4: WEFE Nexus Integration — Eco-Drain Project](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\wefe_nexus_diagram_1784605434346.png)
+![Figure 4: WEFE Nexus Integration — Eco-Drain Project](images/fig2_wefe_nexus.png)
 
 | Nexus Sector | Contribution | Integration Mechanism |
 |-------------|-------------|----------------------|
@@ -339,10 +341,11 @@ The Ministry of Water Resources and Irrigation's **Water and Irrigation System 2
 - **Manholes:** Reinforced concrete with tamper-resistant locking covers and embedded sensor housings
 - **Design life:** 40+ years (vs. 20–25 years for original installations)
 - **Design standard:** Controlled drainage capability — adjustable outlet levels to manage water table height seasonally
+- **Spacing calculation:** Spacing is determined via Hooghoudt's Equation ($S^2 = rac{4 K_1 h^2 + 8 K_2 d h}{q}$), adjusting from 20m in Kafr El-Sheikh's heavy clays to 55m in Gharbia's silty loams.
 
 ### Component 2 — IoT-Based Tamper-Proof Monitoring Network
 
-![Figure 5: IoT Monitoring Architecture — Real-Time Drainage Intelligence](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\iot_monitoring_system_1784605467719.png)
+![Figure 5: IoT Monitoring Architecture — Real-Time Drainage Intelligence](images/fig4_iot_monitoring.png)
 
 **Network Architecture:**
 - **5,000+ sensor nodes** deployed at manholes, pump stations, and drainage outlets
@@ -351,6 +354,7 @@ The Ministry of Water Resources and Irrigation's **Water and Irrigation System 2
 - **Edge computing:** ESP32-based microcontrollers at each node for local processing and anomaly detection
 - **Tamper detection:** Accelerometer-based vibration monitoring detects unauthorised excavation near pipes; flow anomaly algorithms identify illegal connections or blockages; GPS-stamped alerts enable rapid field response
 - **Power:** Solar panels with battery backup at each gateway; sensor nodes powered by long-life lithium batteries (5+ year life)
+- **NTRA Compliance & NB-IoT Alternative:** Since radio frequency allocations (specifically LoRaWAN's 868 MHz band) require regulatory approval from the National Telecommunications Regulatory Authority (NTRA) in Egypt, the system is designed with a cellular **NB-IoT (Narrowband IoT)** backup option. NB-IoT nodes utilize existing cellular infrastructure from national telecom providers, avoiding NTRA private gateway licensing bottlenecks and ensuring encrypted, secure transmission.
 
 **Tamper-Proof Features:**
 1. **Physical:** Reinforced, lockable manhole covers with tamper-evident seals; buried sensor cables with cut-detection
@@ -363,6 +367,7 @@ The Ministry of Water Resources and Irrigation's **Water and Irrigation System 2
 **Configuration:** Ground-mounted crystalline silicon PV panels; DC-AC inverters; battery storage (4-hour duration per site)
 **Primary load:** Drainage pumping stations (≈35 MW demand); IoT network infrastructure (≈1 MW); surplus to grid (≈14 MW)
 **Expected energy production:** ≈90 GWh/year (based on Egypt's average solar irradiance of ≈2,000–2,400 kWh/m²/year)
+- **Grid Integration & Net Metering:** The 50 MW distributed solar capacity is designed in strict compliance with the **EgyptERA (Egyptian Electric Utility and Consumer Protection Regulatory Agency)** net metering regulations (قواعد صافي القياس). Dual-directional smart meters measure electricity exported during peak daylight hours. This exported energy is credited against the electricity bills of the drainage pumping stations, establishing a self-sustaining financial cycle and reducing net electricity OPEX by 40%.
 
 ### Component 4 — Smart Irrigation & 10-Feddan Pilot Test Area
 
@@ -372,6 +377,7 @@ The IoT monitoring data enables a closed-loop feedback system (real-time feedbac
 - **Controlled Subsurface Drainage:** Drainage outlets and collector pump stations discharging into open public drains are equipped with IoT-controlled motorized gate valves. When soil sensors indicate that the plant requires moisture, the drainage outlet is automatically closed. This raises the water table locally within the root zone, enabling the plant to absorb moisture via capillary rise, thereby reducing external irrigation needs. The outlet gate is opened only when soil salinity sensors detect salt buildup (triggering leaching drainage) or if the water table exceeds the critical threshold to prevent waterlogging.
 - **10-Feddan Pilot Test Site:** To validate this concept, a 10-feddan pilot area serving a single isolated subsurface collector network will be established. This site will serve as the validation unit, demonstrating the precise dynamic feedback loops between soil moisture, capillary rise, and drainage valve control before scaling up to the full 100,000 feddans.
 - **Expected outcome:** 25–30% reduction in over-irrigation; ≈150 million m³/year water savings across the project scale (100,000 feddans), equivalent to approximately 1,500 m³ per feddan per year.
+- **Smart Salinity Flushing Cycle:** To prevent root zone salinization under controlled drainage, the system integrates a telemetric feedback loop. If soil salinity sensors detect that electrical conductivity exceeds the crop threshold (e.g., $EC_e > 4 	ext{ dS/m}$ for wheat or $EC_e > 2 	ext{ dS/m}$ for sensitive crops), the digital platform triggers an automatic command to open the motorized gate valve. This drains out the saline water and allows fresh irrigation water to leach the salts through the soil profile. Once salinity drops below $EC_e < 2 	ext{ dS/m}$, the gates close to resume water retention and capillary rise.
 
 ### Component 5 — Nature-Based Solutions
 
@@ -380,6 +386,7 @@ The IoT monitoring data enables a closed-loop feedback system (real-time feedbac
 - **Treatment capacity:** ≈200 million m³/year of drainage water
 - **Design:** Multi-cell horizontal subsurface flow wetlands with native reed species (Phragmites australis, Typha domingensis)
 - **Co-benefits:** Carbon sequestration (estimated 2.1–4.2 tCO₂/feddan/year); biodiversity habitat; recreational and educational value
+- **Carbon Credit Methodologies:** Carbon credits are calculated and audited under international standards such as the **IPCC Wetlands Supplement** and **Verra's VM0033 Methodology for Tidal Wetland and Seagrass Restoration** (adapted for inland freshwater wetland systems). The 4,760 feddans of constructed wetlands are estimated to sequester 2.1–4.2 tCO₂/feddan/year, generating tradable carbon offsets to support long-term O&M funding.
 
 ### Component 6 — Digital Water Management Platform
 
@@ -388,12 +395,14 @@ The IoT monitoring data enables a closed-loop feedback system (real-time feedbac
 - **AI modules:** Predictive maintenance (drainage failure forecasting); irrigation scheduling recommendations; seasonal drainage performance analytics
 - **Digital twin:** 3D model of the subsurface drainage network updated in real time from sensor data
 - **Integration:** Compatible with MWRI's Irrigation System 2.0 SCADA architecture; data export to national water information system
+- **Meteorological Data Fusion (Penman-Monteith):** The platform merges real-time soil telemetry with local weather forecasting (temperature, relative humidity, wind speed, solar radiation). Using the Penman-Monteith equation, the AI model calculates reference evapotranspiration ($ET_0$) dynamically, adjusting drainage gate positions ahead of heatwaves or heavy winter downpours.
+- **Farmer WUA Mobile App ("Smart Farmer Drainage"):** A simplified, Arabic-language mobile application is provided for local Water User Associations. The app displays real-time soil moisture and water table depth, advising farmers on optimal irrigation timing and demonstrating how water retention in the drainage network saves them fuel/pumping costs, thereby fostering social ownership and preventing system tampering.
 
 ---
 
 ## 10. Stakeholder Analysis
 
-![Figure 6: Stakeholder Power-Interest Matrix — Eco-Drain Project](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\stakeholder_mapping_1784605520020.png)
+![Figure 6: Stakeholder Power-Interest Matrix — Eco-Drain Project](images/fig8_stakeholder_mapping.png)
 
 | Stakeholder | Role | Influence | Interest | Management Strategy |
 |------------|------|:---------:|:--------:|---------------------|
@@ -414,7 +423,7 @@ The IoT monitoring data enables a closed-loop feedback system (real-time feedbac
 
 ## 11. Climate Resilience Assessment
 
-![Figure 7: Climate Threats and Eco-Drain Adaptation Benefits](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\climate_resilience_impacts_1784605488062.png)
+![Figure 7: Climate Threats and Eco-Drain Adaptation Benefits](images/fig6_climate_resilience.png)
 
 ### Climate Risks to Nile Delta Agriculture
 
@@ -577,6 +586,18 @@ The total investment of USD 420 million translates to an all-in cost of **USD 4,
   - Every m³ of water saved through smart irrigation is a m³ not drawn from the fixed Nile allocation
   - Every tonne of CO₂ sequestered in wetlands has a social cost of carbon value of approximately USD 50–200/tCO₂ (US EPA estimates)
 
+**Eco-Drain CAPEX Rationalisation and Added Value Matrix:**
+
+| WEFE Component | Eco-Drain CAPEX | Traditional Equivalent | Added Value / Economic Return |
+|----------------|:---------------:|:----------------------:|-------------------------------|
+| **Subsurface Retrofitting** | USD 180 M | USD 35 M | 40+ year design life (vs 20); buried anti-tamper chambers; 15-25% crop yield increase. |
+| **IoT Tamper-Proofing** | USD 45 M | USD 0 M | Real-time flow/salinity telemetry; 80% reduction in tampering; early warnings. |
+| **Solar PV Grid (50 MW)** | USD 85 M | USD 0 M | 40% reduction in pumping electricity bill; grid-export revenues via Net Metering. |
+| **Smart Irrigation** | USD 25 M | USD 0 M | Saves 150 million m³/year of water (worth USD 52.5 M/year in avoided water costs). |
+| **Nature-Based Wetlands** | USD 40 M | USD 0 M | Treats 200M m³/year drainage; blue carbon offsets; Northern lakes fisheries protection. |
+| **Digital Twin Platform** | USD 45 M | USD 0 M | AI predictive maintenance; data integration with MWRI Irrigation System 2.0. |
+| **Total Project** | **USD 420 M** | **USD 35 M** | **Project EIRR of 21.4%; comprehensive climate adaptation and water-saving returns.** |
+
 A full feasibility study should quantify these avoided-cost values explicitly for the selected pilot sites.
 
 ### 16.3 Smart Irrigation Feasibility and Avoided-Cost Analysis
@@ -604,7 +625,7 @@ This sensitivity matrix demonstrates that even under severe cost and exchange ra
 
 ## 17. Capital Stack Design
 
-![Figure 8: Proposed Capital Stack — Blended Finance Structure](C:\Users\engmo\.gemini\antigravity-ide\brain\5f77bcc2-c231-43e4-9622-79f98fc4a888\capital_stack_finance_1784605477474.png)
+![Figure 8: Proposed Capital Stack — Blended Finance Structure](images/fig5_capital_stack.png)
 
 | Instrument | Project Stage | Risk Coverage | Expected Benefit | Amount (USD M) | % |
 |-----------|:------------:|:------------:|-----------------|:--------------:|:--:|
@@ -748,6 +769,15 @@ A key advantage of Eco-Drain over conventional drainage projects is that the **I
 - **Livelihood protection:** No land acquisition required (retrofitting occurs on existing agricultural land); temporary employment during construction (estimated 5,000 construction jobs); permanent employment in O&M (estimated 500 positions)
 - **Grievance redress:** Formal grievance mechanism aligned with World Bank ESS10; IoT platform includes farmer complaint reporting via mobile app
 - **Informal drainage users:** Unlike drainage reallocation projects (e.g., Al-Mahsama), Eco-Drain does not redirect drainage water away from existing users — it improves the system in place. This substantially reduces the social risk profile compared to mega-treatment-and-transfer projects.
+
+**Environmental & Social Safeguards Comparison Matrix:**
+
+| Safeguard Aspect | Centralised Treatment & Reuse Projects (e.g., Al-Mahsama, Bahr El-Baqar) | Eco-Drain Project (Decentralised Controlled Drainage) | Eco-Drain Advantage / Impact |
+|------------------|--------------------------------------------------------------------------|-------------------------------------------------------|------------------------------|
+| **Downstream Livelihoods** | Risk of water deprivation for informal tail-end farmers relying on drain flows. | Retains water in-situ; increases local availability via capillary rise by 25–30%. | Eliminates water conflicts; protects smallholders. |
+| **Energy Consumption** | Energy-intensive lift pumping to transport water across long distances. | Gravity-driven local flow supported by 50 MW distributed solar micro-grid. | Zero net grid emission; 40% energy OPEX savings. |
+| **Soil Protection** | Treats water after salinity has salinized the soil and drained out. | Dynamic controlled water table stops salinization in root zone at source. | Prevents land degradation before it becomes irreversible. |
+| **Ecosystem Flow** | Deprives northern lakes of critical flows, increasing lake salinity. | Reeds treat water biologically and discharge clean water to lakes. | Restores northern fisheries and biodiversity. |
 
 > [!IMPORTANT]
 > **Key safeguard advantage over reference report:** The Al-Mahsama case documented in the reference report showed that reallocating drainage water to new-land reclamation can affect old-land smallholders who rely on informal downstream drainage access. Eco-Drain avoids this risk entirely because it retrofits drainage in place rather than redirecting flows, making it inherently more socially sustainable.
