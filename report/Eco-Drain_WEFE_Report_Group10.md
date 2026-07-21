@@ -93,8 +93,8 @@ Subsurface drainage — the network of buried perforated pipes that controls the
 
 **Eco-Drain** proposes a transformative approach: a **decentralised, solar-powered, IoT-monitored subsurface drainage retrofitting programme** that converts Egypt's ageing invisible drainage infrastructure into a climate-resilient, tamper-proof, digitally managed asset class. The project combines five integrated interventions:
 
-- **Subsurface drainage retrofitting** across 100,000 feddans of priority Delta farmland, using modern materials with pre-wrapped geotextile envelopes to prevent clogging and extend design life from 20 to 40+ years;
-- **An IoT-based tamper-proof monitoring network** with embedded soil moisture, salinity, flow, and vibration sensors that detect unauthorised modifications, pipe blockages, and system failures in real time;
+- **Subsurface drainage retrofitting** across 100,000 feddans of priority Delta farmland using modern materials with pre-wrapped geotextile envelopes (40+ year design life), and **replacing surface manholes with invisible inspection chambers buried 30–50 cm underground** to physically prevent agricultural tampering;
+- **An IoT-based tamper-proof monitoring network** with embedded soil moisture, salinity, flow, and vibration sensors, utilizing passive RFID tags to locate buried chambers, and sending real-time alerts for unauthorized modifications;
 - **A 50 MW distributed solar micro-grid** powering drainage pumping stations and IoT infrastructure, reducing energy OPEX by an estimated 40%;
 - **Smart irrigation integration** that uses drainage monitoring data to optimise water application, reducing over-irrigation by 25–30% and the volume of drainage water requiring disposal;
 - **Nature-based solutions** including constructed wetlands at drainage discharge points, restoring ecosystem services and creating carbon credit opportunities.
