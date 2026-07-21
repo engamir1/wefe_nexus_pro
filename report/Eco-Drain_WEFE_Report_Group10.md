@@ -93,7 +93,7 @@ Subsurface drainage — the network of buried perforated pipes that controls the
 
 **Eco-Drain** proposes a transformative approach: a **decentralised, solar-powered, IoT-monitored subsurface drainage retrofitting programme** that converts Egypt's ageing invisible drainage infrastructure into a climate-resilient, tamper-proof, digitally managed asset class. The project combines five integrated interventions:
 
-- **Subsurface drainage retrofitting** across 100,000 feddans (42,000 hectares) of priority Delta farmland, using modern materials with pre-wrapped geotextile envelopes to prevent clogging and extend design life from 20 to 40+ years;
+- **Subsurface drainage retrofitting** across 100,000 feddans of priority Delta farmland, using modern materials with pre-wrapped geotextile envelopes to prevent clogging and extend design life from 20 to 40+ years;
 - **An IoT-based tamper-proof monitoring network** with embedded soil moisture, salinity, flow, and vibration sensors that detect unauthorised modifications, pipe blockages, and system failures in real time;
 - **A 50 MW distributed solar micro-grid** powering drainage pumping stations and IoT infrastructure, reducing energy OPEX by an estimated 40%;
 - **Smart irrigation integration** that uses drainage monitoring data to optimise water application, reducing over-irrigation by 25–30% and the volume of drainage water requiring disposal;
@@ -165,8 +165,8 @@ The scale of Egypt's drainage investment is remarkable but often overlooked:
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| **Total subsurface drainage installed** | ≈6.0 million feddans (≈2.52 million hectares) | MWRI / EPADP |
-| **Nile Delta coverage** | ≈4.3 million feddans (≈1.81 million hectares) | MWRI / EPADP |
+| **Total subsurface drainage installed** | ≈6.0 million feddans | MWRI / EPADP |
+| **Nile Delta coverage** | ≈4.3 million feddans | MWRI / EPADP |
 | **Renewal/replacement completed** | ≈2.3 million feddans | EPADP |
 | **Open public drain network** | ≈22,000 km across 4,444 drains | EPADP |
 | **National Drainage Programme phases** | NDP I–IV (World Bank co-financed) | World Bank / AfDB |
@@ -236,12 +236,12 @@ Restore and modernise Egypt's invisible subsurface drainage infrastructure into 
 
 ### 5.2 Specific Objectives
 
-1. **Retrofit 100,000 feddans** (42,000 hectares) of priority subsurface drainage in the Nile Delta with modern, long-life materials and pre-wrapped geotextile envelopes.
+1. **Retrofit 100,000 feddans** of priority subsurface drainage in the Nile Delta with modern, long-life materials and pre-wrapped geotextile envelopes.
 2. **Deploy an IoT monitoring network** of 5,000+ sensor nodes covering all retrofitted drainage, with real-time tamper detection, blockage alerts, and performance analytics.
 3. **Install 50 MW of distributed solar PV** at drainage pumping stations, reducing energy OPEX by 40% and creating grid export revenue.
 4. **Integrate smart irrigation** using drainage monitoring data to reduce over-irrigation by 25–30%, saving an estimated 150 million m³/year of irrigation water.
 5. **Increase crop yields by 15–25%** on retrofitted land through restored soil health and optimised water table management.
-6. **Construct wetlands at 20 drainage outlet points**, treating an estimated 200 million m³/year of drainage water before discharge and restoring 2,000 hectares of wetland ecosystem.
+6. **Construct wetlands at 20 drainage outlet points**, treating an estimated 200 million m³/year of drainage water before discharge and restoring 4,760 feddans of wetland ecosystem.
 7. **Create a replicable model** for digital drainage management applicable to the remaining 4.2+ million feddans of Delta subsurface drainage.
 
 ---
@@ -321,7 +321,7 @@ The Ministry of Water Resources and Irrigation's Irrigation System 2.0 programme
 
 ### Component 1 — Subsurface Drainage Retrofitting System
 
-**Scope:** 100,000 feddans (42,000 hectares) of priority subsurface drainage in four Nile Delta governorates.
+**Scope:** 100,000 feddans of priority subsurface drainage in four Nile Delta governorates.
 
 **Technology:**
 - **Lateral drains:** Corrugated HDPE pipes (80–110 mm diameter), installed at 1.0–1.5 m depth with 30–40 m spacing (adjusted to soil hydraulic conductivity)
@@ -367,10 +367,10 @@ The IoT monitoring data enables a closed-loop feedback system (real-time feedbac
 ### Component 5 — Nature-Based Solutions
 
 - **20 constructed wetlands** at major drainage discharge points
-- **Total wetland area:** 2,000 hectares
+- **Total wetland area:** 4,760 feddans
 - **Treatment capacity:** ≈200 million m³/year of drainage water
 - **Design:** Multi-cell horizontal subsurface flow wetlands with native reed species (Phragmites australis, Typha domingensis)
-- **Co-benefits:** Carbon sequestration (estimated 5–10 tCO₂/ha/year); biodiversity habitat; recreational and educational value
+- **Co-benefits:** Carbon sequestration (estimated 2.1–4.2 tCO₂/feddan/year); biodiversity habitat; recreational and educational value
 
 ### Component 6 — Digital Water Management Platform
 
@@ -730,7 +730,7 @@ A key advantage of Eco-Drain over conventional drainage projects is that the **I
 
 | Indicator | Expected Impact | Timeframe |
 |-----------|----------------|:---------:|
-| **Drainage system restored** | 100,000 feddans (42,000 hectares) | Year 1–5 |
+| **Drainage system restored** | 100,000 feddans | Year 1–5 |
 | **Agricultural yield increase** | 15–25% on retrofitted land | Year 2–7 |
 | **Renewable energy installed** | 50 MW solar PV | Year 1–3 |
 | **Renewable energy produced** | ≈90 GWh/year | Year 2+ |
@@ -741,7 +741,7 @@ A key advantage of Eco-Drain over conventional drainage projects is that the **I
 | **Drainage failure detection time** | From weeks to hours | Year 1+ |
 | **Jobs created** | 5,000 construction + 500 permanent O&M | Year 1–5 |
 | **Direct beneficiaries** | 200,000+ smallholder farmers and families | Year 2+ |
-| **Wetland area restored** | 2,000 hectares | Year 2–5 |
+| **Wetland area restored** | 4,760 feddans | Year 2–5 |
 | **Replication potential** | Model applicable to 4.2+ million additional feddans | Year 5+ |
 
 ---
@@ -780,7 +780,7 @@ A key advantage of Eco-Drain over conventional drainage projects is that the **I
 
 - **Tight climate adaptation logic** — Directly addresses the Nile Delta's three most urgent climate risks: sea level rise driving salinity intrusion, temperature increase raising crop water demand, and erratic rainfall overwhelming ageing drainage.
 
-- **Massive replication potential** — The Delta alone has 4.3 million feddans of existing drainage; globally, FAO estimates over 100 million hectares of irrigated land with drainage challenges. Eco-Drain's modular model is transferable.
+- **Massive replication potential** — The Delta alone has 4.3 million feddans of existing drainage; globally, FAO estimates over 238 million feddans of irrigated land with drainage challenges. Eco-Drain's modular model is transferable.
 
 - **Eligible for every major climate finance window** — GCF, Adaptation Fund, AfDB, EIB, IsDB, World Bank, EU Global Gateway.
 
