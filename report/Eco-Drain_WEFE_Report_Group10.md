@@ -12,15 +12,16 @@
 
 ---
 
-**Prepared by**
-Group 10 Trainee — Case Study for Training Purposes Only (Non-Official Document)
-WEFE Nexus Professional Series
+**Prepared by:**
+Eng. Mohamed Amir Abdelrahman — Technical Office of the Vice Chairman of EPADP for Lower Egypt
+Group 10 Trainee — Case Study: *Unlocking Finance for a Resilient WEFE Nexus in Egypt*
 
-**Simulated Training Exercise Document (Not an Official Project Proposal)**
+**Supervised by:** Dr. Hassan Tolba Aboelnga
 
 **Sector:** Water–Energy–Food–Ecosystems (WEFE) Nexus | **Geography:** Arab Republic of Egypt — Nile Delta | **Strategic Alignment:** MWRI Water & Irrigation System 2.0 Initiative
 
-**Training Series Reference Document | July 2026**
+**July 2026**
+
 
 ---
 
@@ -964,7 +965,8 @@ This section provides a simplified explanation of the key technical and scientif
 
 ---
 
-**Prepared by Group 10 as a case study for the Financing Resilience and WEFE Nexus Professional Series. This structure may be reused for subsequent country and sector reports in the series, subject to the drafting and quality standards set out above.**
+**Prepared by Eng. Mohamed Amir Abdelrahman (Technical Office of EPADP Vice Chairman for Lower Egypt) — Group 10 Case Study for the Lecture Series: *Unlocking Finance for a Resilient WEFE Nexus in Egypt*, supervised by Dr. Hassan Tolba Aboelnga.**
+
 
 ---
 

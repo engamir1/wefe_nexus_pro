@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Drain — IoT Smart Monitoring & Anti-Tamper Simulation (Component 2)</title>
+    <meta name="description" content="Scientific interactive simulation of Component 2: IoT Smart Monitoring & Anti-Tamper Network for Eco-Drain WEFE Nexus Project.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070F1E;
+            --panel-bg: rgba(15, 29, 56, 0.75);
+            --panel-border: rgba(21, 181, 164, 0.25);
+            --navy: #0B1D3A;
+            --navy-light: #142B4F;
+            --teal: #0E8C7F;
+            --teal-light: #15B5A4;
+            --gold: #D4A843;
+            --gold-light: #F0C860;
+            --red: #EF4444;
+            --green: #10B981;
+            --blue: #3B82F6;
+            --text-main: #F1F5F9;
+            --text-sub: #94A3B8;
+            --font-main: 'Noto Sans Arabic', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 1.5rem;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(14, 140, 127, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 168, 67, 0.1) 0%, transparent 40%);
+        }
+
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .sim-title h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sim-title p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-top: 0.2rem;
+        }
+
+        .badge-iot {
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: #000;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .lang-btn {
+            background: var(--navy-light);
+            border: 1px solid var(--panel-border);
+            color: var(--gold-light);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--teal);
+            color: #FFF;
+        }
+
+        /* Layout Grid */
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .sim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.6rem;
+        }
+
+        .card-header h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--teal-light);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Control Panel */
+        .controls-bar {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-scenario {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background: var(--navy);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-scenario:hover {
+            border-color: var(--teal-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-scenario.active {
+            background: var(--teal);
+            color: #FFF;
+            border-color: var(--teal-light);
+            box-shadow: 0 0 12px rgba(21, 181, 164, 0.4);
+        }
+
+        .btn-scenario.tamper-btn {
+            border-color: var(--red);
+            color: #FFAAAA;
+        }
+
+        .btn-scenario.tamper-btn.active, .btn-scenario.tamper-btn:hover {
+            background: var(--red);
+            color: #FFF;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+        }
+
+        /* Canvas Schematics */
+        .diagram-container {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            border-radius: 8px;
+            background: rgba(5, 12, 24, 0.9);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Status HUD & Metrics */
+        .hud-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .metric-box {
+            background: rgba(11, 29, 58, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.6rem;
+            text-align: center;
+        }
+
+        .metric-box .label {
+            font-size: 0.72rem;
+            color: var(--text-sub);
+        }
+
+        .metric-box .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 0.2rem;
+            font-family: var(--font-mono);
+            color: var(--gold-light);
+        }
+
+        .metric-box.alert-state .value {
+            color: var(--red);
+            animation: pulse-red 1s infinite alternate;
+        }
+
+        @keyframes pulse-red {
+            from { text-shadow: 0 0 2px var(--red); }
+            to { text-shadow: 0 0 10px var(--red); }
+        }
+
+        /* Oscilloscope Waveforms */
+        .oscilloscope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .chart-box {
+            background: rgba(5, 12, 24, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.6rem;
+        }
+
+        .chart-title {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chart-title span.val {
+            font-family: var(--font-mono);
+            color: var(--teal-light);
+            font-weight: 600;
+        }
+
+        /* Network Payload Console */
+        .console-box {
+            background: #030811;
+            border: 1px solid rgba(21, 181, 164, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--teal-light);
+            height: 140px;
+            overflow-y: auto;
+            line-height: 1.4;
+        }
+
+        .console-line {
+            margin-bottom: 0.2rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .console-line.alert {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .console-line.sys {
+            color: var(--gold);
+        }
+
+        /* Emergency Flash Overlay */
+        .alarm-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(239, 68, 68, 0.15);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .alarm-overlay.active {
+            opacity: 1;
+            animation: flash-alarm 0.8s infinite alternate;
+        }
+
+        @keyframes flash-alarm {
+            0% { background: rgba(239, 68, 68, 0.25); }
+            100% { background: rgba(239, 68, 68, 0.05); }
+        }
+
+        /* Network Status Pills */
+        .net-status {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .net-pill {
+            flex: 1;
+            background: rgba(11, 29, 58, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 0.4rem;
+            font-size: 0.72rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dot-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px var(--green);
+        }
+
+        .dot-status.red {
+            background: var(--red);
+            box-shadow: 0 0 8px var(--red);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sim-header">
+        <div class="sim-title">
+            <h1>
+                <span class="badge-iot">IoT Component 2</span>
+                <span data-lang="ar">محاكاة شبكة المراقبة الذكية وكشف التلاعب والعبث</span>
+                <span data-lang="en" style="display:none;">Smart Monitoring & Anti-Tamper IoT Network Simulation</span>
+            </h1>
+            <p data-lang="ar">نظام استشعار كهروميكانيكي لحماية شبكات الصرف المغطى بالدلتا (LoRaWAN + NB-IoT + MPU6050)</p>
+            <p data-lang="en" style="display:none;">Electromechanical Telemetry & Anti-Tamper System for Delta Subsurface Drainage (LoRaWAN + NB-IoT + MPU6050)</p>
+        </div>
+        <button class="lang-btn" onclick="toggleLanguage()">English / عربي</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-bar">
+        <button class="btn-scenario active" id="btn-normal" onclick="setScenario('normal')">
+            <span data-lang="ar">🟢 التشغيل الطبيعي</span>
+            <span data-lang="en" style="display:none;">🟢 Normal Telemetry</span>
+        </button>
+        <button class="btn-scenario tamper-btn" id="btn-tamper" onclick="setScenario('tamper')">
+            <span data-lang="ar">🚨 محاكاة محاولة تلاعب/عبث</span>
+            <span data-lang="en" style="display:none;">🚨 Physical Tamper Attack</span>
+        </button>
+        <button class="btn-scenario" id="btn-surge" onclick="setScenario('surge')">
+            <span data-lang="ar">🌊 طفح مياه / انسداد</span>
+            <span data-lang="en" style="display:none;">🌊 Hydraulic Water Surge</span>
+        </button>
+        <button class="btn-scenario" id="btn-salinity" onclick="setScenario('salinity')">
+            <span data-lang="ar">🧪 ارتفاع ملوحة التربة (EC)</span>
+            <span data-lang="en" style="display:none;">🧪 Soil Salinity EC Spike</span>
+        </button>
+    </div>
+
+    <div class="sim-grid">
+
+        <!-- Column 1: Physical Diagram & HUD -->
+        <div class="card" id="manhole-card">
+            <div class="alarm-overlay" id="alarm-overlay"></div>
+            <div class="card-header">
+                <h2>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <span data-lang="ar">المخطط الكهروميكانيكي لغرفة التفتيش (Manhole Diagram)</span>
+                    <span data-lang="en" style="display:none;">Electromechanical Manhole Cross-Section</span>
+                </h2>
+                <span id="node-id-badge" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold-light);">NODE #DLT-0482</span>
+            </div>
+
+            <div class="diagram-container">
+                <canvas id="manholeCanvas"></canvas>
+            </div>
+
+            <div class="hud-metrics">
+                <div class="metric-box" id="box-vibe">
+                    <div class="label" data-lang="ar">الاهتزاز (Acc)</div>
+                    <div class="label" data-lang="en" style="display:none;">Vibration</div>
+                    <div class="value" id="val-vibe">0.05 g</div>
+                </div>
+                <div class="metric-box" id="box-level">
+                    <div class="label" data-lang="ar">منسوب المياه</div>
+                    <div class="label" data-lang="en" style="display:none;">Water Level</div>
+                    <div class="value" id="val-level">42 cm</div>
+                </div>
+                <div class="metric-box" id="box-flow">
+                    <div class="label" data-lang="ar">التدفق (Flow)</div>
+                    <div class="label" data-lang="en" style="display:none;">Flow Rate</div>
+                    <div class="value" id="val-flow">14.2 L/s</div>
+                </div>
+                <div class="metric-box" id="box-ec">
+                    <div class="label" data-lang="ar">ملوحة التربة (EC)</div>
+                    <div class="label" data-lang="en" style="display:none;">Salinity EC</div>
+                    <div class="value" id="val-ec">1.8 dS/m</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Waveforms & Telemetry Console -->
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    <span data-lang="ar">رسوم التذبذب اللحظية والشفرة (Live Telemetry Oscilloscope)</span>
+                    <span data-lang="en" style="display:none;">Real-Time Telemetry & Oscilloscope</span>
+                </h2>
+            </div>
+
+            <div class="oscilloscope-grid">
+                <div class="chart-box">
+                    <div class="chart-title">
+                        <span data-lang="ar">الاهتزاز (MPU6050 Accelerometer)</span>
+                        <span data-lang="en" style="display:none;">Vibration (3-Axis)</span>
+                        <span class="val" id="chart-val-vibe">0.05 g</span>
+                    </div>
+                    <canvas id="chartVibe" height="80"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <div class="chart-title">
+                        <span data-lang="ar">منسوب المياه (Ultrasonic Level)</span>
+                        <span data-lang="en" style="display:none;">Water Level</span>
+                        <span class="val" id="chart-val-level">42 cm</span>
+                    </div>
+                    <canvas id="chartLevel" height="80"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <div class="chart-title">
+                        <span data-lang="ar">تدفق المياه (Electromagnetic)</span>
+                        <span data-lang="en" style="display:none;">Flow Rate</span>
+                        <span class="val" id="chart-val-flow">14.2 L/s</span>
+                    </div>
+                    <canvas id="chartFlow" height="80"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <div class="chart-title">
+                        <span data-lang="ar">الملوحة (Soil EC Probe)</span>
+                        <span data-lang="en" style="display:none;">Soil EC Salinity</span>
+                        <span class="val" id="chart-val-ec">1.8 dS/m</span>
+                    </div>
+                    <canvas id="chartEC" height="80"></canvas>
+                </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <div style="font-size: 0.8rem; font-weight: 600; color: var(--gold-light); margin-bottom: 0.3rem;" data-lang="ar">سجل البيانات المشفرة الذاهبة للسيرفر (AES-128 Telemetry Stream):</div>
+                <div style="font-size: 0.8rem; font-weight: 600; color: var(--gold-light); margin-bottom: 0.3rem; display:none;" data-lang="en">AES-128 Telemetry Payload Console:</div>
+                <div class="console-box" id="console"></div>
+            </div>
+
+            <div class="net-status">
+                <div class="net-pill">
+                    <span data-lang="ar">شبكة LoRaWAN Primary</span>
+                    <span data-lang="en" style="display:none;">LoRaWAN Mesh</span>
+                    <span style="display:flex; align-items:center; gap:0.3rem;"><div class="dot-status" id="lora-dot"></div> 868 MHz</span>
+                </div>
+                <div class="net-pill">
+                    <span data-lang="ar">شبكة NB-IoT (NTRA Backup)</span>
+                    <span data-lang="en" style="display:none;">NB-IoT Cellular</span>
+                    <span style="display:flex; align-items:center; gap:0.3rem;"><div class="dot-status" id="nbiot-dot"></div> TLS/Encrypted</span>
+                </div>
+                <div class="net-pill">
+                    <span data-lang="ar">نواة ESP32 Edge</span>
+                    <span data-lang="en" style="display:none;">ESP32 MCU</span>
+                    <span style="font-family:var(--font-mono); color:var(--teal-light);">240 MHz</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Language Toggle Logic
+        let currentLang = 'ar';
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.querySelectorAll('[data-lang="ar"]').forEach(el => el.style.display = currentLang === 'ar' ? '' : 'none');
+            document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = currentLang === 'en' ? '' : 'none');
+            document.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        }
+
+        // Simulation State Engine
+        let activeScenario = 'normal';
+        let timeStep = 0;
+
+        // Current Sensor Data Values
+        let data = {
+            vibe: 0.05,
+            level: 42,
+            flow: 14.2,
+            ec: 1.8,
+            tamperDetected: false,
+            valveOpen: false
+        };
+
+        // Target Sensor Data Values for smooth interpolation
+        let targetData = { ...data };
+
+        // Waveform History Arrays
+        const maxPoints = 50;
+        let vibeHistory = new Array(maxPoints).fill(0.05);
+        let levelHistory = new Array(maxPoints).fill(42);
+        let flowHistory = new Array(maxPoints).fill(14.2);
+        let ecHistory = new Array(maxPoints).fill(1.8);
+
+        // Canvases & Contexts
+        const mhCanvas = document.getElementById('manholeCanvas');
+        const mhCtx = mhCanvas.getContext('2d');
+
+        const vibeCanvas = document.getElementById('chartVibe');
+        const vibeCtx = vibeCanvas.getContext('2d');
+        const levelCanvas = document.getElementById('chartLevel');
+        const levelCtx = levelCanvas.getContext('2d');
+        const flowCanvas = document.getElementById('chartFlow');
+        const flowCtx = flowCanvas.getContext('2d');
+        const ecCanvas = document.getElementById('chartEC');
+        const ecCtx = ecCanvas.getContext('2d');
+
+        function resizeCanvases() {
+            const rect = mhCanvas.parentElement.getBoundingClientRect();
+            mhCanvas.width = rect.width;
+            mhCanvas.height = rect.height;
+
+            [vibeCanvas, levelCanvas, flowCanvas, ecCanvas].forEach(c => {
+                const r = c.parentElement.getBoundingClientRect();
+                c.width = r.width - 20;
+                c.height = 75;
+            });
+        }
+        window.addEventListener('resize', resizeCanvases);
+        setTimeout(resizeCanvases, 100);
+
+        // Set Scenario Function
+        function setScenario(scen) {
+            activeScenario = scen;
+            document.querySelectorAll('.btn-scenario').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${scen}`).classList.add('active');
+
+            const alarmOverlay = document.getElementById('alarm-overlay');
+            const boxVibe = document.getElementById('box-vibe');
+
+            if (scen === 'normal') {
+                targetData.vibe = 0.05;
+                targetData.level = 42;
+                targetData.flow = 14.2;
+                targetData.ec = 1.8;
+                targetData.tamperDetected = false;
+                targetData.valveOpen = false;
+                alarmOverlay.classList.remove('active');
+                boxVibe.classList.remove('alert-state');
+                logConsole('SYS: Returned to NORMAL OPERATIONAL STATE. All sensors nominal.', 'sys');
+            } else if (scen === 'tamper') {
+                targetData.vibe = 3.45; // Shock > 2.5g
+                targetData.tamperDetected = true;
+                alarmOverlay.classList.add('active');
+                boxVibe.classList.add('alert-state');
+                logConsole('🚨 ALERT [CRITICAL]: TAMPER DETECTED on Manhole Lid! MPU6050 Shock: 3.45g.', 'alert');
+                logConsole('📡 INTERRUPT: Instantly dispatching AES-128 encrypted GPS alert via NB-IoT emergency fallback to NTRA Cloud.', 'alert');
+            } else if (scen === 'surge') {
+                targetData.level = 115; // Water surge
+                targetData.flow = 38.5;
+                targetData.tamperDetected = false;
+                alarmOverlay.classList.remove('active');
+                boxVibe.classList.remove('alert-state');
+                logConsole('🌊 HYDRAULIC ANOMALY: High water surge detected in manhole chamber (115 cm). Pipe blockage risk.', 'sys');
+            } else if (scen === 'salinity') {
+                targetData.ec = 4.65; // EC > 4.0 dS/m
+                targetData.valveOpen = true;
+                targetData.tamperDetected = false;
+                alarmOverlay.classList.remove('active');
+                boxVibe.classList.remove('alert-state');
+                logConsole('🧪 SALINITY THRESHOLD EXCEEDED: EC = 4.65 dS/m (> 4.0 dS/m).', 'sys');
+                logConsole('⚡ TELEMETRY FEEDBACK LOOP: Dispatched AUTOMATIC OPEN SIGNAL to Motorized Gate Valve for flushing.', 'sys');
+            }
+        }
+
+        // Logging to HUD Console
+        function logConsole(msg, type = '') {
+            const consoleEl = document.getElementById('console');
+            const timestamp = new Date().toISOString().split('T')[1].slice(0, 8);
+            const line = document.createElement('div');
+            line.className = `console-line ${type}`;
+            line.textContent = `[${timestamp}] ${msg}`;
+            consoleEl.appendChild(line);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+
+            // Keep max 20 lines
+            while (consoleEl.childNodes.length > 25) {
+                consoleEl.removeChild(consoleEl.firstChild);
+            }
+        }
+
+        // Initial Console Messages
+        logConsole('SYSTEM INITIALIZED: ESP32 Edge Core Online (240MHz).', 'sys');
+        logConsole('NET: LoRaWAN 868MHz Mesh Link Established (RSSI: -84dBm).', 'sys');
+        logConsole('SECURITY: NB-IoT NTRA Encrypted Tunnel Standby. MPU6050 Accelerometer Active.', 'sys');
+
+        // Physics & Animation Loop
+        function updateData() {
+            timeStep += 0.05;
+
+            // Smooth interpolation
+            data.vibe += (targetData.vibe - data.vibe) * 0.1;
+            data.level += (targetData.level - data.level) * 0.05;
+            data.flow += (targetData.flow - data.flow) * 0.05;
+            data.ec += (targetData.ec - data.ec) * 0.05;
+
+            // Add realistic sensor noise
+            let noiseVibe = (Math.random() - 0.5) * (data.tamperDetected ? 0.8 : 0.02);
+            let currentVibe = Math.max(0.02, data.vibe + noiseVibe);
+
+            let noiseLevel = (Math.sin(timeStep * 2) * 0.8);
+            let currentLevel = Math.max(5, data.level + noiseLevel);
+
+            let noiseFlow = (Math.cos(timeStep * 1.5) * 0.3);
+            let currentFlow = Math.max(0, data.flow + noiseFlow);
+
+            let noiseEC = (Math.sin(timeStep * 0.5) * 0.04);
+            let currentEC = Math.max(0.5, data.ec + noiseEC);
+
+            // Shift history arrays
+            vibeHistory.push(currentVibe); vibeHistory.shift();
+            levelHistory.push(currentLevel); levelHistory.shift();
+            flowHistory.push(currentFlow); flowHistory.shift();
+            ecHistory.push(currentEC); ecHistory.shift();
+
+            // Update HUD values
+            document.getElementById('val-vibe').textContent = currentVibe.toFixed(2) + ' g';
+            document.getElementById('val-level').textContent = currentLevel.toFixed(0) + ' cm';
+            document.getElementById('val-flow').textContent = currentFlow.toFixed(1) + ' L/s';
+            document.getElementById('val-ec').textContent = currentEC.toFixed(2) + ' dS/m';
+
+            document.getElementById('chart-val-vibe').textContent = currentVibe.toFixed(2) + ' g';
+            document.getElementById('chart-val-level').textContent = currentLevel.toFixed(0) + ' cm';
+            document.getElementById('chart-val-flow').textContent = currentFlow.toFixed(1) + ' L/s';
+            document.getElementById('chart-val-ec').textContent = currentEC.toFixed(2) + ' dS/m';
+
+            // Periodic telemetry log emit
+            if (Math.floor(timeStep * 10) % 60 === 0 && !data.tamperDetected) {
+                let payload = `TX -> NODE:DLT-0482 | ACC:${currentVibe.toFixed(2)}g | H:${currentLevel.toFixed(0)}cm | Q:${currentFlow.toFixed(1)}L/s | EC:${currentEC.toFixed(2)}`;
+                logConsole(payload);
+            }
+        }
+
+        // Draw Schematics Canvas (Concrete Manhole & Sensors)
+        function drawManhole() {
+            const w = mhCanvas.width;
+            const h = mhCanvas.height;
+
+            mhCtx.clearRect(0, 0, w, h);
+
+            // Ground & Soil Layers
+            mhCtx.fillStyle = '#1A140E';
+            mhCtx.fillRect(0, 0, w, h);
+
+            // Soil texture gradient
+            let soilGrad = mhCtx.createLinearGradient(0, 0, 0, h);
+            soilGrad.addColorStop(0, '#2D2115');
+            soilGrad.addColorStop(0.3, '#1E1810');
+            soilGrad.addColorStop(1, '#0F0C08');
+            mhCtx.fillStyle = soilGrad;
+            mhCtx.fillRect(0, 40, w, h - 40);
+
+            // Concrete Manhole Body
+            const mhWidth = w * 0.45;
+            const mhLeft = (w - mhWidth) / 2;
+            const mhTop = 50;
+            const mhHeight = h - 90;
+
+            // Concrete Outer Wall
+            mhCtx.fillStyle = '#4A5568';
+            mhCtx.fillRect(mhLeft - 16, mhTop, mhWidth + 32, mhHeight);
+
+            // Inner Chamber
+            mhCtx.fillStyle = '#0B1424';
+            mhCtx.fillRect(mhLeft, mhTop, mhWidth, mhHeight);
+
+            // Manhole Lid (Top Cover)
+            let lidY = mhTop - 12;
+            if (data.tamperDetected) {
+                // Lid partially opened / vibrating during tamper
+                lidY -= 15 + Math.sin(timeStep * 30) * 4;
+            }
+
+            mhCtx.fillStyle = data.tamperDetected ? '#EF4444' : '#D4A843';
+            mhCtx.fillRect(mhLeft - 22, lidY, mhWidth + 44, 14);
+            mhCtx.fillStyle = '#FFF';
+            mhCtx.font = 'bold 10px sans-serif';
+            mhCtx.textAlign = 'center';
+            mhCtx.fillText(data.tamperDetected ? '⚠️ TAMPER / COVER UNLOCKED' : 'SECURE TAMPER-PROOF COVER', w / 2, lidY + 10);
+
+            // Water Layer inside Manhole
+            let waterH = (data.level / 150) * (mhHeight - 40);
+            let waterTop = (mhTop + mhHeight) - waterH;
+
+            let waterGrad = mhCtx.createLinearGradient(0, waterTop, 0, mhTop + mhHeight);
+            waterGrad.addColorStop(0, 'rgba(21, 181, 164, 0.6)');
+            waterGrad.addColorStop(1, 'rgba(14, 140, 127, 0.95)');
+            mhCtx.fillStyle = waterGrad;
+            mhCtx.fillRect(mhLeft, waterTop, mhWidth, waterH);
+
+            // Water surface ripples
+            mhCtx.beginPath();
+            mhCtx.moveTo(mhLeft, waterTop);
+            for (let x = mhLeft; x <= mhLeft + mhWidth; x += 10) {
+                let y = waterTop + Math.sin((x * 0.05) + timeStep * 5) * 3;
+                mhCtx.lineTo(x, y);
+            }
+            mhCtx.lineTo(mhLeft + mhWidth, mhTop + mhHeight);
+            mhCtx.lineTo(mhLeft, mhTop + mhHeight);
+            mhCtx.fillStyle = waterGrad;
+            mhCtx.fill();
+
+            // HDPE Inlet / Outlet Pipes
+            mhCtx.fillStyle = '#1E293B';
+            mhCtx.fillRect(0, mhTop + mhHeight - 45, mhLeft, 25);
+            mhCtx.fillRect(mhLeft + mhWidth, mhTop + mhHeight - 45, w - (mhLeft + mhWidth), 25);
+
+            // Geotextile filter wrapping graphic
+            mhCtx.strokeStyle = '#D4A843';
+            mhCtx.setLineDash([4, 4]);
+            mhCtx.strokeRect(0, mhTop + mhHeight - 48, mhLeft, 31);
+            mhCtx.strokeRect(mhLeft + mhWidth, mhTop + mhHeight - 48, w - (mhLeft + mhWidth), 31);
+            mhCtx.setLineDash([]);
+
+            // Hardware Nodes & Sensors inside Manhole
+
+            // 1. ESP32 Edge Enclosure Box (Mounted on upper wall)
+            let boxX = mhLeft + 15;
+            let boxY = mhTop + 20;
+            mhCtx.fillStyle = '#142B4F';
+            mhCtx.strokeStyle = '#15B5A4';
+            mhCtx.lineWidth = 2;
+            mhCtx.fillRect(boxX, boxY, 70, 45);
+            mhCtx.strokeRect(boxX, boxY, 70, 45);
+            mhCtx.fillStyle = '#FFF';
+            mhCtx.font = '9px monospace';
+            mhCtx.textAlign = 'left';
+            mhCtx.fillText('ESP32 MCU', boxX + 6, boxY + 16);
+            mhCtx.fillText('LoRa / NB-IoT', boxX + 6, boxY + 30);
+
+            // MPU6050 Accelerometer icon on box
+            mhCtx.fillStyle = data.tamperDetected ? '#EF4444' : '#10B981';
+            mhCtx.beginPath();
+            mhCtx.arc(boxX + 58, boxY + 12, 4, 0, Math.PI * 2);
+            mhCtx.fill();
+
+            // Wireless signal pulses emission
+            if (Math.floor(timeStep * 10) % 15 < 8) {
+                mhCtx.strokeStyle = data.tamperDetected ? 'rgba(239, 68, 68, 0.8)' : 'rgba(21, 181, 164, 0.8)';
+                mhCtx.beginPath();
+                mhCtx.arc(boxX + 35, boxY - 10, (timeStep * 20) % 30, Math.PI, 0);
+                mhCtx.stroke();
+            }
+
+            // 2. Ultrasonic Water Level Sensor (Hanging from top pointing down)
+            let usX = w / 2;
+            let usY = mhTop + 5;
+            mhCtx.fillStyle = '#334155';
+            mhCtx.fillRect(usX - 12, usY, 24, 18);
+            mhCtx.fillStyle = '#F0C860';
+            mhCtx.fillText('US-Level', usX - 18, usY + 30);
+
+            // Ultrasonic Sound Waves beam down to water
+            mhCtx.strokeStyle = 'rgba(240, 200, 96, 0.4)';
+            mhCtx.setLineDash([2, 4]);
+            mhCtx.beginPath();
+            mhCtx.moveTo(usX - 8, usY + 18);
+            mhCtx.lineTo(usX - 15, waterTop);
+            mhCtx.moveTo(usX + 8, usY + 18);
+            mhCtx.lineTo(usX + 15, waterTop);
+            mhCtx.stroke();
+            mhCtx.setLineDash([]);
+
+            // 3. Soil EC Probe (Embedded in soil outside right wall)
+            let ecX = mhLeft + mhWidth + 30;
+            let ecY = mhTop + 90;
+            mhCtx.fillStyle = '#D4A843';
+            mhCtx.fillRect(ecX, ecY, 10, 35);
+            mhCtx.fillStyle = '#FFF';
+            mhCtx.font = '9px sans-serif';
+            mhCtx.fillText('Soil EC Probe', ecX - 10, ecY - 6);
+
+            // Motorized Valve Indicator (if active)
+            if (data.valveOpen) {
+                mhCtx.fillStyle = '#10B981';
+                mhCtx.fillRect(mhLeft + mhWidth + 5, mhTop + mhHeight - 55, 18, 18);
+                mhCtx.fillStyle = '#FFF';
+                mhCtx.font = 'bold 8px sans-serif';
+                mhCtx.fillText('VALVE OPEN', mhLeft + mhWidth - 10, mhTop + mhHeight - 60);
+            }
+        }
+
+        // Generic Waveform Drawer
+        function drawChart(ctx, canvas, history, color, minVal, maxVal) {
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Grid background lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
+            ctx.stroke();
+
+            // Plot line
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+
+            const dx = w / (maxPoints - 1);
+            for (let i = 0; i < history.length; i++) {
+                let norm = (history[i] - minVal) / (maxVal - minVal);
+                norm = Math.max(0, Math.min(1, norm));
+                let y = h - (norm * (h - 10) + 5);
+                let x = i * dx;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Area fill under chart
+            ctx.lineTo(w, h);
+            ctx.lineTo(0, h);
+            ctx.fillStyle = color.replace(')', ', 0.15)').replace('rgb', 'rgba');
+            ctx.fill();
+        }
+
+        // Main Loop Function
+        function animate() {
+            updateData();
+            drawManhole();
+
+            drawChart(vibeCtx, vibeCanvas, vibeHistory, data.tamperDetected ? 'rgb(239, 68, 68)' : 'rgb(21, 181, 164)', 0, 4);
+            drawChart(levelCtx, levelCanvas, levelHistory, 'rgb(59, 130, 246)', 0, 140);
+            drawChart(flowCtx, flowCanvas, flowHistory, 'rgb(240, 200, 96)', 0, 50);
+            drawChart(ecCtx, ecCanvas, ecHistory, 'rgb(16, 185, 129)', 0, 6);
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
