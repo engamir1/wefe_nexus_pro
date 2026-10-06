@@ -1,435 +1,603 @@
-import collections.abc
+"""
+Eco-Drain WEFE Nexus - 5-minute executive pitch generator (3 slides, 16:9).
+
+Features
+- Real RTL handling for Arabic (paragraph rtl="1", complex-script font, mirrored layout).
+- Rounded cards, rounded pictures, KPI chips, funding-fit badges.
+- Figures from /images embedded in rounded frames.
+- Slide transitions (fade) + staggered entrance animations (fade / wipe).
+- Auto-fit estimator so text never overflows its card.
+- Speaker notes with a 5-minute timing script.
+"""
+import math
+import os
+import shutil
+
+from PIL import Image
 from pptx import Presentation
-from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
+from pptx.oxml import parse_xml
+from pptx.oxml.ns import nsdecls, qn
+from pptx.util import Inches, Pt
 
-# Global Color Palette
-BG_DARK = RGBColor(10, 22, 40)        # #0A1628 Deep Navy
-BG_CARD = RGBColor(15, 34, 64)        # #0F2240 Card Navy
-BG_CARD_ALT = RGBColor(22, 45, 82)    # #162D52 Elevated Navy
-CARD_BORDER = RGBColor(21, 181, 164)  # #15B5A4 Teal
-TEAL_LIGHT = RGBColor(21, 181, 164)   # #15B5A4
-TEAL_DARK = RGBColor(14, 140, 127)    # #0E8C7F
-GOLD_LIGHT = RGBColor(240, 200, 96)   # #F0C860 Gold Light
-GOLD = RGBColor(212, 168, 67)         # #D4A843
-WHITE = RGBColor(248, 250, 252)       # #F8FAFC
-GRAY = RGBColor(148, 163, 184)        # #94A3B8
-GREEN = RGBColor(16, 185, 129)        # #10B981 Emerald
-RED = RGBColor(239, 68, 68)           # #EF4444 Crimson
-BLUE_LIGHT = RGBColor(59, 130, 246)   # #3B82F6 Sky Blue
+BASE = os.path.dirname(os.path.abspath(__file__))
+IMG = os.path.join(BASE, "images")
 
-FONT_NAME = "Segoe UI"
+# ----------------------------------------------------------------------------
+# Palette
+# ----------------------------------------------------------------------------
+BG_TOP = RGBColor(13, 29, 54)
+BG_BOTTOM = RGBColor(6, 14, 28)
+BG_CARD = RGBColor(15, 34, 64)
+BG_CARD_ALT = RGBColor(24, 49, 88)
+TEAL = RGBColor(21, 181, 164)
+GOLD = RGBColor(240, 200, 96)
+GOLD_DEEP = RGBColor(212, 168, 67)
+WHITE = RGBColor(248, 250, 252)
+SOFT = RGBColor(226, 232, 240)
+GRAY = RGBColor(148, 163, 184)
+GREEN = RGBColor(16, 185, 129)
+RED = RGBColor(248, 113, 113)
+BLUE = RGBColor(96, 165, 250)
+NAVY_TEXT = RGBColor(10, 22, 40)
 
-def build_deck(output_path, lang='en'):
+FONT = "Segoe UI"
+SW, SH = 13.333, 7.5
+MARGIN = 0.8
+MEDIA_W = 3.9
+GAP = 0.12
+CONTENT_L = MARGIN + MEDIA_W + GAP
+CONTENT_W = (SW - MARGIN) - CONTENT_L
+BODY_TOP = 1.7
+
+# ----------------------------------------------------------------------------
+# Content
+# ----------------------------------------------------------------------------
+CONTENT = {
+    "en": {
+        "pill": "SLIDE {n} OF 3  |  5-MINUTE EXECUTIVE PITCH",
+        "footer": "Eco-Drain  |  Group 10  |  EPADP Technical Office, Lower Egypt",
+        "s1": {
+            "title": "Eco-Drain: Invisible, Tamper-Proof Subsurface Drainage",
+            "sub": "Climate-resilient retrofit of 100,000 feddans in Egypt's Nile Delta",
+            "img": "fig1_subsurface_drainage.png",
+            "cap": "Subsurface drainage retrofit concept",
+            "tiles": [
+                ("560 m³", "water per capita per year, below the 1,000 m³ poverty line"),
+                ("2.3M", "feddans of drainage networks past their design life"),
+                ("25–40%", "of drainage failures caused by tampering"),
+            ],
+            "a_title": "Problem addressed and invisible solution",
+            "a": [
+                ("Ageing networks:", "Delta drainage is past its 20–25 year design life, causing waterlogging, salinity and 10–30% yield loss."),
+                ("Hidden failures:", "buried pipes cannot be inspected, so faults go unseen for years."),
+                ("Tampering:", "farmers block surface manholes to pool rice water, causing 25–40% of failures."),
+                ("Eco-Drain:", "chambers buried 30–50 cm deep, secured by RFID/GPS, with shock sensors (>2.5g) sending encrypted NB-IoT alerts."),
+            ],
+            "b_title": "Lead institution, partners and governance",
+            "b": [
+                ("Lead:", "Ministry of Water Resources and Irrigation (MWRI) through EPADP, Technical Office for Lower Egypt."),
+                ("Partners:", "DRI (verification, MRV), MALR (crop advisory), NREA and EgyptERA (50 MW net metering), Water User Associations."),
+                ("Governance:", "inter-ministerial Steering Committee, dedicated PIU in EPADP, local platforms in Kafr El-Sheikh and Dakahlia."),
+                ("Alignment:", "Irrigation 2.0, Egypt Vision 2030, National Climate Strategy 2050."),
+            ],
+        },
+        "s2": {
+            "title": "Integrated WEFE Interventions and Bankability",
+            "sub": "Four closed-loop interventions, a formal screening score and a resilience scorecard",
+            "img": "fig2_wefe_nexus.png",
+            "cap": "Water–Energy–Food–Ecosystems nexus",
+            "score_title": "WEFE screening and resilience",
+            "score_big": "92/100",
+            "score_rating": "Resilience: HIGH",
+            "score_dims": "Water 10 · Energy 8 · Food 10 · Ecosystems 8 · Digital 9",
+            "cards": [
+                ("WATER", "150M m³/yr saved", "HDPE and geotextile retrofit with smart gate valves using capillary rise: 25–30% less irrigation water.", BLUE),
+                ("ENERGY", "50 MW solar · 90 GWh/yr", "Distributed PV at 25 pump stations cuts pumping bills by 40%; surplus exported via net metering.", GOLD),
+                ("FOOD", "15–25% higher yields", "Wheat, rice and maize restored for 200,000 farmers, with automatic flushing when salinity rises.", GREEN),
+                ("ECOSYSTEMS", "100k tCO₂/yr · 4,760 feddans", "20 constructed wetlands treat 200M m³/yr and protect Delta lakes (Verra blue carbon).", TEAL),
+            ],
+            "bank_title": "How WEFE integration improves bankability",
+            "bank": [
+                ("Self-funded OPEX:", "solar net metering pays pump power and protects the DSCR (1.35x)."),
+                ("Avoided cost and revenue:", "150M m³/yr is worth about $52.5M; smart-valve payback 0.48 years; $8M energy, $3M export, $5M water, $0.5M carbon per year."),
+                ("No displacement:", "in-situ retrofit with zero resettlement or community conflict."),
+            ],
+        },
+        "s3": {
+            "title": "Capital Stack, Readiness and Expected Results",
+            "sub": "USD 420M blended finance, a ready 10-feddan pilot and a three-stage scaling pathway",
+            "img": "fig5_capital_stack.png",
+            "cap": "Blended-finance capital stack",
+            "fit_title": "Funding call fit",
+            "fit": [
+                ("14/14", "Green Climate Fund", "Transformational adaptation and digital MRV. Decision: GO"),
+                ("13/14", "Adaptation Fund", "Ideal for the pilot component. Decision: GO"),
+                ("High", "PRIMA and EU Global Gateway", "Water-agri innovation and Euro-Med cooperation"),
+            ],
+            "bud_title": "Budget: USD 420M ($4,200 per feddan)",
+            "bud": [
+                ("15% grants ($63M):", "GCF, AfDB, EU for pilot, digital twin and capacity."),
+                ("20% government ($84M):", "in-kind land, pump stations, EPADP staff."),
+                ("40% concessional debt ($168M):", "World Bank, AfDB, 20–25 year tenor."),
+                ("25% PPP / commercial ($105M):", "solar developers under PPA. EIRR 21.4%."),
+            ],
+            "rdy_title": "Current readiness status",
+            "rdy": [
+                ("Track record:", "EPADP's 50 years, 6M feddans installed, TRL 8–9 technologies."),
+                ("Pilot ready:", "10-feddan unit on an isolated collector to validate before scale-up."),
+                ("Next step:", "$1.5M PPF grant request to GCF/AfDB for Kafr El-Sheikh feasibility."),
+            ],
+            "res_title": "Expected results (KPIs) and scaling pathway",
+            "kpis": [
+                ("150M m³", "water saved / yr"),
+                ("15–25%", "yield increase"),
+                ("90 GWh", "clean energy / yr"),
+                ("80%", "less tampering"),
+            ],
+            "phases": ["1 · Pilot 10 feddans (Yr 1)", "2 · Core 100k feddans (Yr 2–5)", "3 · Scale 4.3M feddans"],
+        },
+        "notes": [
+            "00:00-01:40  Problem: 560 m3 per capita, 2.3M feddans past design life, 25-40% of failures from tampering. Solution: invisible buried chambers with RFID/GPS and shock alerts. Lead: MWRI/EPADP with DRI, MALR, NREA, EgyptERA and WUAs.",
+            "01:40-03:30  Four WEFE interventions: 150M m3 water saved, 50 MW solar, +15-25% yields, 20 wetlands. Composite WEFE score 92/100. Bankability: self-funded OPEX, avoided cost, diversified revenue, no displacement.",
+            "03:30-05:00  USD 420M blended finance (15/20/40/25). Funding fit: GCF 14/14, Adaptation Fund 13/14. Ready: 10-feddan pilot, TRL 8-9, PPF request. Scaling: 10 feddans, 100k feddans, 4.3M feddans in the Delta, then Iraq, Jordan and Pakistan.",
+        ],
+    },
+    "ar": {
+        "pill": "الشريحة {n} من 3  |  عرض تنفيذي لمدة 5 دقائق",
+        "footer": "إيكو-درين  |  المجموعة العاشرة  |  المكتب الفني لهيئة الصرف بالوجه البحري",
+        "s1": {
+            "title": "إيكو-درين: صرف مغطى ذكي غير مرئي ومقاوم للتلاعب",
+            "sub": "تجديد مرن مناخياً لـ 100,000 فدان في دلتا النيل بمصر",
+            "img": "fig1_subsurface_drainage.png",
+            "cap": "تصور تجديد شبكات الصرف المغطى",
+            "tiles": [
+                ("560 م³", "نصيب الفرد من المياه سنوياً، أقل من خط الفقر المائي"),
+                ("2.3 مليون", "فدان من شبكات الصرف تجاوزت عمرها التصميمي"),
+                ("25–40%", "من أعطال الصرف سببها التلاعب"),
+            ],
+            "a_title": "المشكلة والحل غير المرئي",
+            "a": [
+                ("تقادم الشبكات:", "الصرف بالدلتا تجاوز عمره التصميمي (20–25 سنة) مسبباً التغدق والتملح وفقد 10–30% من المحاصيل."),
+                ("أعطال خفية:", "المواسير مدفونة ولا يمكن فحصها، فتبقى الأعطال مجهولة لسنوات."),
+                ("التلاعب:", "سد المزارعين للمناهل السطحية لحبس مياه الأرز يتسبب في 25–40% من الأعطال."),
+                ("حل إيكو-درين:", "غرف مدفونة على عمق 30–50 سم، مؤمنة بـ RFID وGPS، وحساسات اهتزاز (>2.5g) ترسل إنذاراً مشفراً عبر NB-IoT."),
+            ],
+            "b_title": "الجهة القائدة والشركاء والحوكمة",
+            "b": [
+                ("الجهة القائدة:", "وزارة الموارد المائية والري (MWRI) عبر هيئة الصرف (EPADP) — المكتب الفني للوجه البحري."),
+                ("الشركاء:", "معهد بحوث الصرف (التحقق وMRV)، وزارة الزراعة، هيئة الطاقة المتجددة وجهاز تنظيم الكهرباء (50 MW)، روابط مستخدمي المياه."),
+                ("الحوكمة:", "لجنة توجيهية بين الوزارات، وحدة تنفيذ مخصصة (PIU) بهيئة الصرف، ومنصات محلية في كفر الشيخ والدقهلية."),
+                ("التوافق:", "منظومة الري 2.0، ورؤية مصر 2030، واستراتيجية المناخ 2050."),
+            ],
+        },
+        "s2": {
+            "title": "تدخلات WEFE المتكاملة والجدوى البنكية",
+            "sub": "أربعة تدخلات مترابطة ودرجة فرز رسمية وبطاقة قياس للمرونة",
+            "img": "fig2_wefe_nexus.png",
+            "cap": "ترابط المياه والطاقة والغذاء والنظم البيئية",
+            "score_title": "فرز WEFE ومرونة المشروع",
+            "score_big": "92/100",
+            "score_rating": "المرونة: عالية",
+            "score_dims": "المياه 10 · الطاقة 8 · الغذاء 10 · النظم البيئية 8 · الرقمنة 9",
+            "cards": [
+                ("المياه", "توفير 150 مليون م³ سنوياً", "مواسير HDPE وفلاتر جيوتكستيل مع صمامات ذكية تستفيد من الصعود الشعري: توفير 25–30% من مياه الري.", BLUE),
+                ("الطاقة", "50 MW شمسية · 90 GWh سنوياً", "طاقة موزعة على 25 محطة رفع تخفض فاتورة الضخ 40% وتصدّر الفائض بنظام صافي القياس.", GOLD),
+                ("الغذاء", "زيادة الإنتاجية 15–25%", "استعادة غلة القمح والأرز والذرة لـ 200,000 مزارع مع غسيل آلي عند ارتفاع الملوحة.", GREEN),
+                ("النظم البيئية", "100 ألف طن CO₂ · 4,760 فدان", "20 أرضاً رطبة تعالج 200 مليون م³ سنوياً وتحمي بحيرات الدلتا (كربون أزرق Verra).", TEAL),
+            ],
+            "bank_title": "كيف يعزز تكامل WEFE الجدوى البنكية",
+            "bank": [
+                ("تشغيل ذاتي التمويل:", "الطاقة الشمسية تسدد كهرباء الطلمبات وتحمي نسبة خدمة الدين 1.35x."),
+                ("تكلفة متجنبة وإيرادات:", "توفير 150 مليون م³ ≈ 52.5 مليون دولار سنوياً، واسترداد خلال 0.48 سنة، وإيرادات طاقة وتصدير ومياه وكربون."),
+                ("بلا تهجير:", "تطوير موضعي دون إعادة توطين أو نزاعات مجتمعية."),
+            ],
+        },
+        "s3": {
+            "title": "هيكل التمويل والجاهزية والنتائج المتوقعة",
+            "sub": "تمويل مختلط بقيمة 420 مليون دولار وحقل تجريبي جاهز ومسار توسع من ثلاث مراحل",
+            "img": "fig5_capital_stack.png",
+            "cap": "هيكل رأس المال المختلط",
+            "fit_title": "ملاءمة جهات التمويل",
+            "fit": [
+                ("14/14", "صندوق المناخ الأخضر (GCF)", "تكيف تحويلي ورقمنة MRV. القرار: المضي"),
+                ("13/14", "صندوق التكيف", "مثالي لتمويل الحقل التجريبي. القرار: المضي"),
+                ("مرتفعة", "PRIMA وبوابة الاتحاد الأوروبي", "ابتكار مائي زراعي وتعاون متوسطي"),
+            ],
+            "bud_title": "الميزانية: 420 مليون دولار (4,200 دولار للفدان)",
+            "bud": [
+                ("15% منح (63 مليون دولار):", "GCF وAfDB والاتحاد الأوروبي للتجريبي والتوأم الرقمي."),
+                ("20% مساهمة حكومية (84 مليون دولار):", "أراضٍ ومحطات رفع وكوادر هيئة الصرف."),
+                ("40% قروض ميسرة (168 مليون دولار):", "البنك الدولي وAfDB لمدة 20–25 سنة."),
+                ("25% شراكة خاصة (105 مليون دولار):", "مطورو طاقة شمسية بعقود PPA. EIRR 21.4%."),
+            ],
+            "rdy_title": "حالة الجاهزية الحالية",
+            "rdy": [
+                ("سجل التنفيذ:", "50 عاماً لهيئة الصرف و6 ملايين فدان منفذة وتقنيات TRL 8–9."),
+                ("حقل تجريبي جاهز:", "وحدة 10 أفدنة على مجمع معزول للتحقق قبل التوسع."),
+                ("الخطوة التالية:", "طلب منحة تحضيرية 1.5 مليون دولار من GCF/AfDB لدراسة كفر الشيخ."),
+            ],
+            "res_title": "النتائج المتوقعة (KPIs) ومسار التوسع",
+            "kpis": [
+                ("150 مليون م³", "وفر مائي سنوياً"),
+                ("15–25%", "زيادة الإنتاجية"),
+                ("90 GWh", "طاقة نظيفة سنوياً"),
+                ("80%", "انخفاض التعديات"),
+            ],
+            "phases": ["1 · تجريبي 10 أفدنة (سنة 1)", "2 · ريادي 100 ألف فدان (2–5)", "3 · تعميم 4.3 مليون فدان"],
+        },
+        "notes": [
+            "00:00-01:40  المشكلة: نصيب الفرد 560 م³، و2.3 مليون فدان تجاوزت عمرها التصميمي، و25-40% من الأعطال بسبب التلاعب. الحل: غرف مدفونة بـ RFID وGPS وإنذار اهتزاز. القيادة: وزارة الري وهيئة الصرف مع الشركاء.",
+            "01:40-03:30  أربعة تدخلات WEFE: توفير 150 مليون م³، 50 MW شمسية، زيادة الإنتاجية 15-25%، و20 أرضاً رطبة. التقييم المركب 92/100. الجدوى البنكية: تشغيل ذاتي التمويل وتكلفة متجنبة وتنوع الإيرادات وعدم التهجير.",
+            "03:30-05:00  تمويل مختلط 420 مليون دولار (15/20/40/25). ملاءمة GCF 14/14 وصندوق التكيف 13/14. الجاهزية: حقل 10 أفدنة وTRL 8-9 وطلب PPF. التوسع: 10 أفدنة ثم 100 ألف فدان ثم 4.3 مليون فدان بالدلتا ثم العراق والأردن وباكستان.",
+        ],
+    },
+}
+
+
+# ----------------------------------------------------------------------------
+# Builder
+# ----------------------------------------------------------------------------
+def build_deck(output_path, lang="en"):
+    is_ar = lang == "ar"
+    T = CONTENT[lang]
+    warnings = []
+
     prs = Presentation()
-    prs.slide_width = Inches(13.333)
-    prs.slide_height = Inches(7.5)
-    blank_layout = prs.slide_layouts[6]
-    is_ar = (lang == 'ar')
-    align = PP_ALIGN.RIGHT if is_ar else PP_ALIGN.LEFT
+    prs.slide_width = Inches(SW)
+    prs.slide_height = Inches(SH)
+    blank = prs.slide_layouts[6]
 
-    def add_bg(slide):
-        bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(13.333), Inches(7.5))
-        bg.fill.solid()
-        bg.fill.fore_color.rgb = BG_DARK
-        bg.line.fill.background()
-        
-        # Subtle top accent bar with rounded edges
-        line = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.16), Inches(11.733), Inches(0.04))
-        line.adjustments[0] = 0.5
-        line.fill.solid()
-        line.fill.fore_color.rgb = TEAL_LIGHT
-        line.line.fill.background()
-        return bg
+    # ---- geometry / text helpers -------------------------------------------
+    def mx(left, width):
+        """Mirror an LTR x position for Arabic (RTL) layouts."""
+        return SW - left - width if is_ar else left
 
-    def add_header(slide, slide_num, title, subtitle):
-        # Pill badge background with smooth rounded corners
-        badge_w = Inches(4.6) if is_ar else Inches(5.3)
-        badge_left = Inches(13.333 - 0.8 - (4.6 if is_ar else 5.3)) if is_ar else Inches(0.8)
-        
-        pill = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, badge_left, Inches(0.32), badge_w, Inches(0.32))
-        pill.adjustments[0] = 0.5  # Fully rounded pill
-        pill.fill.solid()
-        pill.fill.fore_color.rgb = BG_CARD_ALT
-        pill.line.color.rgb = TEAL_LIGHT
-        pill.line.width = Pt(1.2)
-        
-        tf_pill = pill.text_frame
-        tf_pill.word_wrap = False
-        tf_pill.margin_top = tf_pill.margin_bottom = tf_pill.margin_left = tf_pill.margin_right = 0
-        p_pill = tf_pill.paragraphs[0]
-        p_pill.alignment = PP_ALIGN.CENTER
-        p_pill.text = (f"الشريحة {slide_num} من 3 | عرض تنفيذي في 5 دقائق | محور WEFE المقاوم للمناخ" 
-                       if is_ar else 
-                       f"SLIDE {slide_num} OF 3 | 5-MIN EXECUTIVE PITCH | CLIMATE RESILIENT WEFE")
-        p_pill.font.name = FONT_NAME
-        p_pill.font.size = Pt(10.5)
-        p_pill.font.bold = True
-        p_pill.font.color.rgb = TEAL_LIGHT
+    def style_run(run, size, color, bold=False):
+        f = run.font
+        f.name = FONT
+        f.size = Pt(size)
+        f.bold = bold
+        f.color.rgb = color
+        rpr = run._r.get_or_add_rPr()
+        rpr.set("lang", "ar-SA" if is_ar else "en-US")
+        for tag in ("a:ea", "a:cs"):
+            el = rpr.makeelement(qn(tag), {"typeface": FONT})
+            rpr.append(el)
 
-        # Header titles textbox
-        header_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.72), Inches(11.733), Inches(0.88))
-        tf = header_box.text_frame
+    def para(tf, first, runs, size, align=None, sa=0.0, ls=1.12, bullet=None):
+        p = tf.paragraphs[0] if first else tf.add_paragraph()
+        ppr = p._p.get_or_add_pPr()
+        ppr.set("rtl", "1" if is_ar else "0")
+        if align is None:
+            align = PP_ALIGN.RIGHT if is_ar else PP_ALIGN.LEFT
+        p.alignment = align
+        p.line_spacing = ls
+        p.space_after = Pt(sa)
+        if bullet is not None:
+            ppr.set("marL", str(int(Inches(0.22))))
+            ppr.set("indent", str(-int(Inches(0.22))))
+            ppr.append(parse_xml(
+                f'<a:buClr {nsdecls("a")}><a:srgbClr val="{bullet}"/></a:buClr>'))
+            ppr.append(parse_xml(f'<a:buFont {nsdecls("a")} typeface="Arial"/>'))
+            ppr.append(parse_xml(f'<a:buChar {nsdecls("a")} char="&#8226;"/>'))
+        for text, bold, color in runs:
+            r = p.add_run()
+            r.text = text
+            style_run(r, size, color, bold)
+        return p
+
+    def fit_size(items, width, height, max_pt, min_pt, bullet=True, label=""):
+        indent = 0.22 if bullet else 0.0
+        pt = max_pt
+        while pt >= min_pt - 1e-6:
+            total = 0.0
+            cpl = max(1, (width - indent) * 72 / (pt * 0.53))
+            for lead, text in items:
+                n = len(lead) + (1 if lead else 0) + len(text)
+                lines = math.ceil(n / cpl)
+                total += lines * pt * 1.2 * 1.12 / 72 + pt * 0.35 / 72
+            if total <= height:
+                return pt
+            pt -= 0.5
+        warnings.append(f"[{lang}] text may overflow: {label} (min {min_pt}pt)")
+        return min_pt
+
+    def textbox(g, l, t, w, h, anchor=MSO_ANCHOR.TOP):
+        tb = g.shapes.add_textbox(Inches(mx(l, w)), Inches(t), Inches(w), Inches(h))
+        tf = tb.text_frame
         tf.word_wrap = True
         tf.margin_top = tf.margin_bottom = tf.margin_left = tf.margin_right = 0
-        
-        # Main Title (Large & Bold: 22 pt)
-        p_title = tf.paragraphs[0]
-        p_title.alignment = align
-        p_title.line_spacing = 1.15
-        p_title.text = title
-        p_title.font.name = FONT_NAME
-        p_title.font.size = Pt(22)
-        p_title.font.bold = True
-        p_title.font.color.rgb = WHITE
-        
-        # Subtitle (12 pt)
-        p_sub = tf.add_paragraph()
-        p_sub.alignment = align
-        p_sub.line_spacing = 1.2
-        p_sub.text = subtitle
-        p_sub.font.name = FONT_NAME
-        p_sub.font.size = Pt(12)
-        p_sub.font.color.rgb = GOLD_LIGHT
+        tf.vertical_anchor = anchor
+        return tf
 
-    def create_card(slide, left, top, width, height, title="", title_color=TEAL_LIGHT, border_color=CARD_BORDER, border_width=1.3, corner_radius=0.08, pill_text="", pill_color=GOLD_LIGHT):
-        # Outer card with smooth rounded corners
-        card = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
-        card.adjustments[0] = corner_radius
-        card.fill.solid()
-        card.fill.fore_color.rgb = BG_CARD
-        card.line.color.rgb = border_color
-        card.line.width = Pt(border_width)
+    def box(g, l, t, w, h, fill, line=None, lw=1.0, radius=0.15, alpha=None,
+            shape=MSO_SHAPE.ROUNDED_RECTANGLE):
+        s = g.shapes.add_shape(shape, Inches(mx(l, w)), Inches(t), Inches(w), Inches(h))
+        if shape == MSO_SHAPE.ROUNDED_RECTANGLE:
+            s.adjustments[0] = min(0.5, radius / min(w, h))
+        s.fill.solid()
+        s.fill.fore_color.rgb = fill
+        if line is None:
+            s.line.fill.background()
+        else:
+            s.line.color.rgb = line
+            s.line.width = Pt(lw)
+        s.shadow.inherit = False
+        if alpha is not None:
+            clr = s._element.spPr.find(qn("a:solidFill")).find(qn("a:srgbClr"))
+            clr.append(parse_xml(f'<a:alpha {nsdecls("a")} val="{int(alpha * 1000)}"/>'))
+        return s
 
-        top_offset = Inches(0.12)
-        if title:
-            # Card header text
-            tb_title = slide.shapes.add_textbox(left + Inches(0.22), top + top_offset, width - Inches(0.44), Inches(0.38))
-            tf_title = tb_title.text_frame
-            tf_title.word_wrap = True
-            tf_title.margin_top = tf_title.margin_bottom = tf_title.margin_left = tf_title.margin_right = 0
-            p_t = tf_title.paragraphs[0]
-            p_t.alignment = align
-            p_t.text = title
-            p_t.font.name = FONT_NAME
-            p_t.font.size = Pt(14.5)
-            p_t.font.bold = True
-            p_t.font.color.rgb = title_color
-            top_offset += Inches(0.36)
+    def pill(g, l, t, w, h, text, fill, color, size, line=None, bold=True):
+        s = box(g, l, t, w, h, fill, line, 1.0, radius=h / 2)
+        tf = s.text_frame
+        tf.word_wrap = True
+        tf.margin_top = tf.margin_bottom = 0
+        tf.margin_left = tf.margin_right = Inches(0.06)
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        para(tf, True, [(text, bold, color)], size, align=PP_ALIGN.CENTER)
+        return s
 
-        if pill_text:
-            # Highlight metric pill with rounded corners
-            pill_shape = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left + Inches(0.20), top + top_offset, width - Inches(0.40), Inches(0.34))
-            pill_shape.adjustments[0] = 0.35  # Smooth rounded pill
-            pill_shape.fill.solid()
-            pill_shape.fill.fore_color.rgb = BG_CARD_ALT
-            pill_shape.line.color.rgb = border_color
-            pill_shape.line.width = Pt(1)
-            
-            tf_p = pill_shape.text_frame
-            tf_p.word_wrap = True
-            tf_p.margin_top = tf_p.margin_bottom = tf_p.margin_left = tf_p.margin_right = 0
-            p_pill_in = tf_p.paragraphs[0]
-            p_pill_in.alignment = align
-            p_pill_in.text = f" {pill_text} "
-            p_pill_in.font.name = FONT_NAME
-            p_pill_in.font.size = Pt(11.5)
-            p_pill_in.font.bold = True
-            p_pill_in.font.color.rgb = pill_color
-            top_offset += Inches(0.40)
+    def card(slide, l, t, w, h, title, accent):
+        g = slide.shapes.add_group_shape()
+        box(g, l, t, w, h, BG_CARD, accent, 1.25, 0.2)
+        box(g, l + 0.22, t + 0.17, 0.07, 0.28, accent, None, radius=0.035)
+        tf = textbox(g, l + 0.42, t + 0.12, w - 0.64, 0.36, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(title, True, accent)], 15)
+        return g
 
-        # Content text box with generous interior margins and clear typography
-        tb_content = slide.shapes.add_textbox(left + Inches(0.22), top + top_offset, width - Inches(0.44), height - top_offset - Inches(0.10))
-        tf_content = tb_content.text_frame
-        tf_content.word_wrap = True
-        tf_content.margin_top = tf_content.margin_bottom = tf_content.margin_left = tf_content.margin_right = 0
-        return tf_content
+    def bullets(g, l, t, w, h, items, accent, max_pt=13.0, min_pt=11.0, label=""):
+        pt = fit_size(items, w, h, max_pt, min_pt, True, label)
+        tf = textbox(g, l, t, w, h)
+        for i, (lead, text) in enumerate(items):
+            para(tf, i == 0, [(lead + " ", True, GOLD), (text, False, SOFT)], pt,
+                 sa=pt * 0.35, bullet=str(accent))
 
-    def add_bullet(tf, title, desc, title_color=GOLD_LIGHT, text_color=WHITE, font_size=11.5, space_after=6.5):
-        p = tf.paragraphs[0] if (len(tf.paragraphs) == 1 and not tf.paragraphs[0].text) else tf.add_paragraph()
-        p.alignment = align
-        p.line_spacing = 1.25
-        p.space_after = Pt(space_after)
+    def image_card(slide, path, l, t, w, h, caption, accent):
+        g = slide.shapes.add_group_shape()
+        box(g, l, t, w, h, BG_CARD, accent, 1.25, 0.2)
+        iw, ih = Image.open(path).size
+        avail_w, avail_h = w - 0.3, h - 0.3 - 0.3
+        scale = min(avail_w / iw, avail_h / ih)
+        pw, ph = iw * scale, ih * scale
+        pl = l + (w - pw) / 2
+        pt = t + 0.15 + (avail_h - ph) / 2
+        pic = g.shapes.add_picture(path, Inches(mx(pl, pw)), Inches(pt), Inches(pw), Inches(ph))
+        pic.auto_shape_type = MSO_SHAPE.ROUNDED_RECTANGLE
+        prst = pic._element.spPr.find(qn("a:prstGeom"))
+        for old in prst.findall(qn("a:avLst")):
+            prst.remove(old)
+        adj = int(min(50000, 0.14 / min(pw, ph) * 100000))
+        prst.append(parse_xml(
+            f'<a:avLst {nsdecls("a")}><a:gd name="adj" fmla="val {adj}"/></a:avLst>'))
+        tf = textbox(g, l + 0.15, t + h - 0.36, w - 0.3, 0.26, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(caption, False, GRAY)], 11, align=PP_ALIGN.CENTER)
+        return g
 
-        if title:
-            r_title = p.add_run()
-            r_title.text = f"{title} "
-            r_title.font.name = FONT_NAME
-            r_title.font.size = Pt(font_size)
-            r_title.font.bold = True
-            r_title.font.color.rgb = title_color
+    # ---- slide scaffolding ---------------------------------------------------
+    def new_slide(n, title, sub):
+        s = prs.slides.add_slide(blank)
+        bg = s.background.fill
+        bg.gradient()
+        bg.gradient_angle = 90.0
+        bg.gradient_stops[0].color.rgb = BG_TOP
+        bg.gradient_stops[1].color.rgb = BG_BOTTOM
+        # decorative translucent circles
+        box(s, 10.3, -1.7, 4.2, 4.2, TEAL, None, alpha=9, shape=MSO_SHAPE.OVAL)
+        box(s, -1.3, 5.7, 3.6, 3.6, GOLD_DEEP, None, alpha=7, shape=MSO_SHAPE.OVAL)
+        box(s, MARGIN, 1.6, SW - 2 * MARGIN, 0.03, TEAL, None, radius=0.015, alpha=45)
 
-        r_text = p.add_run()
-        r_text.text = desc
-        r_text.font.name = FONT_NAME
-        r_text.font.size = Pt(font_size)
-        r_text.font.color.rgb = text_color
+        hg = s.shapes.add_group_shape()
+        pill(hg, MARGIN, 0.3, 4.6, 0.34, T["pill"].format(n=n), BG_CARD_ALT, TEAL, 11, line=TEAL)
+        tf = textbox(hg, MARGIN, 0.72, SW - 2 * MARGIN, 0.5, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(title, True, WHITE)], 26)
+        tf = textbox(hg, MARGIN, 1.2, SW - 2 * MARGIN, 0.34, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(sub, False, GOLD)], 14)
 
-    # =========================================================================
-    # SLIDE 1: Title, Problem Statement, Innovation & Lead Governance
-    # =========================================================================
-    s1 = prs.slides.add_slide(blank_layout)
-    add_bg(s1)
+        fg = s.shapes.add_group_shape()
+        tf = textbox(fg, MARGIN, 7.14, 9.5, 0.24, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(T["footer"], False, GRAY)], 10)
+        tf = textbox(fg, SW - MARGIN - 1.0, 7.14, 1.0, 0.24, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(f"{n} / 3", True, TEAL)], 10,
+             align=PP_ALIGN.LEFT if is_ar else PP_ALIGN.RIGHT)
+        return s, [(hg, "fade")]
 
-    if is_ar:
-        add_header(s1, 1,
-                   "إيكو-درين (Eco-Drain): إحلال وتجديد شبكات الصرف المغطى الذكية ومقاومة التلاعب",
-                   "1. بيان المشكلة المائية وتحدي التلاعب | 3. الجهة القائدة، الشركاء وهيكل الحوكمة المؤسسية")
+    def finish(slide, effects, note, n):
+        animate(slide, effects)
+        slide.notes_slide.notes_text_frame.text = note
 
-        # Column 1 (Right): Problem & Tampering Solution
-        c1 = create_card(s1, Inches(6.8), Inches(1.68), Inches(5.733), Inches(2.6), 
-                         "🚨 1. بيان المشكلة المائية وتدهور الشبكات بالدلتا", RED, RED, 1.3, 0.08,
-                         pill_text="⚠️ 560 م³/فرد حصة حرجة | 2.3 مليون فدان متقادمة", pill_color=GOLD_LIGHT)
-        add_bullet(c1, "• الفقر المائي الحرج:", "حصة مصر 55.5 مليار م³ لـ 106+ مليون نسمة (560 م³/فرد، أقل بكثير من حد الفقر العالمي 1,000 م³).", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c1, "• تقادم 2.3 مليون فدان:", "شبكات الصرف تجاوزت عمرها (20-25 سنة)، مسببة تغدق الجذور وتملح التربة وخسارة 10-30% من المحاصيل.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c1, "• أزمة البنية غير المرئية:", "شبكات مدفونة تحت الأرض يصعب فحصها بصرياً وتتأخر صيانتها لسنوات حتى يتلف المحصول.", GOLD_LIGHT, WHITE, 11.5, 0)
+    def animate(slide, effects, step=300, dur=500):
+        cid = [4]
 
-        c2 = create_card(s1, Inches(6.8), Inches(4.45), Inches(5.733), Inches(2.65), 
-                         "🛡️ 2. تحدي التلاعب الزراعي وابتكار الغرف غير المرئية", GOLD_LIGHT, GOLD, 1.3, 0.08,
-                         pill_text="🔒 غرف غاطسة مدفونة 30-50 سم | رصد اهتزاز >2.5g وإنذار NB-IoT", pill_color=TEAL_LIGHT)
-        add_bullet(c2, "• التعديات العشوائية:", "سجلات هيئة الصرف توثق أن 25-40% من الأعطال ناجمة عن سد المزارعين للمناهل لحبس المياه لزراعة الأرز.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c2, "• ابتكار الغرف الغاطسة:", "استبدال الغرف السطحية بغرف مدفونة 30-50 سم مع شرائح RFID وإحداثيات GPS تمنع التلاعب نهائياً.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c2, "• الردع الذكي الفوري:", "حساسات MPU6050 ترصد أي اهتزاز أو حفر (>2.5g) وتبث إنذار طوارئ مشفر (AES-128) عبر NB-IoT إلى مركز التحكم.", GOLD_LIGHT, WHITE, 11.5, 0)
+        def nid():
+            cid[0] += 1
+            return cid[0]
 
-        # Column 2 (Left): Lead Institution, Partners & Governance
-        c3 = create_card(s1, Inches(0.8), Inches(1.68), Inches(5.7), Inches(5.42), 
-                         "🏛️ 3. الجهة القائدة، الشركاء وهيكل الحوكمة المؤسسية", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.06,
-                         pill_text="👑 قيادة تنفيذية: وزارة الموارد المائية والري (MWRI) / هيئة الصرف (EPADP)", pill_color=GOLD_LIGHT)
-        add_bullet(c3, "• الجهة القائدة التنفيذية:", "الهيئة المصرية العامة لمشروعات الصرف (EPADP - المكتب الفني للوجه البحري) بخبرة 50 عاماً في إدارة الشبكات.", GOLD_LIGHT, WHITE, 11.5, 7)
-        add_bullet(c3, "• الشركاء الفنيون والزراعيون:", "معهد بحوث الصرف (DRI) للمواصفات والتحقق، ووزارة الزراعة (MALR) لتحسين إنتاجية المحاصيل.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• شريك الطاقة والربط الشبكي:", "هيئة الطاقة المتجددة (NREA) وجهاز تنظيم الكهرباء (EgyptERA) لتطبيق صافي القياس (Net Metering).", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• الحوكمة المجتمعية والميدانية:", "روابط مستخدمي المياه (WUAs) للمشاركة الفعالة عبر تطبيق الهاتف (Smart Farmer Drainage).", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• هيكل الحوكمة متعدد المستويات:", "لجنة وزارية عليا توجيهية + وحدة إدارة مخصصة (PIU) بهيئة الصرف + لجان محلية بالمحافظات.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• التوافق الاستراتيجي الوطني:", "متوافق تماماً مع مبادرة 'منظومة المياه والري 2.0'، ورؤية مصر 2030، واستراتيجية المناخ 2050.", TEAL_LIGHT, WHITE, 11.5, 0)
+        parts = []
+        for i, (shape, kind) in enumerate(effects):
+            spid = shape.shape_id
+            if kind == "wipe":
+                preset, sub, flt = (22, 2, "wipe(right)") if is_ar else (22, 8, "wipe(left)")
+            else:
+                preset, sub, flt = 10, 0, "fade"
+            a, b, c = nid(), nid(), nid()
+            parts.append(
+                f'<p:par><p:cTn id="{a}" presetID="{preset}" presetClass="entr" '
+                f'presetSubtype="{sub}" fill="hold" nodeType="withEffect">'
+                f'<p:stCondLst><p:cond delay="{i * step}"/></p:stCondLst><p:childTnLst>'
+                f'<p:set><p:cBhvr><p:cTn id="{b}" dur="1" fill="hold"><p:stCondLst>'
+                f'<p:cond delay="0"/></p:stCondLst></p:cTn><p:tgtEl><p:spTgt spid="{spid}"/>'
+                f'</p:tgtEl><p:attrNameLst><p:attrName>style.visibility</p:attrName>'
+                f'</p:attrNameLst></p:cBhvr><p:to><p:strVal val="visible"/></p:to></p:set>'
+                f'<p:animEffect transition="in" filter="{flt}"><p:cBhvr>'
+                f'<p:cTn id="{c}" dur="{dur}"/><p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl>'
+                f'</p:cBhvr></p:animEffect></p:childTnLst></p:cTn></p:par>')
+        timing = (
+            f'<p:timing {nsdecls("p")}><p:tnLst><p:par><p:cTn id="1" dur="indefinite" '
+            f'restart="never" nodeType="tmRoot"><p:childTnLst><p:seq concurrent="1" nextAc="seek">'
+            f'<p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst><p:par>'
+            f'<p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/>'
+            f'<p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>'
+            f'<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst>'
+            f'<p:childTnLst>{"".join(parts)}</p:childTnLst></p:cTn></p:par>'
+            f'</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn>'
+            f'<p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond>'
+            f'</p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/>'
+            f'</p:tgtEl></p:cond></p:nextCondLst></p:seq></p:childTnLst></p:cTn></p:par>'
+            f'</p:tnLst></p:timing>')
+        transition = parse_xml(f'<p:transition {nsdecls("p")} spd="med"><p:fade/></p:transition>')
+        slide._element.append(transition)
+        slide._element.append(parse_xml(timing))
 
-    else:
-        add_header(s1, 1,
-                   "Eco-Drain: Invisible Tamper-Proof Subsurface Drainage Retrofitting",
-                   "1. Problem Statement & Tampering Challenge | 3. Lead Institution, Partners & Governance Arrangements")
+    # ======================================================================
+    # SLIDE 1
+    # ======================================================================
+    d = T["s1"]
+    s, fx = new_slide(1, d["title"], d["sub"])
 
-        # Column 1 (Left): Problem & Tampering Solution
-        c1 = create_card(s1, Inches(0.8), Inches(1.68), Inches(5.7), Inches(2.6), 
-                         "🚨 1. National Problem Statement & Delta Water Crisis", RED, RED, 1.3, 0.08,
-                         pill_text="⚠️ 560 m³/capita Scarcity | 2.3 Million Feddans Expired Life", pill_color=GOLD_LIGHT)
-        add_bullet(c1, "• Critical Water Scarcity:", "Egypt's quota is 55.5 BCM for 106M+ people -> 560 m³/capita (below 1,000 m³ global water poverty line).", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c1, "• 2.3 Million Feddans Expired:", "Nile Delta drainage networks exceed design life (>20 yr), causing root waterlogging & slashing yields by 10-30%.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c1, "• Invisible Infrastructure Gap:", "Buried networks cannot be visually monitored, resulting in silent failures undetected until crop loss occurs.", GOLD_LIGHT, WHITE, 11.5, 0)
+    g = image_card(s, os.path.join(IMG, d["img"]), MARGIN, BODY_TOP, MEDIA_W, 2.3, d["cap"], TEAL)
+    fx.append((g, "wipe"))
+    accents = [RED, GOLD, TEAL]
+    for i, (num, label) in enumerate(d["tiles"]):
+        ty = BODY_TOP + 2.3 + 0.1 + i * 0.97
+        tg = s.shapes.add_group_shape()
+        box(tg, MARGIN, ty, MEDIA_W, 0.9, BG_CARD, accents[i], 1.1, 0.16)
+        tf = textbox(tg, MARGIN + 0.1, ty, 1.5, 0.9, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(num, True, accents[i])], 22, align=PP_ALIGN.CENTER)
+        lw_ = MEDIA_W - 1.8
+        tf = textbox(tg, MARGIN + 1.65, ty + 0.05, lw_, 0.8, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(label, False, SOFT)], 11.5)
+        fx.append((tg, "fade"))
 
-        c2 = create_card(s1, Inches(0.8), Inches(4.45), Inches(5.7), Inches(2.65), 
-                         "🛡️ 2. The Tampering Challenge & Invisible Solution", GOLD_LIGHT, GOLD, 1.3, 0.08,
-                         pill_text="🔒 Buried Chambers 30-50 cm | >2.5g Shock Sensors & NB-IoT Telemetry", pill_color=TEAL_LIGHT)
-        add_bullet(c2, "• Unauthorized Interference:", "EPADP records show 25-40% of failures stem from farmers blocking manholes to pool water for rice cultivation.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c2, "• Eco-Drain Core Innovation:", "Replacing surface structures with invisible chambers buried 30-50 cm deep, secured via RFID tags & GPS coordinates.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c2, "• Active Tamper Deterrence:", "MPU6050 sensors detect digging/shock (>2.5g), triggering instant AES-128 encrypted alerts via NB-IoT to control centers.", GOLD_LIGHT, WHITE, 11.5, 0)
+    ca = card(s, CONTENT_L, BODY_TOP, CONTENT_W, 2.75, d["a_title"], RED)
+    bullets(ca, CONTENT_L + 0.25, BODY_TOP + 0.6, CONTENT_W - 0.5, 2.75 - 0.68, d["a"], RED,
+            label="s1 card A")
+    fx.append((ca, "fade"))
+    cb = card(s, CONTENT_L, BODY_TOP + 2.85, CONTENT_W, 2.5, d["b_title"], TEAL)
+    bullets(cb, CONTENT_L + 0.25, BODY_TOP + 2.85 + 0.6, CONTENT_W - 0.5, 2.5 - 0.68, d["b"], TEAL,
+            label="s1 card B")
+    fx.append((cb, "fade"))
+    finish(s, fx, T["notes"][0], 1)
 
-        # Column 2 (Right): Lead Institution, Partners & Governance
-        c3 = create_card(s1, Inches(6.8), Inches(1.68), Inches(5.733), Inches(5.42), 
-                         "🏛️ 3. Lead Institution, Key Partners & Governance Structure", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.06,
-                         pill_text="👑 Executive Lead: Ministry of Water Resources & Irrigation (MWRI) / EPADP", pill_color=GOLD_LIGHT)
-        add_bullet(c3, "• Lead Executive Institution:", "Ministry of Water Resources and Irrigation (MWRI) / Egyptian Public Authority for Drainage Projects (EPADP).", GOLD_LIGHT, WHITE, 11.5, 7)
-        add_bullet(c3, "• Technical & Agricultural Partners:", "Drainage Research Institute (DRI - NWRC) for independent MRV, and Ministry of Agriculture (MALR) for crop advisory.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• Energy & Regulatory Partner:", "New & Renewable Energy Authority (NREA) & EgyptERA for 50 MW net-metering grid interconnection.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• Community & Field Governance:", "Farmers' Water User Associations (WUAs) co-managing water tables via the 'Smart Farmer Drainage' mobile app.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• Multi-Tier Governance Structure:", "Inter-Ministerial Steering Committee + dedicated PIU inside EPADP + Multi-Stakeholder Platforms in Kafr El-Sheikh.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c3, "• National Strategic Alignment:", "Fully aligned with Presidential Initiative 'Irrigation 2.0', Egypt Vision 2030, and National Climate Strategy 2050.", TEAL_LIGHT, WHITE, 11.5, 0)
+    # ======================================================================
+    # SLIDE 2
+    # ======================================================================
+    d = T["s2"]
+    s, fx = new_slide(2, d["title"], d["sub"])
 
-    # =========================================================================
-    # SLIDE 2: WEFE Interventions, Screening Matrix & Bankability
-    # =========================================================================
-    s2 = prs.slides.add_slide(blank_layout)
-    add_bg(s2)
+    g = image_card(s, os.path.join(IMG, d["img"]), MARGIN, BODY_TOP, MEDIA_W, 3.4, d["cap"], BLUE)
+    fx.append((g, "wipe"))
 
-    if is_ar:
-        add_header(s2, 2,
-                   "تدخلات WEFE المتكاملة، مصفوفة الفرز الرسمية، وتعزيز الجدوى البنكية",
-                   "2. التدخلات المغلقة الأربعة | تصحيحات التقرير: مصفوفة الفرز، النظم البيئية، وتعزيز الجدوى البنكية")
+    sy = BODY_TOP + 3.5
+    sh = 7.05 - sy
+    sg = card(s, MARGIN, sy, MEDIA_W, sh, d["score_title"], GOLD)
+    tf = textbox(sg, MARGIN + 0.25, sy + 0.58, 1.75, 0.6, MSO_ANCHOR.MIDDLE)
+    para(tf, True, [(d["score_big"], True, GOLD)], 32, align=PP_ALIGN.CENTER)
+    pill(sg, MARGIN + 2.05, sy + 0.7, MEDIA_W - 2.3, 0.36, d["score_rating"], GREEN, NAVY_TEXT, 12)
+    tf = textbox(sg, MARGIN + 0.25, sy + 1.25, MEDIA_W - 0.5, sh - 1.3)
+    pt = fit_size([("", d["score_dims"])], MEDIA_W - 0.5, sh - 1.3, 12, 10.5, False, "s2 dims")
+    para(tf, True, [(d["score_dims"], False, SOFT)], pt, align=PP_ALIGN.CENTER)
+    fx.append((sg, "fade"))
 
-        # Top 4 Columns: WEFE Pillars
-        p_w = Inches(2.77)
-        
-        # 1. Water
-        c_w = create_card(s2, Inches(0.8), Inches(1.68), p_w, Inches(2.62), "💧 المياه (Water)", BLUE_LIGHT, BLUE_LIGHT, 1.2, 0.09,
-                          pill_text="وفر 150M م³/سنة (25-30%)", pill_color=GOLD_LIGHT)
-        add_bullet(c_w, "• التقنية:", "إحلال 100k فدان بمواسير HDPE وفلاتر جيوتكستيل (عمر 40+ سنة).", BLUE_LIGHT, WHITE, 11, 5)
-        add_bullet(c_w, "• التحكم:", "صمامات ذكية تستفيد من الصعود الشعري لتغذية جذور المحاصيل ذاتياً.", BLUE_LIGHT, WHITE, 11, 0)
+    cw = (CONTENT_W - GAP) / 2
+    ch = 1.65
+    for i, (title, metric, desc, accent) in enumerate(d["cards"]):
+        col, row = i % 2, i // 2
+        cl = CONTENT_L + col * (cw + GAP)
+        ct = BODY_TOP + row * (ch + 0.1)
+        g = card(s, cl, ct, cw, ch, title, accent)
+        tf = textbox(g, cl + 0.25, ct + 0.52, cw - 0.5, 0.3, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(metric, True, GOLD)], 13.5)
+        h_ = ch - 0.88 - 0.06
+        pt = fit_size([("", desc)], cw - 0.5, h_, 12, 10.5, False, f"s2 {title}")
+        tf = textbox(g, cl + 0.25, ct + 0.86, cw - 0.5, h_)
+        para(tf, True, [(desc, False, SOFT)], pt)
+        fx.append((g, "fade"))
 
-        # 2. Energy
-        c_e = create_card(s2, Inches(0.8 + 2.98), Inches(1.68), p_w, Inches(2.62), "☀️ الطاقة (Energy)", GOLD_LIGHT, GOLD_LIGHT, 1.2, 0.09,
-                          pill_text="50 MW شمسية | 90 GWh/سنة", pill_color=GOLD_LIGHT)
-        add_bullet(c_e, "• المحطات:", "طاقة شمسية موزعة على 25 محطة رفع لتشغيل طلمبات الصرف.", GOLD_LIGHT, WHITE, 11, 5)
-        add_bullet(c_e, "• الوفر:", "خفض 40% من تكلفة الضخ وتصدير الفائض بنظام صافي القياس.", GOLD_LIGHT, WHITE, 11, 0)
+    by = BODY_TOP + 2 * (ch + 0.1)
+    bh = 7.05 - by
+    bg_ = card(s, CONTENT_L, by, CONTENT_W, bh, d["bank_title"], GREEN)
+    bullets(bg_, CONTENT_L + 0.25, by + 0.6, CONTENT_W - 0.5, bh - 0.68, d["bank"], GREEN,
+            label="s2 bankability")
+    fx.append((bg_, "fade"))
+    finish(s, fx, T["notes"][1], 2)
 
-        # 3. Food
-        c_f = create_card(s2, Inches(0.8 + 2.98*2), Inches(1.68), p_w, Inches(2.62), "🌾 الغذاء (Food)", GREEN, GREEN, 1.2, 0.09,
-                          pill_text="+15-25% زيادة المحاصيل", pill_color=GOLD_LIGHT)
-        add_bullet(c_f, "• المحاصيل:", "زيادة غلة القمح والذرة والأرز لأكثر من 200,000 مزارع.", GREEN, WHITE, 11, 5)
-        add_bullet(c_f, "• غسيل ذكي:", "صمام آلي يفتح للغسيل عند EC > 4 ويغلق عند EC < 2 dS/m.", GREEN, WHITE, 11, 0)
+    # ======================================================================
+    # SLIDE 3
+    # ======================================================================
+    d = T["s3"]
+    s, fx = new_slide(3, d["title"], d["sub"])
 
-        # 4. Ecosystems
-        c_eco = create_card(s2, Inches(0.8 + 2.98*3), Inches(1.68), p_w, Inches(2.62), "🌿 النظم البيئية", TEAL_LIGHT, TEAL_LIGHT, 1.2, 0.09,
-                          pill_text="100k طن كربون | 4,760 فدان", pill_color=GOLD_LIGHT)
-        add_bullet(c_eco, "• أراضٍ رطبة:", "20 محطة معالجة طبيعية تنقي 200M م³ مياه صرف حيوياً.", TEAL_LIGHT, WHITE, 11, 5)
-        add_bullet(c_eco, "• الأثر البيئي:", "حماية بحيرات الدلتا الشمالية والتنوع البيولوجي للأسماك.", TEAL_LIGHT, WHITE, 11, 0)
+    g = image_card(s, os.path.join(IMG, d["img"]), MARGIN, BODY_TOP, MEDIA_W, 2.55, d["cap"], GOLD)
+    fx.append((g, "wipe"))
 
-        # Bottom 2 Cards: Screening Matrix & Bankability
-        c_sc = create_card(s2, Inches(6.8), Inches(4.45), Inches(5.733), Inches(2.65), 
-                           "📊 مصفوفة فرز WEFE الرسمية وبطاقة قياس المرونة", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.08,
-                           pill_text="التقييم المركب: 92 / 100 | تصنيف المرونة: HIGH", pill_color=GOLD_LIGHT)
-        add_bullet(c_sc, "• درجات الأبعاد الخمسة:", "المياه: 10/10 | الطاقة: 8/10 | الغذاء: 10/10 | النظم البيئية: 8/10 | الرقمنة: 9/10.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_sc, "• الممكنات الرقمية:", "5,000 عقدة IoT مع توأم رقمي هيدروليكي للتحكم عن بُعد والتنبؤ بالأعطال لحظياً.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_sc, "• استيعاب الصدمات المناخية:", "مرونة عالية في مواجهة موجات الجفاف المتكررة وحماية التربة من نوبات التملح المفاجئ.", TEAL_LIGHT, WHITE, 11.5, 0)
+    fy = BODY_TOP + 2.65
+    fh = 7.05 - fy
+    fg = card(s, MARGIN, fy, MEDIA_W, fh, d["fit_title"], TEAL)
+    for i, (badge, name, desc) in enumerate(d["fit"]):
+        ry = fy + 0.6 + i * 0.68
+        pill(fg, MARGIN + 0.22, ry + 0.04, 0.95, 0.34, badge, GOLD, NAVY_TEXT, 12)
+        tf = textbox(fg, MARGIN + 1.3, ry, MEDIA_W - 1.5, 0.66)
+        para(tf, True, [(name, True, WHITE)], 12)
+        para(tf, False, [(desc, False, GRAY)], 10.5)
+    fx.append((fg, "fade"))
 
-        c_bk = create_card(s2, Inches(0.8), Inches(4.45), Inches(5.7), Inches(2.65), 
-                           "💎 كيف يعزز تكامل WEFE الجدوى البنكية للمشروع", GREEN, GREEN, 1.3, 0.08,
-                           pill_text="DSCR = 1.35x | فترة استرداد 0.48 سنة للري الذكي", pill_color=GOLD_LIGHT)
-        add_bullet(c_bk, "• الاكتفاء الذاتي التشغيلي:", "الطاقة الشمسية تسدد تكاليف كهرباء الطلمبات، مما يحمي نسبة خدمة الدين (DSCR = 1.35x).", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• قيمة التكلفة المتجنبة:", "توفير 150M م³ يعادل 52.5 مليون دولار سنوياً، محققاً استرداداً خلال 0.48 سنة للري الذكي.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• تنوع التدفقات النقدية:", "وفر طاقة ($8M) + تصدير شبكة ($3M) + مياه ($5M) + أرصدة كربون ($0.5M).", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• انعدام النزاعات الاجتماعية:", "تطوير موضعي (In-situ) في أراضي الدلتا القديمة دون تهجير أو نزاع على المياه.", GREEN, WHITE, 11.5, 0)
+    bud_h, rdy_h, res_h = 1.8, 1.5, 1.75
+    y1 = BODY_TOP
+    y2 = y1 + bud_h + 0.1
+    y3 = y2 + rdy_h + 0.1
 
-    else:
-        add_header(s2, 2,
-                   "Integrated WEFE Interventions, Nexus Value & Resilience Scorecard",
-                   "2. The 4 Closed-Loop Interventions | Feedback Corrections: Screening Matrix, Blue Carbon & Bankability")
+    g = card(s, CONTENT_L, y1, CONTENT_W, bud_h, d["bud_title"], GOLD)
+    bullets(g, CONTENT_L + 0.25, y1 + 0.58, CONTENT_W - 0.5, bud_h - 0.66, d["bud"], GOLD,
+            max_pt=12.5, label="s3 budget")
+    fx.append((g, "fade"))
 
-        # Top 4 Columns: WEFE Pillars
-        p_w = Inches(2.77)
+    g = card(s, CONTENT_L, y2, CONTENT_W, rdy_h, d["rdy_title"], GREEN)
+    bullets(g, CONTENT_L + 0.25, y2 + 0.58, CONTENT_W - 0.5, rdy_h - 0.66, d["rdy"], GREEN,
+            max_pt=12.5, label="s3 readiness")
+    fx.append((g, "fade"))
 
-        # 1. Water
-        c_w = create_card(s2, Inches(0.8), Inches(1.68), p_w, Inches(2.62), "💧 WATER", BLUE_LIGHT, BLUE_LIGHT, 1.2, 0.09,
-                          pill_text="150M m³/yr Saved (25-30%)", pill_color=GOLD_LIGHT)
-        add_bullet(c_w, "• Tech:", "Retrofit 100k feddans with HDPE & geotextile filters (40+ yr design life).", BLUE_LIGHT, WHITE, 11, 5)
-        add_bullet(c_w, "• Control:", "Smart gate valves regulate water table, leveraging natural capillary rise.", BLUE_LIGHT, WHITE, 11, 0)
-
-        # 2. Energy
-        c_e = create_card(s2, Inches(0.8 + 2.98), Inches(1.68), p_w, Inches(2.62), "☀️ ENERGY", GOLD_LIGHT, GOLD_LIGHT, 1.2, 0.09,
-                          pill_text="50 MW Solar PV | 90 GWh/yr", pill_color=GOLD_LIGHT)
-        add_bullet(c_e, "• Integration:", "Distributed solar across 25 pump stations powering lift pumps.", GOLD_LIGHT, WHITE, 11, 5)
-        add_bullet(c_e, "• Grid Export:", "Cuts 40% electricity bill; surplus exported via Net Metering to grid.", GOLD_LIGHT, WHITE, 11, 0)
-
-        # 3. Food
-        c_f = create_card(s2, Inches(0.8 + 2.98*2), Inches(1.68), p_w, Inches(2.62), "🌾 FOOD", GREEN, GREEN, 1.2, 0.09,
-                          pill_text="+15-25% Yield Boost", pill_color=GOLD_LIGHT)
-        add_bullet(c_f, "• Crops:", "Restores yields for wheat, maize, and rice by mitigating root waterlogging.", GREEN, WHITE, 11, 5)
-        add_bullet(c_f, "• Auto-Flushing:", "EC probes trigger automated flushing when EC > 4 dS/m; close at < 2 dS/m.", GREEN, WHITE, 11, 0)
-
-        # 4. Ecosystems
-        c_eco = create_card(s2, Inches(0.8 + 2.98*3), Inches(1.68), p_w, Inches(2.62), "🌿 ECOSYSTEMS", TEAL_LIGHT, TEAL_LIGHT, 1.2, 0.09,
-                          pill_text="100k tCO₂/yr | 4,760 Feddans", pill_color=GOLD_LIGHT)
-        add_bullet(c_eco, "• Wetlands:", "20 constructed wetlands (4,760 feddans) bio-treating 200M m³/yr drainage.", TEAL_LIGHT, WHITE, 11, 5)
-        add_bullet(c_eco, "• Biodiversity:", "Protects northern Delta coastal lakes and commercial inland fisheries.", TEAL_LIGHT, WHITE, 11, 0)
-
-        # Bottom 2 Cards: Screening Matrix & Bankability
-        c_sc = create_card(s2, Inches(0.8), Inches(4.45), Inches(5.7), Inches(2.65), 
-                           "📊 Formal WEFE Screening Matrix & Resilience Scoring", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.08,
-                           pill_text="Composite Score: 92/100 | Resilience Rating: HIGH", pill_color=GOLD_LIGHT)
-        add_bullet(c_sc, "• Dimension Scores:", "Water: 10/10 | Energy: 8/10 | Food: 10/10 | Ecosystems: 8/10 | Enablers: 9/10.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_sc, "• Digital Enablers:", "5,000 IoT nodes + hydraulic Digital Twin enabling real-time remote telemetry.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_sc, "• Shock Absorption:", "Robust buffer against prolonged droughts and rapid soil salinization waves.", TEAL_LIGHT, WHITE, 11.5, 0)
-
-        c_bk = create_card(s2, Inches(6.8), Inches(4.45), Inches(5.733), Inches(2.65), 
-                           "💎 How WEFE Integration Drives Project Bankability", GREEN, GREEN, 1.3, 0.08,
-                           pill_text="DSCR = 1.35x | Smart Valve Payback = 0.48 Years", pill_color=GOLD_LIGHT)
-        add_bullet(c_bk, "• OPEX Self-Sufficiency:", "Solar net-metering monetized electricity pays pump operating costs, protecting DSCR (1.35x).", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• Avoided Cost Valuation:", "150M m³/yr saved equals $52.5M/yr, achieving an investment payback of 0.48 yr on smart gates.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• Diversified Revenues:", "Energy savings ($8M) + Grid export ($3M) + Avoided water ($5M) + Carbon ($0.5M).", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_bk, "• In-Situ Development:", "Zero displacement or community conflict, removing ESG social safeguard risks completely.", GREEN, WHITE, 11.5, 0)
-
-    # =========================================================================
-    # SLIDE 3: Budget & Financiers, Readiness & Scaling Pathway
-    # =========================================================================
-    s3 = prs.slides.add_slide(blank_layout)
-    add_bg(s3)
-
-    if is_ar:
-        add_header(s3, 3,
-                   "هيكل رأس المال المختلط، الجاهزية، ومسار التوسع الإقليمي",
-                   "4. الميزانية والجهات الممولة | 5. الجاهزية ووحدة الاختبار | 6. مؤشرات الأداء ومسار التوسع الإقليمي")
-
-        # Top Row: Budget (Right) & Readiness (Left)
-        c_b = create_card(s3, Inches(6.8), Inches(1.68), Inches(5.733), Inches(2.65), 
-                          "💰 1. إجمالي التكلفة (420M$) وهيكل التمويل المختلط", GOLD_LIGHT, GOLD, 1.3, 0.08,
-                          pill_text="CAPEX: 420M$ (4,200 $/فدان) | EIRR = 21.4% | استرداد 8 سنوات", pill_color=GOLD_LIGHT)
-        add_bullet(c_b, "• 15% منح ومعونات (63M$):", "من GCF و AfDB و EU للحقل التجريبي والتوأم الرقمي وبناء القدرات.", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 20% مساهمة حكومية (84M$):", "أراضٍ ومحطات طلمبات قائمة وكوادر هيئة الصرف (EPADP).", WHITE, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 40% قروض ميسرة (168M$):", "البنك الدولي (NDP V) وبنك التنمية الأفريقي (سداد 20-25 سنة).", WHITE, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 25% شراكة PPP (105M$):", "مستثمرون لمكون الطاقة الشمسية 50 MW مدعوماً بـ PPA | خدمة دين DSCR = 1.35x.", GOLD_LIGHT, WHITE, 11.5, 0)
-
-        c_r = create_card(s3, Inches(0.8), Inches(1.68), Inches(5.7), Inches(2.65), 
-                          "🚀 2. حالة الجاهزية ووحدة الاختبار (10 أفدنة)", GREEN, GREEN, 1.3, 0.08,
-                          pill_text="خبرة 50 عاماً في 6M فدان | وحدة 10 أفدنة جاهزة فوراً", pill_color=GOLD_LIGHT)
-        add_bullet(c_r, "• الخبرة المؤسسية المتراكمة:", "50 عاماً لهيئة الصرف (EPADP) في تنفيذ 6 ملايين فدان تقضي تماماً على مخاطر التنفيذ.", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_r, "• وحدة الاختبار الحقلية (10 أفدنة):", "تصميم هندسي متكامل جاهز للتنفيذ الفوري لاختبار الصعود الشعري والصمامات الذكية.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_r, "• الجاهزية التكنولوجية (TRL 8-9):", "نضج تجاري كامل لمواسير HDPE والمحطات الشمسية وحساسات NB-IoT.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_r, "• الخطوة التنفيذية الفورية:", "طلب منحة تحضيرية (PPF Grant بقيمة 1.5M$) من GCF/AfDB لدراسات كفر الشيخ.", GOLD_LIGHT, WHITE, 11.5, 0)
-
-        # Bottom Row: Funding Call Fit (Right) & KPIs / Scaling (Left)
-        c_fit = create_card(s3, Inches(6.8), Inches(4.45), Inches(5.733), Inches(2.65), 
-                            "🎯 3. تحليل ملاءمة جهات التمويل (Funding Fit)", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.08,
-                            pill_text="صندوق المناخ GCF: 14/14 (GO) | صندوق التكيف: 13/14", pill_color=GOLD_LIGHT)
-        add_bullet(c_fit, "• صندوق المناخ الأخضر (GCF):", "درجة 14/14 (قرار: GO) — تطابق كامل مع نافذة التكيف وتخفيف الانبعاثات والتحول الرقمي.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_fit, "• صندوق التكيف (Adaptation Fund):", "درجة 13/14 (قرار: GO) — مثالي لتمويل الحقل التجريبي وبناء القدرات المجتمعية.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_fit, "• برنامج PRIMA وبوابة الاتحاد الأوروبي:", "ملاءمة مرتفعة جداً للابتكار الزراعي المائي والتعاون الإقليمي الأورومتوسطي.", TEAL_LIGHT, WHITE, 11.5, 0)
-
-        c_kpi = create_card(s3, Inches(0.8), Inches(4.45), Inches(5.7), Inches(2.65), 
-                            "📈 4. مؤشرات الأداء الرئيسية ومسار التوسع الإقليمي", WHITE, WHITE, 1.3, 0.08,
-                            pill_text="وفر 150M م³ | +25% غلة | 50 MW طاقة | 100k طن كربون", pill_color=GOLD_LIGHT)
-        add_bullet(c_kpi, "• مؤشرات الأداء (100,000 فدان):", "150M م³/سنة وفر مائي • +15-25% غلة المحاصيل • 50 MW طاقة نظيفة.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_kpi, "• الردع والاستدامة:", "خفض التعديات 80% • كشف الأعطال في ساعة واحدة • احتجاز 100,000 طن CO₂ سنوياً.", WHITE, WHITE, 11.5, 6)
-        add_bullet(c_kpi, "• مسار التوسع الإقليمي (3 مراحل):", "حقل تجريبي 10 أفدنة (سنة 1) ⬅️ مشروع ريادي 100 ألف فدان (سنوات 2-5) ⬅️ تعميم عبر 4.3M فدان بالدلتا ونقل التجربة للعراق والأردن وباكستان.", TEAL_LIGHT, WHITE, 11, 0)
-
-    else:
-        add_header(s3, 3,
-                   "Blended Finance Capital Stack, Readiness, KPIs & Scaling Strategy",
-                   "4. Budget & Financiers | 5. Readiness & 10-Feddan Pilot | 6. Expected Results & Regional Scaling Pathway")
-
-        # Top Row: Budget (Left) & Readiness (Right)
-        c_b = create_card(s3, Inches(0.8), Inches(1.68), Inches(5.7), Inches(2.65), 
-                          "💰 1. Total Investment ($420M) & Capital Stack", GOLD_LIGHT, GOLD, 1.3, 0.08,
-                          pill_text="CAPEX: $420M ($4,200/feddan) | EIRR: 21.4% | Payback: 8 Yrs", pill_color=GOLD_LIGHT)
-        add_bullet(c_b, "• 15% Grants / TA ($63M):", "GCF Readiness, AfDB, EU for 10-feddan pilot, Digital Twin & capacity.", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 20% Government Equity ($84M):", "In-kind land, existing pump stations, EPADP engineering workforce.", WHITE, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 40% Concessional Debt ($168M):", "World Bank (NDP V), AfDB (20-25 yr tenor, long grace period).", WHITE, WHITE, 11.5, 5)
-        add_bullet(c_b, "• 25% Commercial Debt / PPP ($105M):", "Private solar developers secured by PPA | DSCR = 1.35x.", GOLD_LIGHT, WHITE, 11.5, 0)
-
-        c_r = create_card(s3, Inches(6.8), Inches(1.68), Inches(5.733), Inches(2.65), 
-                          "🚀 2. Implementation Readiness & 10-Feddan Pilot", GREEN, GREEN, 1.3, 0.08,
-                          pill_text="50-Yr Proven Track Record | 10-Feddan Unit Shovel-Ready", pill_color=GOLD_LIGHT)
-        add_bullet(c_r, "• Institutional Delivery Track Record:", "EPADP's 50-year proven experience across 6M feddans eliminates construction risk.", GOLD_LIGHT, WHITE, 11.5, 5)
-        add_bullet(c_r, "• 10-Feddan Pilot Unit Ready:", "Detailed engineering ready for immediate deployment on an isolated collector line.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_r, "• Technology Maturity (TRL 8-9):", "High commercial maturity for HDPE pipes, solar systems, and NB-IoT telemetry.", GREEN, WHITE, 11.5, 5)
-        add_bullet(c_r, "• Immediate Action Step:", "Request Project Preparation Facility (PPF $1.5M) from GCF/AfDB for Kafr El-Sheikh.", GOLD_LIGHT, WHITE, 11.5, 0)
-
-        # Bottom Row: Funding Call Fit (Left) & KPIs / Scaling (Right)
-        c_fit = create_card(s3, Inches(0.8), Inches(4.45), Inches(5.7), Inches(2.65), 
-                            "🎯 3. Funding Call Fit Score Assessment", TEAL_LIGHT, TEAL_LIGHT, 1.3, 0.08,
-                            pill_text="GCF Adaptation: 14/14 (GO) | Adaptation Fund: 13/14", pill_color=GOLD_LIGHT)
-        add_bullet(c_fit, "• Green Climate Fund (GCF Adaptation):", "Score: 14/14 (Decision: GO) — Perfect match for transformational adaptation & digital MRV.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_fit, "• Adaptation Fund:", "Score: 13/14 (Decision: GO) — Ideal for financing the 10-feddan pilot component.", TEAL_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_fit, "• PRIMA & EU Global Gateway:", "High fit for Euro-Mediterranean water innovation and circular climate agriculture.", TEAL_LIGHT, WHITE, 11.5, 0)
-
-        c_kpi = create_card(s3, Inches(6.8), Inches(4.45), Inches(5.733), Inches(2.65), 
-                            "📈 4. Main Expected Results & Regional Scaling Pathway", WHITE, WHITE, 1.3, 0.08,
-                            pill_text="150M m³ Water Saved | +25% Yield | 50 MW Solar | 100k tCO₂", pill_color=GOLD_LIGHT)
-        add_bullet(c_kpi, "• Core Target KPIs (100,000 Feddans):", "150M m³/yr water saved • 15-25% crop yield increase • 50 MW clean power.", GOLD_LIGHT, WHITE, 11.5, 6)
-        add_bullet(c_kpi, "• Active Security & Carbon:", "80% tampering cut • incident response in 1 hour • 100,000 tCO₂e/yr emissions offset.", WHITE, WHITE, 11.5, 6)
-        add_bullet(c_kpi, "• 3-Stage Scaling Pathway:", "Phase 1: 10-feddan pilot (Yr 1) ➡️ Phase 2: 100k feddans (Yrs 2-5) ➡️ Phase 3: Scaling to 4.3M feddans in Nile Delta and exporting to Iraq, Jordan, and Pakistan.", TEAL_LIGHT, WHITE, 11, 0)
+    g = card(s, CONTENT_L, y3, CONTENT_W, res_h, d["res_title"], WHITE)
+    inner_w = CONTENT_W - 0.5
+    chip_w = (inner_w - 3 * 0.1) / 4
+    for i, (num, label) in enumerate(d["kpis"]):
+        cx = CONTENT_L + 0.25 + i * (chip_w + 0.1)
+        box(g, cx, y3 + 0.58, chip_w, 0.62, BG_CARD_ALT, TEAL, 1.0, 0.14)
+        tf = textbox(g, cx, y3 + 0.6, chip_w, 0.58, MSO_ANCHOR.MIDDLE)
+        para(tf, True, [(num, True, GOLD)], 16, align=PP_ALIGN.CENTER)
+        para(tf, False, [(label, False, SOFT)], 10.5, align=PP_ALIGN.CENTER)
+    ph_w = (inner_w - 2 * 0.1) / 3
+    ph_colors = [TEAL, GREEN, GOLD]
+    for i, text in enumerate(d["phases"]):
+        px = CONTENT_L + 0.25 + i * (ph_w + 0.1)
+        pill(g, px, y3 + 1.3, ph_w, 0.34, text, ph_colors[i], NAVY_TEXT, 11)
+    fx.append((g, "fade"))
+    finish(s, fx, T["notes"][2], 3)
 
     prs.save(output_path)
-    print(f"Presentation ({lang.upper()}) created at: {output_path}")
+    print(f"[{lang.upper()}] saved: {output_path}")
+    for w in warnings:
+        print("  WARNING:", w)
+
+
+def safe_copy(src, dst):
+    try:
+        shutil.copyfile(src, dst)
+    except OSError as exc:  # file locked by a viewer / dev server
+        print(f"  could not copy to {dst}: {exc}")
+
 
 if __name__ == "__main__":
-    # Generate Arabic Presentations
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx", lang='ar')
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/report/Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx", lang='ar')
-
-    # Generate English Presentations
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx", lang='en')
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/report/Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx", lang='en')
-
-    # Default fallback
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx", lang='ar')
-    build_deck("d:/dev/wefe_nexus/wefe_nexus_pro/report/Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx", lang='ar')
-    print("All presentations regenerated successfully with rounded corners and optimized typography!")
+    ar = os.path.join(BASE, "Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx")
+    en = os.path.join(BASE, "Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx")
+    default = os.path.join(BASE, "Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx")
+    build_deck(ar, "ar")
+    build_deck(en, "en")
+    safe_copy(ar, default)
+    report = os.path.join(BASE, "report")
+    for src in (ar, en, default):
+        safe_copy(src, os.path.join(report, os.path.basename(src)))
+    print("All decks generated (AR / EN / default) and mirrored to report/.")
