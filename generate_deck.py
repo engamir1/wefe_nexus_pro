@@ -10,6 +10,7 @@ Features
 - Speaker notes with a 5-minute timing script.
 """
 import math
+from typing import Any
 import os
 import shutil
 
@@ -55,7 +56,7 @@ BODY_TOP = 1.7
 # ----------------------------------------------------------------------------
 # Content
 # ----------------------------------------------------------------------------
-CONTENT = {
+CONTENT: dict[str, Any] = {
     "en": {
         "pill": "SLIDE {n} OF 3  |  5-MINUTE EXECUTIVE PITCH",
         "footer": "Eco-Drain  |  Group 10  |  EPADP Technical Office, Lower Egypt",
@@ -242,7 +243,7 @@ CONTENT = {
 # ----------------------------------------------------------------------------
 def build_deck(output_path, lang="en"):
     is_ar = lang == "ar"
-    T = CONTENT[lang]
+    T: Any = CONTENT[lang]
     warnings = []
 
     prs = Presentation()
@@ -295,7 +296,9 @@ def build_deck(output_path, lang="en"):
         while pt >= min_pt - 1e-6:
             total = 0.0
             cpl = max(1, (width - indent) * 72 / (pt * 0.53))
-            for lead, text in items:
+            for item in items:
+                lead = str(item[0]) if len(item) > 0 else ""
+                text = str(item[1]) if len(item) > 1 else ""
                 n = len(lead) + (1 if lead else 0) + len(text)
                 lines = math.ceil(n / cpl)
                 total += lines * pt * 1.2 * 1.12 / 72 + pt * 0.35 / 72
@@ -352,7 +355,9 @@ def build_deck(output_path, lang="en"):
     def bullets(g, l, t, w, h, items, accent, max_pt=13.0, min_pt=11.0, label=""):
         pt = fit_size(items, w, h, max_pt, min_pt, True, label)
         tf = textbox(g, l, t, w, h)
-        for i, (lead, text) in enumerate(items):
+        for i, item in enumerate(items):
+            lead = str(item[0]) if len(item) > 0 else ""
+            text = str(item[1]) if len(item) > 1 else ""
             para(tf, i == 0, [(lead + " ", True, GOLD), (text, False, SOFT)], pt,
                  sa=pt * 0.35, bullet=str(accent))
 
@@ -455,13 +460,15 @@ def build_deck(output_path, lang="en"):
     # ======================================================================
     # SLIDE 1
     # ======================================================================
-    d = T["s1"]
+    d: Any = T["s1"]
     s, fx = new_slide(1, d["title"], d["sub"])
 
     g = image_card(s, os.path.join(IMG, d["img"]), MARGIN, BODY_TOP, MEDIA_W, 2.3, d["cap"], TEAL)
     fx.append((g, "wipe"))
     accents = [RED, GOLD, TEAL]
-    for i, (num, label) in enumerate(d["tiles"]):
+    for i, item in enumerate(d["tiles"]):
+        num = str(item[0])
+        label = str(item[1])
         ty = BODY_TOP + 2.3 + 0.1 + i * 0.97
         tg = s.shapes.add_group_shape()
         box(tg, MARGIN, ty, MEDIA_W, 0.9, BG_CARD, accents[i], 1.1, 0.16)
@@ -504,7 +511,11 @@ def build_deck(output_path, lang="en"):
 
     cw = (CONTENT_W - GAP) / 2
     ch = 1.65
-    for i, (title, metric, desc, accent) in enumerate(d["cards"]):
+    for i, item in enumerate(d["cards"]):
+        title = str(item[0])
+        metric = str(item[1])
+        desc = str(item[2])
+        accent = item[3]
         col, row = i % 2, i // 2
         cl = CONTENT_L + col * (cw + GAP)
         ct = BODY_TOP + row * (ch + 0.1)
@@ -537,7 +548,10 @@ def build_deck(output_path, lang="en"):
     fy = BODY_TOP + 2.65
     fh = 7.05 - fy
     fg = card(s, MARGIN, fy, MEDIA_W, fh, d["fit_title"], TEAL)
-    for i, (badge, name, desc) in enumerate(d["fit"]):
+    for i, item in enumerate(d["fit"]):
+        badge = str(item[0])
+        name = str(item[1])
+        desc = str(item[2])
         ry = fy + 0.6 + i * 0.68
         pill(fg, MARGIN + 0.22, ry + 0.04, 0.95, 0.34, badge, GOLD, NAVY_TEXT, 12)
         tf = textbox(fg, MARGIN + 1.3, ry, MEDIA_W - 1.5, 0.66)
@@ -563,7 +577,9 @@ def build_deck(output_path, lang="en"):
     g = card(s, CONTENT_L, y3, CONTENT_W, res_h, d["res_title"], WHITE)
     inner_w = CONTENT_W - 0.5
     chip_w = (inner_w - 3 * 0.1) / 4
-    for i, (num, label) in enumerate(d["kpis"]):
+    for i, item in enumerate(d["kpis"]):
+        num = str(item[0])
+        label = str(item[1])
         cx = CONTENT_L + 0.25 + i * (chip_w + 0.1)
         box(g, cx, y3 + 0.58, chip_w, 0.62, BG_CARD_ALT, TEAL, 1.0, 0.14)
         tf = textbox(g, cx, y3 + 0.6, chip_w, 0.58, MSO_ANCHOR.MIDDLE)

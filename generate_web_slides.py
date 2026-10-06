@@ -43,8 +43,12 @@ def card(c, color, title, body, cnt, extra_cls=""):
 
 
 def ul(items):
-    return "<ul>" + "".join(
-        f"<li><strong>{e(a)}</strong> {e(b)}</li>" for a, b in items) + "</ul>"
+    res = []
+    for item in items:
+        a = str(item[0]) if len(item) > 0 else ""
+        b = str(item[1]) if len(item) > 1 else ""
+        res.append(f"<li><strong>{e(a)}</strong> {e(b)}</li>")
+    return "<ul>" + "".join(res) + "</ul>"
 
 
 def fig(path, cap, cnt, color=TEAL):
@@ -64,7 +68,13 @@ def header(n, d, lang, cnt):
 def slide1(lang):
     d, cnt = CONTENT[lang]["s1"], Counter()
     media = fig(d["img"], d["cap"], cnt)
-    for (num, label), col in zip(d["tiles"], [RED, GOLD, TEAL]):
+    tiles = d["tiles"]
+    cols = [RED, GOLD, TEAL]
+    for i in range(len(tiles)):
+        item = tiles[i]
+        num = str(item[0])
+        label = str(item[1])
+        col = cols[i % len(cols)]
         media += (f'<div class="deck-tile anim" {cnt.style()[:-1]};--c:{hx(col)}">'
                   f'<b>{e(num)}</b><span>{e(label)}</span></div>')
     content = (card(0, RED, d["a_title"], ul(d["a"]), cnt) +
@@ -80,7 +90,11 @@ def slide2(lang):
              f'<p class="score-dims">{e(d["score_dims"])}</p>')
     media += card(0, GOLD, d["score_title"], score, cnt)
     grid = ""
-    for title, metric, desc, col in d["cards"]:
+    for item in d["cards"]:
+        title = str(item[0])
+        metric = str(item[1])
+        desc = str(item[2])
+        col = item[3]
         grid += card(0, col, title,
                      f'<div class="metric">{e(metric)}</div><p>{e(desc)}</p>', cnt)
     content = (f'<div class="deck-grid2">{grid}</div>' +
@@ -91,18 +105,28 @@ def slide2(lang):
 def slide3(lang):
     d, cnt = CONTENT[lang]["s3"], Counter()
     media = fig(d["img"], d["cap"], cnt, GOLD)
-    rows = "".join(
-        f'<div class="fit-row"><span class="pill" style="--c:{hx(GOLD)}">{e(b)}</span>'
-        f'<div><strong>{e(n)}</strong><small>{e(t)}</small></div></div>'
-        for b, n, t in d["fit"])
-    media += card(0, TEAL, d["fit_title"], rows, cnt)
-    chips = "".join(
-        f'<div class="kpi-chip"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in d["kpis"])
+    rows = []
+    for item in d["fit"]:
+        b = str(item[0])
+        n = str(item[1])
+        t = str(item[2])
+        rows.append(
+            f'<div class="fit-row"><span class="pill" style="--c:{hx(GOLD)}">{e(b)}</span>'
+            f'<div><strong>{e(n)}</strong><small>{e(t)}</small></div></div>'
+        )
+    media += card(0, TEAL, d["fit_title"], "".join(rows), cnt)
+    chips = []
+    for item in d["kpis"]:
+        a = str(item[0])
+        b = str(item[1])
+        chips.append(f'<div class="kpi-chip"><b>{e(a)}</b><span>{e(b)}</span></div>')
     cols = [TEAL, GREEN, GOLD]
-    phases = "".join(
-        f'<span class="pill phase" style="--c:{hx(c)}">{e(p)}</span>'
-        for p, c in zip(d["phases"], cols))
-    res = f'<div class="kpi-grid">{chips}</div><div class="phase-row">{phases}</div>'
+    phases = []
+    for i in range(len(d["phases"])):
+        p = str(d["phases"][i])
+        c = cols[i % len(cols)]
+        phases.append(f'<span class="pill phase" style="--c:{hx(c)}">{e(p)}</span>')
+    res = f'<div class="kpi-grid">{"".join(chips)}</div><div class="phase-row">{"".join(phases)}</div>'
     content = (card(0, GOLD, d["bud_title"], ul(d["bud"]), cnt) +
                card(0, GREEN, d["rdy_title"], ul(d["rdy"]), cnt) +
                card(0, WHITE, d["res_title"], res, cnt))
