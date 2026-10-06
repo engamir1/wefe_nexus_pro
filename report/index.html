@@ -622,56 +622,56 @@ section {
 }
 
 .slide-card-deck {
-    background: rgba(15,34,64,0.75); border: 1px solid rgba(21,181,164,0.3);
-    border-radius: 18px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    backdrop-filter: blur(15px); min-height: 540px; position: relative;
+    background: rgba(15,34,64,0.85); border: 1.5px solid rgba(21,181,164,0.35);
+    border-radius: 20px; padding: 2.2rem; box-shadow: 0 12px 45px rgba(0,0,0,0.55);
+    backdrop-filter: blur(16px); min-height: 560px; position: relative;
 }
 
 .slide-panel { display: none; }
 .slide-panel.active { display: block; animation: fadeInUp 0.4s ease both; }
 
 .slide-header-badge {
-    display: inline-block; background: rgba(21,181,164,0.15);
-    color: var(--teal-light); border: 1px solid rgba(21,181,164,0.3);
-    font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.75rem;
-    border-radius: 20px; margin-bottom: 0.6rem;
+    display: inline-block; background: rgba(21,181,164,0.18);
+    color: var(--teal-light); border: 1px solid rgba(21,181,164,0.4);
+    font-size: 0.8rem; font-weight: 800; padding: 0.35rem 0.9rem;
+    border-radius: 30px; margin-bottom: 0.8rem; letter-spacing: 0.5px;
 }
 
 .slide-main-title {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 800;
-    margin-bottom: 0.3rem; color: var(--white);
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem); font-weight: 900;
+    margin-bottom: 0.45rem; color: var(--white); line-height: 1.35;
 }
 
 .slide-meta-subtitle {
-    font-size: 0.88rem; color: var(--gold-light); margin-bottom: 1.5rem; font-weight: 600;
+    font-size: 0.98rem; color: var(--gold-light); margin-bottom: 1.6rem; font-weight: 600; line-height: 1.45;
 }
 
 .slide-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.2rem;
+    gap: 1.35rem;
 }
 
 .slide-subbox {
-    background: rgba(10, 22, 40, 0.65); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px; padding: 1.1rem; transition: border-color 0.25s;
+    background: rgba(10, 22, 40, 0.75); border: 1.2px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 1.35rem 1.4rem; transition: all 0.25s ease;
 }
-.slide-subbox:hover { border-color: rgba(21,181,164,0.4); }
+.slide-subbox:hover { border-color: rgba(21,181,164,0.5); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
 .slide-subbox h4 {
-    font-size: 0.95rem; font-weight: 700; margin-bottom: 0.7rem;
-    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 1.05rem; font-weight: 800; margin-bottom: 0.85rem;
+    display: flex; align-items: center; gap: 0.5rem; line-height: 1.35;
 }
 
 .slide-subbox ul { list-style: none; padding: 0; }
 .slide-subbox ul li {
-    font-size: 0.82rem; color: var(--gray); margin-bottom: 0.5rem;
-    line-height: 1.5; position: relative; padding-inline-start: 1rem;
+    font-size: 0.92rem; color: #CBD5E1; margin-bottom: 0.75rem;
+    line-height: 1.65; position: relative; padding-inline-start: 1.2rem;
 }
 .slide-subbox ul li::before {
-    content: "•"; color: var(--teal-light); font-weight: 900;
-    position: absolute; inset-inline-start: 0;
+    content: "•"; color: var(--teal-light); font-weight: 900; font-size: 1.1rem;
+    position: absolute; inset-inline-start: 0; top: -1px;
 }
-.slide-subbox ul li strong { color: var(--white); }
+.slide-subbox ul li strong { color: var(--white); font-weight: 700; }
 
 /* === ANIMATIONS === */
 @keyframes fadeInUp {
