@@ -673,6 +673,53 @@ section {
 }
 .slide-subbox ul li strong { color: var(--white); font-weight: 700; }
 
+/* === DECK (generated layout, mirrors the PPTX design) === */
+.slide-lang { text-align: start; }
+.deck-layout { display: grid; grid-template-columns: minmax(250px, 0.85fr) 2.2fr; gap: 1.2rem; align-items: start; margin-top: 0.4rem; }
+@media (max-width: 960px) { .deck-layout { grid-template-columns: 1fr; } }
+.deck-media, .deck-content { display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
+.deck-fig { margin: 0; background: rgba(15,34,64,0.92); border: 1.5px solid var(--c, #15B5A4); border-radius: 20px; padding: 0.8rem; text-align: center; }
+.deck-fig img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 14px; display: block; background: #060E1A; }
+.deck-fig figcaption { font-size: 0.8rem; color: var(--gray); margin-top: 0.55rem; }
+.deck-tile { display: flex; align-items: center; gap: 0.8rem; background: rgba(15,34,64,0.92); border: 1.2px solid var(--c); border-radius: 16px; padding: 0.7rem 0.9rem; }
+.deck-tile b { font-size: 1.45rem; font-weight: 900; color: var(--c); min-width: 5.6rem; text-align: center; line-height: 1.2; }
+.deck-tile span { font-size: 0.88rem; color: #CBD5E1; line-height: 1.55; }
+.deck-card { background: rgba(15,34,64,0.92); border: 1.3px solid var(--c); border-radius: 20px; padding: 1.1rem 1.3rem; }
+.deck-card h4 { color: var(--c); font-size: 1.1rem; font-weight: 800; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.4; }
+.deck-card h4::before { content: ""; width: 6px; height: 22px; border-radius: 4px; background: var(--c); flex: none; }
+.deck-card ul { list-style: none; padding: 0; }
+.deck-card li { font-size: 0.95rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 0.5rem; position: relative; padding-inline-start: 1.2rem; }
+.deck-card li::before { content: "•"; color: var(--c); font-weight: 900; position: absolute; inset-inline-start: 0; }
+.deck-card li strong { color: var(--gold-light); font-weight: 700; }
+.deck-card p { font-size: 0.92rem; line-height: 1.65; color: #CBD5E1; }
+.deck-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+@media (max-width: 700px) { .deck-grid2 { grid-template-columns: 1fr; } }
+.metric { color: var(--gold-light); font-weight: 800; font-size: 1rem; margin-bottom: 0.4rem; }
+.score-row { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.6rem; }
+.score-big { font-size: 2.3rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
+.pill { display: inline-block; border-radius: 999px; padding: 0.28rem 0.95rem; font-weight: 800; font-size: 0.85rem; background: var(--c); color: #0A1628; text-align: center; white-space: nowrap; }
+.score-dims { text-align: center; }
+.fit-row { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.75rem; }
+.fit-row .pill { min-width: 4.4rem; }
+.fit-row strong { display: block; color: var(--white); font-size: 0.92rem; }
+.fit-row small { display: block; color: var(--gray); font-size: 0.82rem; line-height: 1.5; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+@media (max-width: 700px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+.kpi-chip { background: rgba(24,49,88,0.95); border: 1px solid var(--teal-light); border-radius: 14px; text-align: center; padding: 0.65rem 0.3rem; }
+.kpi-chip b { display: block; color: var(--gold-light); font-size: 1.2rem; font-weight: 900; }
+.kpi-chip span { font-size: 0.8rem; color: #CBD5E1; }
+.phase-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.8rem; }
+@media (max-width: 700px) { .phase-row { grid-template-columns: 1fr; } }
+.pill.phase { white-space: normal; font-size: 0.8rem; }
+/* staged entrance animation (re-plays whenever a slide becomes active) */
+.slide-panel.active .anim { opacity: 0; animation: deckIn 0.6s ease forwards; animation-delay: calc(var(--i, 0) * 0.14s); }
+.slide-panel.active .anim.wipe { animation-name: deckWipe; }
+.slide-panel.active .slide-lang[dir="rtl"] .anim.wipe { animation-name: deckWipeRtl; }
+@keyframes deckIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes deckWipe { from { opacity: 0; clip-path: inset(0 100% 0 0 round 20px); } to { opacity: 1; clip-path: inset(0 0 0 0 round 20px); } }
+@keyframes deckWipeRtl { from { opacity: 0; clip-path: inset(0 0 0 100% round 20px); } to { opacity: 1; clip-path: inset(0 0 0 0 round 20px); } }
+@media (prefers-reduced-motion: reduce) { .slide-panel.active .anim { animation: none; opacity: 1; } }
+
 /* === ANIMATIONS === */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -895,174 +942,20 @@ section {
         </div>
 
         <div class="slide-card-deck">
-            <!-- SLIDE 1 -->
-            <div class="slide-panel active" id="slidePanel1">
-                <span class="slide-header-badge">SLIDE 1 OF 3 • TIME: 00:00 - 01:40</span>
-                <h3 class="slide-main-title">
-                    <span data-lang="ar">1. عنوان المشروع والأزمة الهيدروليكية | 3. الجهة القائدة وهيكل الحوكمة</span>
-                    <span data-lang="en" style="display:none">1. Project Title & Problem Addressed | 3. Lead Institution & Multi-Tier Governance</span>
-                </h3>
-                <div class="slide-meta-subtitle">
-                    <span data-lang="ar">Eco-Drain: إحلال وتجديد شبكات الصرف المغطى الذكية، غير المرئية والمقاومة للتلاعب لتعزيز المرونة المناخية في دلتا النيل</span>
-                    <span data-lang="en" style="display:none">Eco-Drain: Invisible Tamper-Proof Subsurface Drainage Retrofitting for Climate-Resilient Agriculture in Egypt's Nile Delta</span>
-                </div>
-
-                <div class="slide-grid">
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--red);">🚨 الأزمة المائية وتدهور الشبكات القديمة</h4>
-                        <ul>
-                            <li><strong>الفقر المائي الحرج:</strong> حصة مصر الثابتة 55.5 مليار م³ تخدم أكثر من 106 مليون نسمة (560 م³/فرد/سنة)، وهو ما يقل عن خط الفقر المائي العالمي (1,000 م³).</li>
-                            <li><strong>2.3 مليون فدان منتهية الصلاحية:</strong> شبكات الصرف المغطى بالدلتا تجاوزت عمرها التصميمي (20-25 عاماً)؛ وتسبب تغدق الجذور وتملح التربة وخسارة 10–30% من غلة المحاصيل.</li>
-                            <li><strong>أزمة البنية التحتية غير المرئية:</strong> الشبكات مدفونة تحت الأرض؛ لا يمكن فحصها بصرياً وتتأخر الصيانة لسنوات حتى يتلف المحصول تماماً.</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--gold-light);">🛡️ آفة التلاعب وحل الإخفاء الذكي</h4>
-                        <ul>
-                            <li><strong>أعطال التعديات الزراعية:</strong> سجلات هيئة الصرف (EPADP) توثق أن 25–40% من أعطال الصرف ناجمة عن سد المزارعين للمجمعات أو كسر الأغطية لحبس المياه للأرز أو سحبها لري مجاور.</li>
-                            <li><strong>ابتكار الغرف غير المرئية:</strong> استبدال الغرف السطحية المكشوفة بغرف غاطسة مدفونة 30–50 سم تحت الأرض مع شرائح RFID لتحديد الموقع للصيانة فقط ومنع الحفر العشوائي.</li>
-                            <li><strong>ردع لحظي مشفر:</strong> حساسات تسارع MPU6050 ترصد أي اهتزاز أو محاولة حفر (>2.5g) وتبث إنذار طوارئ GPS فوري مشفر بـ AES-128 عبر NB-IoT إلى مركز التحكم.</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox" style="grid-column: 1 / -1;">
-                        <h4 style="color: var(--teal-light);">🏛️ الجهة القائدة، الشركاء الرئيسيون وهيكل الحوكمة متعدد المستويات</h4>
-                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top:0.5rem;">
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الجهة القائدة التنفيذية:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">وزارة الموارد المائية والري (MWRI) / الهيئة العامة لمشروعات الصرف (EPADP - المكتب الفني للوجه البحري).</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الشركاء الفنيون والزراعيون:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">معهد بحوث الصرف (DRI) للمواصفات والتحقق المستقل، ووزارة الزراعة (MALR) لتحسين إنتاجية المحاصيل والإرشاد.</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">شريك الطاقة والربط:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">هيئة الطاقة الجديدة والمتجددة (NREA) وجهاز تنظيم مرفق الكهرباء (EgyptERA) لصافي القياس (Net Metering).</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الحوكمة المؤسسية والتوافق:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">لجنة وزارية عليا + وحدة مخصصة لإدارة المشروع (PIU) بهيئة الصرف + لجان روابط المزارعين (WUAs) المتوافقة مع منظومة المياه 2.0.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 2 -->
-            <div class="slide-panel" id="slidePanel2">
-                <span class="slide-header-badge">SLIDE 2 OF 3 • TIME: 01:40 - 03:20</span>
-                <h3 class="slide-main-title">
-                    <span data-lang="ar">2. تدخلات WEFE المتكاملة، مصفوفة الفرز الرسمية، وتعزيز الجدوى البنكية</span>
-                    <span data-lang="en" style="display:none">2. WEFE Interventions, Screening Matrix, Ecosystem Metrics & Bankability Enhancement</span>
-                </h3>
-                <div class="slide-meta-subtitle">
-                    <span data-lang="ar">حلقة هيدروليكية وبيئية مغلقة (Closed-Loop) تستجيب لكافة متطلبات تقرير التقييم</span>
-                    <span data-lang="en" style="display:none">Closed-Loop Hydraulic & Ecological Cycle Addressing All Reviewer Feedback Requirements</span>
-                </div>
-
-                <div class="slide-grid">
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--teal-light);">💧 التدخلات الأربعة لمخور WEFE (100 ألف فدان)</h4>
-                        <ul>
-                            <li><strong>المياه (Water):</strong> مواسير HDPE وفلاتر جيوتكستيل (40+ سنة عمر). صمامات كهربائية تتحكم في الصعود الشعري (h=2γcosθ/ρgr) وتوفر 150 مليون م³/سنة مياه ري (25–30%).</li>
-                            <li><strong>الطاقة (Energy):</strong> محطات شمسية 50 MW موزعة على 25 محطة رفع تولد 90 GWh/سنة وتخفض فاتورة الكهرباء 40% وتصدر الفائض بنظام صافي القياس للشبكة القومية.</li>
-                            <li><strong>الغذاء (Food):</strong> زيادة إنتاجية القمح والأرز والذرة 15–25%، مع غسيل أملاح ذكي آلي عند تجاوز ملوحة التربة EC > 4 dS/m.</li>
-                            <li><strong>البيئة (Ecosystems):</strong> 20 محطة أراضٍ رطبة اصطناعية (4,760 فدان) تعالج 200M م³/سنة حيوياً وتحمي بحيرات الدلتا وتحتجز 100k طن CO₂ (شهادات Verra VM0033).</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--gold-light);">📊 مصفوفة فرز WEFE وبطاقة قياس المرونة</h4>
-                        <ul>
-                            <li><strong>المياه (10/10):</strong> ضبط منسوب الماء الأرضي عند 0.8–1.2م؛ وفر مائي 150M م³/سنة.</li>
-                            <li><strong>الطاقة (8/10):</strong> 50 MW شمسية؛ 90 GWh/سنة طاقة نظيفة؛ خفض تكاليف الضخ 40%.</li>
-                            <li><strong>الغذاء (10/10):</strong> زيادة المحاصيل 15-25%؛ دعم أمن الغذاء لـ 200,000 مزارع.</li>
-                            <li><strong>النظم البيئية (8/10):</strong> تنقية مياه بحيرات الدلتا واستعادة الثروة السمكية.</li>
-                            <li><strong>الممكن الرقمي (9/10):</strong> 5,000 عقدة IoT؛ توأم رقمي؛ رصد تلاعب لحظي.</li>
-                            <li><strong>التقييم المركب: 92/100 | بطاقة المرونة: HIGH عبر الأبعاد الخمسة.</strong></li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox" style="grid-column: 1 / -1;">
-                        <h4 style="color: var(--green);">💎 كيف يعزز تكامل WEFE الجدوى البنكية للمشروع (Bankability)؟</h4>
-                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top:0.5rem;">
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الاكتفاء الذاتي من تكاليف التشغيل (OPEX):</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">الطاقة الشمسية المصدرة للشبكة تسدد فواتير كهرباء الطلمبات، مما يزيل مخاطر التعثر التشغيلي ويحمي نسبة خدمة الدين (DSCR = 1.35x).</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">قيمة التكلفة المتجنبة (Avoided Costs):</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">توفير 150M م³ مياه يعادل 52.5 مليون دولار/سنة بتكلفة البديل (0.35$/م³)، محققاً فترة استرداد 0.48 سنة لمكون الري الذكي.</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">عوائد نقدية متنوعة وقوية:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">وفر طاقة (8M$) + تصدير شبكة (3M$) + مياه متجنبة (5M$) + أرصدة كربون زرقاء (0.5M$) بجانب رسوم الصيانة.</div>
-                            </div>
-                            <div>
-                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">انعدام النزاعات الاجتماعية والبيئية:</div>
-                                <div style="font-size:0.82rem; color:var(--gray);">تطوير موضعي (In-situ) في أراضي الدلتا القديمة دون تحويل المياه بعيداً عن صغار المزارعين (بخلاف مشاريع بحر البقر والمحسمة).</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3 -->
-            <div class="slide-panel" id="slidePanel3">
-                <span class="slide-header-badge">SLIDE 3 OF 3 • TIME: 03:20 - 05:00</span>
-                <h3 class="slide-main-title">
-                    <span data-lang="ar">4. الميزانية وهيكل التمويل | 5. الجاهزية | 6. مؤشرات الأداء ومسار التوسع</span>
-                    <span data-lang="en" style="display:none">4. Budget & Capital Stack | 5. Readiness Status | 6. Expected KPIs & Regional Scaling Strategy</span>
-                </h3>
-                <div class="slide-meta-subtitle">
-                    <span data-lang="ar">هيكل رأس مال مختلط (420 مليون دولار) وجاهزية تامة لاقتناص نافذة التكيف للمناخ</span>
-                    <span data-lang="en" style="display:none">USD 420 Million Blended Capital Stack with Complete Investment Readiness for Climate Windows</span>
-                </div>
-
-                <div class="slide-grid">
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--gold-light);">💰 هيكل رأس المال المختلط (USD 420M)</h4>
-                        <ul>
-                            <li><strong>15% منح ومساعدات فنية (63M$):</strong> من GCF و AfDB و EU للحقل التجريبي والمنصة ودراسات الجدوى.</li>
-                            <li><strong>20% مساهمة حكومية عينية (84M$):</strong> أراضٍ ومحطات طلمبات قائمة وكوادر هيئة الصرف.</li>
-                            <li><strong>40% قروض ميسرة (168M$):</strong> البنك الدولي (NDP V)، وبنك التنمية الأفريقي (سداد 20-25 سنة).</li>
-                            <li><strong>25% قروض تجارية وشراكة PPP (105M$):</strong> لمكون الطاقة الشمسية 50 MW مدعوماً باتفاقيات PPA.</li>
-                            <li><strong>مؤشرات الربحية:</strong> EIRR = 21.4% | DSCR = 1.35x | فترة استرداد 8 سنوات للمشروع ككل.</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--teal-light);">🎯 تحليل ملاءمة جهات التمويل (Fit Scores)</h4>
-                        <ul>
-                            <li><strong>صندوق المناخ الأخضر (GCF):</strong> درجة 14/14 (قرار: GO) - تطابق كامل مع نافذة التكيف والتخفيف والأثر التحويلي.</li>
-                            <li><strong>صندوق التكيف (Adaptation Fund):</strong> درجة 13/14 (قرار: GO لمقترح مجزأ أو الحقل التجريبي).</li>
-                            <li><strong>برنامج PRIMA وبوابة الاتحاد الأوروبي:</strong> ملاءمة مرتفعة جداً للتحول الرقمي الزراعي والتعاون الأورومتوسطي.</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--green);">🚀 حالة الجاهزية وموقع الاختبار التجريبي (10 أفدنة)</h4>
-                        <ul>
-                            <li><strong>النضج المؤسسي:</strong> خبرة 50 عاماً لهيئة الصرف EPADP في إدارة شبكات 6 ملايين فدان تقضي على مخاطر التنفيذ.</li>
-                            <li><strong>وحدة الاختبار الحقلية (10 أفدنة):</strong> تصميم جاهز للتنفيذ الفوري على مجمع صرف مستقل لاختبار الصعود الشعري قبل التعميم.</li>
-                            <li><strong>نضج التقنيات:</strong> TRL 8-9 لكافة مكونات HDPE والطاقة الشمسية وحساسات ESP32 و LoRaWAN/NB-IoT.</li>
-                            <li><strong>الخطوة التنفيذية الفورية:</strong> طلب منحة تحضيرية (PPF Grant بقيمة 1.5 مليون دولار) من GCF/AfDB.</li>
-                        </ul>
-                    </div>
-
-                    <div class="slide-subbox">
-                        <h4 style="color: var(--white);">📈 مؤشرات الأداء (KPIs) ومسار التوسع الإقليمي</h4>
-                        <ul>
-                            <li><strong>150 مليون م³/سنة</strong> وفر مائي + <strong>15–25%</strong> زيادة إنتاجية المحاصيل لـ <strong>200,000</strong> مزارع.</li>
-                            <li><strong>90 GWh/سنة</strong> طاقة نظيفة + خفض <strong>100,000 طن CO₂/سنة</strong> + خلق <strong>5,000</strong> فرصة عمل.</li>
-                            <li><strong>خفض التعديات 80%</strong> وكشف الأعطال في ساعة واحدة بدلاً من أسابيع.</li>
-                            <li><strong>مسار التوسع (3 مراحل):</strong> حقل تجريبي 10 أفدنة (سنة 1) -> تجربة ريادية 100 ألف فدان (سنوات 2-5) -> تعميم عبر 4.3 مليون فدان بالدلتا ونقل التجربة إقليمياً للعراق والأردن وباكستان.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!-- DECK:START -->
+<div class="slide-panel active" id="slidePanel1">
+<div class="slide-lang" data-lang="ar" dir="rtl"><span class="slide-header-badge anim" style="--i:7">الشريحة 1 من 3 • الوقت <bdi dir="ltr">00:00 - 01:40</bdi></span><h3 class="slide-main-title anim" style="--i:8">إيكو-درين: صرف مغطى ذكي غير مرئي ومقاوم للتلاعب</h3><div class="slide-meta-subtitle anim" style="--i:9">تجديد مرن مناخياً لـ 100,000 فدان في دلتا النيل بمصر</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#15B5A4"><img src="images/fig1_subsurface_drainage.png" alt="تصور تجديد شبكات الصرف المغطى" loading="lazy"><figcaption>تصور تجديد شبكات الصرف المغطى</figcaption></figure><div class="deck-tile anim" style="--i:2;--c:#F87171"><b>560 م³</b><span>نصيب الفرد من المياه سنوياً، أقل من خط الفقر المائي</span></div><div class="deck-tile anim" style="--i:3;--c:#F0C860"><b>2.3 مليون</b><span>فدان من شبكات الصرف تجاوزت عمرها التصميمي</span></div><div class="deck-tile anim" style="--i:4;--c:#15B5A4"><b>25–40%</b><span>من أعطال الصرف سببها التلاعب</span></div></aside><div class="deck-content"><div class="deck-card anim " style="--i:5;--c:#F87171"><h4>المشكلة والحل غير المرئي</h4><ul><li><strong>تقادم الشبكات:</strong> الصرف بالدلتا تجاوز عمره التصميمي (20–25 سنة) مسبباً التغدق والتملح وفقد 10–30% من المحاصيل.</li><li><strong>أعطال خفية:</strong> المواسير مدفونة ولا يمكن فحصها، فتبقى الأعطال مجهولة لسنوات.</li><li><strong>التلاعب:</strong> سد المزارعين للمناهل السطحية لحبس مياه الأرز يتسبب في 25–40% من الأعطال.</li><li><strong>حل إيكو-درين:</strong> غرف مدفونة على عمق 30–50 سم، مؤمنة بـ RFID وGPS، وحساسات اهتزاز (&gt;2.5g) ترسل إنذاراً مشفراً عبر NB-IoT.</li></ul></div><div class="deck-card anim " style="--i:6;--c:#15B5A4"><h4>الجهة القائدة والشركاء والحوكمة</h4><ul><li><strong>الجهة القائدة:</strong> وزارة الموارد المائية والري (MWRI) عبر هيئة الصرف (EPADP) — المكتب الفني للوجه البحري.</li><li><strong>الشركاء:</strong> معهد بحوث الصرف (التحقق وMRV)، وزارة الزراعة، هيئة الطاقة المتجددة وجهاز تنظيم الكهرباء (50 MW)، روابط مستخدمي المياه.</li><li><strong>الحوكمة:</strong> لجنة توجيهية بين الوزارات، وحدة تنفيذ مخصصة (PIU) بهيئة الصرف، ومنصات محلية في كفر الشيخ والدقهلية.</li><li><strong>التوافق:</strong> منظومة الري 2.0، ورؤية مصر 2030، واستراتيجية المناخ 2050.</li></ul></div></div></div></div>
+<div class="slide-lang" data-lang="en" dir="ltr" style="display:none"><span class="slide-header-badge anim" style="--i:7">SLIDE 1 OF 3 • TIME: 00:00 - 01:40</span><h3 class="slide-main-title anim" style="--i:8">Eco-Drain: Invisible, Tamper-Proof Subsurface Drainage</h3><div class="slide-meta-subtitle anim" style="--i:9">Climate-resilient retrofit of 100,000 feddans in Egypt&#x27;s Nile Delta</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#15B5A4"><img src="images/fig1_subsurface_drainage.png" alt="Subsurface drainage retrofit concept" loading="lazy"><figcaption>Subsurface drainage retrofit concept</figcaption></figure><div class="deck-tile anim" style="--i:2;--c:#F87171"><b>560 m³</b><span>water per capita per year, below the 1,000 m³ poverty line</span></div><div class="deck-tile anim" style="--i:3;--c:#F0C860"><b>2.3M</b><span>feddans of drainage networks past their design life</span></div><div class="deck-tile anim" style="--i:4;--c:#15B5A4"><b>25–40%</b><span>of drainage failures caused by tampering</span></div></aside><div class="deck-content"><div class="deck-card anim " style="--i:5;--c:#F87171"><h4>Problem addressed and invisible solution</h4><ul><li><strong>Ageing networks:</strong> Delta drainage is past its 20–25 year design life, causing waterlogging, salinity and 10–30% yield loss.</li><li><strong>Hidden failures:</strong> buried pipes cannot be inspected, so faults go unseen for years.</li><li><strong>Tampering:</strong> farmers block surface manholes to pool rice water, causing 25–40% of failures.</li><li><strong>Eco-Drain:</strong> chambers buried 30–50 cm deep, secured by RFID/GPS, with shock sensors (&gt;2.5g) sending encrypted NB-IoT alerts.</li></ul></div><div class="deck-card anim " style="--i:6;--c:#15B5A4"><h4>Lead institution, partners and governance</h4><ul><li><strong>Lead:</strong> Ministry of Water Resources and Irrigation (MWRI) through EPADP, Technical Office for Lower Egypt.</li><li><strong>Partners:</strong> DRI (verification, MRV), MALR (crop advisory), NREA and EgyptERA (50 MW net metering), Water User Associations.</li><li><strong>Governance:</strong> inter-ministerial Steering Committee, dedicated PIU in EPADP, local platforms in Kafr El-Sheikh and Dakahlia.</li><li><strong>Alignment:</strong> Irrigation 2.0, Egypt Vision 2030, National Climate Strategy 2050.</li></ul></div></div></div></div>
+</div>
+<div class="slide-panel" id="slidePanel2">
+<div class="slide-lang" data-lang="ar" dir="rtl"><span class="slide-header-badge anim" style="--i:8">الشريحة 2 من 3 • الوقت <bdi dir="ltr">01:40 - 03:20</bdi></span><h3 class="slide-main-title anim" style="--i:9">تدخلات WEFE المتكاملة والجدوى البنكية</h3><div class="slide-meta-subtitle anim" style="--i:10">أربعة تدخلات مترابطة ودرجة فرز رسمية وبطاقة قياس للمرونة</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#60A5FA"><img src="images/fig2_wefe_nexus.png" alt="ترابط المياه والطاقة والغذاء والنظم البيئية" loading="lazy"><figcaption>ترابط المياه والطاقة والغذاء والنظم البيئية</figcaption></figure><div class="deck-card anim " style="--i:2;--c:#F0C860"><h4>فرز WEFE ومرونة المشروع</h4><div class="score-row"><span class="score-big">92/100</span><span class="pill" style="--c:#10B981">المرونة: عالية</span></div><p class="score-dims">المياه 10 · الطاقة 8 · الغذاء 10 · النظم البيئية 8 · الرقمنة 9</p></div></aside><div class="deck-content"><div class="deck-grid2"><div class="deck-card anim " style="--i:3;--c:#60A5FA"><h4>المياه</h4><div class="metric">توفير 150 مليون م³ سنوياً</div><p>مواسير HDPE وفلاتر جيوتكستيل مع صمامات ذكية تستفيد من الصعود الشعري: توفير 25–30% من مياه الري.</p></div><div class="deck-card anim " style="--i:4;--c:#F0C860"><h4>الطاقة</h4><div class="metric">50 ميجاوات · 90 جيجاواط ساعة</div><p>طاقة شمسية موزعة على 25 محطة رفع تخفض فاتورة الضخ 40% وتصدّر الفائض بنظام صافي القياس.</p></div><div class="deck-card anim " style="--i:5;--c:#10B981"><h4>الغذاء</h4><div class="metric">زيادة الإنتاجية 15–25%</div><p>استعادة غلة القمح والأرز والذرة لـ 200,000 مزارع مع غسيل آلي عند ارتفاع الملوحة.</p></div><div class="deck-card anim " style="--i:6;--c:#15B5A4"><h4>النظم البيئية</h4><div class="metric">100 ألف طن CO₂ · 4,760 فدان</div><p>20 أرضاً رطبة تعالج 200 مليون م³ سنوياً وتحمي بحيرات الدلتا (كربون أزرق Verra).</p></div></div><div class="deck-card anim " style="--i:7;--c:#10B981"><h4>كيف يعزز تكامل WEFE الجدوى البنكية</h4><ul><li><strong>تشغيل ذاتي التمويل:</strong> الطاقة الشمسية تسدد كهرباء الطلمبات وتحمي نسبة خدمة الدين 1.35x.</li><li><strong>تكلفة متجنبة وإيرادات:</strong> توفير 150 مليون م³ ≈ 52.5 مليون دولار سنوياً، واسترداد خلال 0.48 سنة، وإيرادات طاقة وتصدير ومياه وكربون.</li><li><strong>بلا تهجير:</strong> تطوير موضعي دون إعادة توطين أو نزاعات مجتمعية.</li></ul></div></div></div></div>
+<div class="slide-lang" data-lang="en" dir="ltr" style="display:none"><span class="slide-header-badge anim" style="--i:8">SLIDE 2 OF 3 • TIME: 01:40 - 03:20</span><h3 class="slide-main-title anim" style="--i:9">Integrated WEFE Interventions and Bankability</h3><div class="slide-meta-subtitle anim" style="--i:10">Four closed-loop interventions, a formal screening score and a resilience scorecard</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#60A5FA"><img src="images/fig2_wefe_nexus.png" alt="Water–Energy–Food–Ecosystems nexus" loading="lazy"><figcaption>Water–Energy–Food–Ecosystems nexus</figcaption></figure><div class="deck-card anim " style="--i:2;--c:#F0C860"><h4>WEFE screening and resilience</h4><div class="score-row"><span class="score-big">92/100</span><span class="pill" style="--c:#10B981">Resilience: HIGH</span></div><p class="score-dims">Water 10 · Energy 8 · Food 10 · Ecosystems 8 · Digital 9</p></div></aside><div class="deck-content"><div class="deck-grid2"><div class="deck-card anim " style="--i:3;--c:#60A5FA"><h4>WATER</h4><div class="metric">150M m³/yr saved</div><p>HDPE and geotextile retrofit with smart gate valves using capillary rise: 25–30% less irrigation water.</p></div><div class="deck-card anim " style="--i:4;--c:#F0C860"><h4>ENERGY</h4><div class="metric">50 MW solar · 90 GWh/yr</div><p>Distributed PV at 25 pump stations cuts pumping bills by 40%; surplus exported via net metering.</p></div><div class="deck-card anim " style="--i:5;--c:#10B981"><h4>FOOD</h4><div class="metric">15–25% higher yields</div><p>Wheat, rice and maize restored for 200,000 farmers, with automatic flushing when salinity rises.</p></div><div class="deck-card anim " style="--i:6;--c:#15B5A4"><h4>ECOSYSTEMS</h4><div class="metric">100k tCO₂/yr · 4,760 feddans</div><p>20 constructed wetlands treat 200M m³/yr and protect Delta lakes (Verra blue carbon).</p></div></div><div class="deck-card anim " style="--i:7;--c:#10B981"><h4>How WEFE integration improves bankability</h4><ul><li><strong>Self-funded OPEX:</strong> solar net metering pays pump power and protects the DSCR (1.35x).</li><li><strong>Avoided cost and revenue:</strong> 150M m³/yr is worth about $52.5M; smart-valve payback 0.48 years; $8M energy, $3M export, $5M water, $0.5M carbon per year.</li><li><strong>No displacement:</strong> in-situ retrofit with zero resettlement or community conflict.</li></ul></div></div></div></div>
+</div>
+<div class="slide-panel" id="slidePanel3">
+<div class="slide-lang" data-lang="ar" dir="rtl"><span class="slide-header-badge anim" style="--i:6">الشريحة 3 من 3 • الوقت <bdi dir="ltr">03:20 - 05:00</bdi></span><h3 class="slide-main-title anim" style="--i:7">هيكل التمويل والجاهزية والنتائج المتوقعة</h3><div class="slide-meta-subtitle anim" style="--i:8">تمويل مختلط بقيمة 420 مليون دولار وحقل تجريبي جاهز ومسار توسع من ثلاث مراحل</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#F0C860"><img src="images/fig5_capital_stack.png" alt="هيكل رأس المال المختلط" loading="lazy"><figcaption>هيكل رأس المال المختلط</figcaption></figure><div class="deck-card anim " style="--i:2;--c:#15B5A4"><h4>ملاءمة جهات التمويل</h4><div class="fit-row"><span class="pill" style="--c:#F0C860">14/14</span><div><strong>صندوق المناخ الأخضر (GCF)</strong><small>تكيف تحويلي ورقمنة MRV. القرار: المضي</small></div></div><div class="fit-row"><span class="pill" style="--c:#F0C860">13/14</span><div><strong>صندوق التكيف</strong><small>مثالي لتمويل الحقل التجريبي. القرار: المضي</small></div></div><div class="fit-row"><span class="pill" style="--c:#F0C860">مرتفعة</span><div><strong>PRIMA وبوابة الاتحاد الأوروبي</strong><small>ابتكار مائي زراعي وتعاون متوسطي</small></div></div></div></aside><div class="deck-content"><div class="deck-card anim " style="--i:3;--c:#F0C860"><h4>الميزانية: 420 مليون دولار (4,200 دولار للفدان)</h4><ul><li><strong>15% منح (63 مليون دولار):</strong> GCF وAfDB والاتحاد الأوروبي للتجريبي والتوأم الرقمي.</li><li><strong>20% مساهمة حكومية (84 مليون دولار):</strong> أراضٍ ومحطات رفع وكوادر هيئة الصرف.</li><li><strong>40% قروض ميسرة (168 مليون دولار):</strong> البنك الدولي وAfDB لمدة 20–25 سنة.</li><li><strong>25% شراكة خاصة (105 مليون دولار):</strong> مطورو طاقة شمسية بعقود PPA. EIRR 21.4%.</li></ul></div><div class="deck-card anim " style="--i:4;--c:#10B981"><h4>حالة الجاهزية الحالية</h4><ul><li><strong>سجل التنفيذ:</strong> 50 عاماً لهيئة الصرف و6 ملايين فدان منفذة وتقنيات TRL 8–9.</li><li><strong>حقل تجريبي جاهز:</strong> وحدة 10 أفدنة على مجمع معزول للتحقق قبل التوسع.</li><li><strong>الخطوة التالية:</strong> طلب منحة تحضيرية 1.5 مليون دولار من GCF/AfDB لدراسة كفر الشيخ.</li></ul></div><div class="deck-card anim " style="--i:5;--c:#F8FAFC"><h4>النتائج المتوقعة (KPIs) ومسار التوسع</h4><div class="kpi-grid"><div class="kpi-chip"><b>150 مليون م³</b><span>وفر مائي سنوياً</span></div><div class="kpi-chip"><b>15–25%</b><span>زيادة الإنتاجية</span></div><div class="kpi-chip"><b>90 GWh</b><span>طاقة نظيفة سنوياً</span></div><div class="kpi-chip"><b>80%</b><span>انخفاض التعديات</span></div></div><div class="phase-row"><span class="pill phase" style="--c:#15B5A4">1 · تجريبي 10 أفدنة (سنة 1)</span><span class="pill phase" style="--c:#10B981">2 · ريادي 100 ألف فدان (2–5)</span><span class="pill phase" style="--c:#F0C860">3 · تعميم 4.3 مليون فدان</span></div></div></div></div></div>
+<div class="slide-lang" data-lang="en" dir="ltr" style="display:none"><span class="slide-header-badge anim" style="--i:6">SLIDE 3 OF 3 • TIME: 03:20 - 05:00</span><h3 class="slide-main-title anim" style="--i:7">Capital Stack, Readiness and Expected Results</h3><div class="slide-meta-subtitle anim" style="--i:8">USD 420M blended finance, a ready 10-feddan pilot and a three-stage scaling pathway</div><div class="deck-layout"><aside class="deck-media"><figure class="deck-fig anim wipe" style="--i:1;--c:#F0C860"><img src="images/fig5_capital_stack.png" alt="Blended-finance capital stack" loading="lazy"><figcaption>Blended-finance capital stack</figcaption></figure><div class="deck-card anim " style="--i:2;--c:#15B5A4"><h4>Funding call fit</h4><div class="fit-row"><span class="pill" style="--c:#F0C860">14/14</span><div><strong>Green Climate Fund</strong><small>Transformational adaptation and digital MRV. Decision: GO</small></div></div><div class="fit-row"><span class="pill" style="--c:#F0C860">13/14</span><div><strong>Adaptation Fund</strong><small>Ideal for the pilot component. Decision: GO</small></div></div><div class="fit-row"><span class="pill" style="--c:#F0C860">High</span><div><strong>PRIMA and EU Global Gateway</strong><small>Water-agri innovation and Euro-Med cooperation</small></div></div></div></aside><div class="deck-content"><div class="deck-card anim " style="--i:3;--c:#F0C860"><h4>Budget: USD 420M ($4,200 per feddan)</h4><ul><li><strong>15% grants ($63M):</strong> GCF, AfDB, EU for pilot, digital twin and capacity.</li><li><strong>20% government ($84M):</strong> in-kind land, pump stations, EPADP staff.</li><li><strong>40% concessional debt ($168M):</strong> World Bank, AfDB, 20–25 year tenor.</li><li><strong>25% PPP / commercial ($105M):</strong> solar developers under PPA. EIRR 21.4%.</li></ul></div><div class="deck-card anim " style="--i:4;--c:#10B981"><h4>Current readiness status</h4><ul><li><strong>Track record:</strong> EPADP&#x27;s 50 years, 6M feddans installed, TRL 8–9 technologies.</li><li><strong>Pilot ready:</strong> 10-feddan unit on an isolated collector to validate before scale-up.</li><li><strong>Next step:</strong> $1.5M PPF grant request to GCF/AfDB for Kafr El-Sheikh feasibility.</li></ul></div><div class="deck-card anim " style="--i:5;--c:#F8FAFC"><h4>Expected results (KPIs) and scaling pathway</h4><div class="kpi-grid"><div class="kpi-chip"><b>150M m³</b><span>water saved / yr</span></div><div class="kpi-chip"><b>15–25%</b><span>yield increase</span></div><div class="kpi-chip"><b>90 GWh</b><span>clean energy / yr</span></div><div class="kpi-chip"><b>80%</b><span>less tampering</span></div></div><div class="phase-row"><span class="pill phase" style="--c:#15B5A4">1 · Pilot 10 feddans (Yr 1)</span><span class="pill phase" style="--c:#10B981">2 · Core 100k feddans (Yr 2–5)</span><span class="pill phase" style="--c:#F0C860">3 · Scale 4.3M feddans</span></div></div></div></div></div>
+</div>
+<!-- DECK:END -->
         </div>
     </div>
 </section>

@@ -54,7 +54,8 @@ wefe_nexus/
 ├── Eco-Drain_WEFE_Report_Group10.html      # Comprehensive Technical Report (Bilingual)
 ├── Eco-Drain_WEFE_Report_Group10_AR.html   # Arabic Technical Report
 ├── Eco-Drain_WEFE_Report_Group10_EN.html   # English Technical Report
-├── generate_deck.py                        # Automated generator creating both AR & EN PPTX decks with python-pptx
+├── generate_deck.py                        # Generates the AR & EN PPTX decks (RTL, images, animations) with python-pptx
+├── generate_web_slides.py                  # Regenerates the web slides in index.html from the same content as the PPTX
 ├── images/                                 # High-resolution Technical Diagrams & Maps (fig1 to fig8)
 ├── notes/                                  # Review feedback report (WEFE_Presentation_Feedback_Report.pdf)
 ├── report/                                 # Sub-folder report mirror
