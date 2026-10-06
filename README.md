@@ -46,15 +46,19 @@ When hosted on **GitHub Pages**, this repository renders as an interactive, mult
 
 ```
 wefe_nexus/
-├── index.html                           # Main Interactive Investor Pitch Deck (GitHub Pages Entry)
+├── index.html                           # Main Interactive Investor Pitch Deck & 5-Min Slides (GitHub Pages Entry)
+├── Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx # 16:9 Widescreen Microsoft PowerPoint Presentation (3 Slides / 5 Min)
 ├── iot_tamper_simulation.html           # Standalone Interactive 60fps IoT & Anti-Tamper Physics Simulation
 ├── Eco-Drain_WEFE_Report_Group10.html   # Comprehensive Technical Report (Bilingual)
 ├── Eco-Drain_WEFE_Report_Group10_AR.html# Arabic Technical Report
 ├── Eco-Drain_WEFE_Report_Group10_EN.html# English Technical Report
+├── generate_deck.py                     # Python script generating the presentation using python-pptx
 ├── images/                              # High-resolution Technical Diagrams & Maps (fig1 to fig8)
+├── notes/                               # Review feedback report (WEFE_Presentation_Feedback_Report.pdf)
 ├── report/                              # Sub-folder report mirror
 │   ├── index.html
 │   ├── pitch.html
+│   ├── Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx
 │   ├── iot_tamper_simulation.html
 │   └── Eco-Drain_WEFE_Report_Group10.html
 └── README.md                            # Repository Documentation & GitHub Pages Guide

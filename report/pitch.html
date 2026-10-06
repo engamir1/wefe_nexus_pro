@@ -570,6 +570,109 @@ section {
     font-size: 0.75rem; font-weight: 600;
 }
 
+/* === 5-MINUTE EXECUTIVE SLIDES STYLING === */
+#executive-slides {
+    background: radial-gradient(ellipse at 50% 20%, rgba(21,181,164,0.15) 0%, transparent 60%),
+                linear-gradient(180deg, #060E1A 0%, var(--navy) 40%, #060E1A 100%);
+    padding: 5.5rem 1.5rem 4rem;
+    position: relative;
+    border-bottom: 1px solid rgba(21,181,164,0.15);
+}
+
+.slides-wrapper {
+    max-width: 1200px; width: 100%; margin: 0 auto;
+}
+
+.slides-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; margin-bottom: 1.8rem;
+    background: rgba(15,34,64,0.7); padding: 1rem 1.5rem;
+    border-radius: 14px; border: 1px solid rgba(21,181,164,0.25);
+    backdrop-filter: blur(10px);
+}
+
+.slide-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+}
+
+.slide-tab-btn {
+    background: var(--navy-light); border: 1px solid rgba(21,181,164,0.25);
+    color: var(--white); padding: 0.55rem 1.1rem; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 700; cursor: pointer;
+    transition: all 0.25s; font-family: var(--font);
+}
+.slide-tab-btn:hover { border-color: var(--teal-light); color: var(--teal-light); }
+.slide-tab-btn.active {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: #fff; box-shadow: 0 4px 15px var(--teal-glow);
+    border-color: var(--teal-light);
+}
+
+.ppt-download-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, #D4A843, #F0C860);
+    color: #0A1628; padding: 0.6rem 1.25rem; border-radius: 9px;
+    font-weight: 800; font-size: 0.82rem; text-decoration: none;
+    box-shadow: 0 4px 18px rgba(212,168,67,0.3); transition: all 0.25s;
+    border: none; cursor: pointer; font-family: var(--font);
+}
+.ppt-download-btn:hover {
+    transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212,168,67,0.5);
+    background: #fff; color: #0A1628;
+}
+
+.slide-card-deck {
+    background: rgba(15,34,64,0.75); border: 1px solid rgba(21,181,164,0.3);
+    border-radius: 18px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px); min-height: 540px; position: relative;
+}
+
+.slide-panel { display: none; }
+.slide-panel.active { display: block; animation: fadeInUp 0.4s ease both; }
+
+.slide-header-badge {
+    display: inline-block; background: rgba(21,181,164,0.15);
+    color: var(--teal-light); border: 1px solid rgba(21,181,164,0.3);
+    font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.75rem;
+    border-radius: 20px; margin-bottom: 0.6rem;
+}
+
+.slide-main-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 800;
+    margin-bottom: 0.3rem; color: var(--white);
+}
+
+.slide-meta-subtitle {
+    font-size: 0.88rem; color: var(--gold-light); margin-bottom: 1.5rem; font-weight: 600;
+}
+
+.slide-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.2rem;
+}
+
+.slide-subbox {
+    background: rgba(10, 22, 40, 0.65); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 1.1rem; transition: border-color 0.25s;
+}
+.slide-subbox:hover { border-color: rgba(21,181,164,0.4); }
+
+.slide-subbox h4 {
+    font-size: 0.95rem; font-weight: 700; margin-bottom: 0.7rem;
+    display: flex; align-items: center; gap: 0.4rem;
+}
+
+.slide-subbox ul { list-style: none; padding: 0; }
+.slide-subbox ul li {
+    font-size: 0.82rem; color: var(--gray); margin-bottom: 0.5rem;
+    line-height: 1.5; position: relative; padding-inline-start: 1rem;
+}
+.slide-subbox ul li::before {
+    content: "•"; color: var(--teal-light); font-weight: 900;
+    position: absolute; inset-inline-start: 0;
+}
+.slide-subbox ul li strong { color: var(--white); }
+
 /* === ANIMATIONS === */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -595,6 +698,7 @@ section {
     .problem-grid, .solution-grid { grid-template-columns: 1fr; }
     .flow-container { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); }
+    .slide-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -607,6 +711,10 @@ section {
         <a class="nav-link active" onclick="scrollToSection('hero')">
             <span data-lang="ar">الرئيسية</span>
             <span data-lang="en" style="display:none">Home</span>
+        </a>
+        <a class="nav-link" onclick="scrollToSection('executive-slides')" style="color:var(--gold-light); font-weight:700;">
+            <span data-lang="ar">📊 شرائح العرض (5 د)</span>
+            <span data-lang="en" style="display:none">📊 5-Min Pitch</span>
         </a>
         <a class="nav-link" onclick="scrollToSection('problem')">
             <span data-lang="ar">المشكلة</span>
@@ -627,6 +735,9 @@ section {
         <a class="nav-link" onclick="scrollToSection('financial')">
             <span data-lang="ar">التمويل</span>
             <span data-lang="en" style="display:none">Finance</span>
+        </a>
+        <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download style="padding:0.35rem 0.8rem; font-size:0.75rem;">
+            <span>📥 PPTX</span>
         </a>
         <button class="lang-toggle" onclick="toggleLang()">EN / ع</button>
     </div>
@@ -692,7 +803,6 @@ section {
             </div>
         </div>
 
-
         <div class="hero-stats">
             <div class="stat-card">
                 <div class="stat-value" data-counter="100000">0</div>
@@ -724,10 +834,225 @@ section {
             </div>
         </div>
 
-        <a class="hero-cta" onclick="scrollToSection('problem')">
-            <span data-lang="ar">اكتشف المشروع ↓</span>
-            <span data-lang="en" style="display:none">Explore the Project ↓</span>
-        </a>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a class="hero-cta" onclick="scrollToSection('executive-slides')">
+                <span data-lang="ar">📊 عرض الـ 5 دقائق (3 شرائح) ↓</span>
+                <span data-lang="en" style="display:none">📊 5-Min Pitch (3 Slides) ↓</span>
+            </a>
+            <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download>
+                <span>📥 تحميل العرض التقديمي (PowerPoint .PPTX)</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 5-MINUTE EXECUTIVE SLIDES (MAX 3 SLIDES) ==================== -->
+<section id="executive-slides">
+    <div class="slides-wrapper">
+        <div class="slides-topbar">
+            <div>
+                <span class="slide-header-badge">
+                    <span data-lang="ar">🎯 عرض المستثمرين واللجان التمويلية | 5 دقائق (3 شرائح كحد أقصى)</span>
+                    <span data-lang="en" style="display:none">🎯 Investor Pitch Deck | 5 Minutes (Max 3 Slides)</span>
+                </span>
+                <div style="font-weight: 800; font-size: 1.15rem; color: #FFF;">
+                    <span data-lang="ar">شرائح العرض التقديمي التنفيذي المختصر مع تصحيحات مصفوفة الفرز</span>
+                    <span data-lang="en" style="display:none">Executive Pitch Presentation with Feedback Matrix Corrections</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                <div class="slide-tabs">
+                    <button class="slide-tab-btn active" id="tabBtn1" onclick="switchSlide(1)">
+                        <span data-lang="ar">الشريحة 1: المشكلة والحوكمة</span>
+                        <span data-lang="en" style="display:none">Slide 1: Problem & Governance</span>
+                    </button>
+                    <button class="slide-tab-btn" id="tabBtn2" onclick="switchSlide(2)">
+                        <span data-lang="ar">الشريحة 2: تدخلات WEFE والجدوى</span>
+                        <span data-lang="en" style="display:none">Slide 2: WEFE & Bankability</span>
+                    </button>
+                    <button class="slide-tab-btn" id="tabBtn3" onclick="switchSlide(3)">
+                        <span data-lang="ar">الشريحة 3: التمويل ومسار التوسع</span>
+                        <span data-lang="en" style="display:none">Slide 3: Capital & Scaling</span>
+                    </button>
+                </div>
+
+                <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download title="تحميل العرض التقديمي بصيغة مايكروسوفت باوربوينت">
+                    <span>📥 تحميل العرض التقديمي (PowerPoint .PPTX)</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="slide-card-deck">
+            <!-- SLIDE 1 -->
+            <div class="slide-panel active" id="slidePanel1">
+                <span class="slide-header-badge">SLIDE 1 OF 3 • TIME: 00:00 - 01:40</span>
+                <h3 class="slide-main-title">
+                    <span data-lang="ar">1. عنوان المشروع والأزمة الهيدروليكية | 3. الجهة القائدة وهيكل الحوكمة</span>
+                    <span data-lang="en" style="display:none">1. Project Title & Problem Addressed | 3. Lead Institution & Multi-Tier Governance</span>
+                </h3>
+                <div class="slide-meta-subtitle">
+                    <span data-lang="ar">Eco-Drain: إحلال وتجديد شبكات الصرف المغطى الذكية، غير المرئية والمقاومة للتلاعب لتعزيز المرونة المناخية في دلتا النيل</span>
+                    <span data-lang="en" style="display:none">Eco-Drain: Invisible Tamper-Proof Subsurface Drainage Retrofitting for Climate-Resilient Agriculture in Egypt's Nile Delta</span>
+                </div>
+
+                <div class="slide-grid">
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--red);">🚨 الأزمة المائية وتدهور الشبكات القديمة</h4>
+                        <ul>
+                            <li><strong>الفقر المائي الحرج:</strong> حصة مصر الثابتة 55.5 مليار م³ تخدم أكثر من 106 مليون نسمة (560 م³/فرد/سنة)، وهو ما يقل عن خط الفقر المائي العالمي (1,000 م³).</li>
+                            <li><strong>2.3 مليون فدان منتهية الصلاحية:</strong> شبكات الصرف المغطى بالدلتا تجاوزت عمرها التصميمي (20-25 عاماً)؛ وتسبب تغدق الجذور وتملح التربة وخسارة 10–30% من غلة المحاصيل.</li>
+                            <li><strong>أزمة البنية التحتية غير المرئية:</strong> الشبكات مدفونة تحت الأرض؛ لا يمكن فحصها بصرياً وتتأخر الصيانة لسنوات حتى يتلف المحصول تماماً.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--gold-light);">🛡️ آفة التلاعب وحل الإخفاء الذكي</h4>
+                        <ul>
+                            <li><strong>أعطال التعديات الزراعية:</strong> سجلات هيئة الصرف (EPADP) توثق أن 25–40% من أعطال الصرف ناجمة عن سد المزارعين للمجمعات أو كسر الأغطية لحبس المياه للأرز أو سحبها لري مجاور.</li>
+                            <li><strong>ابتكار الغرف غير المرئية:</strong> استبدال الغرف السطحية المكشوفة بغرف غاطسة مدفونة 30–50 سم تحت الأرض مع شرائح RFID لتحديد الموقع للصيانة فقط ومنع الحفر العشوائي.</li>
+                            <li><strong>ردع لحظي مشفر:</strong> حساسات تسارع MPU6050 ترصد أي اهتزاز أو محاولة حفر (>2.5g) وتبث إنذار طوارئ GPS فوري مشفر بـ AES-128 عبر NB-IoT إلى مركز التحكم.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox" style="grid-column: 1 / -1;">
+                        <h4 style="color: var(--teal-light);">🏛️ الجهة القائدة، الشركاء الرئيسيون وهيكل الحوكمة متعدد المستويات</h4>
+                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top:0.5rem;">
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الجهة القائدة التنفيذية:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">وزارة الموارد المائية والري (MWRI) / الهيئة العامة لمشروعات الصرف (EPADP - المكتب الفني للوجه البحري).</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الشركاء الفنيون والزراعيون:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">معهد بحوث الصرف (DRI) للمواصفات والتحقق المستقل، ووزارة الزراعة (MALR) لتحسين إنتاجية المحاصيل والإرشاد.</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">شريك الطاقة والربط:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">هيئة الطاقة الجديدة والمتجددة (NREA) وجهاز تنظيم مرفق الكهرباء (EgyptERA) لصافي القياس (Net Metering).</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الحوكمة المؤسسية والتوافق:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">لجنة وزارية عليا + وحدة مخصصة لإدارة المشروع (PIU) بهيئة الصرف + لجان روابط المزارعين (WUAs) المتوافقة مع منظومة المياه 2.0.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="slide-panel" id="slidePanel2">
+                <span class="slide-header-badge">SLIDE 2 OF 3 • TIME: 01:40 - 03:20</span>
+                <h3 class="slide-main-title">
+                    <span data-lang="ar">2. تدخلات WEFE المتكاملة، مصفوفة الفرز الرسمية، وتعزيز الجدوى البنكية</span>
+                    <span data-lang="en" style="display:none">2. WEFE Interventions, Screening Matrix, Ecosystem Metrics & Bankability Enhancement</span>
+                </h3>
+                <div class="slide-meta-subtitle">
+                    <span data-lang="ar">حلقة هيدروليكية وبيئية مغلقة (Closed-Loop) تستجيب لكافة متطلبات تقرير التقييم</span>
+                    <span data-lang="en" style="display:none">Closed-Loop Hydraulic & Ecological Cycle Addressing All Reviewer Feedback Requirements</span>
+                </div>
+
+                <div class="slide-grid">
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--teal-light);">💧 التدخلات الأربعة لمخور WEFE (100 ألف فدان)</h4>
+                        <ul>
+                            <li><strong>المياه (Water):</strong> مواسير HDPE وفلاتر جيوتكستيل (40+ سنة عمر). صمامات كهربائية تتحكم في الصعود الشعري (h=2γcosθ/ρgr) وتوفر 150 مليون م³/سنة مياه ري (25–30%).</li>
+                            <li><strong>الطاقة (Energy):</strong> محطات شمسية 50 MW موزعة على 25 محطة رفع تولد 90 GWh/سنة وتخفض فاتورة الكهرباء 40% وتصدر الفائض بنظام صافي القياس للشبكة القومية.</li>
+                            <li><strong>الغذاء (Food):</strong> زيادة إنتاجية القمح والأرز والذرة 15–25%، مع غسيل أملاح ذكي آلي عند تجاوز ملوحة التربة EC > 4 dS/m.</li>
+                            <li><strong>البيئة (Ecosystems):</strong> 20 محطة أراضٍ رطبة اصطناعية (4,760 فدان) تعالج 200M م³/سنة حيوياً وتحمي بحيرات الدلتا وتحتجز 100k طن CO₂ (شهادات Verra VM0033).</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--gold-light);">📊 مصفوفة فرز WEFE وبطاقة قياس المرونة</h4>
+                        <ul>
+                            <li><strong>المياه (10/10):</strong> ضبط منسوب الماء الأرضي عند 0.8–1.2م؛ وفر مائي 150M م³/سنة.</li>
+                            <li><strong>الطاقة (8/10):</strong> 50 MW شمسية؛ 90 GWh/سنة طاقة نظيفة؛ خفض تكاليف الضخ 40%.</li>
+                            <li><strong>الغذاء (10/10):</strong> زيادة المحاصيل 15-25%؛ دعم أمن الغذاء لـ 200,000 مزارع.</li>
+                            <li><strong>النظم البيئية (8/10):</strong> تنقية مياه بحيرات الدلتا واستعادة الثروة السمكية.</li>
+                            <li><strong>الممكن الرقمي (9/10):</strong> 5,000 عقدة IoT؛ توأم رقمي؛ رصد تلاعب لحظي.</li>
+                            <li><strong>التقييم المركب: 92/100 | بطاقة المرونة: HIGH عبر الأبعاد الخمسة.</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox" style="grid-column: 1 / -1;">
+                        <h4 style="color: var(--green);">💎 كيف يعزز تكامل WEFE الجدوى البنكية للمشروع (Bankability)؟</h4>
+                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top:0.5rem;">
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">الاكتفاء الذاتي من تكاليف التشغيل (OPEX):</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">الطاقة الشمسية المصدرة للشبكة تسدد فواتير كهرباء الطلمبات، مما يزيل مخاطر التعثر التشغيلي ويحمي نسبة خدمة الدين (DSCR = 1.35x).</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">قيمة التكلفة المتجنبة (Avoided Costs):</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">توفير 150M م³ مياه يعادل 52.5 مليون دولار/سنة بتكلفة البديل (0.35$/م³)، محققاً فترة استرداد 0.48 سنة لمكون الري الذكي.</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">عوائد نقدية متنوعة وقوية:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">وفر طاقة (8M$) + تصدير شبكة (3M$) + مياه متجنبة (5M$) + أرصدة كربون زرقاء (0.5M$) بجانب رسوم الصيانة.</div>
+                            </div>
+                            <div>
+                                <div style="color:var(--gold-light); font-weight:700; font-size:0.85rem;">انعدام النزاعات الاجتماعية والبيئية:</div>
+                                <div style="font-size:0.82rem; color:var(--gray);">تطوير موضعي (In-situ) في أراضي الدلتا القديمة دون تحويل المياه بعيداً عن صغار المزارعين (بخلاف مشاريع بحر البقر والمحسمة).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="slide-panel" id="slidePanel3">
+                <span class="slide-header-badge">SLIDE 3 OF 3 • TIME: 03:20 - 05:00</span>
+                <h3 class="slide-main-title">
+                    <span data-lang="ar">4. الميزانية وهيكل التمويل | 5. الجاهزية | 6. مؤشرات الأداء ومسار التوسع</span>
+                    <span data-lang="en" style="display:none">4. Budget & Capital Stack | 5. Readiness Status | 6. Expected KPIs & Regional Scaling Strategy</span>
+                </h3>
+                <div class="slide-meta-subtitle">
+                    <span data-lang="ar">هيكل رأس مال مختلط (420 مليون دولار) وجاهزية تامة لاقتناص نافذة التكيف للمناخ</span>
+                    <span data-lang="en" style="display:none">USD 420 Million Blended Capital Stack with Complete Investment Readiness for Climate Windows</span>
+                </div>
+
+                <div class="slide-grid">
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--gold-light);">💰 هيكل رأس المال المختلط (USD 420M)</h4>
+                        <ul>
+                            <li><strong>15% منح ومساعدات فنية (63M$):</strong> من GCF و AfDB و EU للحقل التجريبي والمنصة ودراسات الجدوى.</li>
+                            <li><strong>20% مساهمة حكومية عينية (84M$):</strong> أراضٍ ومحطات طلمبات قائمة وكوادر هيئة الصرف.</li>
+                            <li><strong>40% قروض ميسرة (168M$):</strong> البنك الدولي (NDP V)، وبنك التنمية الأفريقي (سداد 20-25 سنة).</li>
+                            <li><strong>25% قروض تجارية وشراكة PPP (105M$):</strong> لمكون الطاقة الشمسية 50 MW مدعوماً باتفاقيات PPA.</li>
+                            <li><strong>مؤشرات الربحية:</strong> EIRR = 21.4% | DSCR = 1.35x | فترة استرداد 8 سنوات للمشروع ككل.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--teal-light);">🎯 تحليل ملاءمة جهات التمويل (Fit Scores)</h4>
+                        <ul>
+                            <li><strong>صندوق المناخ الأخضر (GCF):</strong> درجة 14/14 (قرار: GO) - تطابق كامل مع نافذة التكيف والتخفيف والأثر التحويلي.</li>
+                            <li><strong>صندوق التكيف (Adaptation Fund):</strong> درجة 13/14 (قرار: GO لمقترح مجزأ أو الحقل التجريبي).</li>
+                            <li><strong>برنامج PRIMA وبوابة الاتحاد الأوروبي:</strong> ملاءمة مرتفعة جداً للتحول الرقمي الزراعي والتعاون الأورومتوسطي.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--green);">🚀 حالة الجاهزية وموقع الاختبار التجريبي (10 أفدنة)</h4>
+                        <ul>
+                            <li><strong>النضج المؤسسي:</strong> خبرة 50 عاماً لهيئة الصرف EPADP في إدارة شبكات 6 ملايين فدان تقضي على مخاطر التنفيذ.</li>
+                            <li><strong>وحدة الاختبار الحقلية (10 أفدنة):</strong> تصميم جاهز للتنفيذ الفوري على مجمع صرف مستقل لاختبار الصعود الشعري قبل التعميم.</li>
+                            <li><strong>نضج التقنيات:</strong> TRL 8-9 لكافة مكونات HDPE والطاقة الشمسية وحساسات ESP32 و LoRaWAN/NB-IoT.</li>
+                            <li><strong>الخطوة التنفيذية الفورية:</strong> طلب منحة تحضيرية (PPF Grant بقيمة 1.5 مليون دولار) من GCF/AfDB.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide-subbox">
+                        <h4 style="color: var(--white);">📈 مؤشرات الأداء (KPIs) ومسار التوسع الإقليمي</h4>
+                        <ul>
+                            <li><strong>150 مليون م³/سنة</strong> وفر مائي + <strong>15–25%</strong> زيادة إنتاجية المحاصيل لـ <strong>200,000</strong> مزارع.</li>
+                            <li><strong>90 GWh/سنة</strong> طاقة نظيفة + خفض <strong>100,000 طن CO₂/سنة</strong> + خلق <strong>5,000</strong> فرصة عمل.</li>
+                            <li><strong>خفض التعديات 80%</strong> وكشف الأعطال في ساعة واحدة بدلاً من أسابيع.</li>
+                            <li><strong>مسار التوسع (3 مراحل):</strong> حقل تجريبي 10 أفدنة (سنة 1) -> تجربة ريادية 100 ألف فدان (سنوات 2-5) -> تعميم عبر 4.3 مليون فدان بالدلتا ونقل التجربة إقليمياً للعراق والأردن وباكستان.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -1212,6 +1537,10 @@ section {
                 <span data-lang="ar">📡 محاكاة IoT التفاعلية</span>
                 <span data-lang="en" style="display:none">📡 IoT Simulation Demo</span>
             </a>
+            <a class="cta-btn" style="background: linear-gradient(135deg, #D4A843, #F0C860); color: #0A1628; font-weight: 800; box-shadow: 0 4px 20px rgba(212,168,67,0.4);" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download>
+                <span data-lang="ar">📥 تحميل عرض الباوربوينت (.PPTX)</span>
+                <span data-lang="en" style="display:none">📥 Download PowerPoint Deck (.PPTX)</span>
+            </a>
         </div>
 
         <div class="tagline reveal">
@@ -1228,6 +1557,16 @@ section {
 </section>
 
 <script>
+// === SLIDE SWITCHER ===
+function switchSlide(num) {
+    document.querySelectorAll('.slide-tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === (num - 1));
+    });
+    document.querySelectorAll('.slide-panel').forEach((panel, idx) => {
+        panel.classList.toggle('active', idx === (num - 1));
+    });
+}
+
 // === LANGUAGE TOGGLE ===
 let lang = 'ar';
 function toggleLang() {
