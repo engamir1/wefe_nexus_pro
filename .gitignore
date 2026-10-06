@@ -1,0 +1,10 @@
+# Office temporary files
+~$*
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/

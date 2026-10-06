@@ -736,8 +736,9 @@ section {
             <span data-lang="ar">التمويل</span>
             <span data-lang="en" style="display:none">Finance</span>
         </a>
-        <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download style="padding:0.35rem 0.8rem; font-size:0.75rem;">
-            <span>📥 PPTX</span>
+        <a class="ppt-download-btn dynamic-ppt-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" style="padding:0.35rem 0.8rem; font-size:0.75rem;">
+            <span data-lang="ar">📥 PPTX (عربي)</span>
+            <span data-lang="en" style="display:none">📥 PPTX (EN)</span>
         </a>
         <button class="lang-toggle" onclick="toggleLang()">EN / ع</button>
     </div>
@@ -839,8 +840,9 @@ section {
                 <span data-lang="ar">📊 عرض الـ 5 دقائق (3 شرائح) ↓</span>
                 <span data-lang="en" style="display:none">📊 5-Min Pitch (3 Slides) ↓</span>
             </a>
-            <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download>
-                <span>📥 تحميل العرض التقديمي (PowerPoint .PPTX)</span>
+            <a class="ppt-download-btn dynamic-ppt-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx">
+                <span data-lang="ar">📥 تحميل العرض التقديمي (عربي .PPTX)</span>
+                <span data-lang="en" style="display:none">📥 Download Pitch Deck (English .PPTX)</span>
             </a>
         </div>
     </div>
@@ -877,9 +879,18 @@ section {
                     </button>
                 </div>
 
-                <a class="ppt-download-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download title="تحميل العرض التقديمي بصيغة مايكروسوفت باوربوينت">
-                    <span>📥 تحميل العرض التقديمي (PowerPoint .PPTX)</span>
-                </a>
+                <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+                    <a class="ppt-download-btn dynamic-ppt-btn" href="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" title="تحميل العرض التقديمي باللغة المختارة المعروضة">
+                        <span data-lang="ar">📥 تحميل العرض (عربي .PPTX)</span>
+                        <span data-lang="en" style="display:none">📥 Download Deck (English .PPTX)</span>
+                    </a>
+                    <a href="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" class="slide-tab-btn" style="padding:0.5rem 0.75rem; font-size:0.75rem; background:rgba(212,168,67,0.18); border-color:var(--gold); color:var(--gold-light);" title="تحميل النسخة العربية مباشرة">
+                        عربي AR 📥
+                    </a>
+                    <a href="Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx" class="slide-tab-btn" style="padding:0.5rem 0.75rem; font-size:0.75rem; background:rgba(21,181,164,0.18); border-color:var(--teal-light); color:var(--teal-light);" title="Download English version directly">
+                        English EN 📥
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -1537,9 +1548,9 @@ section {
                 <span data-lang="ar">📡 محاكاة IoT التفاعلية</span>
                 <span data-lang="en" style="display:none">📡 IoT Simulation Demo</span>
             </a>
-            <a class="cta-btn" style="background: linear-gradient(135deg, #D4A843, #F0C860); color: #0A1628; font-weight: 800; box-shadow: 0 4px 20px rgba(212,168,67,0.4);" href="Eco-Drain_WEFE_Nexus_5Min_Pitch.pptx" download>
-                <span data-lang="ar">📥 تحميل عرض الباوربوينت (.PPTX)</span>
-                <span data-lang="en" style="display:none">📥 Download PowerPoint Deck (.PPTX)</span>
+            <a class="cta-btn dynamic-ppt-btn" style="background: linear-gradient(135deg, #D4A843, #F0C860); color: #0A1628; font-weight: 800; box-shadow: 0 4px 20px rgba(212,168,67,0.4);" href="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx" download="Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx">
+                <span data-lang="ar">📥 تحميل عرض الباوربوينت (عربي .PPTX)</span>
+                <span data-lang="en" style="display:none">📥 Download PowerPoint Deck (English .PPTX)</span>
             </a>
         </div>
 
@@ -1567,14 +1578,24 @@ function switchSlide(num) {
     });
 }
 
-// === LANGUAGE TOGGLE ===
+// === LANGUAGE TOGGLE & PPTX SYNC ===
 let lang = 'ar';
+
+function updatePptLinks(currentLang) {
+    const file = currentLang === 'ar' ? 'Eco-Drain_WEFE_Nexus_5Min_Pitch_AR.pptx' : 'Eco-Drain_WEFE_Nexus_5Min_Pitch_EN.pptx';
+    document.querySelectorAll('.dynamic-ppt-btn').forEach(btn => {
+        btn.setAttribute('href', file);
+        btn.setAttribute('download', file);
+    });
+}
+
 function toggleLang() {
     lang = lang === 'ar' ? 'en' : 'ar';
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-lang="ar"]').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
     document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+    updatePptLinks(lang);
 }
 
 // === SMOOTH SCROLL ===
